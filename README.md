@@ -1,65 +1,80 @@
 # 🦥 ArenAI: Educación a tu Propio Ritmo
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-Prototipo-brightgreen" alt="Status">
-  <img src="https://img.shields.io/badge/Sector-EdTech-blue" alt="Sector">
-  <img src="https://img.shields.io/badge/Region-Costa%20Rica-red" alt="Region">
-  <img src="https://img.shields.io/badge/Tech-AI%20Neural%20Network-orange" alt="Tech">
+  <img src="https://img.shields.io/badge/Status-Prototipo-brightgreen?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Sector-EdTech-blue?style=for-the-badge" alt="Sector">
+  <img src="https://img.shields.io/badge/Region-Costa%20Rica-red?style=for-the-badge" alt="Region">
+  <img src="https://img.shields.io/badge/Tech-AI%20Neural%20Network-orange?style=for-the-badge" alt="Tech">
 </p>
 
-> **"Porque cada estudiante merece aprender a su ritmo."** [cite: 4, 5]
-
-**ArenAI** es una plataforma educativa de vanguardia que integra un agente con inteligencia artificial diseñado para combatir el rezago educativo y modernizar la experiencia en el aula[cite: 39, 15].
-
----
-
-## 💡 El Problema
-Actualmente, el sistema educativo enfrenta retos críticos que ArenAI busca resolver:
-* **Rezago Educativo:** Estudiantes de 15 años presentan niveles de comprensión de lectura equivalentes a tercer grado[cite: 15].
-* **Brecha Digital:** Falta de herramientas en zonas marginadas y limitadas oportunidades de práctica fuera del aula[cite: 14].
-* **Sobrecarga Docente:** Falta de herramientas para un seguimiento real y personalizado del progreso estudiantil[cite: 13].
-
-## ✨ Nuestra Solución: El Agente ArenAI
-Nuestra plataforma no solo centraliza el aprendizaje, sino que lo personaliza mediante una **red neuronal** que identifica el estilo único de cada estudiante[cite: 99].
-
-### Beneficios Clave:
-* **Para Profesores:** Creación automatizada de actividades de repaso y centralización de calificaciones en tiempo real[cite: 40, 41].
-* **Para Estudiantes:** Práctica guiada con recomendaciones personalizadas y consultas directas con la IA para reforzar temas específicos[cite: 49, 51].
-* **Inclusión Total:** A diferencia de otros servicios, ArenAI permite la conexión a la red local sin necesidad de internet constante[cite: 99].
+<p align="center">
+  <b>"Transformando la educación: de un monólogo a un diálogo."</b>
+</p>
 
 ---
 
-## 📊 Diferenciación Competitiva
-| Característica | ArenAI 🦥 | Duolingo | ChatGPT | Google Classroom |
-| :--- | :--- | :--- | :--- | :--- |
-| **Detección de Aprendizaje** | Red neuronal profunda [cite: 99] | Primitiva [cite: 99] | Basada en errores [cite: 99] | No aplica [cite: 99] |
-| **Enfoque Pedagógico** | Guía, no da la respuesta [cite: 99] | Repetición [cite: 99] | Tiende a la respuesta [cite: 99] | Administrativo [cite: 99] |
-| **Sin Conexión** | **Funciona sin WiFi** [cite: 99] | No [cite: 99] | No [cite: 99] | No [cite: 99] |
-| **Personalización** | Total (Interfaz y Agente) [cite: 99] | Mínima [cite: 99] | De agente [cite: 99] | No tiene [cite: 99] |
+## 🌟 La Visión: Enseñar a Pensar, no a Copiar
+En **ArenAI**, creemos que la inteligencia artificial no debe ser un atajo, sino un puente hacia el conocimiento. Mientras otras herramientas se limitan a entregar resultados, nuestro agente está programado con una regla de oro:
+
+> **"Nunca damos la respuesta final. Guiamos al estudiante para que descubra cómo llegar a ella."**
+
+Transformamos el aprendizaje pasivo en un proceso activo de descubrimiento, asegurando que el estudiante realmente comprenda los conceptos subyacentes.
 
 ---
 
-## 🚀 Modelo de Negocio (SaaS Híbrido)
-Operamos bajo un modelo **B2C + B2B** basado en suscripciones[cite: 102, 103]:
-* **B2C:** Planes Standard, Plus y Premium para estudiantes independientes[cite: 104].
-* **B2B:** Licencias institucionales para colegios con paneles administrativos y analítica avanzada[cite: 105, 106].
-* **Roadmap:** Proyectamos una valoración de entre **$3.1M y $5.7M USD** para el mes 30 tras la incursión en el sector público (MEP)[cite: 129].
+## 🚀 Propuesta de Valor
+
+### 🧠 El Tutor Socrático Digital
+Nuestra **red neuronal** actúa como un mentor personal. Si un estudiante se equivoca, la IA no lo corrige directamente; le hace la pregunta correcta para que él mismo identifique el error y desarrolle el pensamiento crítico.
+
+### 🔌 Conectividad Sin Barreras (Offline First)
+Diseñado para la realidad latinoamericana. ArenAI puede funcionar en **redes locales sin acceso a internet**, permitiendo que la potencia de la IA llegue a las aulas más remotas sin depender de una conexión estable.
+
+### 📊 Analítica de Procesos, no solo de Resultados
+Para los docentes, ArenAI no solo muestra "quién aprobó", sino **cómo piensan sus alumnos**. Reportamos las rutas de razonamiento y los puntos de bloqueo específicos de cada estudiante.
 
 ---
 
-## 👥 Nuestro Equipo
-* **Yereth Soto** – CEO [cite: 110, 113]
-* **Reishell Fernández** – CTO [cite: 109, 112]
-* **Leonardo Escobar** – CFO [cite: 111, 114]
+## 🛠️ Stack Tecnológico
+* **IA de Acompañamiento:** Redes neuronales optimizadas para tutoría guiada (no generativa directa).
+* **Arquitectura Local:** Capacidad de despliegue en servidores de aula para funcionamiento 100% offline.
+* **Analítica Predictiva:** Identificación temprana de rezago educativo mediante patrones de interacción.
 
 ---
 
-## 📞 Contacto
-¿Interesado en modernizar la educación con nosotros?
-* **Email:** yerethfsz@gmail.com [cite: 133]
-* **Teléfono:** (506) 8670-6548 [cite: 132]
+## 💎 Diferenciación Competitiva
+
+| Característica | ArenAI 🦥 | Chatbots Comunes | Sistemas Tradicionales |
+| :--- | :---: | :---: | :---: |
+| **Objetivo Final** | **Aprender el proceso** | Obtener la respuesta | Cumplir tareas |
+| **Método** | Guía Socrática | Generación de texto | Repetición |
+| **Independencia de Red** | ✅ **Funciona Offline** | ❌ Requiere WiFi | ❌ Requiere WiFi |
+| **Impacto Pedagógico** | Construcción de criterio | Dependencia tecnológica | Evaluación estática |
+
+---
+
+## 📈 Modelo de Negocio (SaaS Híbrido)
+* **B2C:** Empoderamiento para padres y estudiantes que buscan excelencia académica.
+* **B2B:** Herramientas de vanguardia para instituciones educativas privadas.
+* **B2G:** Alianzas de impacto nacional para reducir la brecha educativa en el sector público.
+
+---
+
+## 👥 El Equipo
+* **Yereth Soto** – CEO & Visión Estratégica
+* **Reishell Fernández** – CTO & Arquitectura de IA
+* **Leonardo Escobar** – CFO & Estrategia Financiera
+
+---
+
+## 📩 Contacto
+¿Listo para evolucionar del monólogo al diálogo?
+
+* 📫 **Email:** [yerethfsz@gmail.com](mailto:yerethfsz@gmail.com)
+* 📞 **WhatsApp:** [+506 8670-6548](https://wa.me/50686706548)
+* 📍 **Sede:** Costa Rica
 
 ---
 <p align="center">
-  Desarrollado con ❤️ en Costa Rica para el futuro de la educación.
+  <i>Desarrollado con ❤️ en Costa Rica para el futuro de la educación.</i>
 </p>
