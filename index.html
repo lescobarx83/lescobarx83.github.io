@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArenAI - Tu Aventura de Aprendizaje</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="background-mesh">
+        <div class="mesh-1"></div>
+        <div class="mesh-2"></div>
+        <div class="mesh-3"></div>
+        <!-- Particles container -->
+        <div id="particles"></div>
+    </div>
+
+    <nav class="navbar glass">
+        <div class="logo">
+            <img src="../assets/Capy_pfp.png" alt="ArenAI Logo" class="nav-logo-img">
+            <span>ArenAI</span>
+        </div>
+        <div class="nav-links">
+            <a href="#hero">Inicio</a>
+            <a href="#ecosystem">Ecosistema</a>
+            <a href="#characters">Mascotas</a>
+            <a href="#battle">Modo Batalla</a>
+            <a href="/login" class="btn btn-primary">Iniciar Sesión</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero section-spacing">
+            <div class="hero-content">
+                <span class="badge glow">Nueva Versión 2.0</span>
+                <h1 class="display-title animate-title">
+                    Domina tu <br>
+                    <span class="text-gradient">Conocimiento.</span>
+                </h1>
+                <p class="hero-desc animate-fade delay-1">
+                    ArenAI no es solo una plataforma de estudio. Es un RPG donde cada tarea completada mejora tu
+                    personaje.
+                    <br><strong>Estudia. Lucha. Conquista.</strong>
+                </p>
+                <div class="hero-buttons animate-fade delay-2">
+                    <a href="/login" class="btn btn-primary btn-xl glow-effect">
+                        <ion-icon name="game-controller"></ion-icon> Jugar Ahora
+                    </a>
+                    <a href="#how-it-works" class="btn btn-ghost btn-xl">
+                        Ver Trailer <ion-icon name="play-circle-outline"></ion-icon>
+                    </a>
+                </div>
+
+                <div class="stats-row animate-fade delay-3">
+                    <div class="stat-item">
+                        <span class="stat-number">10k+</span>
+                        <span class="stat-label">Estudiantes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Profesores</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1M+</span>
+                        <span class="stat-label">Misiones</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual perspective-container">
+                <div class="floating-elements">
+                    <img src="../assets/Capy_pfp.png" class="hero-main-img float-animation" alt="Capybara Hero">
+
+                    <!-- Floating UI Cards -->
+                    <div class="ui-card card-math glass float-delayed-1">
+                        <div class="card-icon math-bg"><ion-icon name="calculator"></ion-icon></div>
+                        <div class="card-text">
+                            <h4>Matemáticas</h4>
+                            <div class="progress-bar">
+                                <div class="fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-card card-level glass float-delayed-2">
+                        <div class="level-badge">Lvl. 15</div>
+                        <span>¡Subiste de Nivel!</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ecosystem Section -->
+        <section id="ecosystem" class="ecosystem section-spacing">
+            <div class="section-header text-center">
+                <h2 class="section-title">Tu Universo Educativo</h2>
+                <p class="section-subtitle">Una plataforma, dos experiencias poderosas.</p>
+            </div>
+
+            <div class="ecosystem-grid">
+                <div class="role-card student glass hover-scale">
+                    <div class="role-visual">
+                        <img src="../assets/battle_sprite_back_capybara.png" alt="Student View">
+                    </div>
+                    <div class="role-content">
+                        <h3>Para Estudiantes</h3>
+                        <p>Convierte tus tareas en misiones épicas. Gana XP, personaliza tu avatar y compite en arenas
+                            de conocimiento.</p>
+                        <ul class="feature-list">
+                            <li><ion-icon name="checkmark-circle"></ion-icon> Avatares Personalizables</li>
+                            <li><ion-icon name="checkmark-circle"></ion-icon> Batallas PvP de Preguntas</li>
+                            <li><ion-icon name="checkmark-circle"></ion-icon> Tienda de Objetos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card professor glass hover-scale">
+                    <div class="role-visual prof-container">
+                        <div class="prof-composition">
+                            <div class="prof-circle-main">
+                                <ion-icon name="easel-outline"></ion-icon>
+                            </div>
+                            <div class="prof-circle-float p-1">
+                                <ion-icon name="analytics-outline"></ion-icon>
+                            </div>
+                            <div class="prof-circle-float p-2">
+                                <ion-icon name="library-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="role-content">
+                        <h3>Para Profesores</h3>
+                        <p>Monitorea el progreso con analíticas detalladas y crea desafíos personalizados con ayuda de
+                            IA.</p>
+                        <ul class="feature-list">
+                            <li><ion-icon name="checkmark-circle"></ion-icon> Generación de Quiz con IA</li>
+                            <li><ion-icon name="checkmark-circle"></ion-icon> Analíticas en Tiempo Real</li>
+                            <li><ion-icon name="checkmark-circle"></ion-icon> Gestión de Clases</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Characters Section -->
+        <section id="characters" class="characters section-spacing">
+            <div class="character-showcase glass">
+                <div class="char-tabs">
+                    <button class="char-tab active" data-char="capy">Capybara</button>
+                    <button class="char-tab" data-char="sloth">Perezoso</button>
+                </div>
+
+                <div class="char-display">
+                    <div class="char-info">
+                        <h2 id="char-name">Capibara</h2>
+                        <p id="char-desc">El amigo de todos. Tu compañero fiel en esta aventura de aprendizaje.</p>
+                        <div class="char-stats">
+                            <div class="stat-bar">
+                                <span>Sabiduría</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Creatividad</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-bar">
+                                <span>Foco</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="char-image-wrapper">
+                        <img src="../assets/capybara_sprite_normal_full.png" id="char-img"
+                            class="char-img animate-bounce" alt="Character">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Battle Section -->
+        <section id="battle" class="battle section-spacing">
+            <div class="battle-container">
+                <div class="battle-text">
+                    <h2 class="display-title text-white">Modo Batalla</h2>
+                    <p class="text-white-dim">Pon a prueba tu conocimiento. Desafía a otros estudiantes en tiempo real.
+                    </p>
+                </div>
+                <div class="battle-scene perspective-container">
+                    <div class="battle-ground glass">
+                        <img src="../assets/battle_sprite_back_capybara.png" class="fighter ally" alt="Ally">
+                        <div class="vs-badge">VS</div>
+                        <!-- Using capybara as enemy too for now as placeholder, filtered dark -->
+                        <img src="../assets/battle_sprite_front_capybara.png" class="fighter enemy" alt="Enemy">
+
+                        <div class="damage-number hidden">-50 HP</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing section-spacing">
+            <div class="section-header text-center">
+                <h2 class="section-title">Planes Flexibles</h2>
+                <p class="section-subtitle">Suscripciones adaptadas al tamaño de tu institución.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Standard -->
+                <div class="pricing-card glass">
+                    <div class="card-header">
+                        <h3>Standard</h3>
+                        <p class="price-desc">Ideal para pilotos</p>
+                    </div>
+                    <div class="price-tag">
+                        <span class="currency">$</span>
+                        <span class="amount">5</span>
+                        <span class="period">/estudiante</span>
+                    </div>
+                    <ul class="feature-list small-text">
+                        <li><ion-icon name="checkmark-outline"></ion-icon> Acceso Básico a IA</li>
+                        <li><ion-icon name="checkmark-outline"></ion-icon> Analíticas Estándar</li>
+                        <li><ion-icon name="checkmark-outline"></ion-icon> Soporte por Email</li>
+                    </ul>
+                    <a href="#" class="btn btn-ghost full-width">Solicitar Demo</a>
+                </div>
+
+                <!-- Plus -->
+                <div class="pricing-card glass popular glow-border">
+                    <div class="badge-pop">Más Popular</div>
+                    <div class="card-header">
+                        <h3>Plus</h3>
+                        <p class="price-desc">Para escuelas en crecimiento</p>
+                    </div>
+                    <div class="price-tag">
+                        <span class="currency">$</span>
+                        <span class="amount">8</span>
+                        <span class="period">/estudiante</span>
+                    </div>
+                    <ul class="feature-list small-text">
+                        <li><ion-icon name="checkmark-circle"></ion-icon> Modo RPG Completo</li>
+                        <li><ion-icon name="checkmark-circle"></ion-icon> Sugerencias por KPIs</li>
+                        <li><ion-icon name="checkmark-circle"></ion-icon> Soporte Prioritario</li>
+                        <li><ion-icon name="checkmark-circle"></ion-icon> Minijuegos Ilimitados</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary full-width">Contactar Ventas</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="pricing-card glass">
+                    <div class="card-header">
+                        <h3>Premium</h3>
+                        <p class="price-desc">Instituciones grandes (MEP)</p>
+                    </div>
+                    <div class="price-tag">
+                        <span class="currency">$</span>
+                        <span class="amount">12</span>
+                        <span class="period">/estudiante</span>
+                    </div>
+                    <ul class="feature-list small-text">
+                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Integraciones a Medida</li>
+                        <li><ion-icon name="checkmark-done-circle"></ion-icon> IA Personalizada</li>
+                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Success Manager Dedicado</li>
+                        <li><ion-icon name="checkmark-done-circle"></ion-icon> API Access</li>
+                    </ul>
+                    <a href="#" class="btn btn-ghost full-width">Cotizar Plan</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section section-spacing text-center">
+            <div class="cta-content glass glow-border">
+                <h2>¿Listo para comenzar tu leyenda?</h2>
+                <p>Únete hoy a ArenAI y transforma tu forma de aprender.</p>
+                <a href="/register" class="btn btn-primary btn-xl scale-pulse">Crear Cuenta Gratis</a>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team section-spacing">
+            <div class="section-header text-center">
+                <h2 class="section-title">Nuestro Equipo</h2>
+                <p class="section-subtitle">Expertos revolucionando la educación con IA.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Yereth -->
+                <div class="team-card glass">
+                    <div class="team-avatar">
+                        <ion-icon name="person"></ion-icon>
+                    </div>
+                    <h3>Yereth Soto</h3>
+                    <p class="team-role text-gradient">CEO</p>
+                    <p class="team-desc">Liderando la revolución educativa en Costa Rica.</p>
+                </div>
+
+                <!-- Reishell -->
+                <div class="team-card glass">
+                    <div class="team-avatar">
+                        <ion-icon name="code-slash"></ion-icon>
+                    </div>
+                    <h3>Reishell</h3>
+                    <p class="team-role text-gradient">CTO</p>
+                    <p class="team-desc">Experta en Inteligencia Artificial y desarrollo.</p>
+                </div>
+
+                <!-- Leonardo -->
+                <div class="team-card glass">
+                    <div class="team-avatar">
+                        <ion-icon name="trending-up"></ion-icon>
+                    </div>
+                    <h3>Leonardo</h3>
+                    <p class="team-role text-gradient">CFO</p>
+                    <p class="team-desc">Experto en análisis e inferencia de data compleja.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-expanded">
+        <div class="footer-grid">
+            <div class="footer-col brand-col">
+                <h3>ArenAI</h3>
+                <p>Educación Gamificada impulsada por Inteligencia Artificial.</p>
+                <div class="social-links">
+                    <a href="#"><ion-icon name="logo-discord"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Producto</h4>
+                <a href="#">Características</a>
+                <a href="#">Para Escuelas</a>
+                <a href="#">Precios</a>
+            </div>
+            <div class="footer-col">
+                <h4>Recursos</h4>
+                <a href="#">Ayuda</a>
+                <a href="#">Blog</a>
+                <a href="#">Comunidad</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+            </div>
+        </div>
+        <div class="footer-copy">
+            &copy; 2025 ArenAI. Hecho con <ion-icon name="heart" class="text-red"></ion-icon> para estudiantes.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
