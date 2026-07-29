@@ -607,7 +607,7 @@ body {
 }
 
 .project-img {
-    max-width: 200px;
+    max-width: 320px;
     width: 100%;
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
     transition: transform 0.4s ease;
