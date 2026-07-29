@@ -1,74 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Character Tab Switching Logic
-    const charTabs = document.querySelectorAll('.char-tab');
-    const charName = document.getElementById('char-name');
-    const charDesc = document.getElementById('char-desc');
-    const charImg = document.getElementById('char-img');
-    const bgMesh = document.querySelector('.mesh-1');
+    const arenOverlay = document.getElementById('arenai-teleport-overlay');
+    const arenText = document.getElementById('arenai-teleport-text');
 
-    const charData = {
-        capy: {
-            name: "Capibara",
-            desc: "El amigo de todos. Tu compañero leal en esta aventura de aprendizaje.",
-            img: "img/capybara_sprite_normal_full.png",
-            color: "rgba(144, 190, 171, 0.3)"
-        },
-        sloth: {
-            name: "Perezoso",
-            desc: "Lento pero seguro. Se toma su tiempo para analizar cada detalle.",
-            img: "img/profile_picture_sloth_eyes_open.png",
-            color: "rgba(141, 107, 86, 0.3)"
-        }
-    };
+    // 1. Initial Landing Optical Beam Fade In (450ms)
+    if (arenOverlay) {
+        setTimeout(() => {
+            arenOverlay.classList.remove('active');
+        }, 450);
+    }
 
-    if (charTabs.length > 0 && charName && charDesc && charImg) {
-        charTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                charTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+    // 2. INTERACTIVE CAPYBARA MASCOT "AREN" DIALOGUE & ASSET ANIMATION
+    const mascotText = document.getElementById('mascot-text-speech');
+    const btnInteract = document.getElementById('btn-interact-capy');
+    const capyImg = document.getElementById('capy-real-img');
 
-                const charKey = tab.getAttribute('data-char');
-                const data = charData[charKey];
+    const capyPhrases = [
+        '"¡Hola! Soy Aren el Capibara. Estoy aquí para acompañarte en tu ruta de aprendizaje personalizada."',
+        '"¿Sabías que avanzamos mejor cuando aprendemos a nuestro propio ritmo y sin presión?"',
+        '"¡Excelente trabajo! Hoy reforzamos la retención cognitiva con grafos DAG en el aula."',
+        '"Recuerda que cada logro, por pequeño que sea, te acerca más a tu meta. ¡Sigue adelante!"',
+        '"Los profesores pueden ver tu progreso en tiempo real gracias a nuestros conectores WebSockets P2P."'
+    ];
 
-                if (data) {
-                    charImg.style.opacity = '0';
-                    charImg.style.transform = 'scale(0.8)';
+    let currentPhraseIdx = 0;
 
-                    setTimeout(() => {
-                        charName.textContent = data.name;
-                        charDesc.textContent = data.desc;
-                        charImg.src = data.img;
+    if (btnInteract && mascotText) {
+        btnInteract.addEventListener('click', () => {
+            currentPhraseIdx = (currentPhraseIdx + 1) % capyPhrases.length;
 
-                        if (bgMesh) bgMesh.style.background = `radial-gradient(circle, ${data.color} 0%, transparent 70%)`;
+            // Wink Animation Effect using Authentic Assets
+            if (capyImg) {
+                capyImg.src = 'img/profile_picture_capybara_wink.png';
+                setTimeout(() => {
+                    capyImg.src = 'img/profile_picture_capybara_eyes_open.png';
+                }, 800);
+            }
 
-                        charImg.style.opacity = '1';
-                        charImg.style.transform = 'scale(1)';
-                    }, 300);
-                }
-            });
+            mascotText.style.opacity = '0';
+            setTimeout(() => {
+                mascotText.textContent = capyPhrases[currentPhraseIdx];
+                mascotText.style.opacity = '1';
+            }, 200);
         });
     }
 
-    // Scroll Reveal Animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    // 3. INTERACTIVE DEMO GALLERY MOCKUP TABS SWITCHING
+    const tabBtns = document.querySelectorAll('.demo-tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-                observer.unobserve(entry.target);
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
+
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanes.forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const targetPane = document.getElementById(targetTab);
+            if (targetPane) {
+                targetPane.classList.add('active');
             }
         });
-    }, observerOptions);
+    });
 
-    document.querySelectorAll('.animate-fade').forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
-        observer.observe(el);
+    // 4. BI-DIRECTIONAL REVERSE TRANSITION BACK TO RACK (ARENAI -> PORTFOLIO RACK)
+    const backTriggers = document.querySelectorAll('.aren-back-portfolio-link, .aren-footer-back-link');
+
+    backTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetUrl = trigger.getAttribute('href');
+
+            // Flag that we are returning from a project so Animación A (doors) is SKIPPED, and Animación B (blade lock) plays
+            sessionStorage.setItem('returnedFromProject', 'true');
+
+            if (arenOverlay && arenText) {
+                arenText.textContent = 'ACOPLANDO TARJETA EN RACK PRINCIPAL...';
+                arenOverlay.classList.add('active');
+
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 750);
+            } else {
+                window.location.href = targetUrl;
+            }
+        });
     });
 });

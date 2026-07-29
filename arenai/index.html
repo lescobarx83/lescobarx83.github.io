@@ -4,347 +4,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArenAI - Tu Aventura de Aprendizaje</title>
+    <title>ArenAI - Plataforma Educativa SaaS & Asistencia Cognitiva</title>
+    <meta name="description"
+        content="ArenAI es una plataforma SaaS educativa de impacto social. Conexión P2P directa mediante WebSockets, matrices cognitivas de retención, asistente capibara 'Aren' y análisis de rutas de aprendizaje.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body>
-    <div class="background-mesh">
-        <div class="mesh-1"></div>
-        <div class="mesh-2"></div>
-        <div class="mesh-3"></div>
-        <div id="particles"></div>
+<body class="aren-app-body">
+    <!-- OPTICAL FIBER BLADE TELEPORT REVERSE TRANSITION OVERLAY -->
+    <div id="arenai-teleport-overlay" class="arenai-teleport-overlay active">
+        <div class="teleport-pulse-ring"></div>
+        <div class="teleport-text-code" id="arenai-teleport-text">CONECTANDO A PLATAFORMA ARENAI (WEBSOCKET P2P)...
+        </div>
     </div>
 
-    <nav class="navbar glass">
-        <div class="logo">
-            <a href="../index.html" class="nav-back-link" title="Volver al Portafolio">
-                <ion-icon name="arrow-back-outline"></ion-icon>
+    <!-- Navigation Bar -->
+    <header class="aren-navbar-wrapper">
+        <div class="aren-nav-container">
+            <a href="#hero" class="aren-brand">
+                <div class="aren-brand-icon"><ion-icon name="school-outline"></ion-icon></div>
+                <span class="aren-brand-name">ArenAI</span>
             </a>
-            <img src="img/Capy_pfp.png" alt="ArenAI Logo" class="nav-logo-img">
-            <span>ArenAI</span>
-        </div>
-        <div class="nav-links">
-            <a href="#hero">Inicio</a>
-            <a href="#ecosystem">Ecosistema</a>
-            <a href="#characters">Mascotas</a>
-            <a href="#battle">Modo Batalla</a>
-            <a href="#pricing">Planes</a>
-            <a href="../index.html" class="btn btn-ghost"><ion-icon name="person-outline"></ion-icon> Portafolio</a>
-        </div>
-    </nav>
 
+            <nav class="aren-nav-links" id="aren-nav-menu">
+                <a href="#hero" class="aren-link active">Inicio</a>
+                <a href="#mascota" class="aren-link">Mascota Aren</a>
+                <a href="#impacto" class="aren-link">Impacto & Aulas</a>
+                <a href="#galeria" class="aren-link">Demostración</a>
+                <a href="#ingenieria" class="aren-link">Ingeniería</a>
+                <a href="../index.html#rack" class="aren-link aren-back-portfolio-link"
+                    id="back-portfolio-trigger">Portafolio</a>
+            </nav>
+
+            <div class="aren-nav-actions">
+                <a href="https://drive.google.com/drive/folders/1p9C2H4uV_22cQh3f24_Ld6Vj1lXb7Z3u?usp=sharing"
+                    target="_blank" rel="noopener" class="aren-btn-cta">
+                    <ion-icon name="document-text-outline"></ion-icon> Documentación & Pitch Deck
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
     <main>
-        <section id="hero" class="hero section-spacing">
-            <div class="hero-content">
-                <span class="badge glow">Nueva Versión 1.1</span>
-                <h1 class="display-title animate-title">
-                    Domina tu <br>
-                    <span class="text-gradient">Conocimiento.</span>
+        <!-- Hero Section with Authentic Capybara Mascot Asset -->
+        <section id="hero" class="aren-hero-section">
+            <div class="aren-hero-content">
+                <div class="aren-pill-badge">
+                    <ion-icon name="heart-outline"></ion-icon> TECNOLOGÍA EDUCATIVA & IMPACTO SOCIAL
+                </div>
+                <h1 class="aren-hero-title">
+                    Educación Personalizada que <br>
+                    <span class="aren-gradient-text">Transforma Vidas.</span>
                 </h1>
-                <p class="hero-desc animate-fade delay-1">
-                    ArenAI no es solo una plataforma de estudio. Es un RPG donde cada tarea completada mejora a tu personaje.
-                    <br><strong>Estudia. Lucha. Conquista.</strong>
+                <p class="aren-hero-subhead">
+                    Plataforma SaaS para conectar docentes y estudiantes en tiempo real, optimizando el aprendizaje
+                    personalizado con inteligencia cognitiva y acompañamiento empático liderado por nuestra mascota
+                    <strong>Aren el Capibara</strong>.
                 </p>
-                <div class="hero-buttons animate-fade delay-2">
-                    <a href="https://drive.google.com/drive/folders/1X_FAnALS9YygiQEvaC__k6zz8QIYOqAi" target="_blank" rel="noopener" class="btn btn-primary btn-xl glow-effect">
-                        <ion-icon name="game-controller"></ion-icon> Jugar Ahora
+
+                <div class="aren-cta-group">
+                    <a href="https://drive.google.com/drive/folders/1p9C2H4uV_22cQh3f24_Ld6Vj1lXb7Z3u?usp=sharing"
+                        target="_blank" rel="noopener" class="aren-btn-hero-primary">
+                        <ion-icon name="folder-open-outline"></ion-icon> Ver Documentación & Pitch Deck
                     </a>
-                    <a href="../index.html#projects" class="btn btn-ghost btn-xl">
-                        <ion-icon name="arrow-back-outline"></ion-icon> Volver a Proyectos
+                    <a href="#mascota" class="aren-btn-hero-secondary">
+                        <ion-icon name="sparkles-outline"></ion-icon> Conocer a Aren
                     </a>
                 </div>
 
-                <div class="stats-row animate-fade delay-3">
-                    <div class="stat-item">
-                        <span class="stat-number">10k+</span>
-                        <span class="stat-label">Estudiantes</span>
+                <div class="aren-drive-footnote">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>El enlace oficial dirige a la carpeta pública de Google Drive con la guía de usuario,
+                        propuesta pedagógica y el pitch deck ejecutivo presentado ante comités reales de evaluación
+                        ULACIT - MEP. (enlace en mantenimiento)</span>
+                </div>
+            </div>
+
+            <!-- Authentic Capybara Mascot Card using PNG Assets from img/ -->
+            <div class="aren-hero-mascot-card">
+                <div class="aren-mascot-box glass-panel">
+                    <div class="mascot-badge-tag">
+                        <span class="status-led-green"></span>
+                        <span>AREN &bull; ASISTENTE COGNITIVO ACTIVO</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Docentes</span>
+
+                    <!-- Authentic Capybara Image Asset Container -->
+                    <div class="capybara-avatar-wrapper">
+                        <div class="capybara-glow-ring"></div>
+                        <img src="img/profile_picture_capybara_eyes_open.png" alt="Aren el Capibara"
+                            class="capybara-real-img" id="capy-real-img">
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">1M+</span>
-                        <span class="stat-label">Misiones</span>
+
+                    <!-- Interactive Dialogue Bubble -->
+                    <div class="mascot-dialogue-bubble">
+                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                        <p id="mascot-text-speech">"¡Hola! Soy Aren el Capibara. Estoy aquí para acompañarte en tu ruta
+                            de aprendizaje personalizada."</p>
+                    </div>
+
+                    <div class="mascot-actions-row">
+                        <button class="mascot-btn-interact" id="btn-interact-capy">
+                            <ion-icon name="sparkles"></ion-icon> Saludalo a Aren
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Mascota Educativa Aren -->
+        <section id="mascota" class="aren-section aren-bg-alt">
+            <div class="aren-section-header">
+                <span class="aren-tag">Acompañamiento Empático</span>
+                <h2>Aren: El Capibara Asistente Cognitivo</h2>
+                <p>Aren acompaña a estudiantes y profesores durante cada clase, celebrando logros académicos, recordando
+                    repasos clave y reduciendo la ansiedad escolar.</p>
+            </div>
+
+            <div class="mascot-dual-showcase">
+                <div class="mascot-showcase-item glass-panel">
+                    <img src="img/Capybara profile picture.png" alt="Aren Capibara Normal" class="mascot-showcase-img">
+                    <div class="mascot-showcase-info">
+                        <h3>Aren el Capibara</h3>
+                        <p>Asistente principal en la interfaz del estudiante. Guía los módulos de repaso y sugiere
+                            descansos cognitivos.</p>
+                    </div>
+                </div>
+
+                <div class="mascot-showcase-item glass-panel">
+                    <img src="img/profile_picture_sloth_eyes_open.png" alt="Compañero Perezoso"
+                        class="mascot-showcase-img">
+                    <div class="mascot-showcase-info">
+                        <h3>Compañero Perezoso</h3>
+                        <p>Avatar alternativo para modos de ritmo pausado y sesiones de concentración profunda.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="hero-visual perspective-container">
-                <div class="floating-elements">
-                    <img src="img/Capy_pfp.png" class="hero-main-img float-animation" alt="Capybara Hero">
+            <div class="aren-features-grid" style="margin-top: 3rem;">
+                <div class="aren-feature-card">
+                    <div class="aren-feature-icon"><ion-icon name="heart-outline"></ion-icon></div>
+                    <h3>Empatía & Reducción de Estrés</h3>
+                    <p>Diseñado con la personalidad calmada y amistosa de un capibara para brindar un entorno libre de
+                        presiones y favorecer el aprendizaje.</p>
+                </div>
 
-                    <div class="ui-card card-math glass float-delayed-1">
-                        <div class="card-icon math-bg"><ion-icon name="calculator"></ion-icon></div>
-                        <div class="card-text">
-                            <h4>Matemáticas</h4>
-                            <div class="progress-bar">
-                                <div class="fill" style="width: 80%"></div>
+                <div class="aren-feature-card">
+                    <div class="aren-feature-icon"><ion-icon name="ribbon-outline"></ion-icon></div>
+                    <h3>Gamificación Educativa Positiva</h3>
+                    <p>Premia la constancia y el esfuerzo personal sin fomentar la competitividad destructiva entre
+                        compañeros de clase.</p>
+                </div>
+
+                <div class="aren-feature-card">
+                    <div class="aren-feature-icon"><ion-icon name="fitness-outline"></ion-icon></div>
+                    <h3>Recordatorios de Repaso Inteligente</h3>
+                    <p>Utiliza las matrices de retención para sugerir pequeños ejercicios justo cuando la curva del
+                        olvido empieza a actuar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Impacto Social & Galería de Aulas -->
+        <section id="impacto" class="aren-section">
+            <div class="aren-section-header">
+                <span class="aren-tag">Compromiso Educativo</span>
+                <h2>Transformando Aulas en El Salvador & Costa Rica</h2>
+                <p>ArenAI fue diseñado tras sesiones de alineación técnica con autoridades de educación del MINED (El
+                    Salvador) y MEP (Costa Rica).</p>
+            </div>
+
+            <div class="aren-impact-showcase-grid">
+                <div class="showcase-card glass-panel">
+                    <div class="showcase-badge">MINED &bull; EL SALVADOR</div>
+                    <div class="showcase-icon-box">
+                        <ion-icon name="school-outline"></ion-icon>
+                    </div>
+                    <h3>Alineación con Estándares Nacionales</h3>
+                    <p>Adhesión a normativas de protección de datos personales de menores y compatibilidad con programas
+                        oficiales de formación docente.</p>
+                </div>
+
+                <div class="showcase-card glass-panel">
+                    <div class="showcase-badge">MEP &bull; COSTA RICA</div>
+                    <div class="showcase-icon-box">
+                        <ion-icon name="easel-outline"></ion-icon>
+                    </div>
+                    <h3>Reducción de Carga Administrativa</h3>
+                    <p>Permite a los profesores diagnosticar el nivel de grupo en tiempo real sin dedicar horas extras a
+                        la calificación manual de pruebas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Demostración Interactiva de la Plataforma (Galería Visual) -->
+        <section id="galeria" class="aren-section aren-bg-alt">
+            <div class="aren-section-header">
+                <span class="aren-tag">Vistas de la Aplicación</span>
+                <h2>Galería & Demostración de Interfaz</h2>
+                <p>Explora la experiencia de usuario diseñada tanto para el panel del profesor como para la vista
+                    interactiva del estudiante.</p>
+            </div>
+
+            <div class="interactive-demo-tabs">
+                <div class="demo-tab-buttons">
+                    <button class="demo-tab-btn active" data-tab="tab-docente"><ion-icon
+                            name="stats-chart-outline"></ion-icon> Panel Docente en Tiempo Real</button>
+                    <button class="demo-tab-btn" data-tab="tab-estudiante"><ion-icon
+                            name="game-controller-outline"></ion-icon> Vista del Estudiante con Aren</button>
+                    <button class="demo-tab-btn" data-tab="tab-dag"><ion-icon name="git-network-outline"></ion-icon>
+                        Mapa de Grafos DAG</button>
+                </div>
+
+                <div class="demo-tab-content">
+                    <!-- Tab 1: Panel Docente -->
+                    <div class="tab-pane active" id="tab-docente">
+                        <div class="mockup-frame glass-panel">
+                            <div class="mockup-top-bar">
+                                <span class="dot red"></span><span class="dot yellow"></span><span
+                                    class="dot green"></span>
+                                <span class="mockup-title">ArenAI &bull; Panel del Profesor (Conexión P2P Activa: 28
+                                    Estudiantes)</span>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="mockup-grid-stats">
+                                    <div class="stat-card">
+                                        <span>Comprensión del Grupo</span>
+                                        <h4>88.4% (Alto)</h4>
+                                    </div>
+                                    <div class="stat-card">
+                                        <span>Latencia P2P WebSocket</span>
+                                        <h4 class="text-cyan">4ms Direct Socket</h4>
+                                    </div>
+                                    <div class="stat-card">
+                                        <span>Estudiantes Necesitando Apoyo</span>
+                                        <h4 class="text-gold">2 Alumnos</h4>
+                                    </div>
+                                </div>
+                                <div class="mockup-chart-placeholder">
+                                    <div class="chart-line-sim"></div>
+                                    <span class="chart-label">Sincronización continua de ejercicios sin intermediario
+                                        servidor central</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="ui-card card-level glass float-delayed-2">
-                        <div class="level-badge">Nivel 15</div>
-                        <span>¡Subida de nivel!</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="ecosystem" class="ecosystem section-spacing">
-            <div class="section-header text-center">
-                <h2 class="section-title">Tu Universo Educativo</h2>
-                <p class="section-subtitle">Una plataforma, dos experiencias poderosas.</p>
-            </div>
-
-            <div class="ecosystem-grid">
-                <div class="role-card student glass hover-scale">
-                    <div class="role-visual">
-                        <img src="img/battle_sprite_back_capybara.png" alt="Vista Estudiante">
-                    </div>
-                    <div class="role-content">
-                        <h3>Para Estudiantes</h3>
-                        <p>Convierte tus tareas en misiones épicas. Gana XP, personaliza tu avatar y compite en arenas de conocimiento.</p>
-                        <ul class="feature-list">
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Avatares Personalizables</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Batallas PvP de Preguntas</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Tienda de Objetos</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="role-card professor glass hover-scale">
-                    <div class="role-visual prof-container">
-                        <div class="prof-composition">
-                            <div class="prof-circle-main">
-                                <ion-icon name="easel-outline"></ion-icon>
+                    <!-- Tab 2: Vista Estudiante -->
+                    <div class="tab-pane" id="tab-estudiante">
+                        <div class="mockup-frame glass-panel">
+                            <div class="mockup-top-bar">
+                                <span class="dot red"></span><span class="dot yellow"></span><span
+                                    class="dot green"></span>
+                                <span class="mockup-title">ArenAI &bull; Vista del Estudiante (Sesión Asistida por
+                                    Aren)</span>
                             </div>
-                            <div class="prof-circle-float p-1">
-                                <ion-icon name="analytics-outline"></ion-icon>
-                            </div>
-                            <div class="prof-circle-float p-2">
-                                <ion-icon name="library-outline"></ion-icon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="role-content">
-                        <h3>Para Profesores</h3>
-                        <p>Monitorea el progreso con analíticas detalladas y crea desafíos personalizados con ayuda de IA.</p>
-                        <ul class="feature-list">
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Generación de Quizzes por IA</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Analítica en Tiempo Real</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Gestión de Aulas</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="characters" class="characters section-spacing">
-            <div class="character-showcase glass">
-                <div class="char-tabs">
-                    <button class="char-tab active" data-char="capy">Capibara</button>
-                    <button class="char-tab" data-char="sloth">Perezoso</button>
-                </div>
-
-                <div class="char-display">
-                    <div class="char-info">
-                        <h2 id="char-name">Capibara</h2>
-                        <p id="char-desc">El amigo de todos. Tu compañero leal en esta aventura de aprendizaje.</p>
-                        <div class="char-stats">
-                            <div class="stat-bar">
-                                <span>Sabiduría</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill" style="width: 60%"></div>
+                            <div class="mockup-body student-view">
+                                <div class="student-mascot-banner">
+                                    <img src="img/profile_picture_capybara_eyes_open.png" alt="Aren Mini"
+                                        class="mini-capy-thumb">
+                                    <span>¡Excelente trabajo! Has completado el módulo de Álgebra Lineal.</span>
                                 </div>
-                            </div>
-                            <div class="stat-bar">
-                                <span>Creatividad</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="stat-bar">
-                                <span>Enfoque</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill" style="width: 50%"></div>
+                                <div class="exercise-card-sim">
+                                    <h5>Módulo 04: Matrices de Transición de Estado</h5>
+                                    <p>Selecciona la ruta recomendada por Aren para afianzar tus conocimientos.</p>
+                                    <div class="options-sim">
+                                        <span class="opt-pill active">Opción A: Repaso Visual con Grafos</span>
+                                        <span class="opt-pill">Opción B: Desafío Práctico</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="char-image-wrapper">
-                        <img src="img/capybara_sprite_normal_full.png" id="char-img"
-                            class="char-img animate-bounce" alt="Personaje">
+
+                    <!-- Tab 3: Mapa de Grafos DAG -->
+                    <div class="tab-pane" id="tab-dag">
+                        <div class="mockup-frame glass-panel">
+                            <div class="mockup-top-bar">
+                                <span class="dot red"></span><span class="dot yellow"></span><span
+                                    class="dot green"></span>
+                                <span class="mockup-title">ArenAI &bull; Grafo Dirigido Aclíclico (DAG) de
+                                    Aprendizaje</span>
+                            </div>
+                            <div class="mockup-body dag-view">
+                                <div class="dag-nodes-sim">
+                                    <div class="dag-node node-done">Fundamentos</div>
+                                    <div class="dag-line"></div>
+                                    <div class="dag-node node-active">Sistemas Operativos</div>
+                                    <div class="dag-line"></div>
+                                    <div class="dag-node node-next">Matrices de Retención</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="battle" class="battle section-spacing">
-            <div class="battle-container">
-                <div class="battle-text">
-                    <h2 class="display-title text-white">Modo Batalla</h2>
-                    <p class="text-white-dim">Pon a prueba tu conocimiento. Desafía a otros estudiantes en tiempo real.</p>
-                </div>
-                <div class="battle-scene perspective-container">
-                    <div class="battle-ground glass">
-                        <img src="img/battle_sprite_back_capybara.png" class="fighter ally" alt="Aliado">
-                        <div class="vs-badge">VS</div>
-                        <img src="img/battle_sprite_front_capybara.png" class="fighter enemy" alt="Enemigo">
-
-                        <div class="damage-number hidden">-50 HP</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="pricing section-spacing">
-            <div class="section-header text-center">
-                <h2 class="section-title">Planes Flexibles</h2>
-                <p class="section-subtitle">Suscripciones adaptadas al tamaño de tu institución.</p>
+        <!-- Deep Core Technical Architecture -->
+        <section id="ingenieria" class="aren-section">
+            <div class="aren-section-header">
+                <span class="aren-tag">Núcleo Tecnológico</span>
+                <h2>Arquitectura de Grado Científico & Ingenieril</h2>
+                <p>Fruto de meses de investigación y trabajo constante. Integración de sockets P2P, matrices cognitivas
+                    y grafos acíclicos para una experiencia fluida.</p>
             </div>
 
-            <div class="pricing-grid">
-                <div class="pricing-card glass">
-                    <div class="card-header">
-                        <h3>Estándar</h3>
-                        <p class="price-desc">Ideal para pilotos</p>
-                    </div>
-                    <div class="price-tag">
-                        <span class="currency">$</span>
-                        <span class="amount">5</span>
-                        <span class="period">/estudiante</span>
-                    </div>
-                    <ul class="feature-list small-text">
-                        <li><ion-icon name="checkmark-outline"></ion-icon> Acceso Básico a IA</li>
-                        <li><ion-icon name="checkmark-outline"></ion-icon> Analítica Estándar</li>
-                        <li><ion-icon name="checkmark-outline"></ion-icon> Soporte por Email</li>
-                    </ul>
-                    <a href="../index.html#contact" class="btn btn-ghost full-width">Solicitar Demo</a>
+            <div class="aren-arch-cards-grid">
+                <div class="aren-arch-card">
+                    <div class="arch-badge">WEBSOCKETS P2P</div>
+                    <h3>Conexión Directa entre Equipos</h3>
+                    <p>Comunicación bidireccional de ultrabaja latencia que permite la sincronización instantánea de
+                        datos y ejercicios entre el profesor y sus estudiantes sin cuellos de botella.</p>
                 </div>
 
-                <div class="pricing-card glass popular glow-border">
-                    <div class="badge-pop">Más Popular</div>
-                    <div class="card-header">
-                        <h3>Plus</h3>
-                        <p class="price-desc">Para centros educativos</p>
-                    </div>
-                    <div class="price-tag">
-                        <span class="currency">$</span>
-                        <span class="amount">8</span>
-                        <span class="period">/estudiante</span>
-                    </div>
-                    <ul class="feature-list small-text">
-                        <li><ion-icon name="checkmark-circle"></ion-icon> Modo RPG Completo</li>
-                        <li><ion-icon name="checkmark-circle"></ion-icon> Sugerencias por KPIs</li>
-                        <li><ion-icon name="checkmark-circle"></ion-icon> Soporte Prioritario</li>
-                        <li><ion-icon name="checkmark-circle"></ion-icon> Minijuegos Ilimitados</li>
-                    </ul>
-                    <a href="../index.html#contact" class="btn btn-primary full-width">Contactar Ventas</a>
+                <div class="aren-arch-card">
+                    <div class="arch-badge">MATRICES COGNITIVAS</div>
+                    <h3>Análisis de Retención Continuo</h3>
+                    <p>Modelos matriciales inspirados en analítica avanzada (ModelArts) para evaluar la memoria de
+                        trabajo y afianzar conceptos clave de manera personalizada.</p>
                 </div>
 
-                <div class="pricing-card glass">
-                    <div class="card-header">
-                        <h3>Premium</h3>
-                        <p class="price-desc">Grandes Instituciones (MEP)</p>
-                    </div>
-                    <div class="price-tag">
-                        <span class="currency">$</span>
-                        <span class="amount">12</span>
-                        <span class="period">/estudiante</span>
-                    </div>
-                    <ul class="feature-list small-text">
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Integraciones Personalizadas</li>
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> IA Personalizada</li>
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Gestor de Cuenta Dedicado</li>
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Acceso a API</li>
-                    </ul>
-                    <a href="../index.html#contact" class="btn btn-ghost full-width">Cotizar</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section section-spacing text-center">
-            <div class="cta-content glass glow-border">
-                <h2>¿Listo para comenzar tu leyenda?</h2>
-                <p>Únete a ArenAI hoy y transforma la manera de aprender.</p>
-                <a href="../index.html#contact" class="btn btn-primary btn-xl scale-pulse">Contactar para Cuenta Gratuita</a>
-            </div>
-        </section>
-
-        <section id="team" class="team section-spacing">
-            <div class="section-header text-center">
-                <h2 class="section-title">Nuestro Equipo</h2>
-                <p class="section-subtitle">Expertos revolucionando la educación con IA.</p>
-            </div>
-
-            <div class="team-grid">
-                <div class="team-card glass">
-                    <div class="team-avatar">
-                        <ion-icon name="person"></ion-icon>
-                    </div>
-                    <h3>Yereth Soto</h3>
-                    <p class="team-role text-gradient">CEO</p>
-                    <p class="team-desc">Liderando la revolución educativa en Costa Rica.</p>
-                </div>
-
-                <div class="team-card glass">
-                    <div class="team-avatar">
-                        <ion-icon name="code-slash"></ion-icon>
-                    </div>
-                    <h3>Reishell Fernández</h3>
-                    <p class="team-role text-gradient">CTO</p>
-                    <p class="team-desc">Experta en Inteligencia Artificial y desarrollo de arquitectura de IA.</p>
-                </div>
-
-                <div class="team-card glass">
-                    <div class="team-avatar">
-                        <ion-icon name="trending-up"></ion-icon>
-                    </div>
-                    <h3>Leonardo Escobar</h3>
-                    <p class="team-role text-gradient">CFO & Estrategia</p>
-                    <p class="team-desc">Especialista en análisis, estrategia financiera e inferencia de datos complejos.</p>
+                <div class="aren-arch-card">
+                    <div class="arch-badge">GRAFOS DIRIGIDOS (DAGs)</div>
+                    <h3>Rutas de Aprendizaje Dinámicas</h3>
+                    <p>Estructuración de mapas del conocimiento en grafos no cíclicos que adaptan automáticamente las
+                        lecciones en función de los prerrequisitos dominados por el usuario.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer-expanded">
-        <div class="footer-grid">
-            <div class="footer-col brand-col">
-                <h3>ArenAI</h3>
-                <p>Educación Gamificada impulsada por Inteligencia Artificial.</p>
-                <div class="social-links">
-                    <a href="https://github.com/lescobarx83" target="_blank" rel="noopener"><ion-icon name="logo-github"></ion-icon></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <a href="#hero">Inicio</a>
-                <a href="#ecosystem">Ecosistema</a>
-                <a href="#characters">Mascotas</a>
-            </div>
-            <div class="footer-col">
-                <h4>Portafolio</h4>
-                <a href="../index.html">Leonardo Escobar</a>
-                <a href="../index.html#projects">Otros Proyectos</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <a href="../index.html#contact">Formulario de Contacto</a>
-            </div>
-        </div>
-        <div class="footer-copy">
-            &copy; 2026 ArenAI. Desarrollado con <ion-icon name="heart" class="text-red"></ion-icon> en Costa Rica.
+    <footer class="aren-footer">
+        <div class="aren-footer-content">
+            <p>&copy; 2026 ArenAI Platform. Desarrollado por Leonardo Escobar.</p>
+            <a href="../index.html#rack" class="aren-footer-back-link">
+                <ion-icon name="arrow-back-outline"></ion-icon> Volver al Portafolio Principal
+            </a>
         </div>
     </footer>
 
