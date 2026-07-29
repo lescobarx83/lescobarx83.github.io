@@ -4,45 +4,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leonardo Escobar - ICT Services & Software</title>
-    <meta name="description"
-        content="Portafolio profesional de Leonardo Escobar. Desarrollo de Software, Inteligencia Artificial y Análisis de Datos.">
+    <title>Leonardo Escobar - ICT Engineer & Infrastructure Specialist</title>
+    <meta name="description" content="Portafolio profesional de Leonardo Escobar. ICT Engineer, ULACIT Cum Laude Probatus. Especialista en infraestructura de servidores, sistemas operativos empresariales, bases de datos y desarrollo de software.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body>
-    <!-- Background Ambient Glow -->
-    <div class="bg-ambient">
-        <div class="glow-orb-1"></div>
-        <div class="glow-orb-2"></div>
+<body class="noc-power-off">
+    <!-- OPTICAL FIBER BLADE TELEPORT TRANSITION OVERLAY -->
+    <div id="blade-teleport-overlay" class="blade-teleport-overlay">
+        <div class="teleport-pulse-ring"></div>
+        <div class="teleport-text-code" id="teleport-status-text">DESBLOQUEANDO TARJETA ARENAI (SLOT 01)...</div>
+    </div>
+
+    <!-- REALISTIC CEILING OVERHEAD SPOTLIGHT BEAM -->
+    <div id="datacenter-spotlight-beam" class="ceiling-spotlight-beam"></div>
+
+    <!-- REALISTIC DATACENTER FROSTED GLASS SLIDING DOORS PRELOADER -->
+    <div id="datacenter-preloader" class="dc-preloader">
+        <!-- Left Sliding Glass Door -->
+        <div class="dc-door dc-door-left">
+            <div class="glass-door-reflection"></div>
+            <div class="glass-door-handle-left"></div>
+            <div class="laser-scanner-line"></div>
+        </div>
+
+        <!-- Right Sliding Glass Door with Mounted Access Control Hardware -->
+        <div class="dc-door dc-door-right">
+            <div class="glass-door-reflection"></div>
+            <div class="glass-door-handle-right"></div>
+            <div class="laser-scanner-line"></div>
+
+            <!-- PHYSICAL HARDWARE ACCESS CONTROL TERMINAL MOUNTED ON DOOR -->
+            <div class="dc-hardware-access-panel" id="hardware-panel">
+                <div class="panel-header-brand">SECURE NOC ACCESS</div>
+                
+                <!-- Physical Illuminated Biometric Touchpad Surface -->
+                <div class="biometric-touchpad-surface" id="bio-touchpad">
+                    <div class="fingerprint-pressed-glow" id="fingerprint-glow"></div>
+                    <div class="fingerprint-icon-svg">
+                        <ion-icon name="finger-print-outline"></ion-icon>
+                    </div>
+                    <div class="biometric-laser-line"></div>
+                </div>
+
+                <!-- Status Indicator Screen -->
+                <div class="keypad-status-display" id="keypad-status-display">
+                    <span class="keypad-led-ring led-red" id="keypad-led-ring"></span>
+                    <span class="keypad-status-code" id="keypad-status-code">SCANNING...</span>
+                </div>
+
+                <!-- Physical PIN Numpad Grid -->
+                <div class="numpad-grid">
+                    <span class="numpad-key">1</span><span class="numpad-key">2</span><span class="numpad-key">3</span>
+                    <span class="numpad-key">4</span><span class="numpad-key">5</span><span class="numpad-key">6</span>
+                    <span class="numpad-key">7</span><span class="numpad-key">8</span><span class="numpad-key">9</span>
+                    <span class="numpad-key">*</span><span class="numpad-key">0</span><span class="numpad-key">#</span>
+                </div>
+
+                <div class="rfid-tap-zone">
+                    <ion-icon name="radio-outline"></ion-icon> <span>RFID / NFC TAP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background NOC Ambient Grid -->
+    <div class="bg-noc-grid">
+        <div class="noc-glow-red"></div>
+        <div class="noc-glow-blue"></div>
+    </div>
+
+    <!-- DYNAMIC NOC TELEMETRY BAR: FIXED ENDS + CENTER MARQUEE -->
+    <div class="telemetry-bar">
+        <!-- Fixed Left System Status -->
+        <div class="telemetry-fixed-left">
+            <span class="status-led-green"></span>
+            <span>SYS_STATUS: ONLINE</span>
+        </div>
+
+        <!-- Center Moving Train Bulletin Marquee -->
+        <div class="telemetry-center-marquee">
+            <div class="ticker-track">
+                <div class="ticker-item ticker-item-gold"><ion-icon name="trophy-outline"></ion-icon> 3er Lugar Mundial - Global ICT Competition (Computing 2024-2025)</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item"><ion-icon name="school-outline"></ion-icon> ULACIT Cum Laude Probatus (Ingeniería Informática)</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item ticker-item-gold"><ion-icon name="bulb-outline"></ion-icon> Semifinalista Mundial - Global ICT Competition (Innovation 2025-2026)</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item"><ion-icon name="briefcase-outline"></ion-icon> Delivery & Services ICT Engineer</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item"><ion-icon name="language-outline"></ion-icon> Idiomas: Español (Nativo) | English (B2+ / C1)</div>
+                <span class="ticker-divider">&bull;</span>
+
+                <!-- Duplicate for Seamless Loop -->
+                <div class="ticker-item ticker-item-gold"><ion-icon name="trophy-outline"></ion-icon> 3er Lugar Mundial - Global ICT Competition (Computing 2024-2025)</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item"><ion-icon name="school-outline"></ion-icon> ULACIT Cum Laude Probatus (Ingeniería Informática)</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item ticker-item-gold"><ion-icon name="bulb-outline"></ion-icon> Semifinalista Mundial - Global ICT Competition (Innovation 2025-2026)</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item"><ion-icon name="briefcase-outline"></ion-icon> Delivery & Services ICT Engineer</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item"><ion-icon name="language-outline"></ion-icon> Idiomas: Español (Nativo) | English (B2+ / C1)</div>
+                <span class="ticker-divider">&bull;</span>
+            </div>
+        </div>
+
+        <!-- Fixed Right Hardware Node -->
+        <div class="telemetry-fixed-right">
+            <span class="status-led-red"></span>
+            <span>NODE: PRIMARY DATACENTER CLUSTER (CR-REGION-01)</span>
+        </div>
     </div>
 
     <!-- Navigation Header -->
     <div class="header-wrapper">
         <header class="nav-container glass-panel">
             <a href="#hero" class="brand-logo">
-                <div class="brand-symbol">LE</div>
                 <span class="brand-name">Leonardo Escobar</span>
             </a>
 
             <nav class="nav-menu" id="nav-menu">
                 <a href="#hero" class="nav-link active">Inicio</a>
-                <a href="#about" class="nav-link">Sobre Mí</a>
-                <a href="#projects" class="nav-link">Proyectos</a>
+                <a href="#awards" class="nav-link">Logros</a>
+                <a href="#infrastructure" class="nav-link">Infraestructura</a>
+                <a href="#rack" class="nav-link">Proyectos</a>
                 <a href="#experience" class="nav-link">Experiencia</a>
                 <a href="#skills" class="nav-link">Habilidades</a>
                 <a href="#contact" class="nav-link">Contacto</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="#contact" class="btn-primary btn-nav">Contactar</a>
+                <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="btn-hw-primary">
+                    <ion-icon name="logo-linkedin"></ion-icon> LinkedIn
+                </a>
                 <button class="nav-mobile-btn" id="mobile-toggle" aria-label="Abrir Menú">
                     <ion-icon name="menu-outline"></ion-icon>
                 </button>
@@ -54,252 +154,487 @@
         <!-- Hero Section -->
         <section id="hero" class="section hero-section">
             <div class="hero-main">
-                <div class="status-pill">
-                    <span class="dot-green"></span> Disponible para nuevos proyectos
+                <div class="badge-hw">
+                    [ DELIVERY & SERVICES ICT ENGINEER ] &bull; ONLINE
                 </div>
-
+                
                 <h1 class="hero-title">
                     Leonardo <br>
-                    <span class="text-gradient">Escobar.</span>
+                    <span class="text-gradient-red">Escobar.</span>
                 </h1>
-
+                
                 <p class="hero-subhead">
-                    Software Engineer &bull; Artificial Intelligence &bull; Data Specialist
+                    ICT Engineer & Especialista en Infraestructura &bull; Ganador Mundial ICT Competition &bull; ULACIT Cum Laude Probatus
                 </p>
 
                 <p class="hero-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Especializado en el diseño y desarrollo de
-                    arquitecturas de software robustas,
-                    sistemas inteligentes y procesamiento avanzado de datos.
+                    Ingeniero de infraestructura y servicios de tecnologías de información y comunicación. Especializado en la administración, despliegue y soporte de centros de datos de misión crítica, arquitectura de servidores, sistemas operativos empresariales y motores de bases de datos de alto rendimiento. Combino capacidad analítica, desarrollo de software y visión estratégica para garantizar alta disponibilidad y continuidad operacional.
                 </p>
 
                 <div class="hero-cta">
-                    <a href="#projects" class="btn-primary">
-                        <ion-icon name="code-slash-outline"></ion-icon> Ver Proyectos
+                    <a href="#rack" class="btn-hw-primary">
+                        <ion-icon name="server-outline"></ion-icon> Ver Proyectos & Plataformas
                     </a>
-                    <a href="#experience" class="btn-secondary">
-                        <ion-icon name="document-text-outline"></ion-icon> Mi Experiencia
+                    <a href="#experience" class="btn-hw-secondary">
+                        <ion-icon name="briefcase-outline"></ion-icon> Trayectoria Profesional
                     </a>
                 </div>
             </div>
 
-            <!-- Hero Visual Terminal -->
+            <!-- Hero Diagnostic NOC Panel -->
             <div class="hero-visual">
-                <div class="terminal-box glass-panel">
-                    <div class="terminal-header">
-                        <div class="terminal-btn btn-red"></div>
-                        <div class="terminal-btn btn-yellow"></div>
-                        <div class="terminal-btn btn-green"></div>
-                        <span class="terminal-title">developer@portfolio:~</span>
+                <div class="noc-diag-box glass-panel">
+                    <div class="diag-header">
+                        <span class="status-led-green"></span>
+                        <span>DATACENTER CLUSTER DIAGNOSTICS</span>
                     </div>
-                    <div class="terminal-body">
-                        <code>
-                            <span class="t-cmt">// Configuración de Perfil</span><br>
-                            <span class="t-kw">const</span> <span class="t-var">developer</span> = {<br>
-                            &nbsp;&nbsp;name: <span class="t-str">"Leonardo Escobar"</span>,<br>
-                            &nbsp;&nbsp;specialties: [<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"AI Systems"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Data Analytics"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Full-Stack Software"</span><br>
-                            &nbsp;&nbsp;],<br>
-                            &nbsp;&nbsp;status: <span class="t-str">"Active & Open to Consultancies"</span><br>
-                            };<br><br>
-                            <span class="t-cmt">// Ejecución de sistema</span><br>
-                            <span class="t-var">developer</span>.initPortfolio();<br>
-                            <span class="t-num">&gt;&gt; Ready to build scalable solutions.</span>
-                        </code>
+                    <div class="diag-body">
+                        <div class="metric-row">
+                            <div class="metric-label">
+                                <span>CPU LOAD (ENTERPRISE LINUX OS)</span>
+                                <span class="metric-val" id="hero-cpu">14.2%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill-red" id="hero-cpu-bar" style="width: 14.2%"></div>
+                            </div>
+                        </div>
+
+                        <div class="metric-row">
+                            <div class="metric-label">
+                                <span>MEMORY (DATABASE MATRIX CLUSTER)</span>
+                                <span class="metric-val" id="hero-ram">18.4 GB / 64 GB</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill-blue" id="hero-ram-bar" style="width: 28.7%"></div>
+                            </div>
+                        </div>
+
+                        <div class="metric-row">
+                            <div class="metric-label">
+                                <span>DISK I/O (NVMe SAS ARRAY)</span>
+                                <span class="metric-val" id="hero-io">14.8 MB/s</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill-red" id="hero-io-bar" style="width: 44.4%"></div>
+                            </div>
+                        </div>
+
+                        <div class="log-feed">
+                            <div class="log-line"><span class="log-ok">[OK]</span> Hardware: High-Density Blade Chassis</div>
+                            <div class="log-line"><span class="log-ok">[OK]</span> Slot 01 Horizontal Blade: ArenAI Online</div>
+                            <div class="log-line"><span class="log-ok">[OK]</span> Global Rank: 3rd Place Global ICT Competition</div>
+                            <div class="log-line"><span class="log-ok">[OK]</span> Academic Honor: Cum Laude Probatus (ULACIT)</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
+        <!-- Global Awards & Honors Section -->
+        <section id="awards" class="section">
             <div class="header-center">
-                <span class="section-label">Enfoque</span>
-                <h2 class="section-heading">Sobre Mí</h2>
-                <p class="section-subtitle">Pilares de desarrollo e ingeniería estratégica.</p>
+                <span class="section-tag">Reconocimientos & Educación</span>
+                <h2 class="section-heading">Distinciones Internacionales & Formación</h2>
+                <p class="section-subtitle">Reconocimientos mundiales en competencias de tecnología e innovación y sólida formación académica con honores.</p>
             </div>
 
-            <div class="about-grid">
-                <div class="about-card glass-panel glass-panel-hover">
-                    <div class="card-icon">
-                        <ion-icon name="layers-outline"></ion-icon>
+            <div class="awards-grid">
+                <!-- Award 1: ICT Competition 3rd Place -->
+                <div class="award-card glass-panel">
+                    <span class="award-badge-tag">MUNDIAL 2024-2025</span>
+                    <div class="award-icon-gold">
+                        <ion-icon name="trophy-outline"></ion-icon>
                     </div>
-                    <h3>Arquitectura de Software</h3>
+                    <h3>3er Lugar Mundial - Cómputo & Servidores</h3>
+                    <h4>Global ICT Competition (2024-2025)</h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                        Desarrollo de sistemas modulares, eficientes y escalables.
+                        Galardonado con el <strong>3er Lugar a Nivel Mundial</strong> en la categoría de <strong>Computing</strong>, 
+                        demostrando capacidad técnica avanzada en arquitectura de servidores, sistemas operativos empresariales, bases de datos e infraestructura de alto rendimiento.
                     </p>
                 </div>
 
-                <div class="about-card glass-panel glass-panel-hover">
-                    <div class="card-icon">
-                        <ion-icon name="hardware-chip-outline"></ion-icon>
+                <!-- Award 2: ICT Competition Innovation Semifinalist -->
+                <div class="award-card glass-panel">
+                    <span class="award-badge-tag">MUNDIAL 2025-2026</span>
+                    <div class="award-icon-gold">
+                        <ion-icon name="bulb-outline"></ion-icon>
                     </div>
-                    <h3>Inteligencia Artificial</h3>
+                    <h3>Semifinalista Mundial - Innovación & Desarrollo</h3>
+                    <h4>Global ICT Competition (2025-2026)</h4>
                     <p>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                        Modelado e integración de redes neuronales y algoritmos inteligentes.
+                        <strong>Semifinalista Global</strong> en la categoría de <strong>Innovación</strong>. 
+                        Desarrollo de una solución tecnológica avanzada que integra <strong>programación de software</strong>, <strong>análisis de rendimiento</strong> y <strong>modelado de estimaciones de costos</strong>. 
+                        Diseñado tras reuniones de alineación técnica con autoridades de educación de El Salvador (MINED) y Costa Rica (MEP) para la adhesión a estándares educativos y seguridad de datos personales.
                     </p>
                 </div>
 
-                <div class="about-card glass-panel glass-panel-hover">
-                    <div class="card-icon">
-                        <ion-icon name="stats-chart-outline"></ion-icon>
+                <!-- Award 3: ULACIT Academic Honors -->
+                <div class="award-card glass-panel">
+                    <span class="award-badge-tag">GRADO CON HONORES</span>
+                    <div class="award-icon-gold">
+                        <ion-icon name="school-outline"></ion-icon>
                     </div>
-                    <h3>Análisis & Estrategia de Datos</h3>
+                    <h3>Ingeniería Informática</h3>
+                    <h4>Universidad Latinoamericana de Ciencias y Tecnología (ULACIT)</h4>
                     <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur.
-                        Inferencia avanzada de datos para la toma de decisiones estratégicas.
+                        Graduado de Bachillerato en Ingeniería Informática con la distinción de honor <strong>Cum Laude Probatus</strong>. 
+                        Estudios complementarios en <strong>Artes Humanísticas</strong> y dominio profesional del idioma <strong>Inglés B2+ / C1</strong>.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section">
+        <!-- 3-Tier Infrastructure Architecture Section -->
+        <section id="infrastructure" class="section">
             <div class="header-center">
-                <span class="section-label">Portafolio</span>
-                <h2 class="section-heading">Proyectos Destacados</h2>
-                <p class="section-subtitle">Soluciones tecnológicas y desarrollo de proyectos reales.</p>
+                <span class="section-tag">Dominio Técnico</span>
+                <h2 class="section-heading">Capacidades de Infraestructura & Servicios</h2>
+                <p class="section-subtitle">Soluciones integrales desde el hardware de centro de datos hasta la analítica de datos y desarrollo de software.</p>
             </div>
 
-            <div class="projects-grid">
-                <!-- Project 1: ArenAI Encapsulated link -->
-                <div class="project-card glass-panel glass-panel-hover">
-                    <div class="project-thumb">
-                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="200" rx="12" fill="#0f172a" stroke="rgba(255,255,255,0.08)" />
-                            <circle cx="120" cy="80" r="6" fill="#3b82f6" />
-                            <circle cx="200" cy="60" r="8" fill="#8b5cf6" />
-                            <circle cx="280" cy="100" r="6" fill="#06b6d4" />
-                            <line x1="120" y1="80" x2="200" y2="60" stroke="#3b82f6" stroke-width="2" opacity="0.6" />
-                            <line x1="200" y1="60" x2="280" y2="100" stroke="#8b5cf6" stroke-width="2" opacity="0.6" />
-                            <text x="200" y="150" text-anchor="middle" fill="#ffffff" font-family="sans-serif"
-                                font-weight="800" font-size="18">EdTech Socratic AI</text>
-                        </svg>
+            <div class="arch-grid">
+                <!-- Tier 1 -->
+                <div class="arch-card glass-panel glass-panel-hover">
+                    <span class="arch-tag">CÓMPUTO & STORAGE</span>
+                    <div class="arch-icon">
+                        <ion-icon name="server-outline"></ion-icon>
                     </div>
-                    <div class="project-details">
-                        <div class="project-tags">
-                            <span class="tag">AI Neural Network</span>
-                            <span class="tag">Offline-First</span>
-                            <span class="tag">Gamification</span>
-                        </div>
-                        <h3 class="project-title">Plataforma EdTech Socrática</h3>
-                        <p class="project-desc">
-                            Sistema tutor de redes neuronales enfocado en el aprendizaje guiado y socrático, desplegable
-                            en servidores locales offline.
-                        </p>
-                        <a href="arenai/index.html" class="project-link">
-                            Explorar Proyecto (Demo) <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </a>
-                    </div>
+                    <h3>Servidores Blade & Cómputo de Alto Rendimiento</h3>
+                    <p>
+                        Administración y despliegue de <strong>servidores blade</strong>, plataformas de <strong>cómputo de alto rendimiento</strong> (x86 & ARM), 
+                        sistemas de <strong>almacenamiento empresarial (Storage SAN/NAS)</strong> y redes de datos de alta velocidad.
+                    </p>
                 </div>
 
-                <!-- Project 2: Placeholder -->
-                <div class="project-card glass-panel glass-panel-hover">
-                    <div class="project-thumb">
-                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="200" rx="12" fill="#0f172a" stroke="rgba(255,255,255,0.08)" />
-                            <path d="M 60 140 L 140 100 L 220 120 L 340 50" fill="none" stroke="#06b6d4"
-                                stroke-width="4" stroke-linecap="round" />
-                            <circle cx="340" cy="50" r="6" fill="#10b981" />
-                            <text x="200" y="170" text-anchor="middle" fill="#ffffff" font-family="sans-serif"
-                                font-weight="800" font-size="18">Data Analytics Engine</text>
-                        </svg>
+                <!-- Tier 2 -->
+                <div class="arch-card glass-panel glass-panel-hover">
+                    <span class="arch-tag">SISTEMAS OPERATIVOS</span>
+                    <div class="arch-icon">
+                        <ion-icon name="terminal-outline"></ion-icon>
                     </div>
-                    <div class="project-details">
-                        <div class="project-tags">
-                            <span class="tag">Data Science</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Analytics</span>
-                        </div>
-                        <h3 class="project-title">Engine de Analítica & Inferencia</h3>
-                        <p class="project-desc">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Procesamiento predictivo de
-                            volúmenes complejos de datos.
-                        </p>
-                        <a href="#contact" class="project-link">
-                            En desarrollo <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-                        </a>
-                    </div>
+                    <h3>Sistemas Operativos Enterprise & Virtualización</h3>
+                    <p>
+                        Gestión exhaustiva de entornos Linux empresariales (SUSE Linux Enterprise, Red Hat) y Windows Server. 
+                        Plataformas virtualizadas (KVM / Proxmox) y automatización con scripting.
+                    </p>
                 </div>
 
-                <!-- Project 3: Placeholder -->
-                <div class="project-card glass-panel glass-panel-hover">
-                    <div class="project-thumb">
-                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="200" rx="12" fill="#0f172a" stroke="rgba(255,255,255,0.08)" />
-                            <rect x="140" y="50" width="120" height="70" rx="10" fill="none" stroke="#8b5cf6"
-                                stroke-width="3" />
-                            <text x="200" y="90" text-anchor="middle" fill="#8b5cf6" font-family="monospace"
-                                font-weight="700" font-size="16">&lt;API /&gt;</text>
-                            <text x="200" y="160" text-anchor="middle" fill="#ffffff" font-family="sans-serif"
-                                font-weight="800" font-size="18">Modular API Framework</text>
-                        </svg>
+                <!-- Tier 3 -->
+                <div class="arch-card glass-panel glass-panel-hover">
+                    <span class="arch-tag">BASES DE DATOS & SOFTWARE</span>
+                    <div class="arch-icon">
+                        <ion-icon name="cube-outline"></ion-icon>
                     </div>
-                    <div class="project-details">
-                        <div class="project-tags">
-                            <span class="tag">REST API</span>
-                            <span class="tag">Microservices</span>
-                            <span class="tag">Architecture</span>
-                        </div>
-                        <h3 class="project-title">Infraestructura API Modular</h3>
-                        <p class="project-desc">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Framework backend optimizado para
-                            integración de servicios.
-                        </p>
-                        <a href="#contact" class="project-link">
-                            En desarrollo <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-                        </a>
-                    </div>
+                    <h3>Bases de Datos de Misión Crítica & Backend</h3>
+                    <p>
+                        Despliegue y optimización de motores de bases de datos relacionales y distribuidos (PostgreSQL y clusters de alta disponibilidad). 
+                        Desarrollo de aplicaciones backend en <strong>Node.js</strong> con Docker.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- EXACT AUTHENTIC HARDWARE FRONT PANEL RACK -->
+        <section id="rack" class="section">
+            <div class="header-center">
+                <span class="section-tag">Despliegues de Hardware</span>
+                <h2 class="section-heading">Proyectos</h2>
+                <p class="section-subtitle">Gabinete de proyectos diseñado como réplica interactiva de chasis de servidor. Haz clic sobre ArenAI para ingresar a la plataforma.</p>
+            </div>
+
+            <div class="e9000h-hardware-outer">
+                <!-- Left Rack Mounting Ear -->
+                <div class="e9000h-rack-ear">
+                    <span>⊕</span><span>⊕</span><span>⊕</span><span>⊕</span>
+                </div>
+
+                <!-- 8 Horizontal Blade Slots Stack -->
+                <div class="e9000h-stack-container">
+                    
+                    <!-- SLOT 01: ONLINE - ARENAI (TOP HORIZONTAL SLOT) WITH TRANSITION TRIGGER -->
+                    <a href="arenai/index.html" class="e9000h-slot-link" id="arenai-slot-trigger" title="Ingresar al Proyecto ArenAI">
+                        <div class="e9000h-slot-row slot-online" id="arenai-slot-row">
+                            <!-- Left Fiber Ports & Lime Lever -->
+                            <div class="e9000h-left-ports">
+                                <div class="fiber-ports-grid">
+                                    <div class="sfp-port-icon port-lit"></div>
+                                    <div class="sfp-port-icon port-lit"></div>
+                                    <div class="sfp-port-icon port-lit"></div>
+                                    <div class="sfp-port-icon port-lit"></div>
+                                </div>
+                                <span class="status-led-green"></span>
+                                <div class="lime-ejector-lever" id="arenai-ejector-lever" title="Lime Ejector Latch"></div>
+                            </div>
+
+                            <!-- Center Honeycomb & Project Identity -->
+                            <div class="e9000h-center-section">
+                                <div class="honeycomb-vent-mesh"></div>
+                                <span class="slot-project-title-bold">ArenAI</span>
+                                <div class="clean-tags-group">
+                                    <span class="tag-lime-pill">WebSockets</span>
+                                    <span class="tag-lime-pill">Docker</span>
+                                    <span class="tag-lime-pill">AI Engine</span>
+                                </div>
+                            </div>
+
+                            <!-- Right Drives & Action Pill -->
+                            <div class="e9000h-right-drives">
+                                <div class="horizontal-caddy-bay">
+                                    <div class="caddy-metallic-handle"></div>
+                                    <span class="status-led-blue"></span>
+                                </div>
+                                <div class="horizontal-caddy-bay">
+                                    <div class="caddy-metallic-handle"></div>
+                                    <span class="status-led-green"></span>
+                                </div>
+                                <div class="action-explorar-pill">
+                                    Explorar <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- SLOT 02: INACTIVE / STANDBY -->
+                    <div class="e9000h-slot-row">
+                        <div class="e9000h-left-ports">
+                            <div class="fiber-ports-grid">
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                            </div>
+                            <span class="status-led-off"></span>
+                            <div class="lime-ejector-lever lever-off"></div>
+                        </div>
+
+                        <div class="e9000h-center-section">
+                            <div class="honeycomb-vent-mesh"></div>
+                            <span class="slot-title-off">Próximo Proyecto</span>
+                            <div class="clean-tags-group">
+                                <span class="tag-off-pill">Standby</span>
+                            </div>
+                        </div>
+
+                        <div class="e9000h-right-drives">
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- SLOT 03: INACTIVE / STANDBY -->
+                    <div class="e9000h-slot-row">
+                        <div class="e9000h-left-ports">
+                            <div class="fiber-ports-grid">
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                            </div>
+                            <span class="status-led-off"></span>
+                            <div class="lime-ejector-lever lever-off"></div>
+                        </div>
+
+                        <div class="e9000h-center-section">
+                            <div class="honeycomb-vent-mesh"></div>
+                            <span class="slot-title-off">Próximo Proyecto</span>
+                            <div class="clean-tags-group">
+                                <span class="tag-off-pill">Standby</span>
+                            </div>
+                        </div>
+
+                        <div class="e9000h-right-drives">
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- SLOT 04: INACTIVE / STANDBY -->
+                    <div class="e9000h-slot-row">
+                        <div class="e9000h-left-ports">
+                            <div class="fiber-ports-grid">
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                            </div>
+                            <span class="status-led-off"></span>
+                            <div class="lime-ejector-lever lever-off"></div>
+                        </div>
+
+                        <div class="e9000h-center-section">
+                            <div class="honeycomb-vent-mesh"></div>
+                            <span class="slot-title-off">Ranura de Cómputo</span>
+                            <div class="clean-tags-group">
+                                <span class="tag-off-pill">Standby</span>
+                            </div>
+                        </div>
+
+                        <div class="e9000h-right-drives">
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- SLOT 05: INACTIVE / STANDBY -->
+                    <div class="e9000h-slot-row">
+                        <div class="e9000h-left-ports">
+                            <div class="fiber-ports-grid">
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                            </div>
+                            <span class="status-led-off"></span>
+                            <div class="lime-ejector-lever lever-off"></div>
+                        </div>
+
+                        <div class="e9000h-center-section">
+                            <div class="honeycomb-vent-mesh"></div>
+                            <span class="slot-title-off">Ranura de Cómputo</span>
+                            <div class="clean-tags-group">
+                                <span class="tag-off-pill">Standby</span>
+                            </div>
+                        </div>
+
+                        <div class="e9000h-right-drives">
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- SLOT 06: INACTIVE / STANDBY -->
+                    <div class="e9000h-slot-row">
+                        <div class="e9000h-left-ports">
+                            <div class="fiber-ports-grid">
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                            </div>
+                            <span class="status-led-off"></span>
+                            <div class="lime-ejector-lever lever-off"></div>
+                        </div>
+
+                        <div class="e9000h-center-section">
+                            <div class="honeycomb-vent-mesh"></div>
+                            <span class="slot-title-off">Ranura de Cómputo</span>
+                            <div class="clean-tags-group">
+                                <span class="tag-off-pill">Standby</span>
+                            </div>
+                        </div>
+
+                        <div class="e9000h-right-drives">
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- SLOT 07: INACTIVE / STANDBY -->
+                    <div class="e9000h-slot-row">
+                        <div class="e9000h-left-ports">
+                            <div class="fiber-ports-grid">
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                            </div>
+                            <span class="status-led-off"></span>
+                            <div class="lime-ejector-lever lever-off"></div>
+                        </div>
+
+                        <div class="e9000h-center-section">
+                            <div class="honeycomb-vent-mesh"></div>
+                            <span class="slot-title-off">Ranura de Cómputo</span>
+                            <div class="clean-tags-group">
+                                <span class="tag-off-pill">Standby</span>
+                            </div>
+                        </div>
+
+                        <div class="e9000h-right-drives">
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- SLOT 08: INACTIVE / STANDBY (BOTTOM HORIZONTAL SLOT) -->
+                    <div class="e9000h-slot-row">
+                        <div class="e9000h-left-ports">
+                            <div class="fiber-ports-grid">
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                                <div class="sfp-port-icon"></div>
+                            </div>
+                            <span class="status-led-off"></span>
+                            <div class="lime-ejector-lever lever-off"></div>
+                        </div>
+
+                        <div class="e9000h-center-section">
+                            <div class="honeycomb-vent-mesh"></div>
+                            <span class="slot-title-off">Ranura de Cómputo</span>
+                            <div class="clean-tags-group">
+                                <span class="tag-off-pill">Standby</span>
+                            </div>
+                        </div>
+
+                        <div class="e9000h-right-drives">
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                            <div class="horizontal-caddy-bay"><div class="caddy-metallic-handle"></div></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Rack Mounting Ear -->
+                <div class="e9000h-rack-ear">
+                    <span>⊕</span><span>⊕</span><span>⊕</span><span>⊕</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
         <section id="experience" class="section">
             <div class="header-center">
-                <span class="section-tag">Trayectoria</span>
-                <h2 class="section-heading">Experiencia Profesional</h2>
-                <p class="section-subtitle">Historial de roles, proyectos y desarrollo de ingeniería.</p>
+                <span class="section-tag">Trayectoria Profesional</span>
+                <h2 class="section-heading">Experiencia en Delivery & Services</h2>
+                <p class="section-subtitle">Trayectoria profesional en gestión de infraestructura, análisis de datos y servicios tecnológicos.</p>
             </div>
 
             <div class="timeline-wrap">
+                <!-- Role 1: ICT Engineer -->
                 <div class="timeline-card glass-panel">
-                    <div class="timeline-marker"></div>
-                    <span class="timeline-period">2024 - Presente</span>
-                    <h3 class="timeline-role">Desarrollador Principal & Estrategia de Datos</h3>
-                    <span class="timeline-company">[Nombre de Organización / Startup]</span>
+                    <div class="timeline-marker-hw"></div>
+                    <span class="timeline-period">Actualidad</span>
+                    <h3 class="timeline-role">ICT Engineer</h3>
+                    <span class="timeline-company">Delivery & Services (D&S)</span>
                     <p class="timeline-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arquitectura de sistemas, optimización
-                        de modelos de datos e inferencia analítica.
+                        Mantenimiento, administración y despliegue continuo de plataformas de servidores e infraestructura tecnológica de misión crítica: 
+                        sistemas operativos Linux enterprise, <strong>SUSE Linux</strong>, bases de datos y motores relacionales, 
+                        arquitecturas <strong>x86 & ARM</strong>, almacenamiento de alta densidad (Storage SAN/NAS) y switches de red datacenter.
                     </p>
                 </div>
 
+                <!-- Role 2: Data Analyst & Physical Data Platform Specialist -->
                 <div class="timeline-card glass-panel">
-                    <div class="timeline-marker"></div>
-                    <span class="timeline-period">2022 - 2024</span>
-                    <h3 class="timeline-role">Software Engineer</h3>
-                    <span class="timeline-company">[Empresa / Proyecto]</span>
+                    <div class="timeline-marker-hw"></div>
+                    <span class="timeline-period">Diciembre 2023 - 2024</span>
+                    <h3 class="timeline-role">Data Analyst & Physical Data Platform Specialist</h3>
+                    <span class="timeline-company">Delivery & Services (D&S)</span>
                     <p class="timeline-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Desarrollo backend, integración de APIs
-                        y mantenimiento de infraestructura de código.
+                        Gestión y mantenimiento de la <strong>plataforma física de análisis de datos</strong>, operando servidores de cómputo masivo, 
+                        switches de red y herramientas de análisis continuo. Participación ejecutiva en reuniones con clientes de alto nivel (<strong>CXO</strong>) para alineación estratégica y toma de decisiones tecnológicas.
                     </p>
                 </div>
 
+                <!-- Role 3: A&S Specialist / Platform Intern -->
                 <div class="timeline-card glass-panel">
-                    <div class="timeline-marker"></div>
-                    <span class="timeline-period">2020 - 2022</span>
-                    <h3 class="timeline-role">Analista de Sistemas & Datos</h3>
-                    <span class="timeline-company">[Empresa / Organización]</span>
+                    <div class="timeline-marker-hw"></div>
+                    <span class="timeline-period">Hace +2 años</span>
+                    <h3 class="timeline-role">A&S Department Specialist & Platform Intern</h3>
+                    <span class="timeline-company">Delivery & Services (D&S) &bull; Departamento A&S</span>
                     <p class="timeline-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Evaluación de métricas, automatización
-                        de scripts y soporte técnico avanzado.
+                        Soporte y mantenimiento integral de la plataforma de servicios <strong>VASCloud</strong> (aprovisionamiento, mensajería y servicios de valor agregado), 
+                        garantizando estabilidad operativa y gestión de entornos virtualizados sobre <strong>SUSE Linux</strong> y <strong>Windows Server</strong>.
                     </p>
                 </div>
             </div>
@@ -309,119 +644,121 @@
         <section id="skills" class="section">
             <div class="header-center">
                 <span class="section-tag">Competencias</span>
-                <h2 class="section-heading">Habilidades & Stack</h2>
-                <p class="section-subtitle">Tecnologías y lenguajes de programación.</p>
+                <h2 class="section-title">Habilidades & Stack Técnico</h2>
+                <p class="section-subtitle">Sistemas operativos, desarrollo de software, bases de datos e infraestructura de centro de datos.</p>
             </div>
 
             <div class="skills-container">
                 <div class="skill-box glass-panel">
                     <h3 class="skill-title">
-                        <ion-icon name="code-slash-outline"></ion-icon> Lenguajes & Backend
+                        <ion-icon name="terminal-outline"></ion-icon> Sistemas Operativos & Virtualización
                     </h3>
                     <div class="skill-pills">
-                        <span class="pill">Python</span>
-                        <span class="pill">JavaScript (ES6+)</span>
-                        <span class="pill">TypeScript</span>
-                        <span class="pill">SQL</span>
-                        <span class="pill">HTML5 & CSS3</span>
+                        <span class="pill-hw">SUSE Linux Enterprise</span>
+                        <span class="pill-hw">Red Hat (RHEL)</span>
+                        <span class="pill-hw">Debian Linux</span>
+                        <span class="pill-hw">Windows Server</span>
+                        <span class="pill-hw">Virtualización KVM / Proxmox</span>
+                        <span class="pill-hw">Bash Scripting</span>
                     </div>
                 </div>
 
                 <div class="skill-box glass-panel">
                     <h3 class="skill-title">
-                        <ion-icon name="brain-outline"></ion-icon> IA & Data Science
+                        <ion-icon name="server-outline"></ion-icon> Bases de Datos & Backend
                     </h3>
                     <div class="skill-pills">
-                        <span class="pill">Neural Networks</span>
-                        <span class="pill">Data Inference</span>
-                        <span class="pill">Pandas / NumPy</span>
-                        <span class="pill">Machine Learning</span>
-                        <span class="pill">Predictive Analytics</span>
+                        <span class="pill-hw">PostgreSQL</span>
+                        <span class="pill-hw">Docker</span>
+                        <span class="pill-hw">Node.js</span>
+                        <span class="pill-hw">Python</span>
+                        <span class="pill-hw">Desarrollo de Software</span>
+                        <span class="pill-hw">WebSockets</span>
                     </div>
                 </div>
 
                 <div class="skill-box glass-panel">
                     <h3 class="skill-title">
-                        <ion-icon name="cube-outline"></ion-icon> Herramientas & DevOps
+                        <ion-icon name="hardware-chip-outline"></ion-icon> Infraestructura & Redes
                     </h3>
                     <div class="skill-pills">
-                        <span class="pill">Git & GitHub</span>
-                        <span class="pill">REST APIs</span>
-                        <span class="pill">Linux</span>
-                        <span class="pill">VS Code</span>
-                        <span class="pill">Offline Deployments</span>
+                        <span class="pill-hw">Servidores Blade</span>
+                        <span class="pill-hw">Arquitecturas x86 & ARM</span>
+                        <span class="pill-hw">Storage Empresarial (SAN/NAS)</span>
+                        <span class="pill-hw">Switches Datacenter</span>
+                        <span class="pill-hw">Plataformas de Análisis Físico</span>
+                        <span class="pill-hw">Alta Disponibilidad</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Clean Direct Contact Section -->
         <section id="contact" class="section">
             <div class="header-center">
-                <span class="section-tag">Contacto</span>
-                <h2 class="section-heading">Iniciar Conversación</h2>
-                <p class="section-subtitle">¿Tienes alguna propuesta o consulta técnica? Envíame un mensaje.</p>
+                <span class="section-tag">Conexión Directa</span>
+                <h2 class="section-heading">Contacto Profesional & Redes</h2>
+                <p class="section-subtitle">Puedes contactarme directamente a través de LinkedIn para oportunidades profesionales o enviarme un correo electrónico.</p>
             </div>
 
-            <div class="contact-wrapper">
-                <div class="contact-form-box glass-panel">
-                    <h3>Enviar Mensaje</h3>
-                    <form
-                        onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Me pondré en contacto contigo a la brevedad.');">
-                        <div class="form-field">
-                            <label for="name">Nombre Completo</label>
-                            <input type="text" id="name" required placeholder="Tu nombre">
-                        </div>
-                        <div class="form-field">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" required placeholder="tu@correo.com">
-                        </div>
-                        <div class="form-field">
-                            <label for="subject">Asunto</label>
-                            <input type="text" id="subject" required placeholder="Consulta / Propuesta de Proyecto">
-                        </div>
-                        <div class="form-field">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" rows="4" required placeholder="Escribe tu mensaje..."></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary full-width">
-                            <ion-icon name="paper-plane-outline"></ion-icon> Enviar Mensaje
-                        </button>
-                    </form>
-                </div>
-
-                <div class="contact-cards-side">
-                    <div class="contact-item glass-panel">
-                        <div class="contact-icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-                        <div class="contact-item-text">
-                            <h4>Email Profesional</h4>
-                            <a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a>
-                        </div>
+            <div class="direct-contact-grid">
+                <!-- Contact Card 1: LinkedIn (Primary CTA) -->
+                <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="direct-contact-card glass-panel glass-panel-hover contact-card-highlight">
+                    <div class="contact-card-icon-wrap">
+                        <ion-icon name="logo-linkedin"></ion-icon>
                     </div>
-
-                    <div class="contact-item glass-panel">
-                        <div class="contact-icon-box"><ion-icon name="logo-whatsapp"></ion-icon></div>
-                        <div class="contact-item-text">
-                            <h4>Teléfono / WhatsApp</h4>
-                            <span>+506 0000-0000</span>
-                        </div>
+                    <div class="contact-card-info">
+                        <span class="contact-card-label">Contacto Principal</span>
+                        <h3>Perfil de LinkedIn</h3>
+                        <p>Mensajería directa y red profesional en LinkedIn.</p>
+                        <span class="contact-card-link-text">
+                            linkedin.com/in/leonardo-escobar-a4441a228 <ion-icon name="open-outline"></ion-icon>
+                        </span>
                     </div>
+                </a>
 
-                    <div class="contact-item glass-panel">
-                        <div class="contact-icon-box"><ion-icon name="logo-github"></ion-icon></div>
-                        <div class="contact-item-text">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/lescobarx83" target="_blank"
-                                rel="noopener">github.com/lescobarx83</a>
-                        </div>
+                <!-- Contact Card 2: Email -->
+                <a href="mailto:lescobar2004@gmail.com" class="direct-contact-card glass-panel glass-panel-hover">
+                    <div class="contact-card-icon-wrap icon-email">
+                        <ion-icon name="mail-outline"></ion-icon>
                     </div>
+                    <div class="contact-card-info">
+                        <span class="contact-card-label">Correo Electrónico Directo</span>
+                        <h3>lescobar2004@gmail.com</h3>
+                        <p>Contacto por correo para consultas, proyectos o vacantes.</p>
+                        <span class="contact-card-link-text">
+                            Enviar correo a lescobar2004@gmail.com <ion-icon name="mail-unread-outline"></ion-icon>
+                        </span>
+                    </div>
+                </a>
 
-                    <div class="contact-item glass-panel">
-                        <div class="contact-icon-box"><ion-icon name="location-outline"></ion-icon></div>
-                        <div class="contact-item-text">
-                            <h4>Ubicación</h4>
-                            <span>Costa Rica 🇨🇷</span>
-                        </div>
+                <!-- Contact Card 3: GitHub -->
+                <a href="https://github.com/lescobarx83" target="_blank" rel="noopener" class="direct-contact-card glass-panel glass-panel-hover">
+                    <div class="contact-card-icon-wrap icon-github">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </div>
+                    <div class="contact-card-info">
+                        <span class="contact-card-label">Repositorios & Código</span>
+                        <h3>GitHub (lescobarx83)</h3>
+                        <p>Proyectos, desarrollo de código y repositorios públicos.</p>
+                        <span class="contact-card-link-text">
+                            github.com/lescobarx83 <ion-icon name="open-outline"></ion-icon>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Contact Card 4: Languages & Communication -->
+                <div class="direct-contact-card glass-panel">
+                    <div class="contact-card-icon-wrap icon-lang">
+                        <ion-icon name="language-outline"></ion-icon>
+                    </div>
+                    <div class="contact-card-info">
+                        <span class="contact-card-label">Idiomas de Contacto</span>
+                        <h3>Español e Inglés</h3>
+                        <p>Acepto mensajes y comunicaciones en Español e Inglés.</p>
+                        <span class="contact-card-link-text text-static">
+                            Español (Nativo) | English (B2+ / C1)
+                        </span>
                     </div>
                 </div>
             </div>
@@ -433,12 +770,13 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>Leonardo Escobar</h3>
-                <p>Software Engineer &bull; Data Specialist</p>
+                <p>ICT Engineer en Delivery & Services &bull; 3rd Place Global ICT Competition &bull; Cum Laude Probatus (ULACIT)</p>
             </div>
             <nav class="footer-nav">
                 <a href="#hero">Inicio</a>
-                <a href="#about">Sobre Mí</a>
-                <a href="#projects">Proyectos</a>
+                <a href="#awards">Logros</a>
+                <a href="#infrastructure">Infraestructura</a>
+                <a href="#rack">Proyectos</a>
                 <a href="#experience">Experiencia</a>
                 <a href="#contact">Contacto</a>
             </nav>
