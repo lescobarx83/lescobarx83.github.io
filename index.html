@@ -5,28 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leonardo Escobar - Portafolio Profesional</title>
-    <meta name="description" content="Portafolio profesional de Leonardo Escobar. Desarrollo de software, Inteligencia Artificial, Análisis de Datos y Estrategia. Co-fundador y CFO en ArenAI.">
+    <meta name="description" content="Portafolio profesional de Leonardo Escobar. Desarrollo de Software, Inteligencia Artificial, Análisis de Datos y Estrategia. Co-fundador y CFO en ArenAI.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&family=Outfit:wght@400;700;900&family=Fira+Code:wght@400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body class="portfolio-body">
-    <!-- Animated Ambient Background Mesh -->
+<body>
+    <!-- Background Animated Gradient Mesh -->
     <div class="background-mesh">
         <div class="mesh-1"></div>
         <div class="mesh-2"></div>
         <div class="mesh-3"></div>
-        <div id="particles"></div>
     </div>
 
     <!-- Navigation Header -->
-    <header class="navbar-wrapper">
+    <div class="navbar-wrapper">
         <nav class="navbar glass">
             <a href="#hero" class="logo">
                 <span class="logo-badge">LE</span>
@@ -49,11 +46,11 @@
                 </button>
             </div>
         </nav>
-    </header>
+    </div>
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="hero section-spacing portfolio-hero">
+        <section id="hero" class="hero section-spacing">
             <div class="hero-content">
                 <div class="badge-row">
                     <span class="badge glow"><span class="pulse-dot"></span> Disponible para Proyectos & Consultoría</span>
@@ -65,11 +62,11 @@
                 <p class="hero-subtitle text-gradient-alt">
                     Desarrollo de Software &bull; Inteligencia Artificial &bull; Análisis de Datos &bull; Estrategia
                 </p>
-                <p class="hero-desc animate-fade delay-1">
+                <p class="hero-desc animate-fade">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Apasionado por el desarrollo de tecnología,
                     inteligencia artificial aplicada y soluciones analíticas orientadas al impacto real. Co-fundador y CFO en ArenAI.
                 </p>
-                <div class="hero-buttons animate-fade delay-2">
+                <div class="hero-buttons animate-fade">
                     <a href="#projects" class="btn btn-primary btn-xl glow-effect">
                         <ion-icon name="folder-open-outline"></ion-icon> Ver Proyectos
                     </a>
@@ -81,7 +78,7 @@
                     </a>
                 </div>
 
-                <div class="quick-stats animate-fade delay-3">
+                <div class="quick-stats animate-fade">
                     <div class="stat-box glass">
                         <ion-icon name="code-slash-outline"></ion-icon>
                         <div class="stat-info">
@@ -106,8 +103,8 @@
                 </div>
             </div>
 
-            <div class="hero-visual perspective-container">
-                <div class="portfolio-avatar-card glass glow-border float-animation">
+            <div class="hero-visual">
+                <div class="portfolio-avatar-card glass glow-border">
                     <div class="avatar-header">
                         <div class="avatar-ring">
                             <img src="img/Capy_pfp.png" alt="Leonardo Escobar Avatar" class="avatar-img">
@@ -120,7 +117,7 @@
                     <div class="avatar-details">
                         <h3>Leonardo Escobar</h3>
                         <p class="role-tag">CFO & Strategy @ ArenAI</p>
-                        <div class="code-snippet glass">
+                        <div class="code-snippet">
                             <code>
                                 <span class="code-keyword">const</span> profile = {<br>
                                 &nbsp;&nbsp;role: <span class="code-str">"AI & Data Developer"</span>,<br>
@@ -152,7 +149,7 @@
                     </p>
                 </div>
 
-                <div class="about-card glass hover-scale animate-fade delay-1">
+                <div class="about-card glass hover-scale animate-fade">
                     <div class="about-icon"><ion-icon name="bulb-outline"></ion-icon></div>
                     <h3>Visión & Enfoque</h3>
                     <p>
@@ -161,7 +158,7 @@
                     </p>
                 </div>
 
-                <div class="about-card glass hover-scale animate-fade delay-2">
+                <div class="about-card glass hover-scale animate-fade">
                     <div class="about-icon"><ion-icon name="trending-up-outline"></ion-icon></div>
                     <h3>Estrategia & Innovación</h3>
                     <p>
@@ -188,7 +185,7 @@
                     </div>
                     <div class="project-grid-inner">
                         <div class="project-media">
-                            <img src="img/Capy_pfp.png" alt="ArenAI Logo & Graphic" class="project-img">
+                            <img src="img/Capy_pfp.png" alt="ArenAI Graphic" class="project-img">
                             <div class="media-overlay">
                                 <span class="tech-tag">EdTech</span>
                                 <span class="tech-tag">IA Socrática</span>
@@ -225,11 +222,8 @@
                             </div>
 
                             <div class="project-actions">
-                                <a href="arenai.html" class="btn btn-primary glow-effect">
-                                    <ion-icon name="open-outline"></ion-icon> Ver Proyecto Completo
-                                </a>
-                                <a href="arenai.html#hero" class="btn btn-ghost">
-                                    <ion-icon name="game-controller-outline"></ion-icon> Probar Demo
+                                <a href="arenai/index.html" class="btn btn-primary glow-effect">
+                                    <ion-icon name="open-outline"></ion-icon> Explorar Proyecto ArenAI &rarr;
                                 </a>
                             </div>
                         </div>
@@ -237,7 +231,7 @@
                 </div>
 
                 <!-- Future Project Slot -->
-                <div class="project-card placeholder-project glass animate-fade delay-1">
+                <div class="project-card placeholder-project glass animate-fade">
                     <div class="placeholder-icon">
                         <ion-icon name="add-circle-outline"></ion-icon>
                     </div>
@@ -506,7 +500,7 @@
             </div>
             <div class="footer-col">
                 <h4>Destacado</h4>
-                <a href="arenai.html">Proyecto ArenAI</a>
+                <a href="arenai/index.html">Proyecto ArenAI</a>
                 <a href="#skills">Habilidades</a>
                 <a href="#contact">Contacto</a>
             </div>
