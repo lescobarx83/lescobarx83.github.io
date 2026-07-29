@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArenAI - Your Learning Adventure</title>
+    <title>Leonardo Escobar - Portafolio Profesional</title>
+    <meta name="description" content="Portafolio profesional de Leonardo Escobar. Desarrollo de software, Inteligencia Artificial, Análisis de Datos y Estrategia. Co-fundador y CFO en ArenAI.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&family=Outfit:wght@400;700;900&family=Fira+Code:wght@400;600&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body>
+<body class="portfolio-body">
+    <!-- Animated Ambient Background Mesh -->
     <div class="background-mesh">
         <div class="mesh-1"></div>
         <div class="mesh-2"></div>
@@ -23,333 +25,499 @@
         <div id="particles"></div>
     </div>
 
-    <nav class="navbar glass">
-        <div class="logo">
-            <img src="img/Capy_pfp.png" alt="ArenAI Logo" class="nav-logo-img">
-            <span>ArenAI</span>
-        </div>
-        <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#ecosystem">Ecosystem</a>
-            <a href="#characters">Pets</a>
-            <a href="#battle">Battle Mode</a>
-            <a href="/login" class="btn btn-primary">Login</a>
-        </div>
-    </nav>
+    <!-- Navigation Header -->
+    <header class="navbar-wrapper">
+        <nav class="navbar glass">
+            <a href="#hero" class="logo">
+                <span class="logo-badge">LE</span>
+                <span class="logo-text">Leonardo Escobar</span>
+            </a>
+
+            <div class="nav-links" id="nav-menu">
+                <a href="#hero" class="nav-link active">Inicio</a>
+                <a href="#about" class="nav-link">Sobre Mí</a>
+                <a href="#projects" class="nav-link">Proyectos</a>
+                <a href="#resume" class="nav-link">CV & Certificaciones</a>
+                <a href="#skills" class="nav-link">Habilidades</a>
+                <a href="#contact" class="nav-link">Contacto</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-primary btn-sm">Contactar</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menú">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
+        </nav>
+    </header>
 
     <main>
-        <section id="hero" class="hero section-spacing">
+        <!-- Hero Section -->
+        <section id="hero" class="hero section-spacing portfolio-hero">
             <div class="hero-content">
-                <span class="badge glow">New Version 1.1</span>
+                <div class="badge-row">
+                    <span class="badge glow"><span class="pulse-dot"></span> Disponible para Proyectos & Consultoría</span>
+                </div>
                 <h1 class="display-title animate-title">
-                    Master your <br>
-                    <span class="text-gradient">Knowledge.</span>
+                    Hola, soy <br>
+                    <span class="text-gradient">Leonardo Escobar.</span>
                 </h1>
+                <p class="hero-subtitle text-gradient-alt">
+                    Desarrollo de Software &bull; Inteligencia Artificial &bull; Análisis de Datos &bull; Estrategia
+                </p>
                 <p class="hero-desc animate-fade delay-1">
-                    ArenAI is not just a study platform. It is an RPG where every completed task improves your 
-                    character.
-                    <br><strong>Study. Fight. Conquer.</strong>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Apasionado por el desarrollo de tecnología,
+                    inteligencia artificial aplicada y soluciones analíticas orientadas al impacto real. Co-fundador y CFO en ArenAI.
                 </p>
                 <div class="hero-buttons animate-fade delay-2">
-                    <a href="https://drive.google.com/drive/folders/1X_FAnALS9YygiQEvaC__k6zz8QIYOqAi" class="btn btn-primary btn-xl glow-effect">
-                        <ion-icon name="game-controller"></ion-icon> Play Now
+                    <a href="#projects" class="btn btn-primary btn-xl glow-effect">
+                        <ion-icon name="folder-open-outline"></ion-icon> Ver Proyectos
                     </a>
-                    <a href="" class="btn btn-ghost btn-xl">
-                        Trailer (coming soon) <ion-icon name="play-circle-outline"></ion-icon>
+                    <a href="#resume" class="btn btn-ghost btn-xl">
+                        <ion-icon name="document-text-outline"></ion-icon> Mi CV
+                    </a>
+                    <a href="#contact" class="btn btn-outline btn-xl">
+                        <ion-icon name="mail-outline"></ion-icon> Contactar
                     </a>
                 </div>
 
-                <div class="stats-row animate-fade delay-3">
-                    <div class="stat-item">
-                        <span class="stat-number">10k+</span>
-                        <span class="stat-label">Students</span>
+                <div class="quick-stats animate-fade delay-3">
+                    <div class="stat-box glass">
+                        <ion-icon name="code-slash-outline"></ion-icon>
+                        <div class="stat-info">
+                            <span class="stat-num">AI & Dev</span>
+                            <span class="stat-lbl">Redes Neuronales</span>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Teachers</span>
+                    <div class="stat-box glass">
+                        <ion-icon name="analytics-outline"></ion-icon>
+                        <div class="stat-info">
+                            <span class="stat-num">Data</span>
+                            <span class="stat-lbl">Análisis e Inferencia</span>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">1M+</span>
-                        <span class="stat-label">Quests</span>
+                    <div class="stat-box glass">
+                        <ion-icon name="rocket-outline"></ion-icon>
+                        <div class="stat-info">
+                            <span class="stat-num">ArenAI</span>
+                            <span class="stat-lbl">Co-fundador / CFO</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="hero-visual perspective-container">
-                <div class="floating-elements">
-                    <img src="img/Capy_pfp.png" class="hero-main-img float-animation" alt="Capybara Hero">
-
-                    <div class="ui-card card-math glass float-delayed-1">
-                        <div class="card-icon math-bg"><ion-icon name="calculator"></ion-icon></div>
-                        <div class="card-text">
-                            <h4>Mathematics</h4>
-                            <div class="progress-bar">
-                                <div class="fill" style="width: 80%"></div>
-                            </div>
+                <div class="portfolio-avatar-card glass glow-border float-animation">
+                    <div class="avatar-header">
+                        <div class="avatar-ring">
+                            <img src="img/Capy_pfp.png" alt="Leonardo Escobar Avatar" class="avatar-img">
+                        </div>
+                        <div class="avatar-status">
+                            <span class="status-indicator"></span>
+                            <span>En línea</span>
                         </div>
                     </div>
-
-                    <div class="ui-card card-level glass float-delayed-2">
-                        <div class="level-badge">Lvl. 15</div>
-                        <span>Level Up!</span>
+                    <div class="avatar-details">
+                        <h3>Leonardo Escobar</h3>
+                        <p class="role-tag">CFO & Strategy @ ArenAI</p>
+                        <div class="code-snippet glass">
+                            <code>
+                                <span class="code-keyword">const</span> profile = {<br>
+                                &nbsp;&nbsp;role: <span class="code-str">"AI & Data Developer"</span>,<br>
+                                &nbsp;&nbsp;focus: <span class="code-str">"EdTech & Financial Strategy"</span>,<br>
+                                &nbsp;&nbsp;location: <span class="code-str">"Costa Rica 🇨🇷"</span><br>
+                                };
+                            </code>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="ecosystem" class="ecosystem section-spacing">
+        <!-- About Section -->
+        <section id="about" class="about section-spacing">
             <div class="section-header text-center">
-                <h2 class="section-title">Your Educational Universe</h2>
-                <p class="section-subtitle">One platform, two powerful experiences.</p>
+                <span class="section-tag">Conóceme</span>
+                <h2 class="section-title">Sobre Mí</h2>
+                <p class="section-subtitle">Perfil profesional y enfoque de trabajo.</p>
             </div>
 
-            <div class="ecosystem-grid">
-                <div class="role-card student glass hover-scale">
-                    <div class="role-visual">
-                        <img src="img/battle_sprite_back_capybara.png" alt="Student View">
-                    </div>
-                    <div class="role-content">
-                        <h3>For Students</h3>
-                        <p>Turn your homework into epic quests. Earn XP, customize your avatar, and compete in 
-                            knowledge arenas.</p>
-                        <ul class="feature-list">
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Customizable Avatars</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> PvP Quiz Battles</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Item Shop</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="role-card professor glass hover-scale">
-                    <div class="role-visual prof-container">
-                        <div class="prof-composition">
-                            <div class="prof-circle-main">
-                                <ion-icon name="easel-outline"></ion-icon>
-                            </div>
-                            <div class="prof-circle-float p-1">
-                                <ion-icon name="analytics-outline"></ion-icon>
-                            </div>
-                            <div class="prof-circle-float p-2">
-                                <ion-icon name="library-outline"></ion-icon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="role-content">
-                        <h3>For Teachers</h3>
-                        <p>Monitor progress with detailed analytics and create custom challenges with the help of 
-                            AI.</p>
-                        <ul class="feature-list">
-                            <li><ion-icon name="checkmark-circle"></ion-icon> AI Quiz Generation</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Real-Time Analytics</li>
-                            <li><ion-icon name="checkmark-circle"></ion-icon> Classroom Management</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="characters" class="characters section-spacing">
-            <div class="character-showcase glass">
-                <div class="char-tabs">
-                    <button class="char-tab active" data-char="capy">Capybara</button>
-                    <button class="char-tab" data-char="sloth">Sloth</button>
-                </div>
-
-                <div class="char-display">
-                    <div class="char-info">
-                        <h2 id="char-name">Capybara</h2>
-                        <p id="char-desc">Everyone's friend. Your loyal companion in this learning adventure.</p>
-                        <div class="char-stats">
-                            <div class="stat-bar">
-                                <span>Wisdom</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill" style="width: 60%"></div>
-                                </div>
-                            </div>
-                            <div class="stat-bar">
-                                <span>Creativity</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="stat-bar">
-                                <span>Focus</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill" style="width: 50%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="char-image-wrapper">
-                        <img src="img/capybara_sprite_normal_full.png" id="char-img"
-                            class="char-img animate-bounce" alt="Character">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="battle" class="battle section-spacing">
-            <div class="battle-container">
-                <div class="battle-text">
-                    <h2 class="display-title text-white">Battle Mode</h2>
-                    <p class="text-white-dim">Put your knowledge to the test. Challenge other students in real-time.
+            <div class="about-grid">
+                <div class="about-card glass hover-scale animate-fade">
+                    <div class="about-icon"><ion-icon name="person-outline"></ion-icon></div>
+                    <h3>Perfil Profesional</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Especializado en la intersección entre tecnología, inteligencia artificial y modelos de decisión estratégica.
                     </p>
                 </div>
-                <div class="battle-scene perspective-container">
-                    <div class="battle-ground glass">
-                        <img src="img/battle_sprite_back_capybara.png" class="fighter ally" alt="Ally">
-                        <div class="vs-badge">VS</div>
-                        <img src="img/battle_sprite_front_capybara.png" class="fighter enemy" alt="Enemy">
 
-                        <div class="damage-number hidden">-50 HP</div>
-                    </div>
+                <div class="about-card glass hover-scale animate-fade delay-1">
+                    <div class="about-icon"><ion-icon name="bulb-outline"></ion-icon></div>
+                    <h3>Visión & Enfoque</h3>
+                    <p>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Comprometido con construir productos tecnológicos robustos, escalables y con un propósito educativo y social positivo.
+                    </p>
+                </div>
+
+                <div class="about-card glass hover-scale animate-fade delay-2">
+                    <div class="about-icon"><ion-icon name="trending-up-outline"></ion-icon></div>
+                    <h3>Estrategia & Innovación</h3>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Combinando el rigor del análisis financiero con la potencia del desarrollo de software moderno.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section id="pricing" class="pricing section-spacing">
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="projects section-spacing">
             <div class="section-header text-center">
-                <h2 class="section-title">Flexible Plans</h2>
-                <p class="section-subtitle">Subscriptions tailored to the size of your institution.</p>
+                <span class="section-tag">Portafolio</span>
+                <h2 class="section-title">Mis Proyectos</h2>
+                <p class="section-subtitle">Soluciones e iniciativas en las que trabajo activamente.</p>
             </div>
 
-            <div class="pricing-grid">
-                <div class="pricing-card glass">
-                    <div class="card-header">
-                        <h3>Standard</h3>
-                        <p class="price-desc">Ideal for pilots</p>
+            <div class="projects-container">
+                <!-- Flagship Project Card: ArenAI -->
+                <div class="project-card featured-project glass glow-border animate-fade">
+                    <div class="project-badge-flagship">
+                        <ion-icon name="star"></ion-icon> Proyecto Destacado
                     </div>
-                    <div class="price-tag">
-                        <span class="currency">$</span>
-                        <span class="amount">5</span>
-                        <span class="period">/student</span>
+                    <div class="project-grid-inner">
+                        <div class="project-media">
+                            <img src="img/Capy_pfp.png" alt="ArenAI Logo & Graphic" class="project-img">
+                            <div class="media-overlay">
+                                <span class="tech-tag">EdTech</span>
+                                <span class="tech-tag">IA Socrática</span>
+                                <span class="tech-tag">Offline-First</span>
+                                <span class="tech-tag">RPG</span>
+                            </div>
+                        </div>
+
+                        <div class="project-info">
+                            <h3 class="project-title">ArenAI: Educación a tu Propio Ritmo</h3>
+                            <p class="project-tagline">"Transformando la educación: de un monólogo a un diálogo."</p>
+                            <p class="project-desc">
+                                Plataforma de tutoría guiada mediante redes neuronales con metodología socrática (enseña a pensar, no entrega respuestas servidas). 
+                                Diseñada con arquitectura <strong>Offline-First</strong> para aulas locales y analítica predictiva de aprendizaje para docentes.
+                            </p>
+
+                            <div class="project-features">
+                                <div class="feature-item">
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                    <span>Tutor Socrático Digital (Red Neuronal)</span>
+                                </div>
+                                <div class="feature-item">
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                    <span>Funcionamiento 100% Offline para escuelas</span>
+                                </div>
+                                <div class="feature-item">
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                    <span>Gamificación RPG & Batallas de Conocimiento</span>
+                                </div>
+                                <div class="feature-item">
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                    <span>Analítica de razonamiento para profesores</span>
+                                </div>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="arenai.html" class="btn btn-primary glow-effect">
+                                    <ion-icon name="open-outline"></ion-icon> Ver Proyecto Completo
+                                </a>
+                                <a href="arenai.html#hero" class="btn btn-ghost">
+                                    <ion-icon name="game-controller-outline"></ion-icon> Probar Demo
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="feature-list small-text">
-                        <li><ion-icon name="checkmark-outline"></ion-icon> Basic AI Access</li>
-                        <li><ion-icon name="checkmark-outline"></ion-icon> Standard Analytics</li>
-                        <li><ion-icon name="checkmark-outline"></ion-icon> Email Support</li>
-                    </ul>
-                    <a href="#" class="btn btn-ghost full-width">Request Demo</a>
                 </div>
 
-                <div class="pricing-card glass popular glow-border">
-                    <div class="badge-pop">Most Popular</div>
-                    <div class="card-header">
-                        <h3>Plus</h3>
-                        <p class="price-desc">For growing schools</p>
+                <!-- Future Project Slot -->
+                <div class="project-card placeholder-project glass animate-fade delay-1">
+                    <div class="placeholder-icon">
+                        <ion-icon name="add-circle-outline"></ion-icon>
                     </div>
-                    <div class="price-tag">
-                        <span class="currency">$</span>
-                        <span class="amount">8</span>
-                        <span class="period">/student</span>
-                    </div>
-                    <ul class="feature-list small-text">
-                        <li><ion-icon name="checkmark-circle"></ion-icon> Full RPG Mode</li>
-                        <li><ion-icon name="checkmark-circle"></ion-icon> KPI-based Suggestions</li>
-                        <li><ion-icon name="checkmark-circle"></ion-icon> Priority Support</li>
-                        <li><ion-icon name="checkmark-circle"></ion-icon> Unlimited Minigames</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary full-width">Contact Sales</a>
-                </div>
-
-                <div class="pricing-card glass">
-                    <div class="card-header">
-                        <h3>Premium</h3>
-                        <p class="price-desc">Large Institutions (MEP)</p>
-                    </div>
-                    <div class="price-tag">
-                        <span class="currency">$</span>
-                        <span class="amount">12</span>
-                        <span class="period">/student</span>
-                    </div>
-                    <ul class="feature-list small-text">
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Custom Integrations</li>
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Personalized AI</li>
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> Dedicated Success Manager</li>
-                        <li><ion-icon name="checkmark-done-circle"></ion-icon> API Access</li>
-                    </ul>
-                    <a href="#" class="btn btn-ghost full-width">Get a Quote</a>
+                    <h3>Próximo Proyecto</h3>
+                    <p class="placeholder-desc">
+                        Nuevas soluciones en desarrollo (IA, Analítica de Datos & Software). Se incorporarán próximamente a este catálogo.
+                    </p>
+                    <span class="badge-status">En construcción</span>
                 </div>
             </div>
         </section>
 
-        <section class="cta-section section-spacing text-center">
-            <div class="cta-content glass glow-border">
-                <h2>Ready to start your legend?</h2>
-                <p>Join ArenAI today and transform the way you learn.</p>
-                <a href="/register" class="btn btn-primary btn-xl scale-pulse">Create Free Account</a>
-            </div>
-        </section>
-
-        <section id="team" class="team section-spacing">
+        <!-- Resume & Certifications Section -->
+        <section id="resume" class="resume section-spacing">
             <div class="section-header text-center">
-                <h2 class="section-title">Our Team</h2>
-                <p class="section-subtitle">Experts revolutionizing education with AI.</p>
+                <span class="section-tag">Trayectoria</span>
+                <h2 class="section-title">CV & Certificaciones</h2>
+                <p class="section-subtitle">Experiencia laboral, educación y credenciales.</p>
             </div>
 
-            <div class="team-grid">
-                <div class="team-card glass">
-                    <div class="team-avatar">
-                        <ion-icon name="person"></ion-icon>
+            <div class="resume-grid">
+                <!-- Column 1: Experiencia Laboral -->
+                <div class="resume-col glass">
+                    <div class="col-header">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <h3>Experiencia Laboral</h3>
                     </div>
-                    <h3>Yereth Soto</h3>
-                    <p class="team-role text-gradient">CEO</p>
-                    <p class="team-desc">Leading the educational revolution in Costa Rica.</p>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2024 - Presente</span>
+                                <h4 class="timeline-title">Co-fundador, CFO & Estrategia de Datos</h4>
+                                <span class="timeline-org">ArenAI &bull; Costa Rica</span>
+                                <p class="timeline-desc">
+                                    Liderazgo en la estrategia financiera, análisis de viabilidad de modelos SaaS híbridos, e inferencia de datos para la plataforma educativa socrática.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2022 - 2024</span>
+                                <h4 class="timeline-title">[Título del Puesto / Rol]</h4>
+                                <span class="timeline-org">[Nombre de Empresa / Organización]</span>
+                                <p class="timeline-desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2020 - 2022</span>
+                                <h4 class="timeline-title">[Título del Puesto / Rol]</h4>
+                                <span class="timeline-org">[Nombre de Empresa / Organización]</span>
+                                <p class="timeline-desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="team-card glass">
-                    <div class="team-avatar">
-                        <ion-icon name="code-slash"></ion-icon>
+                <!-- Column 2: Certificaciones & Educación -->
+                <div class="resume-col glass">
+                    <div class="col-header">
+                        <ion-icon name="ribbon-outline"></ion-icon>
+                        <h3>Certificaciones & Educación</h3>
                     </div>
-                    <h3>Reishell</h3>
-                    <p class="team-role text-gradient">CTO</p>
-                    <p class="team-desc">Expert in Artificial Intelligence and development.</p>
-                </div>
 
-                <div class="team-card glass">
-                    <div class="team-avatar">
-                        <ion-icon name="trending-up"></ion-icon>
+                    <div class="certifications-list">
+                        <div class="cert-card glass hover-scale">
+                            <div class="cert-icon"><ion-icon name="school-outline"></ion-icon></div>
+                            <div class="cert-info">
+                                <h4>[Grado Académico / Titulación]</h4>
+                                <span class="cert-issuer">[Universidad / Institución] &bull; [Año]</span>
+                                <p class="cert-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-card glass hover-scale">
+                            <div class="cert-icon"><ion-icon name="hardware-chip-outline"></ion-icon></div>
+                            <div class="cert-info">
+                                <h4>[Certificación en IA / Desarrollo]</h4>
+                                <span class="cert-issuer">[Plataforma Emisora] &bull; [Año]</span>
+                                <p class="cert-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-card glass hover-scale">
+                            <div class="cert-icon"><ion-icon name="bar-chart-outline"></ion-icon></div>
+                            <div class="cert-info">
+                                <h4>[Certificación en Análisis de Datos / Finanzas]</h4>
+                                <span class="cert-issuer">[Plataforma Emisora] &bull; [Año]</span>
+                                <p class="cert-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Leonardo</h3>
-                    <p class="team-role text-gradient">CFO</p>
-                    <p class="team-desc">Expert in analysis and inference of complex data.</p>
+                </div>
+            </div>
+
+            <!-- Download CV CTA Bar -->
+            <div class="cv-download-bar glass glow-border text-center">
+                <div class="cv-bar-content">
+                    <div>
+                        <h3>¿Deseas consultar mi Hoja de Vida completa?</h3>
+                        <p>Descarga mi currículum actualizado con el detalle de proyectos y competencias.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary btn-xl glow-effect">
+                        <ion-icon name="download-outline"></ion-icon> Solicitar / Descargar CV (PDF)
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- Skills Section -->
+        <section id="skills" class="skills section-spacing">
+            <div class="section-header text-center">
+                <span class="section-tag">Competencias</span>
+                <h2 class="section-title">Habilidades & Stack</h2>
+                <p class="section-subtitle">Tecnologías, lenguajes y metodologías.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category glass">
+                    <div class="category-header">
+                        <ion-icon name="brain-outline"></ion-icon>
+                        <h3>Inteligencia Artificial & Datos</h3>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Redes Neuronales</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Modelos Socráticos</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Python</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Inferencia de Datos</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Analítica Predictiva</span>
+                    </div>
+                </div>
+
+                <div class="skill-category glass">
+                    <div class="category-header">
+                        <ion-icon name="code-working-outline"></ion-icon>
+                        <h3>Desarrollo Web & Software</h3>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> HTML5 / CSS3</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> JavaScript (ES6+)</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Arquitectura Web</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Git / GitHub</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Despliegue Offline-First</span>
+                    </div>
+                </div>
+
+                <div class="skill-category glass">
+                    <div class="category-header">
+                        <ion-icon name="calculator-outline"></ion-icon>
+                        <h3>Estrategia & Gestión</h3>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Estrategia Financiera (CFO)</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Modelos de Negocio SaaS</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Análisis de KPIs</span>
+                        <span class="skill-tag"><ion-icon name="checkmark-sharp"></ion-icon> Gestión de Proyectos EdTech</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-spacing">
+            <div class="section-header text-center">
+                <span class="section-tag">Conectemos</span>
+                <h2 class="section-title">Contacto</h2>
+                <p class="section-subtitle">¿Tienes alguna propuesta o duda? Hablemos.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Form -->
+                <div class="contact-form-container glass">
+                    <h3>Enviar un Mensaje</h3>
+                    <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" required placeholder="Tu nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" required placeholder="tu@correo.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" required placeholder="Consulta / Propuesta">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary full-width glow-effect">
+                            <ion-icon name="paper-plane-outline"></ion-icon> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Direct Info -->
+                <div class="contact-info-container">
+                    <div class="contact-card glass hover-scale">
+                        <div class="contact-icon"><ion-icon name="mail-outline"></ion-icon></div>
+                        <div class="contact-text">
+                            <h4>Email Directo</h4>
+                            <a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card glass hover-scale">
+                        <div class="contact-icon"><ion-icon name="logo-whatsapp"></ion-icon></div>
+                        <div class="contact-text">
+                            <h4>WhatsApp</h4>
+                            <span>+506 0000-0000</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-card glass hover-scale">
+                        <div class="contact-icon"><ion-icon name="logo-github"></ion-icon></div>
+                        <div class="contact-text">
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/lescobarx83" target="_blank" rel="noopener">github.com/lescobarx83</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card glass hover-scale">
+                        <div class="contact-icon"><ion-icon name="location-outline"></ion-icon></div>
+                        <div class="contact-text">
+                            <h4>Ubicación</h4>
+                            <span>Costa Rica 🇨🇷</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer-expanded">
         <div class="footer-grid">
             <div class="footer-col brand-col">
-                <h3>ArenAI</h3>
-                <p>Gamified Education powered by Artificial Intelligence.</p>
+                <h3>Leonardo Escobar</h3>
+                <p>Portafolio Profesional. Desarrollo, Inteligencia Artificial y Estrategia de Datos.</p>
                 <div class="social-links">
-                    <a href="#"><ion-icon name="logo-discord"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                    <a href="https://github.com/lescobarx83" target="_blank" rel="noopener" aria-label="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                    <a href="#contact" aria-label="Email"><ion-icon name="mail-outline"></ion-icon></a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Product</h4>
-                <a href="#">Features</a>
-                <a href="#">For Schools</a>
-                <a href="#">Pricing</a>
+                <h4>Navegación</h4>
+                <a href="#hero">Inicio</a>
+                <a href="#about">Sobre Mí</a>
+                <a href="#projects">Proyectos</a>
+                <a href="#resume">CV & Certificaciones</a>
             </div>
             <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="#">Help</a>
-                <a href="#">Blog</a>
-                <a href="#">Community</a>
+                <h4>Destacado</h4>
+                <a href="arenai.html">Proyecto ArenAI</a>
+                <a href="#skills">Habilidades</a>
+                <a href="#contact">Contacto</a>
             </div>
             <div class="footer-col">
-                <h4>Legal</h4>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
+                <h4>Contacto</h4>
+                <a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a>
+                <a href="#contact">+506 0000-0000</a>
             </div>
         </div>
         <div class="footer-copy">
-            &copy; 2025 ArenAI. Made with <ion-icon name="heart" class="text-red"></ion-icon> for students.
+            &copy; 2026 Leonardo Escobar. Todos los derechos reservados.
         </div>
     </footer>
 
@@ -357,7 +525,3 @@
 </body>
 
 </html>
-
-
-
-
