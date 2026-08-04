@@ -187,4 +187,68 @@ document.addEventListener('DOMContentLoaded', () => {
             if (ioBar) ioBar.style.width = ioPct + '%';
         }, 2200);
     }
+
+    // =========================================================================
+    // SCROLL REVEAL ANIMATIONS — Premium Entry Effects
+    // =========================================================================
+
+    // Add reveal classes to sections and their child cards
+    const revealSections = document.querySelectorAll('#awards, #infrastructure, #rack, #experience, #skills, #contact');
+    revealSections.forEach(section => {
+        // Add reveal class to section header
+        const header = section.querySelector('.header-center');
+        if (header) header.classList.add('reveal-section');
+
+        // Add reveal class to grid children
+        const children = section.querySelectorAll('.award-card, .arch-card, .timeline-card, .skill-box, .direct-contact-card, .e9000h-hardware-outer');
+        children.forEach(child => child.classList.add('reveal-child'));
+    });
+
+    // IntersectionObserver for section headers
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal-section').forEach(el => sectionObserver.observe(el));
+
+    // IntersectionObserver for staggered children
+    const childObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parent = entry.target.parentElement;
+                const siblings = parent ? parent.querySelectorAll('.reveal-child') : [];
+                let delay = 0;
+                siblings.forEach((sibling, i) => {
+                    if (sibling === entry.target) delay = i * 100;
+                });
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, delay);
+                childObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal-child').forEach(el => childObserver.observe(el));
+
+    // =========================================================================
+    // NAV BACKGROUND SOLIDIFY ON SCROLL
+    // =========================================================================
+    const navContainer = document.querySelector('.nav-container');
+    if (navContainer) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navContainer.style.background = 'rgba(5, 6, 8, 0.92)';
+                navContainer.style.borderColor = 'rgba(230, 0, 18, 0.2)';
+            } else {
+                navContainer.style.background = '';
+                navContainer.style.borderColor = '';
+            }
+        }, { passive: true });
+    }
 });

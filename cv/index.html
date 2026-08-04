@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Leonardo Josué Escobar Solís | ICT Engineer</title>
+    <meta name="description" content="Currículum Vitae interactivo de Leonardo Josué Escobar Solís. ICT Engineer en Huawei Technologies, 3er Lugar Mundial ICT Competition, Cum Laude Probatus ULACIT.">
+    <meta property="og:title" content="CV — Leonardo Josué Escobar Solís | ICT Engineer">
+    <meta property="og:description" content="ICT Engineer en Huawei Technologies. 3er Lugar Mundial Huawei ICT Competition. Ingeniería Informática Cum Laude Probatus, ULACIT.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <!-- Background Ambient Grid -->
+    <div class="cv-bg-grid">
+        <div class="cv-glow-cyan"></div>
+        <div class="cv-glow-purple"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="cv-nav-wrapper">
+        <nav class="cv-nav glass-panel" id="cv-nav">
+            <a href="../index.html" class="cv-brand">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+                <span>Portafolio</span>
+            </a>
+
+            <div class="cv-nav-links" id="cv-nav-links">
+                <a href="#experiencia" class="cv-nav-link">Experiencia</a>
+                <a href="#educacion" class="cv-nav-link">Educación</a>
+                <a href="#habilidades" class="cv-nav-link">Habilidades</a>
+                <a href="#proyectos" class="cv-nav-link">Proyectos</a>
+                <a href="#certificaciones" class="cv-nav-link">Certificaciones</a>
+                <a href="#contacto" class="cv-nav-link">Contacto</a>
+            </div>
+
+            <div class="cv-nav-actions">
+                <button class="cv-btn-download" id="btn-download-pdf" title="Descargar CV como PDF">
+                    <ion-icon name="download-outline"></ion-icon>
+                    <span>Descargar PDF</span>
+                </button>
+                <button class="cv-mobile-toggle" id="cv-mobile-toggle" aria-label="Abrir menú">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============================================================ -->
+        <!-- HERO / HEADER SECTION                                        -->
+        <!-- ============================================================ -->
+        <section id="cv-hero" class="cv-section cv-hero-section">
+            <div class="cv-hero-content">
+                <!-- Avatar & Identity -->
+                <div class="cv-hero-identity">
+                    <div class="cv-avatar-ring">
+                        <img src="../assets/avatar.svg" alt="Leonardo Josué Escobar Solís" class="cv-avatar-img">
+                    </div>
+                    <div class="cv-hero-text">
+                        <div class="cv-hero-badge">
+                            <span class="cv-status-dot"></span>
+                            ICT ENGINEER &bull; HUAWEI TECHNOLOGIES
+                        </div>
+                        <h1 class="cv-hero-name">
+                            Leonardo Josué
+                            <span class="cv-text-gradient">Escobar Solís</span>
+                        </h1>
+                        <p class="cv-hero-title">Ingeniero en Tecnologías de la Información y Comunicación</p>
+                        <p class="cv-hero-bio">
+                            Ingeniero en TIC en Huawei Latinoamérica, encargado de liderar la gestión integral de plataformas críticas de gestión y garantizando la continuidad operativa desde la infraestructura física hasta la lógica backend. Enfoque profesional combinando administración de sistemas, redes y soporte técnico especializado, con amplia experiencia en la gestión de infraestructuras complejas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Info Grid -->
+                <div class="cv-hero-info-grid">
+                    <div class="cv-info-chip glass-panel">
+                        <ion-icon name="location-outline"></ion-icon>
+                        <div>
+                            <span class="cv-chip-label">Ubicación</span>
+                            <span class="cv-chip-value">Alajuela, La Guácima, Costa Rica</span>
+                        </div>
+                    </div>
+                    <div class="cv-info-chip glass-panel">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <div>
+                            <span class="cv-chip-label">Teléfono</span>
+                            <span class="cv-chip-value">+506 8855 6658</span>
+                        </div>
+                    </div>
+                    <div class="cv-info-chip glass-panel">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <div>
+                            <span class="cv-chip-label">Email</span>
+                            <span class="cv-chip-value">lescobar2004@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="cv-info-chip glass-panel">
+                        <ion-icon name="school-outline"></ion-icon>
+                        <div>
+                            <span class="cv-chip-label">Email Académico</span>
+                            <span class="cv-chip-value">lescobars744@ulacit.ed.cr</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links Row -->
+                <div class="cv-hero-socials">
+                    <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="cv-social-btn">
+                        <ion-icon name="logo-linkedin"></ion-icon> LinkedIn
+                    </a>
+                    <a href="https://github.com/lescobarx83" target="_blank" rel="noopener" class="cv-social-btn">
+                        <ion-icon name="logo-github"></ion-icon> GitHub
+                    </a>
+                    <a href="mailto:lescobar2004@gmail.com" class="cv-social-btn">
+                        <ion-icon name="mail-outline"></ion-icon> Email
+                    </a>
+                    <button class="cv-social-btn cv-social-btn-accent" id="btn-download-hero">
+                        <ion-icon name="download-outline"></ion-icon> Descargar PDF
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- EXPERIENCIA LABORAL                                          -->
+        <!-- ============================================================ -->
+        <section id="experiencia" class="cv-section">
+            <div class="cv-section-header reveal-on-scroll">
+                <span class="cv-section-tag">Trayectoria Profesional</span>
+                <h2 class="cv-section-heading">Experiencia Laboral</h2>
+                <p class="cv-section-subtitle">+2 años en Huawei Technologies Latinoamérica — Gestión integral de plataformas críticas e infraestructura de misión crítica.</p>
+            </div>
+
+            <div class="cv-timeline">
+                <!-- Role 1: ICT Engineer (Current) -->
+                <div class="cv-timeline-item reveal-on-scroll">
+                    <div class="cv-timeline-marker">
+                        <span class="cv-timeline-dot active"></span>
+                        <span class="cv-timeline-line"></span>
+                    </div>
+                    <div class="cv-timeline-card glass-panel">
+                        <div class="cv-timeline-header">
+                            <span class="cv-timeline-badge current">Actual</span>
+                            <span class="cv-timeline-period">Enero 2026 — Presente</span>
+                        </div>
+                        <h3 class="cv-timeline-role">ICT Engineer</h3>
+                        <span class="cv-timeline-company">
+                            <ion-icon name="business-outline"></ion-icon> Huawei Technologies — Latinoamérica
+                        </span>
+                        <p class="cv-timeline-summary">
+                            Liderazgo del ciclo de vida completo de plataformas de gestión críticas, garantizando la continuidad operativa mediante un enfoque integral que abarca desde la infraestructura física hasta la lógica backend.
+                        </p>
+
+                        <!-- Expandable Details -->
+                        <div class="cv-timeline-details" id="details-ict-engineer">
+                            <ul class="cv-detail-list">
+                                <li>
+                                    <strong>Gestión de Sistemas Full-Stack:</strong> Responsabilidad en el mantenimiento preventivo y correctivo de sistemas de gestión, asegurando la estabilidad del software, la salud del hardware y la integridad del backend.
+                                </li>
+                                <li>
+                                    <strong>Implementaciones E2E:</strong> Ejecución de proyectos técnicos completos, incluyendo la desincorporación de hardware legado, instalación física de gabinetes/equipos y configuración lógica hasta la puesta en producción.
+                                </li>
+                                <li>
+                                    <strong>Resolución de Incidentes (SLA):</strong> Gestión y resolución de tiquetes técnicos complejos para clientes finales, con adhesión estricta a los Acuerdos de Nivel de Servicio (SLAs) y garantía de entregas de alta calidad.
+                                </li>
+                                <li>
+                                    <strong>Soporte de TI Interdepartamental:</strong> Desempeño como consultoría técnica y liderazgo de soporte para otros departamentos en tareas críticas de TI, integrando soluciones de redes y sistemas.
+                                </li>
+                                <!-- TODO: Agrega más responsabilidades o logros aquí -->
+                            </ul>
+                        </div>
+                        <button class="cv-toggle-details" data-target="details-ict-engineer">
+                            <span class="toggle-text">Ver más</span>
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Role 2: SmartCare Engineer -->
+                <div class="cv-timeline-item reveal-on-scroll">
+                    <div class="cv-timeline-marker">
+                        <span class="cv-timeline-dot"></span>
+                        <span class="cv-timeline-line"></span>
+                    </div>
+                    <div class="cv-timeline-card glass-panel">
+                        <div class="cv-timeline-header">
+                            <span class="cv-timeline-badge">1 año</span>
+                            <span class="cv-timeline-period">Abril 2025 — Marzo 2026</span>
+                        </div>
+                        <h3 class="cv-timeline-role">SmartCare Engineer (Data Analyst)</h3>
+                        <span class="cv-timeline-company">
+                            <ion-icon name="business-outline"></ion-icon> Huawei Technologies — Latinoamérica
+                        </span>
+                        <p class="cv-timeline-summary">
+                            Coadministración de una plataforma de análisis dentro de un equipo optimizado, supervisando la instalación, integración y el mantenimiento completo de todos los componentes de la infraestructura.
+                        </p>
+
+                        <!-- Expandable Details -->
+                        <div class="cv-timeline-details" id="details-smartcare">
+                            <ul class="cv-detail-list">
+                                <li>
+                                    <strong>Gobernanza de Datos:</strong> Gestión de gobernanza de datos y análisis de información para el desarrollo de recomendaciones estratégicas, presentando perspectivas accionables directamente a los ejecutivos de los clientes.
+                                </li>
+                                <li>
+                                    <strong>Vinculación Técnico-Comercial:</strong> Traducción de datos de rendimiento de la plataforma en información orientada al cliente para mejoras operativas y de marketing.
+                                </li>
+                                <!-- TODO: Agrega más responsabilidades o logros aquí -->
+                            </ul>
+                        </div>
+                        <button class="cv-toggle-details" data-target="details-smartcare">
+                            <span class="toggle-text">Ver más</span>
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Role 3: Engineer Intern -->
+                <div class="cv-timeline-item reveal-on-scroll">
+                    <div class="cv-timeline-marker">
+                        <span class="cv-timeline-dot"></span>
+                        <span class="cv-timeline-line last"></span>
+                    </div>
+                    <div class="cv-timeline-card glass-panel">
+                        <div class="cv-timeline-header">
+                            <span class="cv-timeline-badge">1 año 2 meses</span>
+                            <span class="cv-timeline-period">Abril 2024 — Mayo 2025</span>
+                        </div>
+                        <h3 class="cv-timeline-role">Engineer Intern</h3>
+                        <span class="cv-timeline-company">
+                            <ion-icon name="business-outline"></ion-icon> Huawei Technologies — Latinoamérica
+                        </span>
+                        <p class="cv-timeline-summary">
+                            Coadministración de una plataforma de telecomunicaciones virtualizada completa en un entorno de alta disponibilidad (activo-activo) dentro de un equipo de dos personas.
+                        </p>
+
+                        <!-- Expandable Details -->
+                        <div class="cv-timeline-details" id="details-intern">
+                            <ul class="cv-detail-list">
+                                <li>
+                                    <strong>Alta Disponibilidad:</strong> Gestión de tareas administrativas y resolución de problemas mediante sistema de tiquetes, manteniendo un tiempo de actividad del 100% y la confiabilidad total del sistema.
+                                </li>
+                                <li>
+                                    <strong>Gestión de Proyectos:</strong> Desarrollo de competencias fundamentales en gestión de proyectos a través del mantenimiento de la plataforma de extremo a extremo y procesos sistemáticos de resolución de incidentes.
+                                </li>
+                                <!-- TODO: Agrega más responsabilidades o logros aquí -->
+                            </ul>
+                        </div>
+                        <button class="cv-toggle-details" data-target="details-intern">
+                            <span class="toggle-text">Ver más</span>
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TODO: Para agregar más roles, copia cualquier bloque "cv-timeline-item" de arriba
+                     y modifica los datos. Ejemplo:
+                <div class="cv-timeline-item reveal-on-scroll">
+                    <div class="cv-timeline-marker">
+                        <span class="cv-timeline-dot"></span>
+                        <span class="cv-timeline-line last"></span>
+                    </div>
+                    <div class="cv-timeline-card glass-panel">
+                        <div class="cv-timeline-header">
+                            <span class="cv-timeline-badge">Duración</span>
+                            <span class="cv-timeline-period">Fecha Inicio — Fecha Fin</span>
+                        </div>
+                        <h3 class="cv-timeline-role">Puesto / Rol</h3>
+                        <span class="cv-timeline-company">
+                            <ion-icon name="business-outline"></ion-icon> Empresa
+                        </span>
+                        <p class="cv-timeline-summary">Resumen del rol</p>
+                        <div class="cv-timeline-details" id="details-nuevo-rol">
+                            <ul class="cv-detail-list">
+                                <li><strong>Responsabilidad:</strong> Descripción</li>
+                            </ul>
+                        </div>
+                        <button class="cv-toggle-details" data-target="details-nuevo-rol">
+                            <span class="toggle-text">Ver más</span>
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- EDUCACIÓN                                                    -->
+        <!-- ============================================================ -->
+        <section id="educacion" class="cv-section">
+            <div class="cv-section-header reveal-on-scroll">
+                <span class="cv-section-tag">Formación Académica</span>
+                <h2 class="cv-section-heading">Educación</h2>
+            </div>
+
+            <div class="cv-education-grid">
+                <!-- Maestría -->
+                <div class="cv-edu-card glass-panel reveal-on-scroll">
+                    <div class="cv-edu-icon">
+                        <ion-icon name="school-outline"></ion-icon>
+                    </div>
+                    <span class="cv-edu-badge in-progress">En Curso</span>
+                    <h3 class="cv-edu-degree">Maestría en Tecnología de la Información</h3>
+                    <p class="cv-edu-mention">Mención en Administración de Proyectos</p>
+                    <span class="cv-edu-institution">
+                        <ion-icon name="business-outline"></ion-icon>
+                        Universidad Latinoamericana de Ciencias y Tecnología (ULACIT)
+                    </span>
+                    <span class="cv-edu-period">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        Enero 2025 — Diciembre 2027
+                    </span>
+                    <!-- TODO: Agrega logros académicos de la maestría aquí si lo deseas
+                    <div class="cv-edu-achievements">
+                        <span class="cv-edu-achievement-pill">Logro 1</span>
+                    </div>
+                    -->
+                </div>
+
+                <!-- Bachillerato -->
+                <div class="cv-edu-card glass-panel reveal-on-scroll">
+                    <div class="cv-edu-icon gold">
+                        <ion-icon name="ribbon-outline"></ion-icon>
+                    </div>
+                    <span class="cv-edu-badge graduated">Cum Laude Probatus</span>
+                    <h3 class="cv-edu-degree">Bachillerato en Ingeniería Informática</h3>
+                    <p class="cv-edu-mention">Graduado con Honores</p>
+                    <span class="cv-edu-institution">
+                        <ion-icon name="business-outline"></ion-icon>
+                        Universidad Latinoamericana de Ciencias y Tecnología (ULACIT)
+                    </span>
+                    <span class="cv-edu-period">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        Enero 2021 — Diciembre 2024
+                    </span>
+                    <div class="cv-edu-achievements">
+                        <span class="cv-edu-achievement-pill gold">Cum Laude Probatus</span>
+                        <span class="cv-edu-achievement-pill">Inglés B2+ / C1</span>
+                        <span class="cv-edu-achievement-pill">Artes Humanísticas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- HABILIDADES TÉCNICAS                                         -->
+        <!-- ============================================================ -->
+        <section id="habilidades" class="cv-section">
+            <div class="cv-section-header reveal-on-scroll">
+                <span class="cv-section-tag">Competencias</span>
+                <h2 class="cv-section-heading">Habilidades Técnicas</h2>
+                <p class="cv-section-subtitle">Stack técnico consolidado en infraestructura, desarrollo y administración de sistemas.</p>
+            </div>
+
+            <div class="cv-skills-grid">
+                <!-- Category 1: Infrastructure & OS -->
+                <div class="cv-skill-category glass-panel reveal-on-scroll">
+                    <div class="cv-skill-cat-header">
+                        <ion-icon name="terminal-outline"></ion-icon>
+                        <h3>Sistemas Operativos & Virtualización</h3>
+                    </div>
+                    <div class="cv-skill-bars">
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Linux (SUSE, RHEL, Debian)</span>
+                                <span class="cv-skill-level">Avanzado</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="92"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Bash / Shell Scripting</span>
+                                <span class="cv-skill-level">Intermedio-Avanzado</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="75"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Docker / Kubernetes</span>
+                                <span class="cv-skill-level">Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="60"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Virtualización (KVM / Proxmox)</span>
+                                <span class="cv-skill-level">Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="58"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Development -->
+                <div class="cv-skill-category glass-panel reveal-on-scroll">
+                    <div class="cv-skill-cat-header">
+                        <ion-icon name="code-slash-outline"></ion-icon>
+                        <h3>Desarrollo de Software</h3>
+                    </div>
+                    <div class="cv-skill-bars">
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>HTML / CSS / JavaScript</span>
+                                <span class="cv-skill-level">Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="62"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>TypeScript</span>
+                                <span class="cv-skill-level">Básico-Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="45"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Python</span>
+                                <span class="cv-skill-level">Básico-Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="48"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Node.js</span>
+                                <span class="cv-skill-level">Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="58"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>React / Vue</span>
+                                <span class="cv-skill-level">Básico-Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="40"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>C / C++</span>
+                                <span class="cv-skill-level">Básico-Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="42"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>PHP</span>
+                                <span class="cv-skill-level">Básico</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="35"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Databases & Infrastructure -->
+                <div class="cv-skill-category glass-panel reveal-on-scroll">
+                    <div class="cv-skill-cat-header">
+                        <ion-icon name="server-outline"></ion-icon>
+                        <h3>Bases de Datos & Infraestructura</h3>
+                    </div>
+                    <div class="cv-skill-bars">
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>SQL / PostgreSQL</span>
+                                <span class="cv-skill-level">Avanzado</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="88"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Git / GitHub</span>
+                                <span class="cv-skill-level">Intermedio</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="60"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Servidores Blade / x86 & ARM</span>
+                                <span class="cv-skill-level">Avanzado</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="90"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Storage Empresarial (SAN/NAS)</span>
+                                <span class="cv-skill-level">Avanzado</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="86"></div></div>
+                        </div>
+                        <div class="cv-skill-bar-item">
+                            <div class="cv-skill-bar-label">
+                                <span>Redes & Switches Datacenter</span>
+                                <span class="cv-skill-level">Avanzado</span>
+                            </div>
+                            <div class="cv-skill-bar-track"><div class="cv-skill-bar-fill" data-width="85"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Skills Pills -->
+                <div class="cv-skill-extras glass-panel reveal-on-scroll">
+                    <div class="cv-skill-cat-header">
+                        <ion-icon name="sparkles-outline"></ion-icon>
+                        <h3>Competencias Adicionales</h3>
+                    </div>
+                    <div class="cv-skill-pills">
+                        <span class="cv-pill">Administración de TI</span>
+                        <span class="cv-pill">Soporte Técnico</span>
+                        <span class="cv-pill">Administración de Servidores</span>
+                        <span class="cv-pill">Alta Disponibilidad</span>
+                        <span class="cv-pill">WebSockets</span>
+                        <span class="cv-pill">Gestión de Proyectos</span>
+                        <span class="cv-pill">Resolución de Incidentes</span>
+                        <span class="cv-pill">SLA Management</span>
+                        <!-- TODO: Agrega más competencias/soft-skills aquí como:
+                        <span class="cv-pill">Nueva Competencia</span>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- PROYECTOS DESTACADOS                                         -->
+        <!-- ============================================================ -->
+        <section id="proyectos" class="cv-section">
+            <div class="cv-section-header reveal-on-scroll">
+                <span class="cv-section-tag">Portafolio</span>
+                <h2 class="cv-section-heading">Proyectos Destacados</h2>
+            </div>
+
+            <div class="cv-projects-grid">
+                <!-- Project 1: ArenAI -->
+                <div class="cv-project-card glass-panel reveal-on-scroll">
+                    <div class="cv-project-header">
+                        <div class="cv-project-icon">
+                            <ion-icon name="school-outline"></ion-icon>
+                        </div>
+                        <span class="cv-project-status online">
+                            <span class="cv-status-dot"></span> Online
+                        </span>
+                    </div>
+                    <h3 class="cv-project-name">ArenAI</h3>
+                    <p class="cv-project-description">
+                        Plataforma SaaS educativa de impacto social. Conexión P2P directa mediante WebSockets, matrices cognitivas de retención, asistente capibara "Aren" y análisis de rutas de aprendizaje. Diseñada tras reuniones con autoridades educativas de El Salvador (MINED) y Costa Rica (MEP).
+                    </p>
+                    <div class="cv-project-tags">
+                        <span class="cv-project-tag">WebSockets</span>
+                        <span class="cv-project-tag">Docker</span>
+                        <span class="cv-project-tag">AI Engine</span>
+                        <span class="cv-project-tag">Node.js</span>
+                        <span class="cv-project-tag">PostgreSQL</span>
+                    </div>
+                    <div class="cv-project-links">
+                        <a href="../arenai/index.html" class="cv-project-link">
+                            <ion-icon name="open-outline"></ion-icon> Ver Proyecto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TODO: PROYECTO 2 — Copia este bloque y modifica los datos
+                <div class="cv-project-card glass-panel reveal-on-scroll">
+                    <div class="cv-project-header">
+                        <div class="cv-project-icon">
+                            <ion-icon name="cube-outline"></ion-icon>
+                        </div>
+                        <span class="cv-project-status">
+                            <span class="cv-status-dot"></span> Estado
+                        </span>
+                    </div>
+                    <h3 class="cv-project-name">Nombre del Proyecto</h3>
+                    <p class="cv-project-description">
+                        Descripción breve del proyecto, qué hace y cuál es su impacto.
+                    </p>
+                    <div class="cv-project-tags">
+                        <span class="cv-project-tag">Tecnología 1</span>
+                        <span class="cv-project-tag">Tecnología 2</span>
+                    </div>
+                    <div class="cv-project-links">
+                        <a href="#" class="cv-project-link">
+                            <ion-icon name="open-outline"></ion-icon> Ver Proyecto
+                        </a>
+                        <a href="#" class="cv-project-link">
+                            <ion-icon name="logo-github"></ion-icon> Repositorio
+                        </a>
+                    </div>
+                </div>
+                -->
+
+                <!-- TODO: PROYECTO 3 — Mismo formato que arriba
+                <div class="cv-project-card glass-panel reveal-on-scroll">
+                    ...
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- CERTIFICACIONES                                              -->
+        <!-- ============================================================ -->
+        <section id="certificaciones" class="cv-section">
+            <div class="cv-section-header reveal-on-scroll">
+                <span class="cv-section-tag">Acreditaciones</span>
+                <h2 class="cv-section-heading">Certificaciones & Logros</h2>
+            </div>
+
+            <div class="cv-certs-grid">
+                <!-- Main Achievement: ICT Competition -->
+                <div class="cv-cert-card glass-panel cv-cert-gold reveal-on-scroll">
+                    <div class="cv-cert-icon gold">
+                        <ion-icon name="trophy-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <span class="cv-cert-badge gold">🏆 MUNDIAL 2024-2025</span>
+                        <h3>3er Lugar Mundial — Computing</h3>
+                        <p class="cv-cert-issuer">Huawei ICT Competition</p>
+                        <p class="cv-cert-desc">
+                            Certificado de competencia otorgado por el 3er lugar mundial en la categoría de Computing de la Huawei ICT Competition 2024-2025. Demostración de capacidad técnica avanzada en arquitectura de servidores, sistemas operativos empresariales, bases de datos e infraestructura de alto rendimiento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Semifinalist Innovation -->
+                <div class="cv-cert-card glass-panel cv-cert-gold reveal-on-scroll">
+                    <div class="cv-cert-icon gold">
+                        <ion-icon name="bulb-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <span class="cv-cert-badge gold">🌍 MUNDIAL 2025-2026</span>
+                        <h3>Semifinalista Mundial — Innovación</h3>
+                        <p class="cv-cert-issuer">Huawei ICT Competition</p>
+                        <p class="cv-cert-desc">
+                            Semifinalista Global en la categoría de Innovación. Desarrollo de solución tecnológica avanzada integrando programación de software, análisis de rendimiento y modelado de estimaciones de costos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Certifications -->
+                <div class="cv-cert-card glass-panel reveal-on-scroll">
+                    <div class="cv-cert-icon">
+                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <h3>Seguridad de Redes Esencial</h3>
+                        <p class="cv-cert-issuer">Certificación Profesional</p>
+                    </div>
+                </div>
+
+                <div class="cv-cert-card glass-panel reveal-on-scroll">
+                    <div class="cv-cert-icon">
+                        <ion-icon name="git-network-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <h3>Fundamentos del Diseño de Redes</h3>
+                        <p class="cv-cert-issuer">Certificación Profesional</p>
+                    </div>
+                </div>
+
+                <div class="cv-cert-card glass-panel reveal-on-scroll">
+                    <div class="cv-cert-icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <h3>Fundamentos de la Ciberseguridad: Redes</h3>
+                        <p class="cv-cert-issuer">Certificación Profesional</p>
+                    </div>
+                </div>
+
+                <div class="cv-cert-card glass-panel reveal-on-scroll">
+                    <div class="cv-cert-icon">
+                        <ion-icon name="server-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <h3>SQL Server 2019 Esencial</h3>
+                        <p class="cv-cert-issuer">Certificación Profesional</p>
+                    </div>
+                </div>
+
+                <div class="cv-cert-card glass-panel reveal-on-scroll">
+                    <div class="cv-cert-icon">
+                        <ion-icon name="cloud-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <h3>Azure: Redes Virtuales</h3>
+                        <p class="cv-cert-issuer">Microsoft Azure</p>
+                    </div>
+                </div>
+
+                <!-- TODO: Para agregar más certificaciones, copia un bloque cv-cert-card y modifica:
+                <div class="cv-cert-card glass-panel reveal-on-scroll">
+                    <div class="cv-cert-icon">
+                        <ion-icon name="ribbon-outline"></ion-icon>
+                    </div>
+                    <div class="cv-cert-content">
+                        <h3>Nombre de la Certificación</h3>
+                        <p class="cv-cert-issuer">Emisor</p>
+                        <p class="cv-cert-desc">Descripción opcional</p>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- IDIOMAS                                                      -->
+        <!-- ============================================================ -->
+        <section id="idiomas" class="cv-section">
+            <div class="cv-section-header reveal-on-scroll">
+                <span class="cv-section-tag">Comunicación</span>
+                <h2 class="cv-section-heading">Idiomas</h2>
+            </div>
+
+            <div class="cv-languages-grid">
+                <div class="cv-lang-card glass-panel reveal-on-scroll">
+                    <div class="cv-lang-flag">🇨🇷</div>
+                    <h3>Español</h3>
+                    <span class="cv-lang-level native">Nativo</span>
+                    <div class="cv-lang-bar-track">
+                        <div class="cv-lang-bar-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <div class="cv-lang-card glass-panel reveal-on-scroll">
+                    <div class="cv-lang-flag">🇺🇸</div>
+                    <h3>Inglés</h3>
+                    <span class="cv-lang-level advanced">B2+ / C1 — Avanzado</span>
+                    <div class="cv-lang-bar-track">
+                        <div class="cv-lang-bar-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- TODO: Para agregar otro idioma:
+                <div class="cv-lang-card glass-panel reveal-on-scroll">
+                    <div class="cv-lang-flag">🏳️</div>
+                    <h3>Idioma</h3>
+                    <span class="cv-lang-level">Nivel</span>
+                    <div class="cv-lang-bar-track">
+                        <div class="cv-lang-bar-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- CONTACTO                                                     -->
+        <!-- ============================================================ -->
+        <section id="contacto" class="cv-section">
+            <div class="cv-section-header reveal-on-scroll">
+                <span class="cv-section-tag">Conexión Directa</span>
+                <h2 class="cv-section-heading">Contacto</h2>
+                <p class="cv-section-subtitle">Disponible para oportunidades profesionales, proyectos y colaboraciones.</p>
+            </div>
+
+            <div class="cv-contact-grid">
+                <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="cv-contact-card glass-panel reveal-on-scroll">
+                    <div class="cv-contact-icon linkedin">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Contacto principal y red profesional</p>
+                    <span class="cv-contact-link-text">linkedin.com/in/leonardo-escobar <ion-icon name="open-outline"></ion-icon></span>
+                </a>
+
+                <a href="mailto:lescobar2004@gmail.com" class="cv-contact-card glass-panel reveal-on-scroll">
+                    <div class="cv-contact-icon email">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </div>
+                    <h3>Email Personal</h3>
+                    <p>Consultas, proyectos o vacantes</p>
+                    <span class="cv-contact-link-text">lescobar2004@gmail.com <ion-icon name="mail-unread-outline"></ion-icon></span>
+                </a>
+
+                <a href="https://github.com/lescobarx83" target="_blank" rel="noopener" class="cv-contact-card glass-panel reveal-on-scroll">
+                    <div class="cv-contact-icon github">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Repositorios y proyectos de código</p>
+                    <span class="cv-contact-link-text">github.com/lescobarx83 <ion-icon name="open-outline"></ion-icon></span>
+                </a>
+
+                <a href="tel:+50688556658" class="cv-contact-card glass-panel reveal-on-scroll">
+                    <div class="cv-contact-icon phone">
+                        <ion-icon name="call-outline"></ion-icon>
+                    </div>
+                    <h3>Teléfono</h3>
+                    <p>Llamadas y WhatsApp</p>
+                    <span class="cv-contact-link-text">+506 8855 6658 <ion-icon name="call-outline"></ion-icon></span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="cv-footer">
+        <div class="cv-footer-content">
+            <p>&copy; 2026 Leonardo Josué Escobar Solís. Todos los derechos reservados.</p>
+            <div class="cv-footer-links">
+                <a href="../index.html">Portafolio</a>
+                <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/lescobarx83" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

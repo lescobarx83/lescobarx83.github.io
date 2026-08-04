@@ -86,4 +86,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 5. SCROLL REVEAL ANIMATIONS — Premium Section Entry Effects
+    const arenSections = document.querySelectorAll('.aren-section, .aren-bg-alt');
+    arenSections.forEach(section => {
+        const header = section.querySelector('.aren-section-header');
+        if (header) header.classList.add('aren-reveal');
+
+        const children = section.querySelectorAll('.aren-feature-card, .showcase-card, .aren-arch-card, .mascot-showcase-item, .interactive-demo-tabs');
+        children.forEach(child => child.classList.add('aren-reveal'));
+    });
+
+    const arenRevealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parent = entry.target.parentElement;
+                const siblings = parent ? parent.querySelectorAll('.aren-reveal') : [];
+                let delay = 0;
+                siblings.forEach((sibling, i) => {
+                    if (sibling === entry.target) delay = i * 100;
+                });
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, delay);
+                arenRevealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.aren-reveal').forEach(el => arenRevealObserver.observe(el));
+
+    // 6. NAV ACTIVE SECTION TRACKING ON SCROLL
+    const arenSectionsList = document.querySelectorAll('section[id]');
+    const arenNavLinks = document.querySelectorAll('.aren-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        arenSectionsList.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+        arenNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') && link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    }, { passive: true });
 });

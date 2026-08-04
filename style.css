@@ -61,6 +61,8 @@ body {
     color: var(--text-silver);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ==========================================================================
@@ -1694,4 +1696,74 @@ body.noc-power-on .site-footer {
     }
     .nav-menu.active { display: flex; }
     .nav-mobile-btn { display: block; }
+    .nav-actions { gap: 0.5rem; }
+    .footer-content { flex-direction: column; text-align: center; gap: 1.5rem; }
+    .footer-nav { justify-content: center; flex-wrap: wrap; }
+    .hero-text { max-width: 100%; }
+    .section { padding: 4rem 5%; }
+    .section-heading { font-size: 2rem; }
+}
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATIONS — Premium Section Entry Effects
+   ========================================================================== */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered child animations for grids */
+.reveal-child {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-child.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced award card glow on hover */
+.award-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Enhanced timeline card hover */
+.timeline-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-card:hover {
+    transform: translateX(6px);
+    border-color: var(--border-hw-red);
+    box-shadow: var(--shadow-chassis), var(--glow-hw-red);
+}
+
+/* Enhanced contact card hover */
+.direct-contact-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-hw-red);
+    box-shadow: var(--shadow-chassis), var(--glow-hw-red);
+}
+
+/* Enhanced skill pill micro-animation */
+.pill-hw {
+    cursor: default;
+}
+
+/* Smooth section tag pulse */
+.section-tag {
+    transition: all 0.3s ease;
+}
+
+.section-tag:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px var(--hw-red-primary);
 }

@@ -858,3 +858,72 @@ body.aren-app-body {
     .aren-cta-group { justify-content: center; }
     .aren-footer-content { flex-direction: column; gap: 1rem; text-align: center; }
 }
+
+@media (max-width: 640px) {
+    .aren-section { padding: 3.5rem 5%; }
+    .aren-hero-title { font-size: 2rem; }
+    .aren-section-header h2 { font-size: 1.8rem; }
+    .demo-tab-buttons { flex-direction: column; }
+    .mascot-dual-showcase { grid-template-columns: 1fr; }
+    .aren-impact-showcase-grid { grid-template-columns: 1fr; }
+    .aren-arch-cards-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATIONS — Premium Entry Effects for ArenAI
+   ========================================================================== */
+
+body.aren-app-body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.aren-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aren-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced card hovers */
+.aren-feature-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aren-feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--aren-cyan);
+    box-shadow: 0 12px 40px rgba(0, 242, 254, 0.15);
+}
+
+.showcase-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcase-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--aren-cyan);
+    box-shadow: 0 12px 40px rgba(0, 242, 254, 0.12);
+}
+
+.aren-arch-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aren-arch-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 242, 254, 0.12);
+}
+
+.mascot-showcase-item {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mascot-showcase-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--aren-cyan);
+}
