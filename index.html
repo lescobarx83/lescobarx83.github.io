@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leonardo Escobar - ICT Engineer & Infrastructure Specialist</title>
     <meta name="description" content="Portafolio profesional de Leonardo Escobar. ICT Engineer, ULACIT Cum Laude Probatus. Especialista en infraestructura de servidores, sistemas operativos empresariales, bases de datos y desarrollo de software.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Leonardo Escobar — ICT Engineer & Infrastructure Specialist">
+    <meta property="og:description" content="Portfolio of Leonardo Escobar. 3rd Place Global ICT Competition. ICT Engineer at Huawei Technologies. Cum Laude Probatus, ULACIT.">
+    <meta property="og:url" content="https://lescobarx83.github.io/">
+    <meta property="og:site_name" content="Leonardo Escobar Portfolio">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Leonardo Escobar — ICT Engineer">
+    <meta name="twitter:description" content="3rd Place Global ICT Competition · Huawei Technologies · Cum Laude Probatus">
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,16 +160,29 @@
             </a>
 
             <nav class="nav-menu" id="nav-menu">
-                <a href="#hero" class="nav-link active">Inicio</a>
-                <a href="#awards" class="nav-link">Logros</a>
-                <a href="#infrastructure" class="nav-link">Infraestructura</a>
-                <a href="#rack" class="nav-link">Proyectos</a>
-                <a href="#experience" class="nav-link">Experiencia</a>
-                <a href="#skills" class="nav-link">Habilidades</a>
-                <a href="#contact" class="nav-link">Contacto</a>
+                <a href="#hero" class="nav-link active" data-i18n="nav.home">Inicio</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">Sobre Mí</a>
+                <a href="#awards" class="nav-link" data-i18n="nav.awards">Logros</a>
+                <a href="#infrastructure" class="nav-link" data-i18n="nav.infra">Infraestructura</a>
+                <a href="#rack" class="nav-link" data-i18n="nav.projects">Proyectos</a>
+                <a href="#experience" class="nav-link" data-i18n="nav.experience">Experiencia</a>
+                <a href="#skills" class="nav-link" data-i18n="nav.skills">Habilidades</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">Contacto</a>
             </nav>
 
             <div class="nav-actions">
+                <!-- i18n Toggle -->
+                <button class="nav-toggle-btn" id="lang-toggle" title="Switch Language" aria-label="Toggle Language">
+                    <span class="toggle-label" id="lang-label">EN</span>
+                </button>
+                <!-- Dark/Light Mode Toggle -->
+                <button class="nav-toggle-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+                    <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
+                </button>
+                <!-- Terminal Testbed -->
+                <button class="nav-toggle-btn terminal-btn" id="terminal-toggle" title="Open Terminal" aria-label="Open Terminal">
+                    <ion-icon name="terminal-outline"></ion-icon>
+                </button>
                 <a href="cv/index.html" class="btn-hw-secondary" title="Ver CV Interactivo">
                     <ion-icon name="document-text-outline"></ion-icon> CV
                 </a>
@@ -784,6 +811,84 @@
         </section>
     </main>
 
+    <!-- ABOUT ME SIDEBAR (Off-canvas) -->
+    <div class="about-sidebar-overlay" id="about-overlay"></div>
+    <aside class="about-sidebar" id="about-sidebar">
+        <div class="sidebar-header">
+            <h2 data-i18n="about.heading">Perfil Personal</h2>
+            <button class="sidebar-close" id="sidebar-close" aria-label="Cerrar Panel">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+        </div>
+        
+        <div class="sidebar-content">
+            <!-- Quote Block -->
+            <div class="about-quote-block glass-panel">
+                <div class="about-quote-icon">
+                    <ion-icon name="code-slash-outline"></ion-icon>
+                </div>
+                <blockquote class="about-quote" data-i18n="about.quote">
+                    &ldquo;More efficiency, less drama.&rdquo;
+                </blockquote>
+                <span class="about-quote-author" data-i18n="about.quoteAuthor">— Core Philosophy</span>
+            </div>
+
+            <!-- Details Block -->
+            <div class="about-details-block">
+                <div class="about-detail-card glass-panel">
+                    <div class="about-detail-icon"><ion-icon name="git-network-outline"></ion-icon></div>
+                    <div>
+                        <h3 data-i18n="about.originTitle">Background</h3>
+                        <p data-i18n="about.originText">Mi trayectoria en la ingeniería comenzó con una curiosidad innata por la arquitectura de sistemas. Esta vocación analítica evolucionó hacia la infraestructura tecnológica, donde abordo cada desafío como un rompecabezas lógico y estructurado.</p>
+                    </div>
+                </div>
+                <div class="about-detail-card glass-panel">
+                    <div class="about-detail-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+                    <div>
+                        <h3 data-i18n="about.philosophyTitle">Work Ethos</h3>
+                        <p data-i18n="about.philosophyText">Eficiencia y rigor técnico. Mi enfoque se centra en la excelencia operativa. Concibo la optimización continua como un estándar, asegurando soluciones robustas y definitivas sin comprometer la calidad del despliegue.</p>
+                    </div>
+                </div>
+                <div class="about-detail-card glass-panel">
+                    <div class="about-detail-icon"><ion-icon name="analytics-outline"></ion-icon></div>
+                    <div>
+                        <h3 data-i18n="about.visionTitle">Future Vision</h3>
+                        <p data-i18n="about.visionText">Mi objetivo a mediano plazo es liderar la gestión estratégica de proyectos, donde mis decisiones de arquitectura e infraestructura generen un impacto cuantificable en la eficiencia organizacional.</p>
+                    </div>
+                </div>
+                <div class="about-detail-card glass-panel">
+                    <div class="about-detail-icon"><ion-icon name="game-controller-outline"></ion-icon></div>
+                    <div>
+                        <h3 data-i18n="about.hobbiesTitle">Off-Duty</h3>
+                        <p data-i18n="about.hobbiesText">Más allá del ámbito tecnológico, cultivo el pensamiento estratégico mediante el gaming competitivo y la música, actividades que complementan la agilidad mental requerida en entornos críticos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MINI TERMINAL TESTBED MODAL -->
+    <div class="terminal-modal" id="terminal-modal">
+        <div class="terminal-window">
+            <div class="terminal-titlebar">
+                <div class="terminal-dots">
+                    <span class="dot-red"></span>
+                    <span class="dot-yellow"></span>
+                    <span class="dot-green"></span>
+                </div>
+                <span class="terminal-title">leonardo@noc-cr01: ~</span>
+                <button class="terminal-close" id="terminal-close" aria-label="Close Terminal">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+            <div class="terminal-output" id="terminal-output"></div>
+            <div class="terminal-input-line">
+                <span class="terminal-prompt">leonardo@noc-cr01:~$</span>
+                <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-content">
@@ -793,6 +898,7 @@
             </div>
             <nav class="footer-nav">
                 <a href="#hero">Inicio</a>
+                <a href="#about">Sobre Mí</a>
                 <a href="#awards">Logros</a>
                 <a href="#infrastructure">Infraestructura</a>
                 <a href="#rack">Proyectos</a>

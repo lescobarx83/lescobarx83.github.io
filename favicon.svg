@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#050608"/>
+  <rect x="2" y="2" width="60" height="60" rx="10" fill="none" stroke="#E60012" stroke-width="2.5" opacity="0.8"/>
+  <text x="32" y="43" text-anchor="middle" font-family="'Courier New', monospace" font-weight="900" font-size="30" fill="#E60012" letter-spacing="-1">LE</text>
+  <circle cx="52" cy="12" r="4" fill="#00e676" opacity="0.9"/>
+</svg>
