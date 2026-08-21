@@ -15,6 +15,22 @@
 </head>
 
 <body class="noc-power-off">
+    <!-- MAINTENANCE STATUS BANNER — PROFESSIONAL NOTICE FOR INTERVIEWERS -->
+    <div class="maintenance-banner" id="maintenance-banner">
+        <div class="maintenance-inner">
+            <div class="maintenance-pulse"></div>
+            <ion-icon name="construct-outline"></ion-icon>
+            <span class="maintenance-text">
+                <strong>SITIO EN DESARROLLO ACTIVO</strong> — Algunas secciones pueden presentar inconsistencias visuales o funcionales. Estamos trabajando en mejoras continuas.
+            </span>
+            <button class="maintenance-dismiss" id="dismiss-maintenance" aria-label="Cerrar aviso">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- AMBIENT PARTICLE FIELD FOR DEPTH -->
+    <canvas id="particle-field" class="particle-field-canvas"></canvas>
     <!-- OPTICAL FIBER BLADE TELEPORT TRANSITION OVERLAY -->
     <div id="blade-teleport-overlay" class="blade-teleport-overlay">
         <div class="teleport-pulse-ring"></div>
@@ -166,8 +182,8 @@
                     <span class="text-gradient-red">Escobar.</span>
                 </h1>
                 
-                <p class="hero-subhead">
-                    ICT Engineer & Especialista en Infraestructura &bull; 3er Lugar Mundial ICT Competition &bull; Huawei Technologies
+                <p class="hero-subhead" id="hero-subhead-typed">
+                    <span class="typed-line"></span><span class="typing-cursor">|</span>
                 </p>
 
                 <p class="hero-text">
@@ -785,7 +801,15 @@
             </nav>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 Leonardo Escobar. Todos los derechos reservados.
+            <div class="footer-build-info">
+                <span class="footer-build-tag"><ion-icon name="git-branch-outline"></ion-icon> v2.1.0</span>
+                <span class="footer-separator">&bull;</span>
+                <span>BUILD 2026.08 — ACTIVE DEVELOPMENT</span>
+                <span class="footer-separator">&bull;</span>
+                <span class="footer-status-dot"></span>
+                <span>All Systems Nominal</span>
+            </div>
+            <p>&copy; 2026 Leonardo Escobar. Todos los derechos reservados.</p>
         </div>
     </footer>
 

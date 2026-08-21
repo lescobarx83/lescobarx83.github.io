@@ -251,4 +251,137 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
     }
+
+    // =========================================================================
+    // MAINTENANCE BANNER DISMISS LOGIC
+    // =========================================================================
+    const maintenanceBanner = document.getElementById('maintenance-banner');
+    const dismissBtn = document.getElementById('dismiss-maintenance');
+
+    if (maintenanceBanner && dismissBtn) {
+        // Check if previously dismissed this session
+        if (sessionStorage.getItem('maintenanceDismissed') === 'true') {
+            maintenanceBanner.classList.add('dismissed');
+        }
+
+        dismissBtn.addEventListener('click', () => {
+            maintenanceBanner.classList.add('dismissed');
+            sessionStorage.setItem('maintenanceDismissed', 'true');
+        });
+    }
+
+    // =========================================================================
+    // HERO SUBTITLE TYPEWRITER EFFECT
+    // =========================================================================
+    const typedLine = document.querySelector('.typed-line');
+    const typingCursor = document.querySelector('.typing-cursor');
+
+    if (typedLine) {
+        const phrases = [
+            'ICT Engineer & Especialista en Infraestructura',
+            '3er Lugar Mundial — Global ICT Competition',
+            'Delivery & Services Engineer — Huawei Technologies',
+            'Cum Laude Probatus — ULACIT',
+            'Semifinalista Mundial — Innovación ICT 2025-2026'
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 50;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typedLine.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 25;
+            } else {
+                typedLine.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 55;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2800; // Pause at full phrase
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 400; // Short pause before next phrase
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Start typing after preloader finishes
+        setTimeout(typeWriter, 3200);
+    }
+
+    // =========================================================================
+    // AMBIENT PARTICLE FIELD (Floating datacenter dust motes)
+    // =========================================================================
+    const canvas = document.getElementById('particle-field');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const PARTICLE_COUNT = 45;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedY = -(Math.random() * 0.3 + 0.1);
+                this.speedX = (Math.random() - 0.5) * 0.15;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.fadeDirection = Math.random() > 0.5 ? 0.003 : -0.003;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity += this.fadeDirection;
+
+                if (this.opacity <= 0.05 || this.opacity >= 0.6) {
+                    this.fadeDirection *= -1;
+                }
+
+                if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+                    this.reset();
+                    this.y = canvas.height + 10;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 242, 254, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    }
 });

@@ -65,6 +65,143 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Subtle Noise Texture Overlay for Visual Depth */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   MAINTENANCE / DEVELOPMENT STATUS BANNER
+   ========================================================================== */
+.maintenance-banner {
+    position: relative;
+    z-index: 10002;
+    background: linear-gradient(90deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.08) 50%, rgba(251, 191, 36, 0.1) 100%);
+    border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+    padding: 0.55rem 1.5rem;
+    overflow: hidden;
+}
+
+.maintenance-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.06), transparent);
+    animation: maintenanceSweep 4s ease-in-out infinite;
+}
+
+@keyframes maintenanceSweep {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(50%); }
+}
+
+.maintenance-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.maintenance-inner > ion-icon {
+    font-size: 1.15rem;
+    color: #fbbf24;
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
+    flex-shrink: 0;
+    animation: maintenanceIconPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes maintenanceIconPulse {
+    0% { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+.maintenance-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px #f59e0b;
+    animation: maintenanceDotPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes maintenanceDotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+}
+
+.maintenance-text {
+    font-family: var(--font-code);
+    font-size: 0.74rem;
+    color: rgba(251, 191, 36, 0.9);
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.maintenance-text strong {
+    color: #fbbf24;
+    letter-spacing: 1.5px;
+}
+
+.maintenance-dismiss {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    color: #fbbf24;
+    border-radius: 6px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.maintenance-dismiss:hover {
+    background: rgba(251, 191, 36, 0.2);
+    transform: scale(1.1);
+}
+
+.maintenance-banner.dismissed {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    border: none;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ambient Particle Field Canvas */
+.particle-field-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+}
+
 /* ==========================================================================
    ANIMACIÓN B: PERFECTLY ALIGNED BALANCED EJECTION & RETURN LOCK-IN
    ========================================================================== */
@@ -867,6 +1004,21 @@ body.noc-power-on .site-footer {
     font-weight: 700;
     color: var(--accent-cyan);
     margin-bottom: 1.5rem;
+    min-height: 1.6em;
+}
+
+/* Typing Cursor Effect */
+.typing-cursor {
+    display: inline-block;
+    color: var(--accent-cyan);
+    font-weight: 300;
+    animation: cursorBlink 0.7s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-text {
@@ -1667,6 +1819,52 @@ body.noc-power-on .site-footer {
     padding-top: 2rem;
     color: var(--text-dim);
     font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-build-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+    flex-wrap: wrap;
+}
+
+.footer-build-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(230, 0, 18, 0.1);
+    border: 1px solid var(--border-hw-red);
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    color: var(--hw-red-primary);
+    font-weight: 700;
+}
+
+.footer-separator {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.footer-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-emerald);
+    box-shadow: 0 0 8px var(--accent-emerald);
+    display: inline-block;
+    animation: blinkLed 1.8s infinite;
+}
+
+.footer-bottom p {
+    margin-top: 0.3rem;
+    color: var(--text-dim);
 }
 
 /* Responsive Rules */
@@ -1679,6 +1877,9 @@ body.noc-power-on .site-footer {
 
 @media (max-width: 640px) {
     .telemetry-bar { display: none; }
+    .maintenance-text { font-size: 0.65rem; }
+    .maintenance-inner { gap: 0.4rem; }
+    .particle-field-canvas { display: none; }
     .e9000h-slot-row { height: auto; padding: 0.8rem; flex-direction: column; gap: 0.6rem; }
     .nav-menu {
         position: fixed;
