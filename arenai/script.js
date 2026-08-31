@@ -136,4 +136,87 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { passive: true });
+
+    // 7. UNDER CONSTRUCTION ACCESS CONTROL (PASSWORD: 1235)
+    const lockOverlay = document.getElementById('arenai-lock-overlay');
+    const lockCard = document.getElementById('lock-card');
+    const lockForm = document.getElementById('arenai-unlock-form');
+    const lockInput = document.getElementById('lock-password-input');
+    const lockFeedback = document.getElementById('lock-feedback-msg');
+    const lockIcon = document.getElementById('lock-main-icon');
+    const lockBadge = document.querySelector('.lock-status-badge span');
+    const btnToggleVis = document.getElementById('btn-toggle-visibility');
+    const visIcon = document.getElementById('visibility-icon');
+
+    const ACCESS_PASS = '1235';
+
+    // Check if session is already unlocked
+    const isUnlocked = sessionStorage.getItem('arenai_unlocked') === 'true';
+
+    if (isUnlocked && lockOverlay) {
+        document.body.classList.remove('arenai-locked');
+        lockOverlay.classList.add('unlocked');
+    } else {
+        document.body.classList.add('arenai-locked');
+        if (lockInput) {
+            setTimeout(() => lockInput.focus(), 600);
+        }
+    }
+
+    // Toggle password visibility
+    if (btnToggleVis && lockInput && visIcon) {
+        btnToggleVis.addEventListener('click', () => {
+            if (lockInput.type === 'password') {
+                lockInput.type = 'text';
+                visIcon.setAttribute('name', 'eye-off-outline');
+            } else {
+                lockInput.type = 'password';
+                visIcon.setAttribute('name', 'eye-outline');
+            }
+        });
+    }
+
+    // Submit Unlock Logic
+    const handleUnlock = (e) => {
+        if (e) e.preventDefault();
+        if (!lockInput) return;
+
+        const enteredValue = lockInput.value.trim();
+
+        if (enteredValue === ACCESS_PASS) {
+            // Success
+            if (lockFeedback) {
+                lockFeedback.textContent = '¡Clave Correcta! Desbloqueando plataforma...';
+                lockFeedback.className = 'lock-feedback-msg success';
+            }
+            if (lockCard) lockCard.classList.add('unlocked-success');
+            if (lockIcon) lockIcon.setAttribute('name', 'lock-open-outline');
+            if (lockBadge) lockBadge.textContent = 'ACCESO AUTORIZADO';
+
+            sessionStorage.setItem('arenai_unlocked', 'true');
+
+            setTimeout(() => {
+                if (lockOverlay) lockOverlay.classList.add('unlocked');
+                document.body.classList.remove('arenai-locked');
+            }, 550);
+        } else {
+            // Error
+            if (lockCard) {
+                lockCard.classList.remove('shake');
+                void lockCard.offsetWidth; // trigger reflow
+                lockCard.classList.add('shake');
+            }
+            if (lockFeedback) {
+                lockFeedback.textContent = 'Contraseña incorrecta. Inténtalo de nuevo.';
+                lockFeedback.className = 'lock-feedback-msg error';
+            }
+            lockInput.select();
+            lockInput.focus();
+        }
+    };
+
+    if (lockForm) {
+        lockForm.addEventListener('submit', handleUnlock);
+    }
 });
+
