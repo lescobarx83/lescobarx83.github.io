@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fingerGlow = document.getElementById('fingerprint-glow');
     const arenaiRow = document.getElementById('arenai-slot-row');
 
+    let currentLang = localStorage.getItem('lang') || 'es';
+
     // CHECK IF USER IS RETURNING FROM A PROJECT (ARENAI)
     const returnedFromProject = sessionStorage.getItem('returnedFromProject');
 
@@ -271,27 +273,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // HERO SUBTITLE TYPEWRITER EFFECT
+    // HERO SUBTITLE TYPEWRITER EFFECT (BILINGUAL)
     // =========================================================================
     const typedLine = document.querySelector('.typed-line');
     const typingCursor = document.querySelector('.typing-cursor');
 
-    if (typedLine) {
-        const phrases = [
+    const phrasesDict = {
+        es: [
             'ICT Engineer & Especialista en Infraestructura',
             '3er Lugar Mundial — Global ICT Competition',
             'Delivery & Services Engineer — Huawei Technologies',
             'Cum Laude Probatus — ULACIT',
             'Semifinalista Mundial — Innovación ICT 2025-2026'
-        ];
+        ],
+        en: [
+            'ICT Engineer & Infrastructure Specialist',
+            '3rd Place Global — Global ICT Competition',
+            'Delivery & Services Engineer — Huawei Technologies',
+            'Cum Laude Probatus — ULACIT',
+            'Global Semifinalist — ICT Innovation 2025-2026'
+        ]
+    };
 
+    if (typedLine) {
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         let typeSpeed = 50;
 
         function typeWriter() {
-            const currentPhrase = phrases[phraseIndex];
+            const activePhrases = phrasesDict[currentLang] || phrasesDict.es;
+            const currentPhrase = activePhrases[phraseIndex % activePhrases.length];
 
             if (isDeleting) {
                 typedLine.textContent = currentPhrase.substring(0, charIndex - 1);
@@ -308,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
+                phraseIndex = (phraseIndex + 1) % activePhrases.length;
                 typeSpeed = 400; // Short pause before next phrase
             }
 
@@ -452,6 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const langLabel = document.getElementById('lang-label');
 
     const i18nDict = {
+        // Navigation
         'nav.home': { es: 'Inicio', en: 'Home' },
         'nav.about': { es: 'Sobre Mí', en: 'About Me' },
         'nav.awards': { es: 'Logros', en: 'Awards' },
@@ -461,6 +474,127 @@ document.addEventListener('DOMContentLoaded', () => {
         'nav.skills': { es: 'Habilidades', en: 'Skills' },
         'nav.contact': { es: 'Contacto', en: 'Contact' },
         
+        // Hero Section
+        'hero.badge': { es: '[ ICT ENGINEER ] &bull; HUAWEI TECHNOLOGIES LATAM', en: '[ ICT ENGINEER ] &bull; HUAWEI TECHNOLOGIES LATAM' },
+        'hero.text': { 
+            es: 'Ingeniero de infraestructura y servicios de tecnologías de información y comunicación. Especializado en la administración, despliegue y soporte de centros de datos de misión crítica, arquitectura de servidores, sistemas operativos empresariales y motores de bases de datos de alto rendimiento. Combino capacidad analítica, desarrollo de software y visión estratégica para garantizar alta disponibilidad y continuidad operacional.', 
+            en: 'Information and communications technology infrastructure & services engineer. Specialized in the administration, deployment, and support of mission-critical datacenters, server architectures, enterprise operating systems, and high-performance database engines. Combining analytical rigor, software engineering, and strategic insight to guarantee high availability and operational continuity.' 
+        },
+        'hero.ctaProjects': { es: 'Ver Proyectos & Plataformas', en: 'View Projects & Platforms' },
+        'hero.ctaExperience': { es: 'Trayectoria Profesional', en: 'Professional Experience' },
+        'hero.diagTitle': { es: 'DATACENTER CLUSTER DIAGNOSTICS', en: 'DATACENTER CLUSTER DIAGNOSTICS' },
+        'hero.diagCpu': { es: 'CPU LOAD (ENTERPRISE LINUX OS)', en: 'CPU LOAD (ENTERPRISE LINUX OS)' },
+        'hero.diagRam': { es: 'MEMORY (DATABASE MATRIX CLUSTER)', en: 'MEMORY (DATABASE MATRIX CLUSTER)' },
+        'hero.diagIo': { es: 'DISK I/O (NVMe SAS ARRAY)', en: 'DISK I/O (NVMe SAS ARRAY)' },
+        'hero.log1': { es: '<span class="log-ok">[OK]</span> Hardware: High-Density Blade Chassis', en: '<span class="log-ok">[OK]</span> Hardware: High-Density Blade Chassis' },
+        'hero.log2': { es: '<span class="log-ok">[OK]</span> Slot 01 Horizontal Blade: ArenAI Online', en: '<span class="log-ok">[OK]</span> Slot 01 Horizontal Blade: ArenAI Online' },
+        'hero.log3': { es: '<span class="log-ok">[OK]</span> Global Rank: 3rd Place Global ICT Competition', en: '<span class="log-ok">[OK]</span> Global Rank: 3rd Place Global ICT Competition' },
+        'hero.log4': { es: '<span class="log-ok">[OK]</span> Academic Honor: Cum Laude Probatus (ULACIT)', en: '<span class="log-ok">[OK]</span> Academic Honor: Cum Laude Probatus (ULACIT)' },
+
+        // Awards Section
+        'awards.tag': { es: 'Reconocimientos & Educación', en: 'Awards & Education' },
+        'awards.heading': { es: 'Distinciones Internacionales & Formación', en: 'International Honors & Education' },
+        'awards.subtitle': { es: 'Reconocimientos mundiales en competencias de tecnología e innovación y sólida formación académica con honores.', en: 'Global recognitions in technology & innovation competitions, coupled with high-honor academic excellence.' },
+        'awards.card1Badge': { es: 'MUNDIAL 2024-2025', en: 'GLOBAL 2024-2025' },
+        'awards.card1Title': { es: '3er Lugar Mundial - Cómputo & Servidores', en: '3rd Place Global - Computing & Servers' },
+        'awards.card1Text': { 
+            es: 'Galardonado con el <strong>3er Lugar a Nivel Mundial</strong> en la categoría de <strong>Computing</strong>, demostrando capacidad técnica avanzada en arquitectura de servidores, sistemas operativos empresariales, bases de datos e infraestructura de alto rendimiento.', 
+            en: 'Awarded <strong>3rd Place Worldwide</strong> in the <strong>Computing</strong> track, demonstrating advanced technical mastery in server architecture, enterprise operating systems, databases, and high-performance infrastructure.' 
+        },
+        'awards.card2Badge': { es: 'MUNDIAL 2025-2026', en: 'GLOBAL 2025-2026' },
+        'awards.card2Title': { es: 'Semifinalista Mundial - Innovación & Desarrollo', en: 'Global Semifinalist - Innovation & Development' },
+        'awards.card2Text': { 
+            es: '<strong>Semifinalista Global</strong> en la categoría de <strong>Innovación</strong>. Desarrollo de una solución tecnológica avanzada que integra <strong>programación de software</strong>, <strong>análisis de rendimiento</strong> y <strong>modelado de estimaciones de costos</strong>. Concebido para responder a rigurosos estándares pedagógicos, garantizando la seguridad y privacidad de datos de menores en entornos de aprendizaje.', 
+            en: '<strong>Global Semifinalist</strong> in the <strong>Innovation</strong> track. Developed an advanced technological solution integrating <strong>software engineering</strong>, <strong>performance analysis</strong>, and <strong>cost estimation modeling</strong>, engineered to meet rigorous pedagogical standards and student data privacy.' 
+        },
+        'awards.card3Badge': { es: 'GRADO CON HONORES', en: 'HONORS DEGREE' },
+        'awards.card3Title': { es: 'Ingeniería Informática', en: 'Computer Science Engineering' },
+        'awards.card3Univ': { es: 'Universidad Latinoamericana de Ciencias y Tecnología (ULACIT)', en: 'Latin American University of Science and Technology (ULACIT)' },
+        'awards.card3Text': { 
+            es: 'Graduado de Bachillerato en Ingeniería Informática con la distinción de honor <strong>Cum Laude Probatus</strong>. Estudios complementarios en <strong>Artes Humanísticas</strong> y dominio profesional del idioma <strong>Inglés B2+ / C1</strong>.', 
+            en: 'Graduated with a Bachelor of Science in Computer Engineering with <strong>Cum Laude Probatus</strong> honors. Complementary studies in <strong>Humanistic Arts</strong> and professional English proficiency (B2+ / C1).' 
+        },
+
+        // Infrastructure Section
+        'infra.tag': { es: 'Dominio Técnico', en: 'Technical Mastery' },
+        'infra.heading': { es: 'Capacidades de Infraestructura & Servicios', en: 'Infrastructure & Services Capabilities' },
+        'infra.subtitle': { es: 'Soluciones integrales desde el hardware de centro de datos hasta la analítica de datos y desarrollo de software.', en: 'Comprehensive solutions ranging from datacenter hardware to data analytics and software development.' },
+        'infra.tier1Tag': { es: 'CÓMPUTO & STORAGE', en: 'COMPUTE & STORAGE' },
+        'infra.tier1Title': { es: 'Servidores Blade & Cómputo de Alto Rendimiento', en: 'Blade Servers & High-Performance Computing' },
+        'infra.tier1Text': { 
+            es: 'Administración y despliegue de <strong>servidores blade</strong>, plataformas de <strong>cómputo de alto rendimiento</strong> (x86 & ARM), sistemas de <strong>almacenamiento empresarial (Storage SAN/NAS)</strong> y redes de datos de alta velocidad.', 
+            en: 'Administration and deployment of <strong>blade servers</strong>, <strong>high-performance compute platforms</strong> (x86 & ARM), <strong>enterprise storage systems (SAN/NAS)</strong>, and high-speed data networks.' 
+        },
+        'infra.tier2Tag': { es: 'SISTEMAS OPERATIVOS', en: 'OPERATING SYSTEMS' },
+        'infra.tier2Title': { es: 'Sistemas Operativos Enterprise & Virtualización', en: 'Enterprise Operating Systems & Virtualization' },
+        'infra.tier2Text': { 
+            es: 'Gestión exhaustiva de entornos Linux empresariales (SUSE Linux Enterprise, Red Hat) y Windows Server. Plataformas virtualizadas (KVM / Proxmox) y automatización con scripting.', 
+            en: 'Comprehensive management of enterprise Linux distributions (SUSE Linux Enterprise, Red Hat) and Windows Server. Virtualized environments (KVM / Proxmox) and automation scripting.' 
+        },
+        'infra.tier3Tag': { es: 'BASES DE DATOS & SOFTWARE', en: 'DATABASES & SOFTWARE' },
+        'infra.tier3Title': { es: 'Bases de Datos de Misión Crítica & Backend', en: 'Mission-Critical Databases & Backend' },
+        'infra.tier3Text': { 
+            es: 'Despliegue y optimización de motores de bases de datos relacionales y distribuidos (PostgreSQL y clusters de alta disponibilidad). Desarrollo de aplicaciones backend en <strong>Node.js</strong> con Docker.', 
+            en: 'Deployment and optimization of relational and distributed database engines (PostgreSQL and HA clusters). Backend development in <strong>Node.js</strong> with Docker.' 
+        },
+
+        // Rack / Projects Section
+        'rack.tag': { es: 'Despliegues de Hardware', en: 'Hardware Deployments' },
+        'rack.heading': { es: 'Proyectos', en: 'Projects' },
+        'rack.subtitle': { es: 'Gabinete de proyectos diseñado como réplica interactiva de chasis de servidor. Haz clic sobre ArenAI para ingresar a la plataforma.', en: 'Project cabinet engineered as an interactive server chassis replica. Click on ArenAI to enter the platform.' },
+        'rack.actionExplore': { es: 'Explorar', en: 'Explore' },
+
+        // Experience Section
+        'exp.tag': { es: 'Trayectoria Profesional', en: 'Career Trajectory' },
+        'exp.heading': { es: 'Experiencia en Huawei Technologies', en: 'Experience at Huawei Technologies' },
+        'exp.subtitle': { es: '+2 años de trayectoria profesional en gestión de infraestructura, análisis de datos y servicios tecnológicos en Huawei Latinoamérica.', en: '+2 years of professional track record in infrastructure management, data analytics, and tech services at Huawei Latin America.' },
+        'exp.role1Period': { es: 'Actualidad', en: 'Present' },
+        'exp.role1Company': { es: 'Huawei Technologies — Latinoamérica', en: 'Huawei Technologies — Latin America' },
+        'exp.role1Text': { 
+            es: 'Liderazgo del ciclo de vida completo de plataformas de gestión críticas, garantizando la continuidad operativa desde la infraestructura física hasta la lógica backend. Implementaciones de extremo a extremo, resolución de incidentes con adhesión a SLAs y soporte de TI interdepartamental.', 
+            en: 'End-to-end lifecycle management of mission-critical platforms, ensuring continuous operations from physical infrastructure up to backend logic. Full-stack implementations, SLA-driven incident resolution, and interdepartmental IT support.' 
+        },
+        'exp.role2Period': { es: 'Abril 2025 — Marzo 2026', en: 'April 2025 — March 2026' },
+        'exp.role2Title': { es: 'SmartCare Engineer (Data Analyst)', en: 'SmartCare Engineer (Data Analyst)' },
+        'exp.role2Company': { es: 'Huawei Technologies — Latinoamérica', en: 'Huawei Technologies — Latin America' },
+        'exp.role2Text': { 
+            es: 'Coadministración de plataforma de análisis de datos. Gobernanza de datos y desarrollo de recomendaciones estratégicas, presentando perspectivas accionables directamente a ejecutivos CXO para el desarrollo de negocios.', 
+            en: 'Co-administration of the enterprise data analytics platform. Data governance and strategic insights modeling, presenting actionable business intelligence directly to CXO executives.' 
+        },
+        'exp.role3Period': { es: 'Abril 2024 — Mayo 2025', en: 'April 2024 — May 2025' },
+        'exp.role3Title': { es: 'Engineer Intern', en: 'Engineer Intern' },
+        'exp.role3Company': { es: 'Huawei Technologies — Latinoamérica', en: 'Huawei Technologies — Latin America' },
+        'exp.role3Text': { 
+            es: 'Coadministración de plataforma de telecomunicaciones virtualizada completa en entorno de alta disponibilidad (activo-activo). Gestión administrativa y resolución de problemas mediante sistema de tiquetes, manteniendo un tiempo de actividad del 100%.', 
+            en: 'Co-management of a fully virtualized telecom platform in an active-active high-availability environment. System administration and ticket-based troubleshooting maintaining 100% uptime.' 
+        },
+
+        // Skills Section
+        'skills.tag': { es: 'Competencias', en: 'Core Competencies' },
+        'skills.heading': { es: 'Habilidades & Stack Técnico', en: 'Skills & Technical Stack' },
+        'skills.subtitle': { es: 'Sistemas operativos, desarrollo de software, bases de datos e infraestructura de centro de datos.', en: 'Operating systems, software engineering, databases, and datacenter infrastructure.' },
+        'skills.osTitle': { es: '<ion-icon name="terminal-outline"></ion-icon> Sistemas Operativos & Virtualización', en: '<ion-icon name="terminal-outline"></ion-icon> Operating Systems & Virtualization' },
+        'skills.dbTitle': { es: '<ion-icon name="server-outline"></ion-icon> Bases de Datos & Backend', en: '<ion-icon name="server-outline"></ion-icon> Databases & Backend' },
+        'skills.infraTitle': { es: '<ion-icon name="hardware-chip-outline"></ion-icon> Infraestructura & Redes', en: '<ion-icon name="hardware-chip-outline"></ion-icon> Infrastructure & Networking' },
+
+        // Contact Section
+        'contact.tag': { es: 'Conexión Directa', en: 'Direct Connection' },
+        'contact.heading': { es: 'Contacto Profesional & Redes', en: 'Professional Contact & Networks' },
+        'contact.subtitle': { es: 'Puedes contactarme directamente a través de LinkedIn para oportunidades profesionales o enviarme un correo electrónico.', en: 'You can reach out directly via LinkedIn for professional opportunities or send me an email.' },
+        'contact.c1Label': { es: 'Contacto Principal', en: 'Primary Contact' },
+        'contact.c1Title': { es: 'Perfil de LinkedIn', en: 'LinkedIn Profile' },
+        'contact.c1Desc': { es: 'Mensajería directa y red profesional en LinkedIn.', en: 'Direct messaging and professional network on LinkedIn.' },
+        'contact.c2Label': { es: 'Correo Electrónico Directo', en: 'Direct Email' },
+        'contact.c2Desc': { es: 'Contacto por correo para consultas, proyectos o vacantes.', en: 'Email for inquiries, projects, or professional opportunities.' },
+        'contact.c2Action': { es: 'Enviar correo a lescobar2004@gmail.com', en: 'Send email to lescobar2004@gmail.com' },
+        'contact.c3Label': { es: 'Repositorios & Código', en: 'Repositories & Code' },
+        'contact.c3Desc': { es: 'Proyectos, desarrollo de código y repositorios públicos.', en: 'Projects, code development, and public repositories.' },
+        'contact.c4Label': { es: 'Idiomas de Contacto', en: 'Communication Languages' },
+        'contact.c4Title': { es: 'Español e Inglés', en: 'Spanish & English' },
+        'contact.c4Desc': { es: 'Acepto mensajes y comunicaciones en Español e Inglés.', en: 'I welcome inquiries and communications in both Spanish and English.' },
+        'contact.c4Langs': { es: 'Español (Nativo) | English (B2+ / C1)', en: 'Spanish (Native) | English (B2+ / C1)' },
+
+        // About Sidebar
         'about.tag': { es: 'Sobre Mí', en: 'About Me' },
         'about.heading': { es: 'Perfil Personal', en: 'Personal Profile' },
         'about.subtitle': { es: 'Más allá de la infraestructura: motivación, filosofía y visión.', en: 'Beyond infrastructure: motivation, philosophy, and vision.' },
@@ -473,10 +607,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'about.visionTitle': { es: 'Future Vision', en: 'Future Vision' },
         'about.visionText': { es: 'Mi objetivo a mediano plazo es liderar la gestión estratégica de proyectos, donde mis decisiones de arquitectura e infraestructura generen un impacto cuantificable en la eficiencia organizacional.', en: 'My medium-term goal is to lead strategic project management, where my architectural and infrastructure decisions generate a quantifiable impact on organizational efficiency.' },
         'about.hobbiesTitle': { es: 'Off-Duty', en: 'Off-Duty' },
-        'about.hobbiesText': { es: 'Más allá del ámbito tecnológico, cultivo el pensamiento estratégico mediante el gaming competitivo y la música, actividades que complementan la agilidad mental requerida en entornos críticos.', en: 'Beyond the technological realm, I cultivate strategic thinking through competitive gaming and music, activities that complement the mental agility required in mission-critical environments.' }
-    };
+        'about.hobbiesText': { es: 'Más allá del ámbito tecnológico, cultivo el pensamiento estratégico mediante el gaming competitivo y la música, actividades que complementan la agilidad mental requerida en entornos críticos.', en: 'Beyond the technological realm, I cultivate strategic thinking through competitive gaming and music, activities that complement the mental agility required in mission-critical environments.' },
 
-    let currentLang = localStorage.getItem('lang') || 'es';
+        // Footer
+        'footer.bio': { es: 'ICT Engineer en Huawei Technologies Latinoamérica &bull; 3rd Place Global ICT Competition &bull; Cum Laude Probatus (ULACIT)', en: 'ICT Engineer at Huawei Technologies Latin America &bull; 3rd Place Global ICT Competition &bull; Cum Laude Probatus (ULACIT)' },
+        'footer.rights': { es: '&copy; 2026 Leonardo Escobar. Todos los derechos reservados.', en: '&copy; 2026 Leonardo Escobar. All rights reserved.' }
+    };
 
     function applyTranslations(lang) {
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -489,7 +625,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        langLabel.textContent = lang === 'es' ? 'EN' : 'ES';
+        if (langLabel) {
+            langLabel.textContent = lang === 'es' ? 'EN' : 'ES';
+        }
         document.documentElement.lang = lang;
     }
 
