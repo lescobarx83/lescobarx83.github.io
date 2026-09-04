@@ -244,12 +244,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navContainer = document.querySelector('.nav-container');
     if (navContainer) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navContainer.style.background = 'rgba(5, 6, 8, 0.92)';
-                navContainer.style.borderColor = 'rgba(230, 0, 18, 0.2)';
+            if (window.scrollY > 40) {
+                navContainer.classList.add('scrolled');
             } else {
-                navContainer.style.background = '';
-                navContainer.style.borderColor = '';
+                navContainer.classList.remove('scrolled');
             }
         }, { passive: true });
     }
@@ -498,14 +496,14 @@ document.addEventListener('DOMContentLoaded', () => {
         'awards.card1Badge': { es: 'MUNDIAL 2024-2025', en: 'GLOBAL 2024-2025' },
         'awards.card1Title': { es: '3er Lugar Mundial - Cómputo & Servidores', en: '3rd Place Global - Computing & Servers' },
         'awards.card1Text': { 
-            es: 'Galardonado con el <strong>3er Lugar a Nivel Mundial</strong> en la categoría de <strong>Computing</strong>, demostrando capacidad técnica avanzada en arquitectura de servidores, sistemas operativos empresariales, bases de datos e infraestructura de alto rendimiento.', 
-            en: 'Awarded <strong>3rd Place Worldwide</strong> in the <strong>Computing</strong> track, demonstrating advanced technical mastery in server architecture, enterprise operating systems, databases, and high-performance infrastructure.' 
+            es: 'Galardonado con el <strong>3er Lugar a Nivel Mundial</strong> en la categoría de <strong>Computing</strong>, demostrando dominio técnico avanzado en la arquitectura de servidores <strong>Kunpeng Computing</strong>, el sistema operativo empresarial <strong>openEuler</strong> y la base de datos de misión crítica <strong>openGauss</strong>.', 
+            en: 'Awarded <strong>3rd Place Worldwide</strong> in the <strong>Computing</strong> track, demonstrating advanced technical mastery in <strong>Kunpeng Computing</strong> server architecture, enterprise <strong>openEuler</strong> operating systems, and mission-critical <strong>openGauss</strong> relational databases.' 
         },
         'awards.card2Badge': { es: 'MUNDIAL 2025-2026', en: 'GLOBAL 2025-2026' },
         'awards.card2Title': { es: 'Semifinalista Mundial - Innovación & Desarrollo', en: 'Global Semifinalist - Innovation & Development' },
         'awards.card2Text': { 
-            es: '<strong>Semifinalista Global</strong> en la categoría de <strong>Innovación</strong>. Desarrollo de una solución tecnológica avanzada que integra <strong>programación de software</strong>, <strong>análisis de rendimiento</strong> y <strong>modelado de estimaciones de costos</strong>. Concebido para responder a rigurosos estándares pedagógicos, garantizando la seguridad y privacidad de datos de menores en entornos de aprendizaje.', 
-            en: '<strong>Global Semifinalist</strong> in the <strong>Innovation</strong> track. Developed an advanced technological solution integrating <strong>software engineering</strong>, <strong>performance analysis</strong>, and <strong>cost estimation modeling</strong>, engineered to meet rigorous pedagogical standards and student data privacy.' 
+            es: '<strong>Semifinalista Global</strong> en la categoría de <strong>Innovación</strong> con el proyecto <strong>ArenAI</strong>: plataforma creada para transformar y mejorar las condiciones de la educación en el entorno escolar y colegial latinoamericano mediante <strong>gamificación</strong> y modelos basados en investigaciones sobre la <strong>psicología de los adolescentes</strong>. Desarrollada en equipo por <strong>Leonardo Escobar</strong> (diseño gráfico, UI/UX y viabilidad económica), <strong>Yereth Soto Zúñiga</strong> (lógica del sistema y sockets) y <strong>Reishell Fernández</strong> (procesamiento cloud de IA y base creativa) con un stack de alta eficiencia que integra <strong>Node.js</strong>, <strong>Electron</strong>, <strong>TypeScript (TS)</strong>, <strong>JavaScript (JS)</strong>, <strong>Python</strong>, comunicación en tiempo real mediante <strong>Sockets / WebSockets</strong> y contenedores <strong>Docker</strong> para garantizar interactividad, baja latencia y estricta privacidad de datos en el aula.', 
+            en: '<strong>Global Semifinalist</strong> in the <strong>Innovation</strong> track with the <strong>ArenAI</strong> project: an educational platform engineered to transform learning conditions across Latin American schools through <strong>gamification</strong> and research-backed models in <strong>adolescent psychology</strong>. Developed collaboratively by <strong>Leonardo Escobar</strong> (graphic design, UI/UX, and economic feasibility), <strong>Yereth Soto Zúñiga</strong> (system logic and sockets), and <strong>Reishell Fernández</strong> (cloud AI processing and creative direction) with a high-efficiency stack integrating <strong>Node.js</strong>, <strong>Electron</strong>, <strong>TypeScript (TS)</strong>, <strong>JavaScript (JS)</strong>, <strong>Python</strong>, real-time communication via <strong>Sockets / WebSockets</strong>, and <strong>Docker</strong> containers to ensure interactive engagement, low latency, and strict student data privacy in the classroom.' 
         },
         'awards.card3Badge': { es: 'GRADO CON HONORES', en: 'HONORS DEGREE' },
         'awards.card3Title': { es: 'Ingeniería Informática', en: 'Computer Science Engineering' },
@@ -683,7 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                         owner: 'leonardo',
                                         perms: 'drwxr-xr-x',
                                         children: {
-                                            'arenai_blade.md': { type: 'file', owner: 'leonardo', perms: '-rw-r--r--', content: '# ArenAI Blade\nSlot 01 Hardware interface project.' },
+                                            'arenai_blade.md': { type: 'file', owner: 'leonardo', perms: '-rw-r--r--', content: '# ArenAI Blade\nPlataforma EdTech gamificada para colegios en Latinoamérica basada en psicología adolescente.\nStack: Node.js, Electron, TS, JS, Python, WebSockets y Docker.' },
                                             'datacenter_migration.txt': { type: 'file', owner: 'leonardo', perms: '-rw-r--r--', content: 'Migrated 50+ bare metal servers to VMware cluster with zero downtime.' }
                                         }
                                     }

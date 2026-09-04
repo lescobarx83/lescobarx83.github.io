@@ -18,30 +18,28 @@
 </head>
 
 <body class="aren-app-body arenai-locked">
-    <!-- OPTICAL FIBER BLADE TELEPORT REVERSE TRANSITION OVERLAY -->
+    <!-- WARM WELCOME TRANSITION OVERLAY -->
     <div id="arenai-teleport-overlay" class="arenai-teleport-overlay active">
         <div class="teleport-pulse-ring"></div>
-        <div class="teleport-text-code" id="arenai-teleport-text">CONECTANDO A PLATAFORMA ARENAI (WEBSOCKET P2P)...
-        </div>
+        <div class="teleport-text-code" id="arenai-teleport-text">Abriendo el aula interactiva de ArenAI...</div>
     </div>
 
-    <!-- UNDER CONSTRUCTION & CENSORED SECURITY LOCK SCREEN -->
+    <!-- WARM & WELCOMING CLASSROOM ACCESS SCREEN -->
     <div id="arenai-lock-overlay" class="arenai-lock-overlay">
         <div class="lock-card glass-panel" id="lock-card">
             <div class="lock-status-badge">
-                <ion-icon name="construct-outline"></ion-icon>
-                <span>SITIO EN CONSTRUCCIÓN</span>
+                <ion-icon name="sparkles"></ion-icon>
+                <span>AULA EN PREPARACIÓN</span>
             </div>
 
-            <div class="lock-icon-container" id="lock-icon-box">
-                <div class="lock-icon-pulse"></div>
-                <ion-icon name="lock-closed" class="lock-main-icon" id="lock-main-icon"></ion-icon>
+            <div class="lock-avatar-preview">
+                <img src="img/profile_picture_capybara_eyes_open.png" alt="Aren el Capibara" class="lock-capy-avatar">
             </div>
 
-            <h2 class="lock-title">Acceso Restringido</h2>
+            <h2 class="lock-title">¡Hola! Bienvenido a ArenAI</h2>
             <p class="lock-desc">
-                Esta sección de la plataforma <strong>ArenAI</strong> se encuentra en fase de desarrollo y mantenimiento.
-                Ingresa la clave de autorización para desbloquear la vista completa.
+                Un entorno educativo diseñado con calidez y gamificación para estudiantes adolescentes. 
+                Ingresa la clave de acceso (<strong>1235</strong>) para explorar el aula.
             </p>
 
             <form class="lock-form" id="arenai-unlock-form">
@@ -51,7 +49,7 @@
                         type="password" 
                         id="lock-password-input" 
                         class="lock-input" 
-                        placeholder="Ingresa la contraseña..." 
+                        placeholder="Ingresa la clave (ej. 1235)..." 
                         autocomplete="off" 
                         maxlength="30"
                     />
@@ -62,7 +60,7 @@
 
                 <div class="lock-actions">
                     <button type="submit" class="lock-btn-submit" id="btn-unlock-submit">
-                        <span>Desbloquear</span>
+                        <span>Ingresar al Aula</span>
                         <ion-icon name="arrow-forward-outline"></ion-icon>
                     </button>
                 </div>
@@ -74,7 +72,7 @@
 
             <div class="lock-footer-links">
                 <a href="../index.html#rack" class="lock-back-link aren-back-portfolio-link">
-                    <ion-icon name="arrow-back-outline"></ion-icon> Volver al Chasis Principal
+                    <ion-icon name="arrow-back-outline"></ion-icon> Volver al Portafolio Principal
                 </a>
             </div>
         </div>
@@ -92,10 +90,11 @@
 
             <nav class="aren-nav-links" id="aren-nav-menu">
                 <a href="#hero" class="aren-link active">Inicio</a>
-                <a href="#mascota" class="aren-link">Mascota Aren</a>
-                <a href="#impacto" class="aren-link">Impacto & Aulas</a>
-                <a href="#galeria" class="aren-link">Demostración</a>
+                <a href="#mascota" class="aren-link">Mascota</a>
+                <a href="#impacto" class="aren-link">Aulas</a>
+                <a href="#galeria" class="aren-link">Demo</a>
                 <a href="#ingenieria" class="aren-link">Ingeniería</a>
+                <a href="#equipo" class="aren-link">Equipo</a>
                 <a href="../index.html#rack" class="aren-link aren-back-portfolio-link"
                     id="back-portfolio-trigger">Portafolio</a>
             </nav>
@@ -103,7 +102,7 @@
             <div class="aren-nav-actions">
                 <a href="https://drive.google.com/drive/folders/1p9C2H4uV_22cQh3f24_Ld6Vj1lXb7Z3u?usp=sharing"
                     target="_blank" rel="noopener" class="aren-btn-cta">
-                    <ion-icon name="document-text-outline"></ion-icon> Documentación & Pitch Deck
+                    <ion-icon name="document-text-outline"></ion-icon> <span>Pitch Deck</span>
                 </a>
             </div>
         </div>
@@ -115,7 +114,7 @@
         <section id="hero" class="aren-hero-section">
             <div class="aren-hero-content">
                 <div class="aren-pill-badge">
-                    <ion-icon name="heart-outline"></ion-icon> TECNOLOGÍA EDUCATIVA & IMPACTO SOCIAL
+                    <ion-icon name="leaf-outline"></ion-icon> EDTECH PARA ADOLESCENTES & APRENDIZAJE EMPÁTICO
                 </div>
                 <h1 class="aren-hero-title">
                     Educación Personalizada que <br>
@@ -204,26 +203,139 @@
                 </div>
             </div>
 
-            <div class="aren-features-grid" style="margin-top: 3rem;">
-                <div class="aren-feature-card">
-                    <div class="aren-feature-icon"><ion-icon name="heart-outline"></ion-icon></div>
-                    <h3>Empatía & Reducción de Estrés</h3>
-                    <p>Diseñado con la personalidad calmada y amistosa de un capibara para brindar un entorno libre de
-                        presiones y favorecer el aprendizaje.</p>
+            <!-- Showcase de las 5 Dinámicas Pedagógicas de Aren en el Aula -->
+            <div class="pedagogy-dynamics-wrapper" id="dinamicas-aula">
+                <div class="pedagogy-header">
+                    <span class="aren-tag" style="background: rgba(98, 139, 112, 0.14); color: var(--aren-green-leaf);"><ion-icon name="sparkles"></ion-icon> Dinámicas en el Aula</span>
+                    <h3>5 Formas en que Aren y sus Amigos Acompañan el Aprendizaje</h3>
+                    <p>Cada rol de nuestros personajes responde a un objetivo pedagógico concreto: desde reducir la ansiedad escolar hasta afianzar la memoria a largo plazo.</p>
                 </div>
 
-                <div class="aren-feature-card">
-                    <div class="aren-feature-icon"><ion-icon name="ribbon-outline"></ion-icon></div>
-                    <h3>Gamificación Educativa Positiva</h3>
-                    <p>Premia la constancia y el esfuerzo personal sin fomentar la competitividad destructiva entre
-                        compañeros de clase.</p>
+                <!-- 5 Interactive Navigation Cards / Mode Switcher -->
+                <div class="pedagogy-cards-grid" id="pedagogy-cards-grid">
+                    <!-- Card 1: Guía de Misiones -->
+                    <div class="pedagogy-mode-card active" data-mode="misiones">
+                        <div class="pedagogy-card-avatar-box avatar-amber">
+                            <img src="img/capybara_sprite_normal_full.png" alt="Aren Guía de Misiones" class="pedagogy-avatar-img">
+                        </div>
+                        <div class="pedagogy-card-meta">
+                            <span class="pedagogy-chip chip-amber">Ruta Curricular</span>
+                            <h4>Guía de Misiones</h4>
+                            <p>Desglosa el temario en objetivos diarios alcanzables a tu propio ritmo.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Retos de Aula -->
+                    <div class="pedagogy-mode-card" data-mode="retos">
+                        <div class="pedagogy-card-avatar-box avatar-coral">
+                            <img src="img/battle_sprite_front_capybara.png" alt="Aren Retos de Aula" class="pedagogy-avatar-img">
+                        </div>
+                        <div class="pedagogy-card-meta">
+                            <span class="pedagogy-chip chip-coral">Participación Activa</span>
+                            <h4>Retos de Aula</h4>
+                            <p>Preguntas en vivo lanzadas por el docente para dinámicas grupales.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Celebración de Logros -->
+                    <div class="pedagogy-mode-card" data-mode="logros">
+                        <div class="pedagogy-card-avatar-box avatar-gold">
+                            <img src="img/profile_picture_capybara_wink.png" alt="Aren Celebración" class="pedagogy-avatar-img">
+                        </div>
+                        <div class="pedagogy-card-meta">
+                            <span class="pedagogy-chip chip-gold">Refuerzo Positivo</span>
+                            <h4>Celebración de Logros</h4>
+                            <p>Reconocimiento sincero del esfuerzo personal sin presiones competitivas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Pausas Cognitivas -->
+                    <div class="pedagogy-mode-card" data-mode="pausas">
+                        <div class="pedagogy-card-avatar-box avatar-sage">
+                            <img src="img/profile_picture_sloth_winking.png" alt="Perezoso Pausas" class="pedagogy-avatar-img">
+                        </div>
+                        <div class="pedagogy-card-meta">
+                            <span class="pedagogy-chip chip-sage">Bienestar & Calma</span>
+                            <h4>Pausas Cognitivas</h4>
+                            <p>El perezoso guía respiraciones y descansos activos para resetear la mente.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Modo Arena RPG -->
+                    <div class="pedagogy-mode-card" data-mode="rpg">
+                        <div class="pedagogy-card-avatar-box avatar-teal">
+                            <img src="img/battle_sprite_back_capybara.png" alt="Aren Modo RPG" class="pedagogy-avatar-img">
+                        </div>
+                        <div class="pedagogy-card-meta">
+                            <span class="pedagogy-chip chip-teal">Gamificación RPG</span>
+                            <h4>Modo Arena RPG</h4>
+                            <p>Duelos de conocimiento estilo Kahoot con multiplicador de velocidad.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="aren-feature-card">
-                    <div class="aren-feature-icon"><ion-icon name="fitness-outline"></ion-icon></div>
-                    <h3>Recordatorios de Repaso Inteligente</h3>
-                    <p>Utiliza las matrices de retención para sugerir pequeños ejercicios justo cuando la curva del
-                        olvido empieza a actuar.</p>
+                <!-- Interactive Live Stage Spotlight -->
+                <div class="pedagogy-stage-spotlight" id="pedagogy-spotlight">
+                    <!-- Dynamic content filled and switched smoothly by JavaScript -->
+                    <div class="pedagogy-stage-left">
+                        <div class="spotlight-mascot-orb" id="spotlight-orb">
+                            <div class="spotlight-ring"></div>
+                            <img src="img/capybara_sprite_normal_full.png" alt="Mascota en Acción" id="spotlight-mascot-img" class="spotlight-mascot-img">
+                        </div>
+                        <div class="spotlight-dialogue-bubble">
+                            <ion-icon name="chatbubble-ellipses"></ion-icon>
+                            <span id="spotlight-dialogue-quote">"¡Vamos paso a paso! Hoy desglosamos 3 conceptos clave de Álgebra. Sin prisa, asegurando que cada idea quede clara."</span>
+                        </div>
+                    </div>
+
+                    <div class="pedagogy-stage-right">
+                        <div class="spotlight-badge-row">
+                            <span class="pedagogy-chip chip-amber" id="spotlight-category-chip">Ruta Curricular &bull; Acompañamiento Diario</span>
+                            <span class="spotlight-indicator-live"><span class="status-led-green"></span> Rol Pedagógico Activo</span>
+                        </div>
+
+                        <h3 id="spotlight-title">Guía de Misiones Curriculares</h3>
+                        <p id="spotlight-desc" class="spotlight-lead">
+                            Aren descompone tareas complejas y temarios densos en micro-misiones diarias digeribles. Esta metodología reduce la procrastinación en adolescentes al ofrecer un camino predecible y libre de agobio.
+                        </p>
+
+                        <div class="spotlight-benefits-list" id="spotlight-benefits">
+                            <div class="spotlight-benefit-item">
+                                <div class="benefit-icon"><ion-icon name="checkmark-circle"></ion-icon></div>
+                                <div>
+                                    <strong>Menor sobrecarga mental:</strong>
+                                    <span>El temario se presenta en dosis de 15 a 20 minutos con descansos integrados.</span>
+                                </div>
+                            </div>
+                            <div class="spotlight-benefit-item">
+                                <div class="benefit-icon"><ion-icon name="trending-up-outline"></ion-icon></div>
+                                <div>
+                                    <strong>Hábitos de estudio autónomos:</strong>
+                                    <span>Ayuda a los estudiantes a organizarse sin depender exclusivamente de recordatorios externos.</span>
+                                </div>
+                            </div>
+                            <div class="spotlight-benefit-item">
+                                <div class="benefit-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+                                <div>
+                                    <strong>Espacio libre de juicios:</strong>
+                                    <span>Si no logras completar una misión hoy, Aren reajusta la ruta con calma y comprensión.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spotlight-action-footer">
+                            <button class="btn-spotlight-action" id="btn-spotlight-action">
+                                <ion-icon name="play-circle-outline" id="spotlight-btn-icon"></ion-icon>
+                                <span id="spotlight-action-text">Probar micro-misión de hoy</span>
+                            </button>
+                            <span class="spotlight-subtext" id="spotlight-subtext">Haz clic en cualquier tarjeta de arriba para explorar cada dinámica</span>
+                        </div>
+
+                        <!-- Micro-interaction feedback container (breathing circle, mission toast, confetti, etc.) -->
+                        <div class="spotlight-interactive-feedback" id="spotlight-feedback" style="display: none;">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -270,91 +382,241 @@
 
             <div class="interactive-demo-tabs">
                 <div class="demo-tab-buttons">
-                    <button class="demo-tab-btn active" data-tab="tab-docente"><ion-icon
-                            name="stats-chart-outline"></ion-icon> Panel Docente en Tiempo Real</button>
+                    <button class="demo-tab-btn" data-tab="tab-docente"><ion-icon
+                            name="stats-chart-outline"></ion-icon> Panel Docente <span class="badge-proximamente">Próximamente</span></button>
                     <button class="demo-tab-btn" data-tab="tab-estudiante"><ion-icon
-                            name="game-controller-outline"></ion-icon> Vista del Estudiante con Aren</button>
-                    <button class="demo-tab-btn" data-tab="tab-dag"><ion-icon name="git-network-outline"></ion-icon>
-                        Mapa de Grafos DAG</button>
+                            name="game-controller-outline"></ion-icon> Vista Estudiante <span class="badge-proximamente">Próximamente</span></button>
+                    <button class="demo-tab-btn active" data-tab="tab-dag"><ion-icon name="globe-outline"></ion-icon>
+                        Globo 3D & Grafo Inter-Materias</button>
+                    <button class="demo-tab-btn" data-tab="tab-gamificacion"><ion-icon name="trophy-outline"></ion-icon>
+                        Arena Gamificada RPG</button>
                 </div>
 
                 <div class="demo-tab-content">
-                    <!-- Tab 1: Panel Docente -->
-                    <div class="tab-pane active" id="tab-docente">
-                        <div class="mockup-frame glass-panel">
+                    <!-- Tab 1: Panel Docente (Próximamente) -->
+                    <div class="tab-pane" id="tab-docente">
+                        <div class="mockup-frame">
                             <div class="mockup-top-bar">
                                 <span class="dot red"></span><span class="dot yellow"></span><span
                                     class="dot green"></span>
-                                <span class="mockup-title">ArenAI &bull; Panel del Profesor (Conexión P2P Activa: 28
-                                    Estudiantes)</span>
+                                <span class="mockup-title">ArenAI &bull; Panel Docente en Tiempo Real</span>
                             </div>
-                            <div class="mockup-body">
-                                <div class="mockup-grid-stats">
-                                    <div class="stat-card">
-                                        <span>Comprensión del Grupo</span>
-                                        <h4>88.4% (Alto)</h4>
+                            <div class="mockup-placeholder-body">
+                                <div class="placeholder-card-inner">
+                                    <div class="placeholder-avatar-box">
+                                        <img src="img/profile_picture_sloth_eyes_open.png" alt="Perezoso Docente" class="placeholder-avatar-img">
                                     </div>
-                                    <div class="stat-card">
-                                        <span>Latencia P2P WebSocket</span>
-                                        <h4 class="text-cyan">4ms Direct Socket</h4>
-                                    </div>
-                                    <div class="stat-card">
-                                        <span>Estudiantes Necesitando Apoyo</span>
-                                        <h4 class="text-gold">2 Alumnos</h4>
-                                    </div>
-                                </div>
-                                <div class="mockup-chart-placeholder">
-                                    <div class="chart-line-sim"></div>
-                                    <span class="chart-label">Sincronización continua de ejercicios sin intermediario
-                                        servidor central</span>
+                                    <span class="badge-tag-upcoming">EN PREPARACIÓN PEDAGÓGICA</span>
+                                    <h4>Próximamente: Panel de Monitoreo Docente</h4>
+                                    <p>Estamos reimaginando el tablero del profesor con métricas de empatía y calor grupal. Próximamente podrás visualizar diagnósticos en tiempo real de comprensión estudiantil sin estrés evaluativo.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tab 2: Vista Estudiante -->
+                    <!-- Tab 2: Vista Estudiante (Próximamente) -->
                     <div class="tab-pane" id="tab-estudiante">
-                        <div class="mockup-frame glass-panel">
+                        <div class="mockup-frame">
                             <div class="mockup-top-bar">
                                 <span class="dot red"></span><span class="dot yellow"></span><span
                                     class="dot green"></span>
-                                <span class="mockup-title">ArenAI &bull; Vista del Estudiante (Sesión Asistida por
-                                    Aren)</span>
+                                <span class="mockup-title">ArenAI &bull; Experiencia y Entorno del Estudiante</span>
                             </div>
-                            <div class="mockup-body student-view">
-                                <div class="student-mascot-banner">
-                                    <img src="img/profile_picture_capybara_eyes_open.png" alt="Aren Mini"
-                                        class="mini-capy-thumb">
-                                    <span>¡Excelente trabajo! Has completado el módulo de Álgebra Lineal.</span>
+                            <div class="mockup-placeholder-body">
+                                <div class="placeholder-card-inner">
+                                    <div class="placeholder-avatar-box">
+                                        <img src="img/Capybara profile picture.png" alt="Aren Mini" class="placeholder-avatar-img">
+                                    </div>
+                                    <span class="badge-tag-upcoming">NUEVO DISEÑO EN CURSO</span>
+                                    <h4>Próximamente: Interfaz Asistida por Aren</h4>
+                                    <p>El portal personal del alumno donde Aren acompaña cada descubrimiento con micro-desafíos lúdicos adaptativos y pausas conscientes para evitar la sobrecarga cognitiva.</p>
                                 </div>
-                                <div class="exercise-card-sim">
-                                    <h5>Módulo 04: Matrices de Transición de Estado</h5>
-                                    <p>Selecciona la ruta recomendada por Aren para afianzar tus conocimientos.</p>
-                                    <div class="options-sim">
-                                        <span class="opt-pill active">Opción A: Repaso Visual con Grafos</span>
-                                        <span class="opt-pill">Opción B: Desafío Práctico</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Globo Terráqueo 3D & Grafo Inter-Materias (Active) -->
+                    <div class="tab-pane active" id="tab-dag">
+                        <div class="mockup-frame">
+                            <div class="mockup-top-bar">
+                                <span class="dot red"></span><span class="dot yellow"></span><span
+                                    class="dot green"></span>
+                                <span class="mockup-title">ArenAI &bull; Globo 3D del Conocimiento: Grafo de Dependencias Inter-Materias</span>
+                            </div>
+                            <div class="globe-mockup-body">
+                                <div class="globe-container-wrapper">
+                                    <div class="globe-canvas-card">
+                                        <canvas id="globe-3d-canvas" width="560" height="420"></canvas>
+                                        <div class="globe-drag-hint">
+                                            <ion-icon name="hand-left-outline"></ion-icon>
+                                            <span>Arrastra para rotar en 3D &bull; Clic en nodos para ver dependencias</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="globe-sidebar-info">
+                                        <span class="globe-stats-pill">
+                                            <ion-icon name="git-network-outline"></ion-icon> Red Neuronal Curricular
+                                        </span>
+                                        <h3 class="globe-sidebar-title">Dependencias Curriculares Integradas</h3>
+                                        <p class="globe-sidebar-desc">
+                                            Cada punto sobre el globo representa un tema o nota de aprendizaje organizado por color temático. Los arcos curvos procesan las dependencias cognitivas necesarias, demostrando cómo una materia alimenta a la otra sin silos aislados.
+                                        </p>
+
+                                        <div class="globe-subjects-legend">
+                                            <div class="legend-chip">
+                                                <span class="legend-dot" style="background:#e76f51;"></span>
+                                                <span>Matemáticas</span>
+                                            </div>
+                                            <div class="legend-chip">
+                                                <span class="legend-dot" style="background:#2a9d8f;"></span>
+                                                <span>Física</span>
+                                            </div>
+                                            <div class="legend-chip">
+                                                <span class="legend-dot" style="background:#52b788;"></span>
+                                                <span>Biología</span>
+                                            </div>
+                                            <div class="legend-chip">
+                                                <span class="legend-dot" style="background:#e9c46a;"></span>
+                                                <span>Informática</span>
+                                            </div>
+                                            <div class="legend-chip">
+                                                <span class="legend-dot" style="background:#9c6644;"></span>
+                                                <span>Humanidades</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="inter-subject-card" id="inter-connection-display">
+                                            <span class="inter-badge">
+                                                <ion-icon name="flash-outline"></ion-icon> CONEXIÓN INTER-MATERIA ACTIVA
+                                            </span>
+                                            <div class="inter-formula">
+                                                <span class="subj-tag" style="background:rgba(231,111,81,0.18); color:#b23b1e;">Álgebra Lineal</span>
+                                                <ion-icon name="arrow-forward-outline" style="color:var(--aren-caramel); font-size:1.1rem;"></ion-icon>
+                                                <span class="subj-tag" style="background:rgba(233,196,106,0.25); color:#8d6800;">Redes Neuronales</span>
+                                            </div>
+                                            <p class="inter-note">"El dominio de matrices y transformaciones vectoriales permite comprender la retropropagación en IA sin frustración conceptual."</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tab 3: Mapa de Grafos DAG -->
-                    <div class="tab-pane" id="tab-dag">
-                        <div class="mockup-frame glass-panel">
+                    <!-- Tab 4: Arena Gamificada RPG (Estilo Batalla Pokémon + Kahoot por Velocidad) -->
+                    <div class="tab-pane" id="tab-gamificacion">
+                        <div class="mockup-frame">
                             <div class="mockup-top-bar">
-                                <span class="dot red"></span><span class="dot yellow"></span><span
-                                    class="dot green"></span>
-                                <span class="mockup-title">ArenAI &bull; Grafo Dirigido Aclíclico (DAG) de
-                                    Aprendizaje</span>
+                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                                <span class="mockup-title">ArenAI &bull; Arena Pedagógica: Duelo de Retención (Batalla Pokémon + Kahoot)</span>
+                                <div class="pkmn-top-controls">
+                                    <button class="btn-sound-toggle" id="btn-pkmn-sound" title="Activar/Desactivar efectos de sonido">
+                                        <ion-icon name="volume-mute-outline" id="sound-icon"></ion-icon>
+                                        <span id="sound-label">Silencio</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="mockup-body dag-view">
-                                <div class="dag-nodes-sim">
-                                    <div class="dag-node node-done">Fundamentos</div>
-                                    <div class="dag-line"></div>
-                                    <div class="dag-node node-active">Sistemas Operativos</div>
-                                    <div class="dag-line"></div>
-                                    <div class="dag-node node-next">Matrices de Retención</div>
+                            <div class="pkmn-battle-container">
+                                <!-- Pokémon Battle Stage Scene (Authentic 4-Corner Diagonal Perspective) -->
+                                <div class="pkmn-screen">
+                                    <!-- 1. Opponent HUD Card (Top-Left) -->
+                                    <div class="pkmn-hud-card pkmn-hud-enemy">
+                                        <div class="pkmn-hud-header">
+                                            <span class="pkmn-name" id="enemy-name">Bug de Matrices</span>
+                                            <span class="pkmn-level">Nv. 25</span>
+                                        </div>
+                                        <div class="pkmn-hp-wrapper">
+                                            <span class="hp-tag">PS</span>
+                                            <div class="pkmn-hp-bar-track">
+                                                <div class="pkmn-hp-bar-fill" id="enemy-hp-fill" style="width: 100%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="pkmn-hp-numeric">
+                                            <span id="enemy-hp-current">1000</span> / 1000 PS
+                                        </div>
+                                    </div>
+
+                                    <!-- 2. Opponent Platform & Sprite (Top-Right) -->
+                                    <div class="pkmn-battle-unit enemy-unit">
+                                        <div class="floating-damage-box" id="floating-damage"></div>
+                                        <img src="img/battle_sprite_front_capybara.png" alt="Oponente Reto" class="pkmn-sprite pkmn-sprite-enemy" id="enemy-sprite">
+                                        <div class="pkmn-platform-ellipse enemy-ellipse"></div>
+                                    </div>
+
+                                    <!-- 3. Player Platform & Sprite (Bottom-Left) -->
+                                    <div class="pkmn-battle-unit player-unit">
+                                        <img src="img/battle_sprite_back_capybara.png" alt="Aren Estudiante" class="pkmn-sprite pkmn-sprite-player" id="player-sprite">
+                                        <div class="pkmn-platform-ellipse player-ellipse"></div>
+                                    </div>
+
+                                    <!-- 4. Player HUD Card (Bottom-Right) -->
+                                    <div class="pkmn-hud-card pkmn-hud-player">
+                                        <div class="pkmn-hud-header">
+                                            <span class="pkmn-name">Aren (Tú)</span>
+                                            <span class="pkmn-level">Nv. 28</span>
+                                        </div>
+                                        <div class="pkmn-hp-wrapper">
+                                            <span class="hp-tag">PS</span>
+                                            <div class="pkmn-hp-bar-track">
+                                                <div class="pkmn-hp-bar-fill player-hp" style="width: 100%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="pkmn-exp-wrapper">
+                                            <span class="exp-tag">EXP</span>
+                                            <div class="pkmn-exp-bar-track">
+                                                <div class="pkmn-exp-bar-fill" id="player-exp-fill" style="width: 78%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Kahoot-Style Quiz Section (Timer & 4 Answer Buttons) -->
+                                <div class="kahoot-panel">
+                                    <div class="kahoot-question-box">
+                                        <div class="kahoot-meta-pills">
+                                            <span class="badge-materia" id="quiz-materia">Matemáticas Aplicadas</span>
+                                            <span class="badge-round" id="quiz-round">Pregunta 1 de 3</span>
+                                        </div>
+                                        <h4 class="kahoot-question-text" id="quiz-question">¿Cuál es la derivada de la función f(x) = 3x² + 5?</h4>
+                                    </div>
+
+                                    <!-- Kahoot Speed Meter & Multiplier Bar -->
+                                    <div class="kahoot-timer-container">
+                                        <div class="kahoot-timer-info">
+                                            <span class="timer-label"><ion-icon name="stopwatch-outline"></ion-icon> Tiempo: <strong id="timer-display">10.0s</strong></span>
+                                            <span class="multiplier-label"><ion-icon name="flash-outline"></ion-icon> Daño por Velocidad: <strong id="multiplier-display" class="highlight-gold">x3.0 (Máx Daño)</strong></span>
+                                        </div>
+                                        <div class="kahoot-timer-track">
+                                            <div class="kahoot-timer-bar" id="kahoot-timer-bar" style="width: 100%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 4 Kahoot-Style Answer Choices (Red, Blue, Yellow, Green) -->
+                                    <div class="kahoot-answers-grid" id="kahoot-answers-grid">
+                                        <button class="kahoot-btn btn-red" data-index="0">
+                                            <span class="kahoot-shape">▲</span>
+                                            <span class="kahoot-ans-text" id="ans-text-0">f'(x) = 6x</span>
+                                        </button>
+                                        <button class="kahoot-btn btn-blue" data-index="1">
+                                            <span class="kahoot-shape">◆</span>
+                                            <span class="kahoot-ans-text" id="ans-text-1">f'(x) = 3x + 5</span>
+                                        </button>
+                                        <button class="kahoot-btn btn-yellow" data-index="2">
+                                            <span class="kahoot-shape">●</span>
+                                            <span class="kahoot-ans-text" id="ans-text-2">f'(x) = 6x²</span>
+                                        </button>
+                                        <button class="kahoot-btn btn-green" data-index="3">
+                                            <span class="kahoot-shape">■</span>
+                                            <span class="kahoot-ans-text" id="ans-text-3">f'(x) = 15x</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Retro Pokémon Dialogue Box -->
+                                    <div class="pkmn-dialogue-card">
+                                        <p id="pkmn-dialogue-text">¡Un Bug de Matrices salvaje ha aparecido! Responde rápido al estilo Kahoot: ¡entre más veloz aciertes, mayor daño crítico le harás!</p>
+                                        <button class="btn-restart-battle" id="btn-restart-battle" style="display: none;">
+                                            <ion-icon name="refresh-outline"></ion-icon> Volver a Jugar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -366,32 +628,75 @@
         <!-- Deep Core Technical Architecture -->
         <section id="ingenieria" class="aren-section">
             <div class="aren-section-header">
-                <span class="aren-tag">Núcleo Tecnológico</span>
-                <h2>Arquitectura de Grado Científico & Ingenieril</h2>
-                <p>Fruto de meses de investigación y trabajo constante. Integración de sockets P2P, matrices cognitivas
-                    y grafos acíclicos para una experiencia fluida.</p>
+                <span class="aren-tag">Ingeniería & Pedagogía</span>
+                <h2>Tecnología al Servicio de la Educación</h2>
+                <p>Diseñada con rigor científico y sensibilidad humana. Una arquitectura modular que protege la privacidad del estudiante y habilita dinámicas gamificadas de baja latencia.</p>
             </div>
 
             <div class="aren-arch-cards-grid">
                 <div class="aren-arch-card">
                     <div class="arch-badge">WEBSOCKETS P2P</div>
-                    <h3>Conexión Directa entre Equipos</h3>
-                    <p>Comunicación bidireccional de ultrabaja latencia que permite la sincronización instantánea de
-                        datos y ejercicios entre el profesor y sus estudiantes sin cuellos de botella.</p>
+                    <h3>Conexión Directa en el Aula</h3>
+                    <p>Comunicación bidireccional de ultrabaja latencia que permite sincronizar ejercicios entre el profesor y sus estudiantes al instante, incluso en redes de aula local sin depender de internet continuo.</p>
                 </div>
 
                 <div class="aren-arch-card">
-                    <div class="arch-badge">MATRICES COGNITIVAS</div>
-                    <h3>Análisis de Retención Continuo</h3>
-                    <p>Modelos matriciales inspirados en analítica avanzada (ModelArts) para evaluar la memoria de
-                        trabajo y afianzar conceptos clave de manera personalizada.</p>
+                    <div class="arch-badge">PSICOLOGÍA & MATRICES</div>
+                    <h3>Curva del Olvido y Retención</h3>
+                    <p>Modelos matriciales basados en investigaciones sobre la psicología del adolescente para reforzar conceptos en el momento óptimo sin generar frustración ni sobrecarga.</p>
                 </div>
 
                 <div class="aren-arch-card">
                     <div class="arch-badge">GRAFOS DIRIGIDOS (DAGs)</div>
-                    <h3>Rutas de Aprendizaje Dinámicas</h3>
-                    <p>Estructuración de mapas del conocimiento en grafos no cíclicos que adaptan automáticamente las
-                        lecciones en función de los prerrequisitos dominados por el usuario.</p>
+                    <h3>Rutas de Aprendizaje a tu Ritmo</h3>
+                    <p>Estructuración del plan de estudios en mapas conceptuales interactivos que se ramifican y adaptan según el ritmo propio y los logros de cada alumno.</p>
+                </div>
+
+                <div class="aren-arch-card">
+                    <div class="arch-badge">STACK INTEGRAL</div>
+                    <h3>Node &bull; Electron &bull; TS/JS &bull; Python &bull; Docker</h3>
+                    <p>Desarrollo multiplataforma (escritorio y web) desplegable en contenedores Docker aislados, garantizando máxima seguridad de datos de menores y portabilidad en colegios.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipo Creador & Créditos de Investigación -->
+        <section id="equipo" class="aren-section aren-bg-alt">
+            <div class="aren-section-header">
+                <span class="aren-tag">Equipo Creador & Créditos</span>
+                <h2>Autores e Investigadores del Proyecto</h2>
+                <p>ArenAI fue concebido y desarrollado de forma colaborativa: unificando diseño gráfico y viabilidad económica, lógica del sistema con sockets en tiempo real, y procesamiento en la nube con base creativa de IA.</p>
+            </div>
+
+            <div class="aren-team-grid">
+                <!-- Miembro 1: Leonardo Escobar -->
+                <div class="aren-team-card">
+                    <div class="team-avatar-box">
+                        <span class="team-avatar-initials">LE</span>
+                    </div>
+                    <h3>Leonardo Escobar</h3>
+                    <span class="team-role-tag">Diseño Gráfico, UI/UX & Viabilidad Económica</span>
+                    <p>Desarrollo de la interfaz gráfica y experiencia de usuario (UI/UX), análisis y manejo de precios reales del mercado, proyecciones financieras y estimaciones de costos para asegurar la viabilidad económica de la solución.</p>
+                </div>
+
+                <!-- Miembro 2: Yereth Soto Zúñiga -->
+                <div class="aren-team-card">
+                    <div class="team-avatar-box">
+                        <span class="team-avatar-initials">YS</span>
+                    </div>
+                    <h3>Yereth Soto Zúñiga</h3>
+                    <span class="team-role-tag">Lógica del Sistema & Sockets en Tiempo Real</span>
+                    <p>Desarrollo de la lógica central del motor educativo, estructuración algorítmica y canal de comunicación bidireccional mediante Sockets / WebSockets para sincronización de baja latencia en el aula.</p>
+                </div>
+
+                <!-- Miembro 3: Reishell Fernández -->
+                <div class="aren-team-card">
+                    <div class="team-avatar-box">
+                        <span class="team-avatar-initials">RF</span>
+                    </div>
+                    <h3>Reishell Fernández</h3>
+                    <span class="team-role-tag">Procesamiento Cloud de IA & Base Creativa</span>
+                    <p>Liderazgo de la base creativa del proyecto, conceptualización estética y arquitectura de procesamiento en la nube para los modelos de inteligencia artificial y analítica pedagógica.</p>
                 </div>
             </div>
         </section>
@@ -399,7 +704,7 @@
 
     <footer class="aren-footer">
         <div class="aren-footer-content">
-            <p>&copy; 2026 ArenAI Platform. Desarrollado por Leonardo Escobar.</p>
+            <p>&copy; 2026 ArenAI Platform. Desarrollado en equipo por <strong>Leonardo Escobar</strong>, <strong>Yereth Soto Zúñiga</strong> y <strong>Reishell Fernández</strong>.</p>
             <a href="../index.html#rack" class="aren-footer-back-link">
                 <ion-icon name="arrow-back-outline"></ion-icon> Volver al Portafolio Principal
             </a>
