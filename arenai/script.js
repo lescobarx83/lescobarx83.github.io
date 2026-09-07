@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { passive: true });
 
-    // 7. UNDER CONSTRUCTION ACCESS CONTROL (PASSWORD: 1235)
+    // 7. UNDER CONSTRUCTION ACCESS CONTROL
     const lockOverlay = document.getElementById('arenai-lock-overlay');
     const lockCard = document.getElementById('lock-card');
     const lockForm = document.getElementById('arenai-unlock-form');
