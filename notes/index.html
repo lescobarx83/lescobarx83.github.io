@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas Técnicas — Leonardo Escobar | ICT Engineer</title>
+    <meta name="description" content="Artículos técnicos y guías prácticas de Leonardo Escobar: openEuler, openGauss, alta disponibilidad, Node.js, WebSockets y gobernanza de datos desde la experiencia real en Huawei Technologies.">
+    <meta property="og:title" content="Notas Técnicas — Leonardo Escobar">
+    <meta property="og:description" content="Artículos técnicos sobre infraestructura empresarial, bases de datos y desarrollo desde la práctica real.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="notes-bg-ambient">
+        <div class="ambient-orb ambient-orb-1"></div>
+        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-grid"></div>
+    </div>
+
+    <header class="notes-nav-wrapper">
+        <nav class="notes-nav">
+            <a href="../index.html" class="notes-brand-back">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+                <span>Portafolio</span>
+            </a>
+            <div class="notes-nav-center">
+                <span class="notes-nav-logo">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    Notas Técnicas
+                </span>
+            </div>
+            <div class="notes-nav-actions">
+                <a href="../cv/index.html" class="notes-nav-link-btn">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <span>CV</span>
+                </a>
+                <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="notes-nav-link-btn notes-nav-link-primary">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="notes-hero">
+            <div class="notes-hero-content">
+                <div class="notes-hero-badge">
+                    <span class="notes-status-dot"></span>
+                    <span>BASE DE CONOCIMIENTO TÉCNICO</span>
+                </div>
+                <h1 class="notes-hero-title">
+                    Laboratorio de Ideas<br>
+                    <span class="notes-hero-title-accent">&amp; Referencias</span>
+                </h1>
+                <p class="notes-hero-subtitle">
+                    Artículos técnicos, guías prácticas y análisis derivados de experiencia real en infraestructura
+                    empresarial, bases de datos y desarrollo de software.<br><br>
+                    No teoría abstracta — lo que aprendí desplegando, rompiendo y arreglando sistemas en producción.
+                </p>
+                <div class="notes-hero-author-strip">
+                    <div class="notes-author-avatar">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                    </div>
+                    <div class="notes-author-info">
+                        <span class="notes-author-name">Leonardo Escobar</span>
+                        <span class="notes-author-role">ICT Engineer · Huawei Technologies · 3er Lugar Global ICT Competition</span>
+                    </div>
+                </div>
+                <div class="notes-stats-strip">
+                    <div class="notes-stat-item">
+                        <span class="notes-stat-number">5</span>
+                        <span class="notes-stat-label">Artículos en preparación</span>
+                    </div>
+                    <div class="notes-stat-divider"></div>
+                    <div class="notes-stat-item">
+                        <span class="notes-stat-number">3+</span>
+                        <span class="notes-stat-label">Años de experiencia técnica</span>
+                    </div>
+                    <div class="notes-stat-divider"></div>
+                    <div class="notes-stat-item">
+                        <span class="notes-stat-number">5</span>
+                        <span class="notes-stat-label">Dominios cubiertos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notes-hero-terminal">
+                <div class="notes-terminal-titlebar">
+                    <div class="notes-terminal-dots">
+                        <span class="dot-r"></span>
+                        <span class="dot-y"></span>
+                        <span class="dot-g"></span>
+                    </div>
+                    <span class="notes-terminal-filename">knowledge-base/index.md</span>
+                </div>
+                <div class="notes-terminal-body">
+                    <div class="tl"><span class="tc"># Base de Conocimiento Técnico</span></div>
+                    <div class="tl tl-blank"></div>
+                    <div class="tl"><span class="tk">author</span><span class="tsep">:</span> <span class="tv">Leonardo Escobar</span></div>
+                    <div class="tl"><span class="tk">role</span><span class="tsep">:</span> <span class="tv">ICT Engineer @ Huawei</span></div>
+                    <div class="tl"><span class="tk">stack</span><span class="tsep">:</span> <span class="tv">[openEuler, openGauss, Node.js]</span></div>
+                    <div class="tl tl-blank"></div>
+                    <div class="tl"><span class="tc">## Artículos disponibles:</span></div>
+                    <div class="tl tl-blank"></div>
+                    <div class="tl tl-item"><span class="tarrow">→</span> <span class="ti">Hardening openEuler en Kunpeng</span> <span class="tbadge">soon</span></div>
+                    <div class="tl tl-item"><span class="tarrow">→</span> <span class="ti">openGauss: Primeros pasos</span> <span class="tbadge">soon</span></div>
+                    <div class="tl tl-item"><span class="tarrow">→</span> <span class="ti">Alta Disponibilidad Activo-Activo</span> <span class="tbadge">soon</span></div>
+                    <div class="tl tl-item"><span class="tarrow">→</span> <span class="ti">WebSockets en Node.js (ArenAI)</span> <span class="tbadge">soon</span></div>
+                    <div class="tl tl-item"><span class="tarrow">→</span> <span class="ti">Gobernanza de datos para CXOs</span> <span class="tbadge">soon</span></div>
+                    <div class="tl tl-blank"></div>
+                    <div class="tl tl-cursor"><span class="tprompt">lescobar@noc-cr01:~$</span> <span class="tcursor" id="blink-cursor">▋</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-filter-section">
+            <div class="notes-container">
+                <div class="notes-filter-row">
+                    <div class="notes-filter-bar">
+                        <button class="notes-filter-btn active" data-filter="all" id="filter-all">
+                            <ion-icon name="grid-outline"></ion-icon> Todos
+                        </button>
+                        <button class="notes-filter-btn" data-filter="os" id="filter-os">
+                            <ion-icon name="terminal-outline"></ion-icon> OS &amp; Servidores
+                        </button>
+                        <button class="notes-filter-btn" data-filter="db" id="filter-db">
+                            <ion-icon name="server-outline"></ion-icon> Bases de Datos
+                        </button>
+                        <button class="notes-filter-btn" data-filter="infra" id="filter-infra">
+                            <ion-icon name="git-network-outline"></ion-icon> Infraestructura
+                        </button>
+                        <button class="notes-filter-btn" data-filter="dev" id="filter-dev">
+                            <ion-icon name="code-slash-outline"></ion-icon> Desarrollo
+                        </button>
+                        <button class="notes-filter-btn" data-filter="data" id="filter-data">
+                            <ion-icon name="analytics-outline"></ion-icon> Datos &amp; BI
+                        </button>
+                    </div>
+                    <div class="notes-filter-count">
+                        <span id="filter-count">5</span> artículos
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-articles-section">
+            <div class="notes-container">
+                <div class="notes-articles-grid" id="articles-grid">
+
+                    <article class="note-card" data-category="os" id="note-openeuler">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-os"><ion-icon name="terminal-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-os">openEuler &bull; Servidores</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">Hardening y Tuning de Kernel en openEuler 22.03 LTS para Kunpeng (ARM64)</h2>
+                            <p class="note-excerpt">Evaluación experimental de directivas sysctl, afinidad NUMA, HugePages transparentes y políticas de confinamiento SELinux enforcing sobre microprocesadores Kunpeng 920.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Arquitectura Kunpeng 920 y extensiones atómicas LSE</li>
+                                    <li>Parámetros de tuning de kernel en /etc/sysctl.d/99-kunpeng.conf</li>
+                                    <li>Hardening con SELinux en modo enforcing y sandboxing</li>
+                                    <li>Métricas de throughput y latencia en bases de datos</li>
+                                    <li>Referencias técnicas oficiales de Huawei y CIS</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">openEuler</span><span class="note-tag">Kunpeng</span><span class="note-tag">ARM64</span><span class="note-tag">Security</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~12 min</span>
+                                <button class="note-btn-read" data-paper="paper-kunpeng"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="note-card" data-category="db" id="note-opengauss">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-db"><ion-icon name="server-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-db">openGauss &bull; Bases de Datos</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">openGauss vs RDBMS Tradicionales: Replicación, Pooling y Concurrencia</h2>
+                            <p class="note-excerpt">Diferencias arquitectónicas con PostgreSQL, motor en memoria MOT (Memory-Optimized Tables), configuración de pg_hba.conf con mínimos privilegios y optimización mediante EXPLAIN ANALYZE.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Diferencias arquitectónicas y partición de memoria NUMA</li>
+                                    <li>Reglas de autenticación restrictiva en pg_hba.conf</li>
+                                    <li>Optimización de planes de ejecución con EXPLAIN ANALYZE</li>
+                                    <li>Resultados de benchmark TPC-C (1.2M tpmC)</li>
+                                    <li>Referencias oficiales openGauss y VLDB</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">openGauss</span><span class="note-tag">PostgreSQL</span><span class="note-tag">SQL</span><span class="note-tag">MOT Engine</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~11 min</span>
+                                <button class="note-btn-read" data-paper="paper-opengauss"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="note-card" data-category="infra" id="note-ha">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-infra"><ion-icon name="git-network-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-infra">Infraestructura &bull; Alta Disponibilidad</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">Arquitectura Activo-Activo de Misión Crítica y Fencing de Nodos en Telecomunicaciones</h2>
+                            <p class="note-excerpt">Diseño e implementación de clústeres redundantes activo-activo: prevención de split-brain con STONITH IPMI/Redfish, sincronización de estado de sesión y convergencia de Virtual IPs flotantes.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Planteamiento del problema de split-brain en misión crítica</li>
+                                    <li>Mecanismo de aislamiento físico de hardware STONITH</li>
+                                    <li>Configuración de corosync.conf con transporte multi-anillo</li>
+                                    <li>Resultados de failover medidos en laboratorio (450 ms)</li>
+                                    <li>Reglas de producción y fuentes de ClusterLabs / RFC 5445</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">Alta Disponibilidad</span><span class="note-tag">Linux HA</span><span class="note-tag">Telecom</span><span class="note-tag">SLA</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~14 min</span>
+                                <button class="note-btn-read" data-paper="paper-ha"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="note-card" data-category="dev" id="note-websockets">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-dev"><ion-icon name="code-slash-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-dev">Desarrollo &bull; Node.js</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">Sincronización P2P y Mitigación de Latencia con WebSockets: ArenAI</h2>
+                            <p class="note-excerpt">Arquitectura en tiempo real de la plataforma ArenAI: namespaces dinámicos, temporizador de heartbeat adaptativo (watchdog) y eliminación de memory leaks en servidores escolares de alta velocidad.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Desafíos de red WAN e intermitencias en colegios</li>
+                                    <li>Código del watchdog de heartbeat en Node.js</li>
+                                    <li>Multiplexación de salas de examen concurrentes</li>
+                                    <li>Pruebas con 30+ alumnos simultáneos (&lt;18 ms LAN)</li>
+                                    <li>Referencias oficiales IETF RFC 6455 y Node.js Core</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">Node.js</span><span class="note-tag">WebSockets</span><span class="note-tag">ArenAI</span><span class="note-tag">Real-Time</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~10 min</span>
+                                <button class="note-btn-read" data-paper="paper-websockets"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="note-card" data-category="os" id="note-hardening">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-os"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-os">Seguridad &bull; SysAdmin</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">Checklist Operativo de Post-Instalación y Bastionado en Linux Empresarial</h2>
+                            <p class="note-excerpt">Protocolo reproducible para servidores de producción: clausura de puertos residuales, aislamiento SSH ed25519 con puerto no estándar, auditoría continua con auditd y control de inmutabilidad.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Reducción de superficie de ataque residual</li>
+                                    <li>Configuración estricta de sshd_config</li>
+                                    <li>Reglas de auditoría con audit.rules</li>
+                                    <li>Inmutabilidad con atributos extendidos del kernel</li>
+                                    <li>Fuentes de estándares CIS Linux Benchmark y NIST SP 800-123</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">SysAdmin</span><span class="note-tag">Linux</span><span class="note-tag">Security</span><span class="note-tag">CIS Benchmark</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~9 min</span>
+                                <button class="note-btn-read" data-paper="paper-hardening"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="note-card" data-category="data" id="note-data-gov">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-data"><ion-icon name="analytics-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-data">Datos &bull; Business Intelligence</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">Gobernanza de Datos para Decisiones Ejecutivas: Reportes para CXOs</h2>
+                            <p class="note-excerpt">Metodología para transformar telemetría de red cruda en decisiones de alta dirección: limpieza de anomalías, proyección de multas SLA y presentación con la regla de los tres KPIs ejecutivos.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Brecha entre telemetría técnica y decisión de negocio</li>
+                                    <li>Pipeline de normalización en tres capas</li>
+                                    <li>La regla de los tres KPIs para tableros ejecutivos</li>
+                                    <li>Modelado de impacto financiero de caídas de red</li>
+                                    <li>Referencias DAMA-DMBOK y TM Forum SLA Framework</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">Data Governance</span><span class="note-tag">BI</span><span class="note-tag">CXO Metrics</span><span class="note-tag">Huawei</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~11 min</span>
+                                <button class="note-btn-read" data-paper="paper-datagov"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="note-card" data-category="infra" id="note-bbr">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-infra"><ion-icon name="hardware-chip-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-infra">Redes &bull; Control de Congestión</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">Evaluación de BBR v2 vs CUBIC sobre Enlaces 100G en Núcleos de Telecom</h2>
+                            <p class="note-excerpt">Banco de pruebas bajo pérdida inducida de paquetes (1.5%) y latencia RTT. Análisis de por qué BBR v2 mantiene 78.4 Gbps mientras CUBIC colapsa a 1.2 Gbps por reducción de ventana.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Arquitectura del banco de pruebas óptico 100G</li>
+                                    <li>Parámetros de kernel para Fair Queueing y buffers fq</li>
+                                    <li>Métricas comparativas de throughput y mitigación de bufferbloat</li>
+                                    <li>Recomendaciones de despliegue en DCI (Data Center Interconnect)</li>
+                                    <li>Papers de investigación de ACM Queue e IETF Draft</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">TCP BBR</span><span class="note-tag">Networking</span><span class="note-tag">100G Core</span><span class="note-tag">Benchmark</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~13 min</span>
+                                <button class="note-btn-read" data-paper="paper-bbr"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="note-card" data-category="infra" id="note-migration">
+                        <div class="note-card-header">
+                            <div class="note-icon-box note-icon-infra"><ion-icon name="server-outline"></ion-icon></div>
+                            <div class="note-header-meta">
+                                <span class="note-category note-cat-infra">Infraestructura &bull; Migración</span>
+                                <span class="note-status-badge note-status-ready"><ion-icon name="checkmark-circle-outline"></ion-icon> Publicado</span>
+                            </div>
+                        </div>
+                        <div class="note-card-body">
+                            <h2 class="note-title">Consolidación de Datacenter y Migración a openEuler Kunpeng en Operador Tier-1</h2>
+                            <p class="note-excerpt">Caso de estudio real: transición de 80 servidores legacy x86 hacia 24 servidores Kunpeng ARM64 corriendo openEuler 22.03 LTS, reduciendo el 38% en consumo y 42% en TCO.</p>
+                            <div class="note-preview-block">
+                                <div class="note-preview-label">Contenido del documento:</div>
+                                <ul class="note-toc">
+                                    <li>Diagnóstico del datacenter y obsolescencia térmica</li>
+                                    <li>Estrategia de migración fase por fase con cero downtime</li>
+                                    <li>Consolidación de 5 racks a 2 racks de alta densidad</li>
+                                    <li>Ahorro financiero de $280k USD y retorno en 14 meses</li>
+                                    <li>Fuentes de SPEC CPU 2017 y Green Grid PUE Standards</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="note-card-footer">
+                            <div class="note-tags">
+                                <span class="note-tag">Kunpeng</span><span class="note-tag">openEuler</span><span class="note-tag">TCO</span><span class="note-tag">Datacenter</span>
+                            </div>
+                            <div class="note-card-actions">
+                                <span class="note-read-time"><ion-icon name="time-outline"></ion-icon> ~15 min</span>
+                                <button class="note-btn-read" data-paper="paper-migration"><ion-icon name="book-outline"></ion-icon> Leer Documento</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+                <div class="notes-empty-state" id="notes-empty" style="display:none;">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <p>No hay artículos en esta categoría aún.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-notify-section">
+            <div class="notes-container">
+                <div class="notes-notify-card">
+                    <div class="notes-notify-icon"><ion-icon name="notifications-outline"></ion-icon></div>
+                    <div class="notes-notify-text">
+                        <h3>¿Deseas colaborar o sugerir un tópico de laboratorio?</h3>
+                        <p>Los papers y especificaciones técnicas se actualizan periódicamente. Para debates técnicos o contacto profesional, sígueme en LinkedIn.</p>
+                    </div>
+                    <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="notes-notify-btn">
+                        <ion-icon name="logo-linkedin"></ion-icon> Conectar en LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- MODAL LECTOR INTERACTIVO DE PAPERS & GUÍAS                   -->
+    <!-- ============================================================ -->
+    <div class="paper-modal-overlay" id="paper-modal-overlay">
+        <div class="paper-modal glass-panel" id="paper-modal">
+            <div class="paper-modal-header">
+                <div class="paper-modal-titlebar">
+                    <span class="paper-modal-badge" id="modal-paper-type">RESEARCH PAPER</span>
+                    <span class="paper-modal-doi" id="modal-paper-doi">REF: NOC-2026</span>
+                </div>
+                <div class="paper-modal-actions">
+                    <button class="modal-tool-btn" id="modal-cite-btn" title="Copiar Cita BibTeX">
+                        <ion-icon name="copy-outline"></ion-icon> <span>BibTeX</span>
+                    </button>
+                    <button class="modal-tool-btn" id="modal-print-btn" title="Imprimir / Exportar Documento">
+                        <ion-icon name="print-outline"></ion-icon> <span>PDF / Imprimir</span>
+                    </button>
+                    <a href="#" target="_blank" rel="noopener" class="modal-tool-btn" id="modal-external-link" style="display:none;" title="Ver Documento Externo / PDF">
+                        <ion-icon name="open-outline"></ion-icon> <span>Fuente</span>
+                    </a>
+                    <button class="paper-modal-close" id="modal-close-btn" aria-label="Cerrar Documento">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="paper-modal-body" id="modal-paper-body">
+                <!-- Populated dynamically via papers-data.js -->
+            </div>
+            <div class="paper-modal-footer">
+                <div class="modal-footer-meta">
+                    <span>Autor: Leonardo Escobar &bull; NOC Knowledge Hub</span>
+                </div>
+                <div class="modal-footer-actions">
+                    <button class="modal-btn-close-bottom" id="modal-close-bottom-btn">
+                        <span>Cerrar Lectura</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="notes-footer">
+        <div class="notes-container">
+            <div class="notes-footer-content">
+                <div class="notes-footer-brand">
+                    <span class="notes-footer-name">Leonardo Escobar</span>
+                    <span class="notes-footer-role">ICT Engineer &bull; Huawei Technologies LATAM</span>
+                </div>
+                <div class="notes-footer-links">
+                    <a href="../index.html">← Volver al Portal Principal</a>
+                    <a href="../cv/index.html">Ver CV Completo</a>
+                    <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </div>
+            <div class="notes-footer-bottom">
+                <span>&copy; 2026 Leonardo Escobar. Base de Conocimiento Técnico y de Ingeniería.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../papers-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

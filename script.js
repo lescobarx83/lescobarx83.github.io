@@ -195,14 +195,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
 
     // Add reveal classes to sections and their child cards
-    const revealSections = document.querySelectorAll('#awards, #infrastructure, #rack, #experience, #skills, #contact');
+    const revealSections = document.querySelectorAll('#featured-paper, #publications, #blueprints, #lobby');
     revealSections.forEach(section => {
         // Add reveal class to section header
         const header = section.querySelector('.header-center');
         if (header) header.classList.add('reveal-section');
 
         // Add reveal class to grid children
-        const children = section.querySelectorAll('.award-card, .arch-card, .timeline-card, .skill-box, .direct-contact-card, .e9000h-hardware-outer');
+        const children = section.querySelectorAll('.featured-paper-card, .pub-card, .blueprints-container, .author-lobby-card, .hub-card');
         children.forEach(child => child.classList.add('reveal-child'));
     });
 
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const siblings = parent ? parent.querySelectorAll('.reveal-child') : [];
                 let delay = 0;
                 siblings.forEach((sibling, i) => {
-                    if (sibling === entry.target) delay = i * 100;
+                    if (sibling === entry.target) delay = i * 80;
                 });
                 setTimeout(() => {
                     entry.target.classList.add('visible');
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 childObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
     document.querySelectorAll('.reveal-child').forEach(el => childObserver.observe(el));
 
@@ -251,6 +251,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
     }
+
+    // =========================================================================
+    // NAV SCROLL-SPY (ACTIVE LINK ON SCROLL)
+    // =========================================================================
+    const spySections = document.querySelectorAll('section[id]');
+    const inPageNavLinks = document.querySelectorAll('.nav-menu .nav-link[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 220;
+
+        spySections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        if (currentSectionId) {
+            inPageNavLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentSectionId}` || (currentSectionId === 'featured-paper' && href === '#publications')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+    }, { passive: true });
+
 
     // =========================================================================
     // MAINTENANCE BANNER DISMISS LOGIC
@@ -278,18 +309,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const phrasesDict = {
         es: [
-            'ICT Engineer & Especialista en Infraestructura',
-            '3er Lugar Mundial — Global ICT Competition',
-            'Delivery & Services Engineer — Huawei Technologies',
-            'Cum Laude Probatus — ULACIT',
-            'Semifinalista Mundial — Innovación ICT 2025-2026'
+            'Research Papers, Guías de Campo & Arquitecturas',
+            'openEuler, openGauss, Kunpeng & Alta Disponibilidad',
+            'Sistemas Distribuidos, Sockets & Mitigación de Latencia',
+            'Documentación Técnica basada en Infraestructura Real'
         ],
         en: [
-            'ICT Engineer & Infrastructure Specialist',
-            '3rd Place Global — Global ICT Competition',
-            'Delivery & Services Engineer — Huawei Technologies',
-            'Cum Laude Probatus — ULACIT',
-            'Global Semifinalist — ICT Innovation 2025-2026'
+            'Research Papers, Field Guides & Architectures',
+            'openEuler, openGauss, Kunpeng & High Availability',
+            'Distributed Systems, WebSockets & Latency Mitigation',
+            'Technical Documentation grounded in Production Infrastructure'
         ]
     };
 
@@ -464,26 +493,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const i18nDict = {
         // Navigation
         'nav.home': { es: 'Inicio', en: 'Home' },
-        'nav.about': { es: 'Sobre Mí', en: 'About Me' },
-        'nav.awards': { es: 'Logros', en: 'Awards' },
-        'nav.infra': { es: 'Infraestructura', en: 'Infrastructure' },
-        'nav.projects': { es: 'Proyectos', en: 'Projects' },
-        'nav.experience': { es: 'Experiencia', en: 'Experience' },
-        'nav.skills': { es: 'Habilidades', en: 'Skills' },
-        'nav.contact': { es: 'Contacto', en: 'Contact' },
+        'nav.publications': { es: 'Publicaciones & Papers', en: 'Publications & Papers' },
+        'nav.blueprints': { es: 'Arquitecturas & Labs', en: 'Architectures & Labs' },
+        'nav.lobby': { es: 'Lobby Portafolio', en: 'Portfolio Lobby' },
+        'nav.cv': { es: 'CV Completo', en: 'Full CV' },
         
         // Hero Section
-        'hero.badge': { es: '[ ICT ENGINEER ] &bull; HUAWEI TECHNOLOGIES LATAM', en: '[ ICT ENGINEER ] &bull; HUAWEI TECHNOLOGIES LATAM' },
+        'hero.badge': { es: '[ ENGINEERING RESEARCH &amp; FIELD NOTES ] &bull; DATACENTER &amp; ICT SYSTEMS', en: '[ ENGINEERING RESEARCH &amp; FIELD NOTES ] &bull; DATACENTER &amp; ICT SYSTEMS' },
         'hero.text': { 
-            es: 'Ingeniero de infraestructura y servicios de tecnologías de información y comunicación. Especializado en la administración, despliegue y soporte de centros de datos de misión crítica, arquitectura de servidores, sistemas operativos empresariales y motores de bases de datos de alto rendimiento. Combino capacidad analítica, desarrollo de software y visión estratégica para garantizar alta disponibilidad y continuidad operacional.', 
-            en: 'Information and communications technology infrastructure & services engineer. Specialized in the administration, deployment, and support of mission-critical datacenters, server architectures, enterprise operating systems, and high-performance database engines. Combining analytical rigor, software engineering, and strategic insight to guarantee high availability and operational continuity.' 
+            es: 'Portal de divulgación e investigación técnica en infraestructura de centro de datos, sistemas operativos empresariales (openEuler), motores de bases de datos de alto rendimiento (openGauss), arquitecturas distribuidas de alta disponibilidad y analítica de datos. Documentación de laboratorio, papers técnicos y metodologías aplicadas desde la experiencia en producción.', 
+            en: 'Technical research and publication portal in datacenter infrastructure, enterprise operating systems (openEuler), high-performance database engines (openGauss), high-availability distributed architectures, and data analytics. Laboratory documentation, research papers, and applied production methodologies.' 
         },
-        'hero.ctaProjects': { es: 'Ver Proyectos & Plataformas', en: 'View Projects & Platforms' },
-        'hero.ctaExperience': { es: 'Trayectoria Profesional', en: 'Professional Experience' },
+        'hero.ctaExplore': { es: 'Explorar Publicaciones', en: 'Explore Publications' },
+        'hero.ctaBlueprints': { es: 'Arquitecturas & Labs', en: 'Architectures & Labs' },
+        'hero.ctaLobby': { es: 'Lobby al Portafolio', en: 'Portfolio Lobby' },
         'hero.diagTitle': { es: 'DATACENTER CLUSTER DIAGNOSTICS', en: 'DATACENTER CLUSTER DIAGNOSTICS' },
         'hero.diagCpu': { es: 'CPU LOAD (ENTERPRISE LINUX OS)', en: 'CPU LOAD (ENTERPRISE LINUX OS)' },
         'hero.diagRam': { es: 'MEMORY (DATABASE MATRIX CLUSTER)', en: 'MEMORY (DATABASE MATRIX CLUSTER)' },
         'hero.diagIo': { es: 'DISK I/O (NVMe SAS ARRAY)', en: 'DISK I/O (NVMe SAS ARRAY)' },
+
+        // Publications Section
+        'pub.tag': { es: 'Base de Conocimiento', en: 'Knowledge Base' },
+        'pub.heading': { es: 'Publicaciones, Papers & Guías Técnicas', en: 'Publications, Papers & Technical Guides' },
+        'pub.subtitle': { es: 'Artículos científicos, whitepapers, checklists de hardening y especificaciones de arquitectura derivadas de implementaciones reales.', en: 'Scientific articles, whitepapers, hardening checklists, and architecture specifications derived from real deployments.' },
+
+        // Lobby Section
+        'lobby.tag': { es: 'Punto de Acceso', en: 'Access Point' },
+        'lobby.heading': { es: 'Lobby al Portafolio del Autor', en: 'Author Portfolio Lobby' },
+        'lobby.subtitle': { es: 'Este knowledge hub técnico es documentado y mantenido por Leonardo Escobar. A continuación puedes explorar su portafolio profesional, plataformas interactivas y trayectoria laboral completa.', en: 'This technical knowledge hub is documented and maintained by Leonardo Escobar. Explore below his professional portfolio, interactive platforms, and full career track.' },
         'hero.log1': { es: '<span class="log-ok">[OK]</span> Hardware: High-Density Blade Chassis', en: '<span class="log-ok">[OK]</span> Hardware: High-Density Blade Chassis' },
         'hero.log2': { es: '<span class="log-ok">[OK]</span> Slot 01 Horizontal Blade: ArenAI Online', en: '<span class="log-ok">[OK]</span> Slot 01 Horizontal Blade: ArenAI Online' },
         'hero.log3': { es: '<span class="log-ok">[OK]</span> Global Rank: 3rd Place Global ICT Competition', en: '<span class="log-ok">[OK]</span> Global Rank: 3rd Place Global ICT Competition' },
@@ -512,6 +549,23 @@ document.addEventListener('DOMContentLoaded', () => {
             es: 'Graduado de Bachillerato en Ingeniería Informática con la distinción de honor <strong>Cum Laude Probatus</strong>. Estudios complementarios en <strong>Artes Humanísticas</strong> y dominio profesional del idioma <strong>Inglés B2+ / C1</strong>.', 
             en: 'Graduated with a Bachelor of Science in Computer Engineering with <strong>Cum Laude Probatus</strong> honors. Complementary studies in <strong>Humanistic Arts</strong> and professional English proficiency (B2+ / C1).' 
         },
+
+        // Dedicated Spaces / Hub Section
+        'hub.tag': { es: 'Explorar', en: 'Explore' },
+        'hub.heading': { es: 'Espacios Dedicados', en: 'Dedicated Spaces' },
+        'hub.subtitle': { es: 'Este portafolio es el punto de entrada. Cada área tiene su propio espacio, diseñado para lo que hace bien.', en: 'This portfolio is the entry point. Each area has its own dedicated space, engineered for its specific purpose.' },
+        'hub.notesBadge': { es: '5 artículos', en: '5 articles' },
+        'hub.notesTitle': { es: 'Notas Técnicas', en: 'Technical Notes' },
+        'hub.notesDesc': { es: 'Artículos sobre openEuler, openGauss, alta disponibilidad, WebSockets y gobernanza de datos. Referencia real desde producción.', en: 'Articles on openEuler, openGauss, high availability, WebSockets, and data governance. Real production references.' },
+        'hub.notesCta': { es: 'Explorar notas', en: 'Explore notes' },
+        'hub.arenaiBadge': { es: '🏆 Semifinalista Mundial', en: '🏆 Global Semifinalist' },
+        'hub.arenaiTitle': { es: 'ArenAI', en: 'ArenAI' },
+        'hub.arenaiDesc': { es: 'Plataforma educativa con gamificación e inteligencia artificial para transformar el aprendizaje en el aula latinoamericana.', en: 'Educational platform with gamification and artificial intelligence to transform classroom learning in Latin America.' },
+        'hub.arenaiCta': { es: 'Ver la plataforma', en: 'View platform' },
+        'hub.cvBadge': { es: 'Huawei LATAM', en: 'Huawei LATAM' },
+        'hub.cvTitle': { es: 'CV Interactivo', en: 'Interactive CV' },
+        'hub.cvDesc': { es: 'Trayectoria profesional, certificaciones, habilidades técnicas y logros en formato interactivo. Descargable en PDF.', en: 'Professional career, certifications, technical skills, and achievements in interactive format. Downloadable as PDF.' },
+        'hub.cvCta': { es: 'Ver CV completo', en: 'View full CV' },
 
         // Infrastructure Section
         'infra.tag': { es: 'Dominio Técnico', en: 'Technical Mastery' },
@@ -1130,4 +1184,225 @@ Swap:        2097148           0     2097148`);
         
         updatePrompt();
     }
+
+    // =========================================================================
+    // PUBLICATIONS & PAPERS MULTI-FORMAT FILTERING
+    // =========================================================================
+    const filterBtns = document.querySelectorAll('.pub-filter-btn');
+    const pubCards = document.querySelectorAll('.pub-card');
+    const pubCountEl = document.getElementById('pub-count');
+
+    if (filterBtns.length > 0 && pubCards.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                let visibleCount = 0;
+
+                pubCards.forEach(card => {
+                    const cardFormat = card.getAttribute('data-format');
+                    if (filterValue === 'all' || cardFormat === filterValue) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (pubCountEl) {
+                    pubCountEl.textContent = visibleCount;
+                }
+            });
+        });
+    }
+
+    // =========================================================================
+    // BLUEPRINT TABS SWITCHER
+    // =========================================================================
+    const bpTabBtns = document.querySelectorAll('.bp-tab-btn');
+    const bpTabContents = document.querySelectorAll('.bp-tab-content');
+
+    if (bpTabBtns.length > 0 && bpTabContents.length > 0) {
+        bpTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                bpTabBtns.forEach(b => b.classList.remove('active'));
+                bpTabContents.forEach(c => c.classList.remove('active'));
+
+                btn.classList.add('active');
+                const targetId = `tab-${btn.getAttribute('data-tab')}`;
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // =========================================================================
+    // INTERACTIVE RESEARCH PAPER & GUIDES READER MODAL
+    // =========================================================================
+    const paperModalOverlay = document.getElementById('paper-modal-overlay');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalCloseBottomBtn = document.getElementById('modal-close-bottom-btn');
+    const modalPaperType = document.getElementById('modal-paper-type');
+    const modalPaperDoi = document.getElementById('modal-paper-doi');
+    const modalPaperBody = document.getElementById('modal-paper-body');
+    const papersDatabase = (typeof window !== 'undefined' && window.papersDatabase) ? window.papersDatabase : {};
+
+    let currentActiveDoc = null;
+
+    function openPaperModal(paperId) {
+        let doc = papersDatabase[paperId];
+
+        // Intelligent DOM Fallback: extract info directly from card if not in database
+        if (!doc) {
+            const cardEl = document.querySelector(`[data-paper="${paperId}"]`)?.closest('.pub-card, .note-card') 
+                        || document.getElementById(`card-${paperId.replace('paper-', '')}`)
+                        || document.getElementById(`note-${paperId.replace('paper-', '')}`);
+            if (cardEl) {
+                const title = cardEl.querySelector('.pub-title, .note-title')?.textContent || 'Documento Técnico';
+                const type = cardEl.querySelector('.pub-type-badge, .note-category')?.textContent || 'DOCUMENTO TÉCNICO';
+                const doi = cardEl.querySelector('.pub-doi-tag')?.textContent || 'REF: NOC-2026';
+                const excerpt = cardEl.querySelector('.pub-excerpt, .note-excerpt')?.textContent || '';
+                const category = cardEl.querySelector('.pub-category, .note-category')?.textContent || '';
+                const hlItems = Array.from(cardEl.querySelectorAll('.pub-hl-item, .note-toc li')).map(el => el.textContent.trim());
+
+                doc = {
+                    type: type,
+                    doi: doi,
+                    title: title,
+                    meta: `Autor: Leonardo Escobar &bull; Categoría: ${category} &bull; NOC Knowledge Hub`,
+                    abstract: excerpt,
+                    sections: [
+                        {
+                            heading: 'Puntos Clave y Especificaciones',
+                            content: hlItems.length > 0 ? hlItems.map(item => `&bull; ${item}`).join('<br>') : 'Especificación técnica de ingeniería.'
+                        }
+                    ]
+                };
+            }
+        }
+
+        if (!doc || !paperModalOverlay || !modalPaperBody) return;
+        currentActiveDoc = doc;
+
+        if (modalPaperType) modalPaperType.textContent = doc.type;
+        if (modalPaperDoi) modalPaperDoi.textContent = doc.doi;
+
+        // External Link button toggle
+        const modalExternalLink = document.getElementById('modal-external-link');
+        if (modalExternalLink) {
+            if (doc.externalUrl || doc.pdfUrl) {
+                modalExternalLink.href = doc.externalUrl || doc.pdfUrl;
+                modalExternalLink.style.display = 'inline-flex';
+            } else {
+                modalExternalLink.style.display = 'none';
+            }
+        }
+
+        let bodyHtml = `
+            <h1 class="modal-doc-title">${doc.title}</h1>
+            <div class="modal-doc-meta">${doc.meta}</div>
+            <div class="modal-doc-abstract">
+                <strong>ABSTRACT:</strong>
+                ${doc.abstract}
+            </div>
+        `;
+
+        if (doc.sections && Array.isArray(doc.sections)) {
+            doc.sections.forEach(sec => {
+                bodyHtml += `<h2 class="modal-doc-h2">${sec.heading}</h2>`;
+                if (sec.content) {
+                    bodyHtml += `<p class="modal-doc-p">${sec.content}</p>`;
+                }
+                if (sec.code) {
+                    bodyHtml += `<pre class="modal-doc-code">${sec.code}</pre>`;
+                }
+            });
+        }
+
+        if (doc.references && Array.isArray(doc.references)) {
+            bodyHtml += `
+                <div class="modal-doc-references">
+                    <h2 class="modal-doc-h2"><ion-icon name="library-outline"></ion-icon> Fuentes &amp; Referencias Técnicas</h2>
+                    <ul class="modal-doc-ref-list">
+            `;
+            doc.references.forEach(ref => {
+                bodyHtml += `<li class="modal-ref-item">&bull; ${ref}</li>`;
+            });
+            bodyHtml += `</ul></div>`;
+        }
+
+        modalPaperBody.innerHTML = bodyHtml;
+        modalPaperBody.scrollTop = 0;
+        paperModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePaperModal() {
+        if (paperModalOverlay) {
+            paperModalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Event delegation for all read paper buttons (existing & dynamic)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-read-paper, .pub-btn-read');
+        if (btn) {
+            e.preventDefault();
+            const paperId = btn.getAttribute('data-paper');
+            if (paperId) openPaperModal(paperId);
+        }
+    });
+
+    // BibTeX Citation Copy Handler
+    const modalCiteBtn = document.getElementById('modal-cite-btn');
+    if (modalCiteBtn) {
+        modalCiteBtn.addEventListener('click', () => {
+            if (!currentActiveDoc) return;
+            const cleanDoi = (currentActiveDoc.doi || 'NOC2026').replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            const bibtex = `@article{escobar2026_${cleanDoi},
+  author    = {Escobar, Leonardo},
+  title     = {${currentActiveDoc.title}},
+  journal   = {NOC Datacenter Systems & Engineering Research Hub},
+  year      = {2026},
+  note      = {${currentActiveDoc.doi}}
+}`;
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const originalHtml = modalCiteBtn.innerHTML;
+                modalCiteBtn.classList.add('copied');
+                modalCiteBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Copiado!</span>';
+                setTimeout(() => {
+                    modalCiteBtn.classList.remove('copied');
+                    modalCiteBtn.innerHTML = originalHtml;
+                }, 2200);
+            }).catch(() => {
+                alert('Cita BibTeX:\n\n' + bibtex);
+            });
+        });
+    }
+
+    // Print / PDF Export Handler
+    const modalPrintBtn = document.getElementById('modal-print-btn');
+    if (modalPrintBtn) {
+        modalPrintBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closePaperModal);
+    if (modalCloseBottomBtn) modalCloseBottomBtn.addEventListener('click', closePaperModal);
+    if (paperModalOverlay) {
+        paperModalOverlay.addEventListener('click', (e) => {
+            if (e.target === paperModalOverlay) closePaperModal();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePaperModal();
+    });
 });
+
