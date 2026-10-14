@@ -7,25 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentLang = localStorage.getItem('lang') || 'es';
 
-    // CHECK IF USER IS RETURNING FROM A PROJECT (ARENAI)
+    // =========================================================================
+    // DATACENTER PRELOADER — ONE-TIME PER SESSION (sessionStorage) & FAST TRANSITION
+    // =========================================================================
     const returnedFromProject = sessionStorage.getItem('returnedFromProject');
+    const preloaderSeen = sessionStorage.getItem('noc_preloader_seen');
+    const skipPreloaderBtn = document.getElementById('skip-preloader-btn');
+
+    function bypassPreloaderImmediate() {
+        if (preloader) {
+            preloader.classList.add('skip-doors', 'doors-done');
+        }
+        document.body.classList.add('spotlight-on', 'noc-power-on');
+        document.body.classList.remove('noc-power-off');
+        sessionStorage.setItem('noc_preloader_seen', 'true');
+    }
+
+    if (skipPreloaderBtn) {
+        skipPreloaderBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            bypassPreloaderImmediate();
+        });
+    }
 
     if (returnedFromProject === 'true') {
-        // =========================================================================
-        // ANIMACIÓN B (RETORNO DE ARENAI): CONTINUIDAD FÍSICA Y ACOPLAMIENTO EN RACK
-        // =========================================================================
         sessionStorage.removeItem('returnedFromProject');
+        bypassPreloaderImmediate();
 
-        if (preloader) {
-            preloader.classList.add('skip-doors');
-        }
-
-        // Turn on Spotlight & Illumination Immediately
-        document.body.classList.add('spotlight-on');
-        document.body.classList.remove('noc-power-off');
-        document.body.classList.add('noc-power-on');
-
-        // Step 1: Set Slot 01 to EXTRACTED OUTWARD state INITIAL STATE (so it's pulled out when page loads)
+        // Step 1: Set Slot 01 to EXTRACTED OUTWARD state INITIAL STATE
         if (arenaiRow) {
             arenaiRow.classList.add('blade-ejected-waiting');
         }
@@ -36,29 +45,30 @@ document.addEventListener('DOMContentLoaded', () => {
             rackSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Step 3: Trigger Mechanical Slide-In & Lock-In Insertion ONLY WHEN ARRIVED AT THE RACK
+        // Step 3: Trigger Mechanical Slide-In & Lock-In Insertion
         setTimeout(() => {
             if (arenaiRow) {
                 arenaiRow.classList.remove('blade-ejected-waiting');
                 arenaiRow.classList.add('blade-inserting');
                 setTimeout(() => {
                     arenaiRow.classList.remove('blade-inserting');
-                }, 1000);
+                }, 800);
             }
-        }, 650);
+        }, 500);
 
+    } else if (preloaderSeen === 'true') {
+        // Preloader ya fue visto en esta sesión: omitir instantáneamente
+        bypassPreloaderImmediate();
     } else {
-        // =========================================================================
-        // ANIMACIÓN A (INICIO / RECARGA): PUERTAS DE CRISTAL + FOCO DEL TECHO
-        // =========================================================================
+        // Primera visita de la sesión: Ejecutar animación acelerada (0.6s total)
         if (preloader) {
-            // Step 1: Biometric Scanning Phase (400ms)
+            // Step 1: Biometric Scanning Phase (180ms)
             setTimeout(() => {
                 if (keypadStatus) keypadStatus.textContent = 'VERIFICANDO...';
                 if (fingerGlow) fingerGlow.style.opacity = '1';
-            }, 400);
+            }, 180);
 
-            // Step 2: Access Granted Phase (1100ms)
+            // Step 2: Access Granted Phase (380ms)
             setTimeout(() => {
                 if (keypadLed) {
                     keypadLed.className = 'keypad-led-ring led-green';
@@ -67,24 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     keypadStatus.textContent = 'ACCESO OK';
                     keypadStatus.style.color = 'var(--accent-emerald)';
                 }
-            }, 1100);
+            }, 380);
 
-            // Step 3: OPEN GLASS DOORS FIRST (1600ms) - Doors slide apart smoothly into the dark hallway
+            // Step 3: OPEN GLASS DOORS (550ms) - Accelerated 0.6s smooth slide
             setTimeout(() => {
                 preloader.classList.add('opened');
-            }, 1600);
+            }, 550);
 
-            // Step 4: AFTER DOORS ARE FULLY OPENED (2750ms), TURN ON OVERHEAD CEILING SPOTLIGHT & ILLUMINATE INTERFACE
+            // Step 4: Turn on overhead spotlight & illuminate interface (850ms)
             setTimeout(() => {
-                document.body.classList.add('spotlight-on');
+                document.body.classList.add('spotlight-on', 'noc-power-on');
                 document.body.classList.remove('noc-power-off');
-                document.body.classList.add('noc-power-on');
-            }, 2750);
+            }, 850);
 
-            // Step 5: Disappear preloader overlay AFTER sliding doors animation completes (3200ms)
+            // Step 5: Cleanly remove preloader overlay & mark session as seen (1150ms)
             setTimeout(() => {
                 preloader.classList.add('doors-done');
-            }, 3200);
+                sessionStorage.setItem('noc_preloader_seen', 'true');
+            }, 1150);
         }
     }
 
@@ -273,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSectionId) {
             inPageNavLinks.forEach(link => {
                 const href = link.getAttribute('href');
-                if (href === `#${currentSectionId}` || (currentSectionId === 'featured-paper' && href === '#publications')) {
+                if (href === `#${currentSectionId}` || (currentSectionId === 'articles-feed' && href === '#articles-feed')) {
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
@@ -282,24 +292,272 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-
     // =========================================================================
-    // MAINTENANCE BANNER DISMISS LOGIC
+    // 75% ICT RESEARCH & ENGINEERING FEED ENGINE (DRIVE SYNC PIPELINE)
     // =========================================================================
-    const maintenanceBanner = document.getElementById('maintenance-banner');
-    const dismissBtn = document.getElementById('dismiss-maintenance');
+    const articlesContainer = document.getElementById('articles-container');
+    const articlesSearchInput = document.getElementById('articles-search');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    const feedPills = document.querySelectorAll('.feed-filter-pill');
+    const feedCountBadge = document.getElementById('feed-count-badge');
+    const feedEmptyState = document.getElementById('feed-empty-state');
+    const resetFiltersBtn = document.getElementById('reset-filters-btn');
+    const viewGridBtn = document.getElementById('view-grid-btn');
+    const viewListBtn = document.getElementById('view-list-btn');
+    const driveSyncBtn = document.getElementById('drive-sync-btn');
+    const syncBtnLabel = document.getElementById('sync-btn-label');
 
-    if (maintenanceBanner && dismissBtn) {
-        // Check if previously dismissed this session
-        if (sessionStorage.getItem('maintenanceDismissed') === 'true') {
-            maintenanceBanner.classList.add('dismissed');
+    let allLoadedArticles = [];
+    let currentCategoryFilter = 'all';
+    let currentSearchTerm = '';
+    let currentViewMode = localStorage.getItem('noc_view_mode') || 'grid';
+
+    // Set initial view mode
+    if (articlesContainer) {
+        if (currentViewMode === 'list') {
+            articlesContainer.classList.remove('view-mode-grid');
+            articlesContainer.classList.add('view-mode-list');
+            if (viewListBtn) viewListBtn.classList.add('active');
+            if (viewGridBtn) viewGridBtn.classList.remove('active');
+        } else {
+            articlesContainer.classList.remove('view-mode-list');
+            articlesContainer.classList.add('view-mode-grid');
+            if (viewGridBtn) viewGridBtn.classList.add('active');
+            if (viewListBtn) viewListBtn.classList.remove('active');
         }
+    }
 
-        dismissBtn.addEventListener('click', () => {
-            maintenanceBanner.classList.add('dismissed');
-            sessionStorage.setItem('maintenanceDismissed', 'true');
+    if (viewGridBtn && viewListBtn && articlesContainer) {
+        viewGridBtn.addEventListener('click', () => {
+            currentViewMode = 'grid';
+            localStorage.setItem('noc_view_mode', 'grid');
+            viewGridBtn.classList.add('active');
+            viewListBtn.classList.remove('active');
+            articlesContainer.classList.remove('view-mode-list');
+            articlesContainer.classList.add('view-mode-grid');
+            renderFilteredArticles();
+        });
+
+        viewListBtn.addEventListener('click', () => {
+            currentViewMode = 'list';
+            localStorage.setItem('noc_view_mode', 'list');
+            viewListBtn.classList.add('active');
+            viewGridBtn.classList.remove('active');
+            articlesContainer.classList.remove('view-mode-grid');
+            articlesContainer.classList.add('view-mode-list');
+            renderFilteredArticles();
         });
     }
+
+    function updateSpotlightSection(articles) {
+        if (!articles || articles.length === 0) return;
+        const spotlightArticle = articles.find(a => a.featured) || articles[0];
+        if (!spotlightArticle) return;
+
+        const titleEl = document.getElementById('spotlight-title');
+        const doiEl = document.getElementById('spotlight-doi');
+        const catEl = document.getElementById('spotlight-cat');
+        const dateEl = document.getElementById('spotlight-date');
+        const timeEl = document.getElementById('spotlight-time');
+        const abstractEl = document.getElementById('spotlight-abstract');
+        const readBtn = document.getElementById('spotlight-read-btn');
+        const driveBtn = document.getElementById('spotlight-drive-btn');
+
+        if (titleEl) titleEl.textContent = currentLang === 'en' && spotlightArticle.title_en ? spotlightArticle.title_en : spotlightArticle.title;
+        if (doiEl) doiEl.textContent = spotlightArticle.doi || 'REF: NOC-2026';
+        if (catEl) catEl.innerHTML = `<ion-icon name="hardware-chip-outline"></ion-icon> <span>${currentLang === 'en' && spotlightArticle.categoryLabel_en ? spotlightArticle.categoryLabel_en : spotlightArticle.categoryLabel}</span>`;
+        if (dateEl) dateEl.innerHTML = `<ion-icon name="calendar-outline"></ion-icon> <span>${spotlightArticle.date}</span>`;
+        if (timeEl) timeEl.innerHTML = `<ion-icon name="time-outline"></ion-icon> <span>${spotlightArticle.readTime || '~12 min'}</span>`;
+        if (abstractEl) abstractEl.textContent = currentLang === 'en' && spotlightArticle.abstract_en ? spotlightArticle.abstract_en : spotlightArticle.abstract;
+        if (readBtn) readBtn.setAttribute('data-paper', spotlightArticle.id);
+        if (driveBtn) {
+            driveBtn.href = (spotlightArticle.driveLink && !spotlightArticle.driveLink.includes('SAMPLE'))
+                ? spotlightArticle.driveLink
+                : (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
+        }
+    }
+
+    function renderFilteredArticles() {
+        if (!articlesContainer) return;
+
+        const term = currentSearchTerm.trim().toLowerCase();
+        const filtered = allLoadedArticles.filter(art => {
+            const matchesCat = (currentCategoryFilter === 'all') || (art.category === currentCategoryFilter);
+            if (!matchesCat) return false;
+            if (!term) return true;
+
+            const titleMatch = (art.title && art.title.toLowerCase().includes(term)) || (art.title_en && art.title_en.toLowerCase().includes(term));
+            const abstractMatch = (art.abstract && art.abstract.toLowerCase().includes(term)) || (art.abstract_en && art.abstract_en.toLowerCase().includes(term));
+            const tagMatch = art.tags && art.tags.some(t => t.toLowerCase().includes(term));
+            const doiMatch = art.doi && art.doi.toLowerCase().includes(term);
+            const idMatch = art.id && art.id.toLowerCase().includes(term);
+
+            return titleMatch || abstractMatch || tagMatch || doiMatch || idMatch;
+        });
+
+        if (feedCountBadge) {
+            feedCountBadge.textContent = filtered.length;
+        }
+
+        if (filtered.length === 0) {
+            articlesContainer.innerHTML = '';
+            if (feedEmptyState) feedEmptyState.style.display = 'flex';
+            return;
+        }
+
+        if (feedEmptyState) feedEmptyState.style.display = 'none';
+
+        if (currentViewMode === 'grid') {
+            articlesContainer.innerHTML = filtered.map(art => {
+                const title = currentLang === 'en' && art.title_en ? art.title_en : art.title;
+                const abstract = currentLang === 'en' && art.abstract_en ? art.abstract_en : art.abstract;
+                const catLabel = currentLang === 'en' && art.categoryLabel_en ? art.categoryLabel_en : art.categoryLabel;
+                const catClass = `cat-${art.category || 'infra'}`;
+                const tagsHtml = (art.tags || []).slice(0, 3).map(t => `<span class="feed-tag-pill">${t}</span>`).join('');
+
+                return `
+                    <article class="feed-article-card glass-panel" data-paper="${art.id}" data-category="${art.category || 'infra'}">
+                        <div>
+                            <div class="feed-card-header">
+                                <span class="feed-cat-badge ${catClass}">${catLabel}</span>
+                                <span class="feed-card-doi">${art.doi || 'REF: NOC-2026'}</span>
+                            </div>
+                            <h3 class="feed-card-title">${title}</h3>
+                            <p class="feed-card-excerpt">${abstract}</p>
+                            <div class="feed-card-tags">${tagsHtml}</div>
+                        </div>
+                        <div class="feed-card-footer">
+                            <span class="feed-time-info">
+                                <ion-icon name="time-outline"></ion-icon> ${art.readTime || '~10 min'} &bull; ${art.date}
+                            </span>
+                            <button class="feed-read-btn btn-read-paper" data-paper="${art.id}">
+                                <span>${currentLang === 'en' ? 'Read Paper' : 'Leer Paper'}</span>
+                                <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        } else {
+            // List / Logs Mode
+            articlesContainer.innerHTML = filtered.map(art => {
+                const title = currentLang === 'en' && art.title_en ? art.title_en : art.title;
+                const catLabel = currentLang === 'en' && art.categoryLabel_en ? art.categoryLabel_en : art.categoryLabel;
+                const catClass = `cat-${art.category || 'infra'}`;
+
+                return `
+                    <div class="feed-article-row" data-paper="${art.id}">
+                        <div class="feed-row-left">
+                            <span class="feed-row-doi">${art.doi || 'REF: NOC-2026'}</span>
+                            <span class="feed-cat-badge ${catClass}">${catLabel}</span>
+                            <h4 class="feed-row-title">${title}</h4>
+                        </div>
+                        <div class="feed-row-right">
+                            <span class="feed-time-info"><ion-icon name="calendar-outline"></ion-icon> ${art.date}</span>
+                            <button class="feed-read-btn btn-read-paper" data-paper="${art.id}">
+                                <span>${currentLang === 'en' ? 'Open' : 'Abrir'}</span>
+                                <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    }
+
+    async function loadArticlesFeed(forceRefresh = false) {
+        if (!articlesContainer) return;
+        try {
+            if (window.DriveSync) {
+                allLoadedArticles = await window.DriveSync.getArticles(forceRefresh);
+            } else {
+                allLoadedArticles = [];
+            }
+            updateSpotlightSection(allLoadedArticles);
+            renderFilteredArticles();
+        } catch (e) {
+            console.error('[Feed] Error cargando artículos:', e);
+            renderFilteredArticles();
+        }
+    }
+
+    // Filter pills listeners
+    feedPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            feedPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            currentCategoryFilter = pill.getAttribute('data-cat') || 'all';
+            renderFilteredArticles();
+        });
+    });
+
+    // Real-time search listeners
+    if (articlesSearchInput) {
+        let debounceTimer = null;
+        articlesSearchInput.addEventListener('input', (e) => {
+            currentSearchTerm = e.target.value;
+            if (clearSearchBtn) {
+                clearSearchBtn.style.display = currentSearchTerm ? 'flex' : 'none';
+            }
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                renderFilteredArticles();
+            }, 120);
+        });
+    }
+
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            if (articlesSearchInput) {
+                articlesSearchInput.value = '';
+                currentSearchTerm = '';
+                clearSearchBtn.style.display = 'none';
+                articlesSearchInput.focus();
+                renderFilteredArticles();
+            }
+        });
+    }
+
+    if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', () => {
+            currentCategoryFilter = 'all';
+            currentSearchTerm = '';
+            if (articlesSearchInput) articlesSearchInput.value = '';
+            if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+            feedPills.forEach(p => {
+                if (p.getAttribute('data-cat') === 'all') p.classList.add('active');
+                else p.classList.remove('active');
+            });
+            renderFilteredArticles();
+        });
+    }
+
+    // Drive Sync Trigger Button
+    if (driveSyncBtn) {
+        driveSyncBtn.addEventListener('click', async () => {
+            driveSyncBtn.classList.add('syncing');
+            if (syncBtnLabel) syncBtnLabel.textContent = currentLang === 'en' ? 'Syncing...' : 'Sincronizando...';
+
+            try {
+                if (window.DriveSync) {
+                    allLoadedArticles = await window.DriveSync.syncNow();
+                    updateSpotlightSection(allLoadedArticles);
+                    renderFilteredArticles();
+                }
+                if (syncBtnLabel) syncBtnLabel.textContent = currentLang === 'en' ? 'Synced!' : '¡Sincronizado!';
+                setTimeout(() => {
+                    driveSyncBtn.classList.remove('syncing');
+                    if (syncBtnLabel) syncBtnLabel.textContent = 'Drive Sync';
+                }, 1600);
+            } catch (err) {
+                driveSyncBtn.classList.remove('syncing');
+                if (syncBtnLabel) syncBtnLabel.textContent = 'Sync Error';
+            }
+        });
+    }
+
+    // Load initial feed
+    loadArticlesFeed();
 
     // =========================================================================
     // HERO SUBTITLE TYPEWRITER EFFECT (BILINGUAL)
@@ -309,16 +567,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const phrasesDict = {
         es: [
-            'Research Papers, Guías de Campo & Arquitecturas',
-            'openEuler, openGauss, Kunpeng & Alta Disponibilidad',
-            'Sistemas Distribuidos, Sockets & Mitigación de Latencia',
-            'Documentación Técnica basada en Infraestructura Real'
+            'Investigación 6G-IoT, Inferencia Neuromórfica & ISAC',
+            'Comunicaciones Semánticas Orientadas a Objetivos',
+            'Computación Analógica en el Aire (AirComp) & Metasuperficies RIS',
+            'Publicaciones Científicas Sincronizadas con Google Drive'
         ],
         en: [
-            'Research Papers, Field Guides & Architectures',
-            'openEuler, openGauss, Kunpeng & High Availability',
-            'Distributed Systems, WebSockets & Latency Mitigation',
-            'Technical Documentation grounded in Production Infrastructure'
+            '6G-IoT Research, Neuromorphic Inference & ISAC',
+            'Goal-Oriented Semantic Communications',
+            'Analog Over-the-Air Computation (AirComp) & RIS Metasurfaces',
+            'Scientific Publications Synchronized with Google Drive'
         ]
     };
 
@@ -491,34 +749,78 @@ document.addEventListener('DOMContentLoaded', () => {
     const langLabel = document.getElementById('lang-label');
 
     const i18nDict = {
+        // Preloader
+        'preloader.skip': { es: 'Saltar intro', en: 'Skip intro' },
+
         // Navigation
         'nav.home': { es: 'Inicio', en: 'Home' },
-        'nav.publications': { es: 'Publicaciones & Papers', en: 'Publications & Papers' },
-        'nav.blueprints': { es: 'Arquitecturas & Labs', en: 'Architectures & Labs' },
-        'nav.lobby': { es: 'Lobby Portafolio', en: 'Portfolio Lobby' },
+        'nav.feed': { es: 'Investigaciones &amp; Artículos', en: 'Research &amp; Articles' },
+        'nav.blueprints': { es: 'Arquitecturas &amp; Labs', en: 'Architectures &amp; Labs' },
+        'nav.profile': { es: 'Perfil Ejecutivo &amp; Rack', en: 'Executive Profile &amp; Rack' },
+        'nav.rackBtn': { es: 'Rack E9000H', en: 'E9000H Rack' },
         'nav.cv': { es: 'CV Completo', en: 'Full CV' },
         
-        // Hero Section
-        'hero.badge': { es: '[ ENGINEERING RESEARCH &amp; FIELD NOTES ] &bull; DATACENTER &amp; ICT SYSTEMS', en: '[ ENGINEERING RESEARCH &amp; FIELD NOTES ] &bull; DATACENTER &amp; ICT SYSTEMS' },
-        'hero.text': { 
-            es: 'Portal de divulgación e investigación técnica en infraestructura de centro de datos, sistemas operativos empresariales (openEuler), motores de bases de datos de alto rendimiento (openGauss), arquitecturas distribuidas de alta disponibilidad y analítica de datos. Documentación de laboratorio, papers técnicos y metodologías aplicadas desde la experiencia en producción.', 
-            en: 'Technical research and publication portal in datacenter infrastructure, enterprise operating systems (openEuler), high-performance database engines (openGauss), high-availability distributed architectures, and data analytics. Laboratory documentation, research papers, and applied production methodologies.' 
+        // Hero Section & Spotlight
+        'hero.spotlightBadge': { es: 'INVESTIGACIÓN DE LA SEMANA', en: 'SPOTLIGHT RESEARCH OF THE WEEK' },
+        'hero.driveSyncTag': { es: 'Google Drive Live Sync', en: 'Google Drive Live Sync' },
+        'hero.readFeatured': { es: 'Leer Artículo Completo', en: 'Read Full Article' },
+        'hero.viewInDrive': { es: 'Ver en Drive / PDF', en: 'View in Drive / PDF' },
+        'hero.viewAll': { es: 'Feed Completo (75%)', en: 'Full Feed (75%)' },
+        'author.bioShort': { 
+            es: 'Ingeniero de infraestructura y plataformas de misión crítica. Especialista en servidores empresariales, Linux openEuler, bases de datos openGauss y analítica para directivos CXO.', 
+            en: 'Infrastructure and mission-critical systems engineer. Specialist in enterprise servers, Linux openEuler, openGauss databases, and CXO data analytics.' 
         },
-        'hero.ctaExplore': { es: 'Explorar Publicaciones', en: 'Explore Publications' },
-        'hero.ctaBlueprints': { es: 'Arquitecturas & Labs', en: 'Architectures & Labs' },
-        'hero.ctaLobby': { es: 'Lobby al Portafolio', en: 'Portfolio Lobby' },
-        'hero.diagTitle': { es: 'DATACENTER CLUSTER DIAGNOSTICS', en: 'DATACENTER CLUSTER DIAGNOSTICS' },
-        'hero.diagCpu': { es: 'CPU LOAD (ENTERPRISE LINUX OS)', en: 'CPU LOAD (ENTERPRISE LINUX OS)' },
-        'hero.diagRam': { es: 'MEMORY (DATABASE MATRIX CLUSTER)', en: 'MEMORY (DATABASE MATRIX CLUSTER)' },
-        'hero.diagIo': { es: 'DISK I/O (NVMe SAS ARRAY)', en: 'DISK I/O (NVMe SAS ARRAY)' },
+        'author.viewCv': { es: 'CV Interactivo Completo', en: 'Full Interactive CV' },
+        'author.viewFullCv': { es: 'Ver CV Detallado &amp; Certificaciones', en: 'View Detailed CV &amp; Certifications' },
 
-        // Publications Section
-        'pub.tag': { es: 'Base de Conocimiento', en: 'Knowledge Base' },
-        'pub.heading': { es: 'Publicaciones, Papers & Guías Técnicas', en: 'Publications, Papers & Technical Guides' },
-        'pub.subtitle': { es: 'Artículos científicos, whitepapers, checklists de hardening y especificaciones de arquitectura derivadas de implementaciones reales.', en: 'Scientific articles, whitepapers, hardening checklists, and architecture specifications derived from real deployments.' },
+        // Articles Feed (75%)
+        'feed.tag': { es: '[ 75% HUB PRINCIPAL ] &bull; INVESTIGACIONES &amp; ARTÍCULOS SEMANALES', en: '[ 75% MAIN HUB ] &bull; WEEKLY TECHNICAL RESEARCH &amp; ARTICLES' },
+        'feed.heading': { es: 'ICT Research, Whitepapers &amp; Ideas', en: 'ICT Research, Whitepapers &amp; Ideas' },
+        'feed.subtitle': { 
+            es: 'Plataforma técnica continua sincronizada con Google Drive. Investigaciones empíricas, manuales de hardening, optimizaciones de bases de datos y arquitectura de sistemas probados en centros de datos de misión crítica.', 
+            en: 'Continuous technical repository synced with Google Drive. Empirical research, hardening manuals, database optimizations, and system architectures verified in mission-critical datacenters.' 
+        },
+        'feed.searchPlaceholder': { es: 'Buscar por título, tecnología (openEuler, ARM, SQL...), palabra clave o ID...', en: 'Search by title, technology (openEuler, ARM, SQL...), keyword or ID...' },
+        'feed.docsAvailable': { es: 'documentos técnicos', en: 'technical documents' },
+        'feed.emptyTitle': { es: 'No se encontraron documentos técnicos', en: 'No technical documents found' },
+        'feed.emptyDesc': { es: 'Intenta modificar los términos de búsqueda o selecciona otra categoría temática.', en: 'Try adjusting your search terms or select another thematic category.' },
+        'feed.resetFilters': { es: 'Restablecer Filtros', en: 'Reset Filters' },
+        'feed.driveRepoBtn': { es: 'Repositorio en Drive', en: 'Drive Repository' },
 
-        // Lobby Section
-        'lobby.tag': { es: 'Punto de Acceso', en: 'Access Point' },
+        // Categories
+        'cat.all': { es: 'Todos', en: 'All' },
+        'cat.infra': { es: 'Infraestructura &amp; Servidores', en: 'Infrastructure &amp; Servers' },
+        'cat.os': { es: 'Linux &amp; OS', en: 'Linux &amp; OS' },
+        'cat.db': { es: 'Bases de Datos', en: 'Databases &amp; SQL' },
+        'cat.dev': { es: 'IA &amp; Automatización', en: 'AI &amp; Automation' },
+        'cat.ideas': { es: 'Ideas &amp; Opinión', en: 'Ideas &amp; Opinion' },
+
+        // Blueprints
+        'bp.tag': { es: 'Laboratorio &amp; Arquitecturas', en: 'Lab &amp; Architectures' },
+        'bp.heading': { es: 'Blueprints de Infraestructura &amp; Topologías', en: 'Infrastructure Blueprints &amp; Topologies' },
+        'bp.subtitle': { es: 'Especificaciones visuales de topologías de red, clústeres redundantes y esquemas de software implementados en producción.', en: 'Visual specifications of network topologies, redundant clusters, and software architectures deployed in production.' },
+
+        // Profile Section (25%)
+        'profile.tag': { es: '[ 25% HARDWARE PROFILE ] &bull; TRAYECTORIA, RACK E9000H &amp; CREDENCIALES', en: '[ 25% HARDWARE PROFILE ] &bull; CAREER TRACK, E9000H RACK &amp; CREDENTIALS' },
+        'profile.heading': { es: 'Chasis E9000H &amp; Perfil Ejecutivo', en: 'E9000H Chassis &amp; Executive Profile' },
+        'profile.subtitle': { 
+            es: 'Gabinete interactivo de cómputo de alta densidad, distinciones internacionales de prestigio y trayectoria profesional consolidada en Huawei Technologies.', 
+            en: 'Interactive high-density compute cabinet, prestigious international honors, and solid professional career track at Huawei Technologies.' 
+        },
+
+        // Rack Slots
+        'rack.actionExplore': { es: 'Explorar ArenAI', en: 'Explore ArenAI' },
+        'rack.actionSync': { es: 'Ver Feed (75%)', en: 'View Feed (75%)' },
+        'rack.actionCv': { es: 'Abrir CV', en: 'Open CV' },
+        'rack.actionHonors': { es: 'Honores', en: 'Honors' },
+
+        // Reader Modal
+        'reader.share': { es: 'Compartir', en: 'Share' },
+        'reader.viewDrive': { es: 'Ver en Drive / PDF', en: 'View in Drive / PDF' },
+        'reader.close': { es: 'Cerrar Lectura', en: 'Close Reader' },
+        'reader.tocTitle': { es: 'Contenido del Paper', en: 'Table of Contents' },
+
+        // Legacy & Common Section tags
         'lobby.heading': { es: 'Lobby al Portafolio del Autor', en: 'Author Portfolio Lobby' },
         'lobby.subtitle': { es: 'Este knowledge hub técnico es documentado y mantenido por Leonardo Escobar. A continuación puedes explorar su portafolio profesional, plataformas interactivas y trayectoria laboral completa.', en: 'This technical knowledge hub is documented and maintained by Leonardo Escobar. Explore below his professional portfolio, interactive platforms, and full career track.' },
         'hero.log1': { es: '<span class="log-ok">[OK]</span> Hardware: High-Density Blade Chassis', en: '<span class="log-ok">[OK]</span> Hardware: High-Density Blade Chassis' },
@@ -689,6 +991,12 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLang = currentLang === 'es' ? 'en' : 'es';
             localStorage.setItem('lang', currentLang);
             applyTranslations(currentLang);
+            if (typeof updateSpotlightSection === 'function') {
+                updateSpotlightSection(allLoadedArticles);
+            }
+            if (typeof renderFilteredArticles === 'function') {
+                renderFilteredArticles();
+            }
         });
     }
 
@@ -840,17 +1148,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const commands = {
             'help': (args) => {
                 printToTerminal(`<span class="term-cyan">GNU bash, version 5.2.15-release (x86_64-pc-linux-gnu)</span>
-<span class="term-yellow">Navigation & Files:</span>
+<span class="term-yellow">Research Hub &amp; Publications (75% Hub):</span>
+  <span class="term-green">articles</span>     List all technical papers &amp; research documents
+  <span class="term-green">open [id]</span>    Open article in reader modal (or 'arenai' / 'cv')
+  <span class="term-green">sync [drive]</span> Synchronize papers feed with Google Drive repository
+
+<span class="term-yellow">Navigation &amp; Files:</span>
   <span class="term-green">ls [-la]</span>    List directory contents with details
   <span class="term-green">cd [dir]</span>    Change current directory
   <span class="term-green">pwd</span>         Print current working directory
-  <span class="term-green">cat [file]</span>  Display file content
+  <span class="term-green">cat [file|id]</span>Display file content or research abstract
   <span class="term-green">touch [file]</span>Create empty file
   <span class="term-green">mkdir [dir]</span> Create directory
   <span class="term-green">rm [-rf]</span>    Remove file or directory
   <span class="term-green">cp / mv</span>     Copy / Move files
 
-<span class="term-yellow">System & Utilities:</span>
+<span class="term-yellow">System &amp; Utilities:</span>
   <span class="term-green">whoami / id</span> Show current user info
   <span class="term-green">grep [str]</span>  Search text pattern in file
   <span class="term-green">echo [txt]</span>  Print text (supports > redirection)
@@ -861,6 +1174,74 @@ document.addEventListener('DOMContentLoaded', () => {
   <span class="term-green">date</span>        Print current system date
   <span class="term-green">clear</span>       Clear terminal screen
   <span class="term-green">exit</span>        Close shell`, true);
+            },
+
+            'articles': () => {
+                if (!allLoadedArticles || allLoadedArticles.length === 0) {
+                    printToTerminal('No articles loaded. Run "sync" to fetch from repository.');
+                    return;
+                }
+                let out = `<span class="term-cyan term-bold">=== ICT RESEARCH &amp; ENGINEERING REPOSITORY (DRIVE SYNC) ===</span><br>`;
+                out += `<span class="term-dim">Total: ${allLoadedArticles.length} publications | Type "open &lt;id&gt;" to read in editor</span><br><br>`;
+                allLoadedArticles.forEach((art, idx) => {
+                    const title = currentLang === 'en' && art.title_en ? art.title_en : art.title;
+                    out += `<span class="term-green">[${(idx + 1).toString().padStart(2, '0')}]</span> <span class="term-yellow">${art.id}</span><br>`;
+                    out += `     &bull; <strong>${title}</strong><br>`;
+                    out += `     &bull; <span class="term-dim">${art.doi || 'REF: NOC-2026'} | Cat: ${art.category || 'infra'} | ${art.readTime || '~10 min'}</span><br>`;
+                });
+                printToTerminal(out, true);
+            },
+
+            'papers': (args) => commands.articles(args),
+
+            'open': (args) => {
+                if (args.length === 0) {
+                    printToTerminal('Usage: open <article-id | arenai | cv>');
+                    return;
+                }
+                const target = args[0].toLowerCase();
+                if (target === 'arenai') {
+                    printToTerminal('<span class="term-green">Navigating to ArenAI platform...</span>', true);
+                    setTimeout(() => { window.location.href = 'arenai/index.html'; }, 600);
+                    return;
+                }
+                if (target === 'cv') {
+                    printToTerminal('<span class="term-green">Navigating to Executive Interactive CV...</span>', true);
+                    setTimeout(() => { window.location.href = 'cv/index.html'; }, 600);
+                    return;
+                }
+
+                const matched = allLoadedArticles.find(a => 
+                    a.id.toLowerCase() === target || 
+                    a.id.toLowerCase().includes(target) || 
+                    (a.doi && a.doi.toLowerCase().includes(target))
+                );
+
+                if (matched) {
+                    printToTerminal(`<span class="term-green">Opening article:</span> ${matched.title}...`, true);
+                    terminalModal.classList.remove('active');
+                    openPaperModal(matched.id);
+                } else {
+                    printToTerminal(`open: article '${args[0]}' not found. Run "articles" to list available IDs.`);
+                }
+            },
+
+            'sync': async () => {
+                printToTerminal('<span class="term-cyan">Contacting Google Drive API &amp; local repository cache...</span>', true);
+                if (window.DriveSync) {
+                    try {
+                        const articles = await window.DriveSync.syncNow();
+                        allLoadedArticles = articles;
+                        updateSpotlightSection(allLoadedArticles);
+                        renderFilteredArticles();
+                        const ts = new Date().toLocaleTimeString();
+                        printToTerminal(`<span class="term-green">[SUCCESS] Synchronized ${articles.length} technical publications from Drive pipeline at ${ts}.</span>`, true);
+                    } catch (e) {
+                        printToTerminal(`<span class="term-red">[ERROR] Drive sync failed: ${e.message}</span>`, true);
+                    }
+                } else {
+                    printToTerminal('<span class="term-yellow">DriveSync module not available.</span>', true);
+                }
             },
 
             'whoami': () => printToTerminal(currentUser),
@@ -932,6 +1313,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     printToTerminal('cat: missing file operand');
                     return;
                 }
+
+                // Check if operand matches an article ID in our Drive repository
+                const matchedArt = allLoadedArticles.find(a => 
+                    a.id.toLowerCase() === args[0].toLowerCase() || 
+                    a.id.toLowerCase().replace('art-', '') === args[0].toLowerCase()
+                );
+                if (matchedArt) {
+                    let out = `<span class="term-yellow term-bold">${matchedArt.title}</span><br>`;
+                    out += `<span class="term-dim">${matchedArt.doi || 'REF: NOC-2026'} &bull; ${matchedArt.date}</span><br><br>`;
+                    out += `<strong>ABSTRACT:</strong><br>${matchedArt.abstract}<br><br>`;
+                    if (matchedArt.sections && matchedArt.sections[0]) {
+                        out += `<span class="term-cyan term-bold">=== ${matchedArt.sections[0].heading} ===</span><br>`;
+                        out += matchedArt.sections[0].content ? matchedArt.sections[0].content + '<br>' : '';
+                    }
+                    out += `<br><span class="term-dim">Type "open ${matchedArt.id}" to open full paper in interactive modal.</span>`;
+                    printToTerminal(out, true);
+                    return;
+                }
+
                 const res = resolvePathNode(args[0]);
                 if (!res.node) {
                     printToTerminal(`cat: ${args[0]}: No such file or directory`);
@@ -1141,6 +1541,11 @@ Swap:        2097148           0     2097148`);
 
         terminalBtn.addEventListener('click', openTerminal);
         
+        const quickTerminalBtn = document.getElementById('quick-terminal-btn');
+        if (quickTerminalBtn) {
+            quickTerminalBtn.addEventListener('click', openTerminal);
+        }
+        
         terminalClose.addEventListener('click', () => {
             terminalModal.classList.remove('active');
         });
@@ -1241,7 +1646,7 @@ Swap:        2097148           0     2097148`);
     }
 
     // =========================================================================
-    // INTERACTIVE RESEARCH PAPER & GUIDES READER MODAL
+    // INTERACTIVE RESEARCH PAPER & GUIDES READER MODAL (UPGRADED EDITORIAL SUITE)
     // =========================================================================
     const paperModalOverlay = document.getElementById('paper-modal-overlay');
     const modalCloseBtn = document.getElementById('modal-close-btn');
@@ -1249,27 +1654,42 @@ Swap:        2097148           0     2097148`);
     const modalPaperType = document.getElementById('modal-paper-type');
     const modalPaperDoi = document.getElementById('modal-paper-doi');
     const modalPaperBody = document.getElementById('modal-paper-body');
+    const readerProgressBar = document.getElementById('reader-progress-bar');
+    const readerTocNav = document.getElementById('reader-toc-nav');
+    const modalShareBtn = document.getElementById('modal-share-btn');
+    const modalExternalLink = document.getElementById('modal-external-link');
+    const readerTocDriveLink = document.getElementById('reader-toc-drive-link');
     const papersDatabase = (typeof window !== 'undefined' && window.papersDatabase) ? window.papersDatabase : {};
 
     let currentActiveDoc = null;
+    let bodyScrollHandler = null;
 
-    function openPaperModal(paperId) {
-        let doc = papersDatabase[paperId];
+    async function openPaperModal(paperId) {
+        if (!paperModalOverlay || !modalPaperBody) return;
+
+        let doc = null;
+        if (window.DriveSync && typeof window.DriveSync.getArticleById === 'function') {
+            doc = await window.DriveSync.getArticleById(paperId);
+        }
+        if (!doc && papersDatabase) {
+            doc = papersDatabase[paperId];
+        }
 
         // Intelligent DOM Fallback: extract info directly from card if not in database
         if (!doc) {
-            const cardEl = document.querySelector(`[data-paper="${paperId}"]`)?.closest('.pub-card, .note-card') 
+            const cardEl = document.querySelector(`[data-paper="${paperId}"]`)?.closest('.feed-article-card, .pub-card, .note-card') 
                         || document.getElementById(`card-${paperId.replace('paper-', '')}`)
                         || document.getElementById(`note-${paperId.replace('paper-', '')}`);
             if (cardEl) {
-                const title = cardEl.querySelector('.pub-title, .note-title')?.textContent || 'Documento Técnico';
-                const type = cardEl.querySelector('.pub-type-badge, .note-category')?.textContent || 'DOCUMENTO TÉCNICO';
-                const doi = cardEl.querySelector('.pub-doi-tag')?.textContent || 'REF: NOC-2026';
-                const excerpt = cardEl.querySelector('.pub-excerpt, .note-excerpt')?.textContent || '';
-                const category = cardEl.querySelector('.pub-category, .note-category')?.textContent || '';
-                const hlItems = Array.from(cardEl.querySelectorAll('.pub-hl-item, .note-toc li')).map(el => el.textContent.trim());
+                const title = cardEl.querySelector('.feed-card-title, .pub-title, .note-title')?.textContent || 'Documento Técnico';
+                const type = cardEl.querySelector('.feed-cat-badge, .pub-type-badge, .note-category')?.textContent || 'RESEARCH ARTICLE';
+                const doi = cardEl.querySelector('.feed-card-doi, .pub-doi-tag')?.textContent || 'REF: NOC-2026';
+                const excerpt = cardEl.querySelector('.feed-card-excerpt, .pub-excerpt, .note-excerpt')?.textContent || '';
+                const category = cardEl.querySelector('.feed-cat-badge, .pub-category, .note-category')?.textContent || 'Infraestructura';
+                const hlItems = Array.from(cardEl.querySelectorAll('.feed-tag-pill, .pub-hl-item, .note-toc li')).map(el => el.textContent.trim());
 
                 doc = {
+                    id: paperId,
                     type: type,
                     doi: doi,
                     title: title,
@@ -1285,47 +1705,76 @@ Swap:        2097148           0     2097148`);
             }
         }
 
-        if (!doc || !paperModalOverlay || !modalPaperBody) return;
+        if (!doc) return;
         currentActiveDoc = doc;
 
-        if (modalPaperType) modalPaperType.textContent = doc.type;
-        if (modalPaperDoi) modalPaperDoi.textContent = doc.doi;
+        // Populate header indicators
+        if (modalPaperType) modalPaperType.textContent = doc.type || (doc.categoryLabel ? doc.categoryLabel.toUpperCase() : 'RESEARCH ARTICLE');
+        if (modalPaperDoi) modalPaperDoi.textContent = doc.doi || 'REF: NOC-2026';
+
+        // Deep linking hash update
+        if (window.location.hash !== `#article/${doc.id || paperId}`) {
+            history.pushState(null, '', `#article/${doc.id || paperId}`);
+        }
 
         // External Link button toggle
-        const modalExternalLink = document.getElementById('modal-external-link');
         if (modalExternalLink) {
-            if (doc.externalUrl || doc.pdfUrl) {
-                modalExternalLink.href = doc.externalUrl || doc.pdfUrl;
+            const external = doc.driveLink || doc.externalUrl || doc.pdfUrl || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
+            if (external) {
+                modalExternalLink.href = external;
                 modalExternalLink.style.display = 'inline-flex';
             } else {
                 modalExternalLink.style.display = 'none';
             }
         }
 
+        // ToC Drive Link update
+        if (readerTocDriveLink) {
+            readerTocDriveLink.href = doc.driveLink || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
+        }
+
+        // Build Title, Meta & Abstract
+        const title = currentLang === 'en' && doc.title_en ? doc.title_en : doc.title;
+        const abstract = currentLang === 'en' && doc.abstract_en ? doc.abstract_en : doc.abstract;
+        const meta = doc.meta || `Autor: Leonardo Escobar &bull; Categoría: ${doc.categoryLabel || 'Infraestructura'} &bull; NOC Knowledge Hub`;
+
         let bodyHtml = `
-            <h1 class="modal-doc-title">${doc.title}</h1>
-            <div class="modal-doc-meta">${doc.meta}</div>
+            <h1 class="modal-doc-title">${title}</h1>
+            <div class="modal-doc-meta">${meta}</div>
             <div class="modal-doc-abstract">
                 <strong>ABSTRACT:</strong>
-                ${doc.abstract}
+                ${abstract}
             </div>
         `;
 
+        // Build Sections & Code Blocks
         if (doc.sections && Array.isArray(doc.sections)) {
-            doc.sections.forEach(sec => {
-                bodyHtml += `<h2 class="modal-doc-h2">${sec.heading}</h2>`;
+            doc.sections.forEach((sec, idx) => {
+                const secId = `sec-heading-${idx}`;
+                bodyHtml += `<h2 class="modal-doc-h2" id="${secId}">${sec.heading}</h2>`;
                 if (sec.content) {
                     bodyHtml += `<p class="modal-doc-p">${sec.content}</p>`;
                 }
                 if (sec.code) {
-                    bodyHtml += `<pre class="modal-doc-code">${sec.code}</pre>`;
+                    bodyHtml += `
+                        <div class="code-block-wrapper">
+                            <div class="code-block-topbar">
+                                <span><ion-icon name="terminal-outline"></ion-icon> BASH / CONFIG</span>
+                                <button class="code-copy-btn">
+                                    <ion-icon name="copy-outline"></ion-icon> <span>Copiar</span>
+                                </button>
+                            </div>
+                            <pre class="modal-doc-code">${sec.code}</pre>
+                        </div>
+                    `;
                 }
             });
         }
 
+        // Build References
         if (doc.references && Array.isArray(doc.references)) {
             bodyHtml += `
-                <div class="modal-doc-references">
+                <div class="modal-doc-references" id="sec-references">
                     <h2 class="modal-doc-h2"><ion-icon name="library-outline"></ion-icon> Fuentes &amp; Referencias Técnicas</h2>
                     <ul class="modal-doc-ref-list">
             `;
@@ -1337,6 +1786,91 @@ Swap:        2097148           0     2097148`);
 
         modalPaperBody.innerHTML = bodyHtml;
         modalPaperBody.scrollTop = 0;
+
+        // Build Lateral Table of Contents (ToC)
+        if (readerTocNav) {
+            let tocHtml = '';
+            if (doc.sections && Array.isArray(doc.sections)) {
+                doc.sections.forEach((sec, idx) => {
+                    tocHtml += `<a href="#sec-heading-${idx}" class="toc-link ${idx === 0 ? 'active' : ''}" data-target="sec-heading-${idx}">${sec.heading}</a>`;
+                });
+            }
+            if (doc.references && Array.isArray(doc.references)) {
+                tocHtml += `<a href="#sec-references" class="toc-link" data-target="sec-references">Referencias Técnicas</a>`;
+            }
+            readerTocNav.innerHTML = tocHtml;
+
+            // ToC smooth scroll click listeners
+            readerTocNav.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    const targetHeading = document.getElementById(targetId);
+                    if (targetHeading) {
+                        targetHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        readerTocNav.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Wire Code Block Copy Buttons
+        modalPaperBody.querySelectorAll('.code-copy-btn').forEach(copyBtn => {
+            copyBtn.addEventListener('click', () => {
+                const codeEl = copyBtn.closest('.code-block-wrapper')?.querySelector('.modal-doc-code');
+                if (codeEl) {
+                    navigator.clipboard.writeText(codeEl.textContent).then(() => {
+                        const origHtml = copyBtn.innerHTML;
+                        copyBtn.classList.add('copied');
+                        copyBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Copiado!</span>';
+                        setTimeout(() => {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.innerHTML = origHtml;
+                        }, 2000);
+                    });
+                }
+            });
+        });
+
+        // Reading Progress Bar & Scroll Spy
+        if (bodyScrollHandler) {
+            modalPaperBody.removeEventListener('scroll', bodyScrollHandler);
+        }
+
+        if (readerProgressBar) readerProgressBar.style.width = '0%';
+
+        bodyScrollHandler = () => {
+            const scrollTotal = modalPaperBody.scrollHeight - modalPaperBody.clientHeight;
+            if (scrollTotal > 0 && readerProgressBar) {
+                const pct = (modalPaperBody.scrollTop / scrollTotal) * 100;
+                readerProgressBar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+            }
+
+            // Scroll-Spy for ToC
+            const headings = modalPaperBody.querySelectorAll('.modal-doc-h2');
+            let currentSecId = '';
+            headings.forEach(h => {
+                const top = h.offsetTop - modalPaperBody.offsetTop;
+                if (modalPaperBody.scrollTop >= top - 60) {
+                    currentSecId = h.getAttribute('id');
+                }
+            });
+
+            if (currentSecId && readerTocNav) {
+                readerTocNav.querySelectorAll('.toc-link').forEach(l => {
+                    if (l.getAttribute('data-target') === currentSecId) {
+                        l.classList.add('active');
+                    } else {
+                        l.classList.remove('active');
+                    }
+                });
+            }
+        };
+
+        modalPaperBody.addEventListener('scroll', bodyScrollHandler, { passive: true });
+
+        // Show Modal
         paperModalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -1346,7 +1880,59 @@ Swap:        2097148           0     2097148`);
             paperModalOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
+        if (readerProgressBar) {
+            readerProgressBar.style.width = '0%';
+        }
+        if (window.location.hash.startsWith('#article/')) {
+            history.pushState('', document.title, window.location.pathname + window.location.search);
+        }
     }
+
+    // Share Button Handler (Deep Link)
+    if (modalShareBtn) {
+        modalShareBtn.addEventListener('click', () => {
+            if (!currentActiveDoc) return;
+            const shareUrl = window.location.origin + window.location.pathname + `#article/${currentActiveDoc.id || ''}`;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const origHtml = modalShareBtn.innerHTML;
+                modalShareBtn.classList.add('copied');
+                modalShareBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Enlace copiado!</span>';
+                setTimeout(() => {
+                    modalShareBtn.classList.remove('copied');
+                    modalShareBtn.innerHTML = origHtml;
+                }, 2200);
+            }).catch(() => {
+                prompt('Enlace directo al artículo:', shareUrl);
+            });
+        });
+    }
+
+    // Initial check for #article/ deep link on load
+    function checkInitialArticleHash() {
+        if (window.location.hash && window.location.hash.startsWith('#article/')) {
+            const articleId = window.location.hash.replace('#article/', '').trim();
+            if (articleId) {
+                setTimeout(() => {
+                    openPaperModal(articleId);
+                }, 600);
+            }
+        }
+    }
+
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash && window.location.hash.startsWith('#article/')) {
+            const articleId = window.location.hash.replace('#article/', '').trim();
+            if (articleId && (!currentActiveDoc || currentActiveDoc.id !== articleId)) {
+                openPaperModal(articleId);
+            }
+        } else if (!window.location.hash || !window.location.hash.startsWith('#article/')) {
+            if (paperModalOverlay && paperModalOverlay.classList.contains('active')) {
+                closePaperModal();
+            }
+        }
+    });
+
+    checkInitialArticleHash();
 
     // Event delegation for all read paper buttons (existing & dynamic)
     document.addEventListener('click', (e) => {

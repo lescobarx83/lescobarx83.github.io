@@ -4,53 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leonardo Escobar - ICT Engineer & Infrastructure Specialist</title>
+    <title>Leonardo Escobar — ICT Research & Engineering Hub</title>
     <meta name="description"
-        content="Portafolio profesional de Leonardo Escobar. ICT Engineer, ULACIT Cum Laude Probatus. Especialista en infraestructura de servidores, sistemas operativos empresariales, bases de datos y desarrollo de software.">
+        content="Portal de investigación técnica, publicaciones de ingeniería de infraestructura, sistemas operativos empresariales y portafolio profesional de Leonardo Escobar. ICT Engineer @ Huawei Technologies, 3er Lugar Mundial Global ICT Competition, Cum Laude Probatus ULACIT.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Leonardo Escobar — ICT Engineer & Infrastructure Specialist">
+    <meta property="og:title" content="Leonardo Escobar — ICT Research & Engineering Hub">
     <meta property="og:description"
-        content="Portfolio of Leonardo Escobar. 3rd Place Global ICT Competition. ICT Engineer at Huawei Technologies. Cum Laude Probatus, ULACIT.">
+        content="75% Hub de Investigaciones Técnicas & 25% Portafolio Ejecutivo. ICT Engineer @ Huawei Technologies, 3rd Place Global ICT Competition, ULACIT Cum Laude Probatus.">
     <meta property="og:url" content="https://lescobarx83.github.io/">
-    <meta property="og:site_name" content="Leonardo Escobar Portfolio">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Leonardo Escobar — ICT Engineer">
+    <meta property="og:site_name" content="Leonardo Escobar — ICT Engineering Hub">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Leonardo Escobar — ICT Research & Engineering Hub">
     <meta name="twitter:description"
-        content="3rd Place Global ICT Competition · Huawei Technologies · Cum Laude Probatus">
+        content="Investigaciones semanales en infraestructura, Linux empresarial, bases de datos y telecomunicaciones conectadas con Google Drive.">
 
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body class="noc-power-off">
-    <!-- MAINTENANCE STATUS BANNER — PROFESSIONAL NOTICE FOR INTERVIEWERS -->
-    <div class="maintenance-banner" id="maintenance-banner">
-        <div class="maintenance-inner">
-            <div class="maintenance-pulse"></div>
-            <ion-icon name="construct-outline"></ion-icon>
-            <span class="maintenance-text">
-                <strong>SITIO EN DESARROLLO ACTIVO</strong> — Algunas secciones pueden presentar inconsistencias
-                visuales o funcionales. Estamos trabajando en mejoras continuas.
-            </span>
-            <button class="maintenance-dismiss" id="dismiss-maintenance" aria-label="Cerrar aviso">
-                <ion-icon name="close-outline"></ion-icon>
-            </button>
-        </div>
-    </div>
 
     <!-- AMBIENT PARTICLE FIELD FOR DEPTH -->
     <canvas id="particle-field" class="particle-field-canvas"></canvas>
+
     <!-- OPTICAL FIBER BLADE TELEPORT TRANSITION OVERLAY -->
     <div id="blade-teleport-overlay" class="blade-teleport-overlay">
         <div class="teleport-pulse-ring"></div>
@@ -60,8 +47,14 @@
     <!-- REALISTIC CEILING OVERHEAD SPOTLIGHT BEAM -->
     <div id="datacenter-spotlight-beam" class="ceiling-spotlight-beam"></div>
 
-    <!-- REALISTIC DATACENTER FROSTED GLASS SLIDING DOORS PRELOADER -->
+    <!-- REALISTIC DATACENTER FROSTED GLASS SLIDING DOORS PRELOADER (ONE-TIME PER SESSION) -->
     <div id="datacenter-preloader" class="dc-preloader">
+        <!-- Discreet Skip Intro Button -->
+        <button id="skip-preloader-btn" class="skip-preloader-btn" title="Saltar intro / Skip intro" aria-label="Saltar intro">
+            <ion-icon name="play-skip-forward-outline"></ion-icon>
+            <span data-i18n="preloader.skip">Saltar intro</span>
+        </button>
+
         <!-- Left Sliding Glass Door -->
         <div class="dc-door dc-door-left">
             <div class="glass-door-reflection"></div>
@@ -120,43 +113,33 @@
         <!-- Fixed Left System Status -->
         <div class="telemetry-fixed-left">
             <span class="status-led-green"></span>
-            <span>SYS_STATUS: ONLINE</span>
+            <span>SYS_STATUS: ONLINE &bull; DRIVE SYNC: ACTIVE</span>
         </div>
 
         <!-- Center Moving Train Bulletin Marquee -->
         <div class="telemetry-center-marquee">
             <div class="ticker-track">
-                <div class="ticker-item ticker-item-gold"><ion-icon name="trophy-outline"></ion-icon> 3er Lugar Mundial
-                    - Global ICT Competition (Computing 2024-2025)</div>
+                <div class="ticker-item ticker-item-gold"><ion-icon name="trophy-outline"></ion-icon> 3er Lugar Mundial - Global ICT Competition (Computing 2024-2025)</div>
                 <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item"><ion-icon name="school-outline"></ion-icon> ULACIT Cum Laude Probatus
-                    (Ingeniería Informática)</div>
+                <div class="ticker-item"><ion-icon name="school-outline"></ion-icon> ULACIT Cum Laude Probatus (Ingeniería Informática)</div>
                 <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item ticker-item-gold"><ion-icon name="bulb-outline"></ion-icon> Semifinalista
-                    Mundial - Global ICT Competition (ArenAI &bull; Innovación 2025-2026)</div>
+                <div class="ticker-item ticker-item-gold"><ion-icon name="bulb-outline"></ion-icon> Semifinalista Mundial - Global ICT Competition (ArenAI &bull; Innovación 2025-2026)</div>
                 <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item"><ion-icon name="briefcase-outline"></ion-icon> Delivery & Services ICT Engineer
-                </div>
+                <div class="ticker-item"><ion-icon name="briefcase-outline"></ion-icon> ICT Engineer &bull; Huawei Technologies Latinoamérica</div>
                 <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item"><ion-icon name="language-outline"></ion-icon> Idiomas: Español (Nativo) |
-                    English (B2+ / C1)</div>
+                <div class="ticker-item"><ion-icon name="cloud-done-outline"></ion-icon> Google Drive Knowledge Pipeline: Publicaciones Semanales</div>
+                <span class="ticker-divider">&bull;</span>
+                <div class="ticker-item"><ion-icon name="language-outline"></ion-icon> Idiomas: Español (Nativo) | English (B2+ / C1)</div>
                 <span class="ticker-divider">&bull;</span>
 
                 <!-- Duplicate for Seamless Loop -->
-                <div class="ticker-item ticker-item-gold"><ion-icon name="trophy-outline"></ion-icon> 3er Lugar Mundial
-                    - Global ICT Competition (Computing 2024-2025)</div>
+                <div class="ticker-item ticker-item-gold"><ion-icon name="trophy-outline"></ion-icon> 3er Lugar Mundial - Global ICT Competition (Computing 2024-2025)</div>
                 <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item"><ion-icon name="school-outline"></ion-icon> ULACIT Cum Laude Probatus
-                    (Ingeniería Informática)</div>
+                <div class="ticker-item"><ion-icon name="school-outline"></ion-icon> ULACIT Cum Laude Probatus (Ingeniería Informática)</div>
                 <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item ticker-item-gold"><ion-icon name="bulb-outline"></ion-icon> Semifinalista
-                    Mundial - Global ICT Competition (ArenAI &bull; Innovación 2025-2026)</div>
+                <div class="ticker-item ticker-item-gold"><ion-icon name="bulb-outline"></ion-icon> Semifinalista Mundial - Global ICT Competition (ArenAI &bull; Innovación 2025-2026)</div>
                 <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item"><ion-icon name="briefcase-outline"></ion-icon> Delivery & Services ICT Engineer
-                </div>
-                <span class="ticker-divider">&bull;</span>
-                <div class="ticker-item"><ion-icon name="language-outline"></ion-icon> Idiomas: Español (Nativo) |
-                    English (B2+ / C1)</div>
+                <div class="ticker-item"><ion-icon name="briefcase-outline"></ion-icon> ICT Engineer &bull; Huawei Technologies Latinoamérica</div>
                 <span class="ticker-divider">&bull;</span>
             </div>
         </div>
@@ -164,7 +147,7 @@
         <!-- Fixed Right Hardware Node -->
         <div class="telemetry-fixed-right">
             <span class="status-led-red"></span>
-            <span>NODE: PRIMARY DATACENTER CLUSTER (CR-REGION-01)</span>
+            <span>NODE: CR-REGION-01 &bull; 75% RESEARCH / 25% PROFILE</span>
         </div>
     </div>
 
@@ -172,14 +155,15 @@
     <div class="header-wrapper">
         <header class="nav-container glass-panel">
             <a href="#hero" class="brand-logo">
-                <span class="brand-name">NOC <span class="text-gradient-red">Knowledge Hub</span></span>
+                <span class="brand-monogram">LE</span>
+                <span class="brand-name">NOC <span class="text-gradient-red">Research Hub</span></span>
             </a>
 
             <nav class="nav-menu" id="nav-menu">
                 <a href="#hero" class="nav-link active" data-i18n="nav.home">Inicio</a>
-                <a href="#publications" class="nav-link" data-i18n="nav.publications">Publicaciones &amp; Papers</a>
+                <a href="#articles-feed" class="nav-link" data-i18n="nav.feed">Investigaciones &amp; Artículos</a>
                 <a href="#blueprints" class="nav-link" data-i18n="nav.blueprints">Arquitecturas &amp; Labs</a>
-                <a href="#lobby" class="nav-link" data-i18n="nav.lobby">Lobby Portafolio</a>
+                <a href="#profile" class="nav-link" data-i18n="nav.profile">Perfil Ejecutivo &amp; Rack</a>
                 <a href="cv/index.html" class="nav-link" data-i18n="nav.cv">CV Completo</a>
             </nav>
 
@@ -193,15 +177,15 @@
                     <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
                 </button>
                 <!-- Terminal Testbed -->
-                <button class="nav-toggle-btn terminal-btn" id="terminal-toggle" title="Open Terminal"
-                    aria-label="Open Terminal">
+                <button class="nav-toggle-btn terminal-btn" id="terminal-toggle" title="Open Interactive Terminal"
+                    aria-label="Open Interactive Terminal">
                     <ion-icon name="terminal-outline"></ion-icon>
                 </button>
-                <a href="#lobby" class="btn-hw-secondary" title="Acceder al Lobby del Portafolio">
-                    <ion-icon name="grid-outline"></ion-icon> Lobby
+                <a href="#profile" class="btn-hw-secondary nav-action-btn" title="Ver Gabinete E9000H y Perfil">
+                    <ion-icon name="server-outline"></ion-icon> <span data-i18n="nav.rackBtn">Rack E9000H</span>
                 </a>
-                <a href="cv/index.html" class="btn-hw-primary" title="Ver CV Interactivo">
-                    <ion-icon name="document-text-outline"></ion-icon> CV
+                <a href="cv/index.html" class="btn-hw-primary nav-action-btn" title="Ver CV Interactivo">
+                    <ion-icon name="document-text-outline"></ion-icon> <span>CV</span>
                 </a>
                 <button class="nav-mobile-btn" id="mobile-toggle" aria-label="Abrir Menú">
                     <ion-icon name="menu-outline"></ion-icon>
@@ -211,443 +195,242 @@
     </div>
 
     <main>
-        <!-- Hero Section -->
-        <!-- Hero Section: Knowledge Hub & Engineering Lab -->
-        <section id="hero" class="section hero-section">
-            <div class="hero-main">
-                <div class="badge-hw" data-i18n="hero.badge">
-                    [ ENGINEERING RESEARCH &amp; FIELD NOTES ] &bull; DATACENTER &amp; ICT SYSTEMS
-                </div>
+        <!-- ============================================================ -->
+        <!-- HERO EDITORIAL ASIMÉTRICO (70% SPOTLIGHT / 30% QUICK PROFILE) -->
+        <!-- ============================================================ -->
+        <section id="hero" class="section hero-editorial-section">
+            <div class="hero-editorial-grid">
 
-                <h1 class="hero-title">
-                    Datacenter Systems &amp; <br>
-                    <span class="text-gradient-red">Engineering Hub.</span>
-                </h1>
-
-                <p class="hero-subhead" id="hero-subhead-typed">
-                    <span class="typed-line"></span><span class="typing-cursor">|</span>
-                </p>
-
-                <p class="hero-text" data-i18n="hero.text">
-                    Portal de divulgación e investigación técnica en infraestructura de centro de datos, sistemas operativos empresariales (openEuler), motores de bases de datos de alto rendimiento (openGauss), arquitecturas distribuidas de alta disponibilidad y analítica de datos. Documentación de laboratorio, papers técnicos y metodologías aplicadas desde la experiencia en producción.
-                </p>
-
-                <div class="hero-cta">
-                    <a href="#publications" class="btn-hw-primary">
-                        <ion-icon name="library-outline"></ion-icon> <span data-i18n="hero.ctaExplore">Explorar Publicaciones</span>
-                    </a>
-                    <a href="#blueprints" class="btn-hw-secondary">
-                        <ion-icon name="git-network-outline"></ion-icon> <span data-i18n="hero.ctaBlueprints">Arquitecturas &amp; Labs</span>
-                    </a>
-                    <a href="#lobby" class="btn-hw-tertiary">
-                        <ion-icon name="person-circle-outline"></ion-icon> <span data-i18n="hero.ctaLobby">Lobby al Portafolio</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hero Diagnostic NOC Panel -->
-            <div class="hero-visual">
-                <div class="noc-diag-box glass-panel">
-                    <div class="diag-header">
-                        <span class="status-led-green"></span>
-                        <span data-i18n="hero.diagTitle">DATACENTER CLUSTER DIAGNOSTICS</span>
+                <!-- COLUMNA IZQUIERDA (70% - DESTACADO DE LA SEMANA) -->
+                <div class="spotlight-card glass-panel" id="spotlight-card">
+                    <div class="spotlight-glow"></div>
+                    
+                    <div class="spotlight-badge-strip">
+                        <span class="spotlight-badge">
+                            <ion-icon name="sparkles"></ion-icon>
+                            <span data-i18n="hero.spotlightBadge">INVESTIGACIÓN DE LA SEMANA</span>
+                        </span>
+                        <span class="spotlight-sync-badge">
+                            <ion-icon name="logo-google"></ion-icon>
+                            <span data-i18n="hero.driveSyncTag">Google Drive Live Sync</span>
+                        </span>
+                        <span class="spotlight-ref" id="spotlight-doi">REF: 6G-ISAC-2026-01</span>
                     </div>
-                    <div class="diag-body">
-                        <div class="metric-row">
-                            <div class="metric-label">
-                                <span data-i18n="hero.diagCpu">CPU LOAD (ENTERPRISE LINUX OS)</span>
-                                <span class="metric-val" id="hero-cpu">14.2%</span>
-                            </div>
-                            <div class="progress-track">
-                                <div class="progress-fill-red" id="hero-cpu-bar" style="width: 14.2%"></div>
-                            </div>
-                        </div>
 
-                        <div class="metric-row">
-                            <div class="metric-label">
-                                <span data-i18n="hero.diagRam">MEMORY (DATABASE MATRIX CLUSTER)</span>
-                                <span class="metric-val" id="hero-ram">18.4 GB / 64 GB</span>
-                            </div>
-                            <div class="progress-track">
-                                <div class="progress-fill-blue" id="hero-ram-bar" style="width: 28.7%"></div>
-                            </div>
-                        </div>
+                    <div class="spotlight-meta-row">
+                        <span class="spotlight-cat-tag" id="spotlight-cat">
+                            <ion-icon name="wifi-outline"></ion-icon>
+                            <span>Telecom &amp; Redes 6G-IoT</span>
+                        </span>
+                        <span class="spotlight-dot">&bull;</span>
+                        <span class="spotlight-date" id="spotlight-date">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>13 Oct 2026</span>
+                        </span>
+                        <span class="spotlight-dot">&bull;</span>
+                        <span class="spotlight-time" id="spotlight-time">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>~18 min lectura</span>
+                        </span>
+                    </div>
 
-                        <div class="metric-row">
-                            <div class="metric-label">
-                                <span data-i18n="hero.diagIo">DISK I/O (NVMe SAS ARRAY)</span>
-                                <span class="metric-val" id="hero-io">14.8 MB/s</span>
-                            </div>
-                            <div class="progress-track">
-                                <div class="progress-fill-red" id="hero-io-bar" style="width: 44.4%"></div>
-                            </div>
-                        </div>
+                    <h1 class="spotlight-title" id="spotlight-title">
+                        Inferencia Neuromórfica Over-the-Air y Comunicaciones Semánticas Orientadas a Objetivos en Sistemas ISAC Asistidos por Metasuperficies Dispersivas para Redes 6G-IoT de Cero Energía
+                    </h1>
 
-                        <div class="log-feed">
-                            <div class="log-line"><span class="log-ok">[OK]</span> Repository: Research Papers &amp; Field Guides Online</div>
-                            <div class="log-line"><span class="log-ok">[OK]</span> Architectures: Active-Active Telecom Cluster Spec Active</div>
-                            <div class="log-line"><span class="log-ok">[OK]</span> Core Engine: ArenAI Real-Time WebSocket Benchmarks</div>
-                            <div class="log-line"><span class="log-ok">[OK]</span> Author: Leonardo Escobar &bull; Huawei Technologies LATAM</div>
-                        </div>
+                    <p class="spotlight-abstract" id="spotlight-abstract">
+                        Investigación teórica sobre la convergencia nativa de percepción electromagnética (ISAC), comunicaciones semánticas orientadas a objetivos y computación analógica en el aire (AirComp) asistida por superficies inteligentes reconfigurables (RIS) dispersivas para redes 6G masivas y nodos IoT de consumo energético en microjulios.
+                    </p>
+
+                    <div class="spotlight-highlights" id="spotlight-highlights">
+                        <span class="hl-pill"><ion-icon name="checkmark-circle-outline"></ion-icon> Redes Neuronales de Impulsos (SNN) en Bandas IR-UWB</span>
+                        <span class="hl-pill"><ion-icon name="checkmark-circle-outline"></ion-icon> Metasuperficies Dispersivas (RIS-OAC / AirFC)</span>
+                        <span class="hl-pill"><ion-icon name="checkmark-circle-outline"></ion-icon> Cota de Cramér-Rao &amp; Consolidación Sináptica Continua</span>
+                    </div>
+
+                    <div class="spotlight-cta-row">
+                        <button class="btn-hw-primary btn-read-paper" id="spotlight-read-btn" data-paper="art-6g-isac-neuromorphic">
+                            <ion-icon name="book-outline"></ion-icon>
+                            <span data-i18n="hero.readFeatured">Leer Investigación Completa</span>
+                        </button>
+                        <a href="https://drive.google.com/drive/folders/1GuH6Op6iSUKXhKaBDLBmGamLg-bVXFua" target="_blank" rel="noopener" class="btn-hw-secondary" id="spotlight-drive-btn">
+                            <ion-icon name="logo-google"></ion-icon>
+                            <span data-i18n="hero.viewInDrive">Ver Documento en Drive</span>
+                        </a>
+                        <a href="#articles-feed" class="btn-hw-tertiary">
+                            <ion-icon name="grid-outline"></ion-icon>
+                            <span data-i18n="hero.viewAll">Feed de Investigaciones</span>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- ============================================================ -->
-        <!-- FEATURED PUBLICATION / RESEARCH PAPER SHOWCASE               -->
-        <!-- ============================================================ -->
-        <section id="featured-paper" class="section featured-paper-section">
-            <div class="featured-paper-card glass-panel">
-                <div class="featured-glow"></div>
-                <div class="featured-paper-badge-strip">
-                    <span class="paper-type-badge type-paper"><ion-icon name="document-text"></ion-icon> RESEARCH PAPER &amp; BLUEPRINT</span>
-                    <span class="paper-status-badge"><ion-icon name="flame-outline"></ion-icon> DESTACADO</span>
-                    <span class="paper-doi">REF: NOC-2026-HA-01</span>
-                </div>
-                <div class="featured-paper-grid">
-                    <div class="featured-paper-content">
-                        <span class="featured-paper-tag">INFRAESTRUCTURA &bull; TELECOM &bull; ALTA DISPONIBILIDAD</span>
-                        <h2 class="featured-paper-title">Arquitectura Activo-Activo de Misión Crítica y Fencing de Nodos en Telecomunicaciones: Tolerancia a Fallos y Cero Downtime</h2>
-                        <p class="featured-paper-abstract">
-                            <strong>Abstract:</strong> Análisis exhaustivo de los principios de diseño para plataformas de telecomunicaciones virtualizadas bajo esquemas de alta disponibilidad activo-activo. Se examinan mecanismos de fencing STONITH, mitigación de split-brain en redes divididas, sincronización de estado de sesión a nivel de kernel y algoritmos de balanceo con Virtual IPs flotantes para garantizar un 99.999% de continuidad operativa.
-                        </p>
-                        <div class="featured-paper-meta">
-                            <div class="meta-pill"><ion-icon name="person-outline"></ion-icon> <span>Leonardo Escobar (Lead)</span></div>
-                            <div class="meta-pill"><ion-icon name="time-outline"></ion-icon> <span>~14 min lectura</span></div>
-                            <div class="meta-pill"><ion-icon name="layers-outline"></ion-icon> <span>Huawei HA Spec &bull; Linux HA</span></div>
+                <!-- COLUMNA DERECHA (30% - TARJETA DE AUTOR / QUICK CV STATUS) -->
+                <div class="author-quick-card glass-panel">
+                    <div class="author-card-header">
+                        <div class="author-avatar-wrap">
+                            <div class="author-monogram-circle">LE</div>
+                            <span class="author-status-led" title="Disponible para retos de ingeniería y liderazgo técnico"></span>
                         </div>
-                        <div class="featured-paper-actions">
-                            <button class="btn-read-paper" data-paper="paper-ha">
-                                <ion-icon name="book-outline"></ion-icon> <span>Leer Paper Completo</span>
+                        <div class="author-title-block">
+                            <h2 class="author-quick-name">Leonardo Escobar</h2>
+                            <p class="author-quick-role">ICT Engineer @ Huawei Technologies</p>
+                            <span class="author-telemetry-tag">
+                                <ion-icon name="pulse-outline"></ion-icon> NOC CR-01 &bull; ONLINE
+                            </span>
+                        </div>
+                    </div>
+
+                    <p class="author-quick-bio" data-i18n="author.bioShort">
+                        Ingeniero de infraestructura y plataformas de misión crítica. Especialista en servidores empresariales, Linux openEuler, bases de datos openGauss y analítica para directivos CXO.
+                    </p>
+
+                    <!-- Credential Pills -->
+                    <div class="author-awards-stack">
+                        <div class="author-award-pill pill-gold">
+                            <ion-icon name="trophy-outline"></ion-icon>
+                            <div>
+                                <strong>3er Lugar Mundial</strong>
+                                <span>Global ICT Competition (Computing)</span>
+                            </div>
+                        </div>
+
+                        <div class="author-award-pill pill-cyan">
+                            <ion-icon name="bulb-outline"></ion-icon>
+                            <div>
+                                <strong>Semifinalista Mundial</strong>
+                                <span>Global ICT Innovation (ArenAI SaaS)</span>
+                            </div>
+                        </div>
+
+                        <div class="author-award-pill pill-blue">
+                            <ion-icon name="school-outline"></ion-icon>
+                            <div>
+                                <strong>Cum Laude Probatus</strong>
+                                <span>ULACIT (Ingeniería Informática)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick CV & Connection Actions -->
+                    <div class="author-card-footer">
+                        <a href="cv/index.html" class="btn-quick-cv">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span data-i18n="author.viewCv">CV Interactivo Completo</span>
+                        </a>
+                        <div class="author-social-row">
+                            <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="social-icon-btn" title="LinkedIn Profile">
+                                <ion-icon name="logo-linkedin"></ion-icon>
+                            </a>
+                            <a href="https://github.com/lescobarx83" target="_blank" rel="noopener" class="social-icon-btn" title="GitHub Repositories">
+                                <ion-icon name="logo-github"></ion-icon>
+                            </a>
+                            <a href="mailto:lescobar2004@gmail.com" class="social-icon-btn" title="Direct Email">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </a>
+                            <button class="social-icon-btn terminal-trigger-btn" id="quick-terminal-btn" title="Abrir Consola NOC">
+                                <ion-icon name="terminal-outline"></ion-icon>
                             </button>
-                            <span class="paper-meta-note"><ion-icon name="checkmark-circle-outline"></ion-icon> Validado en clústeres de producción</span>
                         </div>
-                    </div>
-                    <div class="featured-paper-schema">
-                        <div class="schema-header">
-                            <span class="schema-dot dot-r"></span>
-                            <span class="schema-dot dot-y"></span>
-                            <span class="schema-dot dot-g"></span>
-                            <span class="schema-title">active_active_topology.ascii</span>
-                        </div>
-                        <pre class="schema-code">
-+--------------------------------------------------------+
-|          VIP Flotante (Virtual IP Cluster)             |
-+---------------------------+----------------------------+
-                            |
-           +----------------+----------------+
-           |                                 |
-           v                                 v
-+-----------------------+         +-----------------------+
-|  NODO A (ACTIVO)      |  Heart- |  NODO B (ACTIVO)      |
-|  - Core Service Daemon|<========>  - Core Service Daemon|
-|  - Kernel State Sync  |  beat   |  - Kernel State Sync  |
-|  - Local Storage (SAN)|  Link   |  - Local Storage (SAN)|
-+-----------+-----------+         +-----------+-----------+
-            |                                 |
-            +------------>[ STONITH ]<--------+
-                   (Hardware Node Fencing)
-                        </pre>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <!-- ============================================================ -->
-        <!-- PUBLICATIONS, PAPERS & PRACTICAL GUIDES CATALOG               -->
+        <!-- EL 75%: ICT RESEARCH, ARTICLES & ENGINEERING HUB (FEED PRINCIPAL) -->
         <!-- ============================================================ -->
-        <section id="publications" class="section pub-section">
+        <section id="articles-feed" class="section articles-feed-section">
             <div class="header-center">
-                <span class="section-tag" data-i18n="pub.tag">Base de Conocimiento</span>
-                <h2 class="section-heading" data-i18n="pub.heading">Publicaciones, Papers &amp; Guías Técnicas</h2>
-                <p class="section-subtitle" data-i18n="pub.subtitle">Artículos científicos, whitepapers, checklists de hardening y especificaciones de arquitectura derivadas de implementaciones reales.</p>
+                <span class="section-tag" data-i18n="feed.tag">[ 75% HUB PRINCIPAL ] &bull; INVESTIGACIÓN CIENTÍFICA EN GOOGLE DRIVE</span>
+                <h2 class="section-heading" data-i18n="feed.heading">Google Drive ICT Research &amp; Scientific Hub</h2>
+                <p class="section-subtitle" data-i18n="feed.subtitle">
+                    Publicaciones científicas originales y guías conceptuales sincronizadas directamente con mi repositorio público de Google Drive (Investigaciones Científicas TIC). Inferencia neuromórfica SNN, comunicaciones semánticas ISAC y computación analógica Over-the-Air para redes 6G-IoT de Cero Energía.
+                </p>
             </div>
 
-            <!-- Multi-Format Filter Bar -->
-            <div class="pub-filter-container">
-                <div class="pub-filter-bar">
-                    <button class="pub-filter-btn active" data-filter="all">
-                        <ion-icon name="grid-outline"></ion-icon> Todos los Formatos
-                    </button>
-                    <button class="pub-filter-btn" data-filter="paper">
-                        <ion-icon name="document-text-outline"></ion-icon> Papers &amp; Whitepapers
-                    </button>
-                    <button class="pub-filter-btn" data-filter="guide">
-                        <ion-icon name="construct-outline"></ion-icon> Guías &amp; Hardening
-                    </button>
-                    <button class="pub-filter-btn" data-filter="blueprint">
-                        <ion-icon name="git-network-outline"></ion-icon> Arquitecturas
-                    </button>
-                    <button class="pub-filter-btn" data-filter="lab">
-                        <ion-icon name="hardware-chip-outline"></ion-icon> Labs &amp; Benchmarks
-                    </button>
-                    <button class="pub-filter-btn" data-filter="case-study">
-                        <ion-icon name="trending-up-outline"></ion-icon> Casos de Estudio &amp; CXO
-                    </button>
+            <!-- Exploration & Control Toolbar -->
+            <div class="feed-controls-panel glass-panel">
+                <div class="feed-controls-top">
+                    <!-- Real-Time Search Input -->
+                    <div class="search-input-wrap">
+                        <ion-icon name="search-outline"></ion-icon>
+                        <input type="text" id="articles-search" placeholder="Buscar en la investigación de Google Drive (6G, SNN, ISAC, RIS, AirComp, Cramér-Rao...)" autocomplete="off" spellcheck="false" data-i18n="feed.searchPlaceholder">
+                        <button id="clear-search-btn" class="clear-search-btn" aria-label="Limpiar búsqueda" style="display: none;">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </button>
+                    </div>
+
+                    <!-- View Switcher & Drive Sync Button -->
+                    <div class="feed-actions-group">
+                        <div class="view-switch-box" role="group" aria-label="Selector de Vista">
+                            <button id="view-grid-btn" class="view-btn active" title="Vista en Cuadrícula" aria-label="Vista en Cuadrícula">
+                                <ion-icon name="grid-outline"></ion-icon>
+                            </button>
+                            <button id="view-list-btn" class="view-btn" title="Vista de Lista Técnica (Estilo Logs)" aria-label="Vista de Lista Técnica">
+                                <ion-icon name="list-outline"></ion-icon>
+                            </button>
+                        </div>
+
+                        <!-- Direct Link to Shared Public Google Drive Folder -->
+                        <a href="https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing" target="_blank" rel="noopener" class="drive-repo-btn" id="drive-repo-link" title="Abrir Repositorio de Investigaciones en Google Drive">
+                            <ion-icon name="logo-google"></ion-icon>
+                            <span data-i18n="feed.driveRepoBtn">Repositorio en Drive</span>
+                            <ion-icon name="open-outline" class="btn-external-icon"></ion-icon>
+                        </a>
+
+                        <!-- Drive Live Sync Trigger -->
+                        <button id="drive-sync-btn" class="drive-sync-trigger-btn" title="Sincronizar ahora con la carpeta de Google Drive">
+                            <ion-icon name="sync-outline" id="sync-icon"></ion-icon>
+                            <span id="sync-btn-label">Drive Sync</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="pub-filter-meta">
-                    <span id="pub-count">8</span> documentos técnicos
+
+                <!-- Category Filter Pills -->
+                <div class="feed-pills-row">
+                    <button class="feed-filter-pill active" data-cat="all">
+                        <ion-icon name="layers-outline"></ion-icon> <span data-i18n="cat.all">Todos</span>
+                    </button>
+                    <button class="feed-filter-pill" data-cat="infra">
+                        <ion-icon name="wifi-outline"></ion-icon> <span data-i18n="cat.infra">Telecom &amp; Redes 6G-IoT</span>
+                    </button>
+                    <button class="feed-filter-pill" data-cat="dev">
+                        <ion-icon name="bulb-outline"></ion-icon> <span data-i18n="cat.dev">Divulgación &amp; Guía Conceptual</span>
+                    </button>
+
+                    <div class="feed-meta-count">
+                        <span id="feed-count-badge">2</span> <span data-i18n="feed.docsAvailable">documentos verificados en Google Drive</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Publications Grid -->
-            <!-- 
-                ========================================================================
-                GUÍA PARA AGREGAR NUEVAS PUBLICACIONES O PAPERS:
-                1. Duplica un bloque <article class="pub-card" data-format="{tipo}" data-paper="{id}">
-                2. Formatos soportados: "paper", "guide", "blueprint", "lab", "case-study"
-                3. Puedes registrar el contenido completo en papersDatabase en script.js,
-                   o añadir data-external-url="https://..." para enlaces directos / PDFs.
-                ========================================================================
-            -->
-            <div class="pub-grid" id="pub-grid">
-
-                <!-- Publication 1: HA Paper -->
-                <article class="pub-card" data-format="paper" data-category="infra" id="card-ha">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-paper">RESEARCH PAPER</span>
-                        <span class="pub-doi-tag">REF: HA-2026-01</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">ALTA DISPONIBILIDAD &bull; TELECOM</span>
-                        <h3 class="pub-title">Arquitectura Activo-Activo y Fencing de Nodos en Telecomunicaciones</h3>
-                        <p class="pub-excerpt">Metodología de diseño para redundancia estricta, prevención de split-brain con STONITH y conmutación transparente de Virtual IPs sin desconexión de clientes.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> STONITH Node Fencing</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Virtual IP Floating Switch</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Kernel Session Sync</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>High-Availability</span><span>Linux</span><span>Huawei</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~14 min</span>
-                            <button class="pub-btn-read" data-paper="paper-ha">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Publication 2: openEuler Kunpeng Paper -->
-                <article class="pub-card" data-format="paper" data-category="os" id="card-kunpeng">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-paper">RESEARCH PAPER</span>
-                        <span class="pub-doi-tag">REF: OE-2026-KP</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">SISTEMAS OPERATIVOS &bull; ARM64</span>
-                        <h3 class="pub-title">Hardening y Tuning de Kernel en openEuler 22.03 para Kunpeng (ARM64)</h3>
-                        <p class="pub-excerpt">Evaluación empírica de parámetros de sysctl para I/O masivo, optimización de afinidad de CPU en arquitecturas ARM y configuración de SELinux enforcing en centros de datos.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> sysctl Network &amp; I/O Tuning</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> NUMA &amp; Core Pinning</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> SELinux Enforcing Rules</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>openEuler</span><span>Kunpeng</span><span>ARM64</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~12 min</span>
-                            <button class="pub-btn-read" data-paper="paper-kunpeng">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Publication 3: openGauss Whitepaper -->
-                <article class="pub-card" data-format="paper" data-category="db" id="card-opengauss">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-whitepaper">WHITEPAPER &amp; BENCHMARK</span>
-                        <span class="pub-doi-tag">REF: OG-2026-DB</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">BASES DE DATOS &bull; SQL DE MISIÓN CRÍTICA</span>
-                        <h3 class="pub-title">openGauss vs RDBMS Tradicionales: Replicación, Pooling y Concurrencia</h3>
-                        <p class="pub-excerpt">Diferencias estructurales con PostgreSQL, optimización de pools de memoria, endurecimiento de autenticación pg_hba.conf y análisis de costo mediante EXPLAIN ANALYZE.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> WAL Multi-Thread Replication</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Memory Pool Management</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Query Execution Cost Tuning</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>openGauss</span><span>PostgreSQL</span><span>DBA</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~11 min</span>
-                            <button class="pub-btn-read" data-paper="paper-opengauss">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Publication 4: WebSockets ArenAI Paper -->
-                <article class="pub-card" data-format="paper" data-category="dev" id="card-websockets">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-paper">RESEARCH PAPER &amp; SISTEMA</span>
-                        <span class="pub-doi-tag">REF: WS-2026-AI</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">SISTEMAS DISTRIBUIDOS &bull; REDES EN TIEMPO REAL</span>
-                        <h3 class="pub-title">Sincronización P2P y Mitigación de Latencia con WebSockets: ArenAI</h3>
-                        <p class="pub-excerpt">Diseño de la infraestructura de comunicación de baja latencia para el aula: gestión de rooms, heartbeat continuo, reconexiones resilientes y prevención de memory leaks en Node.js.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Heartbeat &amp; Ghost Drop Detection</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Dynamic Namespace Multiplexing</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Zero-Leak Socket State Engine</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>WebSockets</span><span>Node.js</span><span>ArenAI</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~10 min</span>
-                            <button class="pub-btn-read" data-paper="paper-websockets">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Publication 5: Production Hardening Checklist Guide -->
-                <article class="pub-card" data-format="guide" data-category="os" id="card-hardening">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-guide">GUÍA TÉCNICA &amp; CHECKLIST</span>
-                        <span class="pub-doi-tag">REF: GD-2026-SEC</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">SEGURIDAD &bull; ADMINISTRACIÓN DE SISTEMAS</span>
-                        <h3 class="pub-title">Checklist Operativo de Post-Instalación y Bastionado en Linux Empresarial</h3>
-                        <p class="pub-excerpt">Protocolo reproducible para servidores de producción: clausura de puertos residuales, aislamiento de procesos, segregación de cuentas administrativas y auditoría de logs.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Surface Attack Reduction</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Automated Auditd Framework</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> SSH Key-Only Hardening</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>SysAdmin</span><span>Linux</span><span>Security</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~9 min</span>
-                            <button class="pub-btn-read" data-paper="paper-hardening">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Publication 6: Data Governance CXO Whitepaper -->
-                <article class="pub-card" data-format="case-study" data-category="data" id="card-datagov">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-case-study">CASE STUDY &amp; GOBERNANZA</span>
-                        <span class="pub-doi-tag">REF: BI-2026-GOV</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">BUSINESS INTELLIGENCE &bull; GOBERNANZA DE DATOS</span>
-                        <h3 class="pub-title">Gobernanza de Datos para Decisiones Ejecutivas: Reportes para CXOs</h3>
-                        <p class="pub-excerpt">Pipeline integral desde la telemetría de red cruda hasta tableros de control ejecutivos sin perder precisión técnica ni sobrecargar a directores de tecnología.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Automated Anomaly Cleaning</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> SLA Performance Modeling</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> CXO-Ready KPI Synthesizer</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>Data Governance</span><span>BI</span><span>Huawei</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~11 min</span>
-                            <button class="pub-btn-read" data-paper="paper-datagov">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Publication 7: Lab Benchmark: TCP Congestion Control BBR vs Cubic -->
-                <article class="pub-card" data-format="lab" data-category="net" id="card-bbr">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-lab">LAB &amp; BENCHMARK</span>
-                        <span class="pub-doi-tag">REF: LAB-2026-BBR</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">NETWORKING &bull; CONTROL DE CONGESTIÓN</span>
-                        <h3 class="pub-title">Evaluación de BBR v2 vs CUBIC sobre Enlaces 100G en Núcleos de Telecom</h3>
-                        <p class="pub-excerpt">Banco de pruebas bajo pérdida inducida de paquetes (0.5% - 2%) y alta latencia RTT. Análisis comparativo de throughput, ocupación de colas y tiempo de drenaje de búferes.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> High-Throughput 100G Testbed</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Bufferbloat Mitigation</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> iperf3 Multi-Stream Metrics</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>TCP BBR</span><span>Telecom</span><span>Networking</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~13 min</span>
-                            <button class="pub-btn-read" data-paper="paper-bbr">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Publication 8: Case Study: Enterprise Migration to openEuler Kunpeng -->
-                <article class="pub-card" data-format="case-study" data-category="infra" id="card-migration">
-                    <div class="pub-card-top">
-                        <span class="pub-type-badge type-case-study">CASO DE ESTUDIO &amp; TCO</span>
-                        <span class="pub-doi-tag">REF: CS-2026-MIG</span>
-                    </div>
-                    <div class="pub-card-body">
-                        <span class="pub-category">MIGRACIÓN EMPRESARIAL &bull; ARQUITECTURA</span>
-                        <h3 class="pub-title">Consolidación de Datacenter y Migración a openEuler Kunpeng en Operador Tier-1</h3>
-                        <p class="pub-excerpt">Auditoría y transición de una granja de 80 servidores legacy x86 hacia clústeres optimizados Kunpeng ARM64: reducción de 38% en consumo energético y 42% en TCO.</p>
-                        <div class="pub-highlights">
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> 38% Reducción Consumo Rack</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> Zero Interruption Transition</span>
-                            <span class="pub-hl-item"><ion-icon name="checkmark-outline"></ion-icon> ROI Alcanzado en 14 Meses</span>
-                        </div>
-                    </div>
-                    <div class="pub-card-footer">
-                        <div class="pub-tags">
-                            <span>Kunpeng</span><span>openEuler</span><span>TCO Audit</span>
-                        </div>
-                        <div class="pub-action-row">
-                            <span class="pub-time"><ion-icon name="time-outline"></ion-icon> ~15 min</span>
-                            <button class="pub-btn-read" data-paper="paper-migration">
-                                <span>Leer Documento</span> <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
+            <!-- Feed Content Container (Grid / List) -->
+            <div class="articles-container view-mode-grid" id="articles-container">
+                <!-- Dynamically populated via drive-sync.js and script.js -->
+                <div class="feed-loading-state">
+                    <div class="loading-spinner"></div>
+                    <span>Cargando publicaciones técnicas desde el repositorio de Google Drive...</span>
+                </div>
             </div>
 
+            <!-- Empty Search Results State -->
+            <div class="feed-empty-state" id="feed-empty-state" style="display: none;">
+                <ion-icon name="filter-outline"></ion-icon>
+                <h3 data-i18n="feed.emptyTitle">No se encontraron documentos técnicos</h3>
+                <p data-i18n="feed.emptyDesc">Intenta modificar los términos de búsqueda o selecciona otra categoría temática.</p>
+                <button class="btn-hw-secondary" id="reset-filters-btn" data-i18n="feed.resetFilters">Restablecer Filtros</button>
             </div>
         </section>
 
         <!-- ============================================================ -->
-        <!-- BLUEPRINTS & INTERACTIVE LAB SCHEMAS                         -->
+        <!-- BLUEPRINTS & LAB SCHEMAS (ESPECIFICACIONES TÉCNICAS)          -->
         <!-- ============================================================ -->
         <section id="blueprints" class="section blueprints-section">
             <div class="header-center">
-                <span class="section-tag">Laboratorio &amp; Arquitecturas</span>
-                <h2 class="section-heading">Blueprints de Infraestructura &amp; Topologías</h2>
-                <p class="section-subtitle">Especificaciones visuales de topologías de red, clústeres redundantes y esquemas de software.</p>
+                <span class="section-tag" data-i18n="bp.tag">Laboratorio &amp; Arquitecturas</span>
+                <h2 class="section-heading" data-i18n="bp.heading">Blueprints de Infraestructura &amp; Topologías</h2>
+                <p class="section-subtitle" data-i18n="bp.subtitle">Especificaciones visuales de topologías de red, clústeres redundantes y esquemas de software implementados en producción.</p>
             </div>
 
             <div class="blueprints-container glass-panel">
@@ -776,23 +559,23 @@
        [ CLIENT APPLICATION POOL ]
                     |
                     v
-         +--------------------+
-         |  Connection Router |
-         +----+----------+----+
-              |          |
-      (Writes)|          |(Reads)
-              v          v
-       +-------------+   +-------------+
-       | PRIMARY     |   | STANDBY     |
-       | openGauss   |==>| openGauss   |
-       | Engine Node |WAL| Replica Node|
-       +------+------+   +------+------+
-              |                 |
-              +--------+--------+
-                       |
-               +-------v-------+
-               | QUORUM WITNESS|
-               +---------------+
+          +--------------------+
+          |  Connection Router |
+          +----+----------+----+
+               |          |
+       (Writes)|          |(Reads)
+               v          v
+        +-------------+   +-------------+
+        | PRIMARY     |   | STANDBY     |
+        | openGauss   |==>| openGauss   |
+        | Engine Node |WAL| Replica Node|
+        +------+------+   +------+------+
+               |                 |
+               +--------+--------+
+                        |
+                +-------v-------+
+                | QUORUM WITNESS|
+                +---------------+
                             </pre>
                         </div>
                         <div class="bp-desc-box">
@@ -820,219 +603,494 @@
         </section>
 
         <!-- ============================================================ -->
-        <!-- PORTFOLIO LOBBY / CONOCE AL AUTOR                            -->
+        <!-- EL 25%: PERFIL EJECUTIVO, RACK E9000H & CREDENCIALES         -->
         <!-- ============================================================ -->
-        <section id="lobby" class="section lobby-section">
+        <section id="profile" class="section profile-section">
             <div class="header-center">
-                <span class="section-tag" data-i18n="lobby.tag">Punto de Acceso</span>
-                <h2 class="section-heading" data-i18n="lobby.heading">Lobby al Portafolio del Autor</h2>
-                <p class="section-subtitle" data-i18n="lobby.subtitle">Este knowledge hub técnico es documentado y mantenido por Leonardo Escobar. A continuación puedes explorar su portafolio profesional, plataformas interactivas y trayectoria laboral completa.</p>
+                <span class="section-tag" data-i18n="profile.tag">[ 25% HARDWARE PROFILE ] &bull; TRAYECTORIA, RACK E9000H &amp; CREDENCIALES</span>
+                <h2 class="section-heading" data-i18n="profile.heading">Chasis E9000H &amp; Perfil Ejecutivo</h2>
+                <p class="section-subtitle" data-i18n="profile.subtitle">
+                    Gabinete interactivo de cómputo de alta densidad, distinciones internacionales de prestigio y trayectoria profesional consolidada en Huawei Technologies.
+                </p>
             </div>
 
-            <!-- Author Summary Banner -->
-            <div class="author-lobby-card glass-panel">
-                <div class="author-avatar-box">
-                    <ion-icon name="person-circle-outline"></ion-icon>
-                </div>
-                <div class="author-info-box">
-                    <div class="author-badges">
-                        <span class="badge-role">ICT ENGINEER &bull; HUAWEI TECHNOLOGIES</span>
-                        <span class="badge-award">🏆 3er LUGAR MUNDIAL ICT COMPETITION</span>
-                        <span class="badge-degree">CUM LAUDE PROBATUS (ULACIT)</span>
+            <!-- CHASSIS E9000H (REDUCIDO A 4 SLOTS TOTALMENTE FUNCIONALES) -->
+            <div class="rack-wrapper" id="rack">
+                <div class="e9000h-hardware-outer">
+                    <!-- Left Rack Mounting Ear -->
+                    <div class="e9000h-rack-ear">
+                        <span>⊕</span><span>⊕</span><span>⊕</span><span>⊕</span>
                     </div>
-                    <h3 class="author-name">Leonardo Escobar</h3>
-                    <p class="author-bio">
-                        Ingeniero de infraestructura y servicios de tecnologías de información y comunicación. Especializado en centros de datos de misión crítica, sistemas operativos empresariales (openEuler), motores de bases de datos (openGauss), desarrollo de software y analítica para directivos CXO.
-                    </p>
+
+                    <!-- 4 Horizontal Blade Slots Stack -->
+                    <div class="e9000h-stack-container">
+
+                        <!-- SLOT 01: ONLINE - ARENAI (PROYECTO SEMIFINALISTA MUNDIAL CON EYE-POPPING TRANSITION) -->
+                        <a href="arenai/index.html" class="e9000h-slot-link" id="arenai-slot-trigger" title="Ingresar a la Plataforma Educativa ArenAI">
+                            <div class="e9000h-slot-row slot-online" id="arenai-slot-row">
+                                <!-- Left Fiber Ports & Lime Lever -->
+                                <div class="e9000h-left-ports">
+                                    <div class="fiber-ports-grid">
+                                        <div class="sfp-port-icon port-lit"></div>
+                                        <div class="sfp-port-icon port-lit"></div>
+                                        <div class="sfp-port-icon port-lit"></div>
+                                        <div class="sfp-port-icon port-lit"></div>
+                                    </div>
+                                    <span class="status-led-green"></span>
+                                    <div class="lime-ejector-lever" id="arenai-ejector-lever" title="Palanca mecánica de extracción"></div>
+                                </div>
+
+                                <!-- Center Honeycomb & Project Identity -->
+                                <div class="e9000h-center-section">
+                                    <div class="honeycomb-vent-mesh"></div>
+                                    <span class="slot-project-title-bold">ArenAI SaaS Platform</span>
+                                    <div class="clean-tags-group">
+                                        <span class="tag-lime-pill">Semifinalista Mundial</span>
+                                        <span class="tag-lime-pill">Electron</span>
+                                        <span class="tag-lime-pill">Node.js</span>
+                                        <span class="tag-lime-pill">WebSockets</span>
+                                        <span class="tag-lime-pill">Docker</span>
+                                    </div>
+                                </div>
+
+                                <!-- Right Drives & Action Pill -->
+                                <div class="e9000h-right-drives">
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-blue"></span>
+                                    </div>
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-green"></span>
+                                    </div>
+                                    <div class="action-explorar-pill">
+                                        <span data-i18n="rack.actionExplore">Explorar ArenAI</span>
+                                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- SLOT 02: ONLINE - GOOGLE DRIVE RESEARCH SYNC (ENLACE INTERACTIVO AL FEED) -->
+                        <a href="#articles-feed" class="e9000h-slot-link" id="slot-drive-sync" title="Explorar Investigaciones Sincronizadas">
+                            <div class="e9000h-slot-row slot-online slot-drive-blade">
+                                <div class="e9000h-left-ports">
+                                    <div class="fiber-ports-grid">
+                                        <div class="sfp-port-icon port-lit-cyan"></div>
+                                        <div class="sfp-port-icon port-lit-cyan"></div>
+                                        <div class="sfp-port-icon port-lit-cyan"></div>
+                                        <div class="sfp-port-icon port-lit-cyan"></div>
+                                    </div>
+                                    <span class="status-led-blue-pulsing"></span>
+                                    <div class="lime-ejector-lever lever-cyan"></div>
+                                </div>
+
+                                <div class="e9000h-center-section">
+                                    <div class="honeycomb-vent-mesh"></div>
+                                    <span class="slot-project-title-bold">Drive Research Sync</span>
+                                    <div class="clean-tags-group">
+                                        <span class="tag-cyan-pill">Live Pipeline</span>
+                                        <span class="tag-cyan-pill">Weekly Papers</span>
+                                        <span class="tag-cyan-pill">openGauss</span>
+                                        <span class="tag-cyan-pill">openEuler</span>
+                                        <span class="tag-cyan-pill">Telecom HA</span>
+                                    </div>
+                                </div>
+
+                                <div class="e9000h-right-drives">
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-blue"></span>
+                                    </div>
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-green"></span>
+                                    </div>
+                                    <div class="action-explorar-pill action-cyan-pill">
+                                        <span data-i18n="rack.actionSync">Ver Feed (75%)</span>
+                                        <ion-icon name="arrow-down-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- SLOT 03: ONLINE - TRAYECTORIA & CV EJECUTIVO (HUAWEI TECHNOLOGIES) -->
+                        <a href="cv/index.html" class="e9000h-slot-link" id="slot-cv-track" title="Ver Currículum Interactivo">
+                            <div class="e9000h-slot-row slot-online slot-career-blade">
+                                <div class="e9000h-left-ports">
+                                    <div class="fiber-ports-grid">
+                                        <div class="sfp-port-icon port-lit-gold"></div>
+                                        <div class="sfp-port-icon port-lit-gold"></div>
+                                        <div class="sfp-port-icon port-lit-gold"></div>
+                                        <div class="sfp-port-icon port-lit-gold"></div>
+                                    </div>
+                                    <span class="status-led-gold-pulsing"></span>
+                                    <div class="lime-ejector-lever lever-gold"></div>
+                                </div>
+
+                                <div class="e9000h-center-section">
+                                    <div class="honeycomb-vent-mesh"></div>
+                                    <span class="slot-project-title-bold">Trayectoria Profesional &bull; Huawei Technologies</span>
+                                    <div class="clean-tags-group">
+                                        <span class="tag-gold-pill">ICT Engineer</span>
+                                        <span class="tag-gold-pill">SmartCare Data Analyst</span>
+                                        <span class="tag-gold-pill">+2 Años LATAM</span>
+                                        <span class="tag-gold-pill">SLA 99.999%</span>
+                                    </div>
+                                </div>
+
+                                <div class="e9000h-right-drives">
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-gold"></span>
+                                    </div>
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-green"></span>
+                                    </div>
+                                    <div class="action-explorar-pill action-gold-pill">
+                                        <span data-i18n="rack.actionCv">Abrir CV</span>
+                                        <ion-icon name="document-text-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- SLOT 04: ONLINE - DISTINCIONES GLOBALES & EDUCACIÓN -->
+                        <a href="#bento-awards" class="e9000h-slot-link" id="slot-awards-track" title="Ver Distinciones Globales y Educación">
+                            <div class="e9000h-slot-row slot-online slot-awards-blade">
+                                <div class="e9000h-left-ports">
+                                    <div class="fiber-ports-grid">
+                                        <div class="sfp-port-icon port-lit-gold"></div>
+                                        <div class="sfp-port-icon port-lit-gold"></div>
+                                        <div class="sfp-port-icon port-lit"></div>
+                                        <div class="sfp-port-icon port-lit"></div>
+                                    </div>
+                                    <span class="status-led-gold"></span>
+                                    <div class="lime-ejector-lever lever-gold"></div>
+                                </div>
+
+                                <div class="e9000h-center-section">
+                                    <div class="honeycomb-vent-mesh"></div>
+                                    <span class="slot-project-title-bold">Distinciones Globales &amp; Educación</span>
+                                    <div class="clean-tags-group">
+                                        <span class="tag-gold-pill">3er Lugar Mundial (Computing)</span>
+                                        <span class="tag-gold-pill">Semifinalista ArenAI</span>
+                                        <span class="tag-gold-pill">Cum Laude Probatus</span>
+                                    </div>
+                                </div>
+
+                                <div class="e9000h-right-drives">
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-gold"></span>
+                                    </div>
+                                    <div class="horizontal-caddy-bay">
+                                        <div class="caddy-metallic-handle"></div>
+                                        <span class="status-led-green"></span>
+                                    </div>
+                                    <div class="action-explorar-pill action-gold-pill">
+                                        <span data-i18n="rack.actionHonors">Honores</span>
+                                        <ion-icon name="trophy-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <!-- Right Rack Mounting Ear -->
+                    <div class="e9000h-rack-ear">
+                        <span>⊕</span><span>⊕</span><span>⊕</span><span>⊕</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Hub Gateway Cards Grid -->
-            <div class="hub-grid">
+            <!-- BENTO GRID EJECUTIVO: LOGROS, EXPERIENCIA, 3-TIER STACK Y CONTACTO -->
+            <div class="executive-bento-grid" id="profile-bento">
 
-                <!-- ArenAI Hub Card -->
-                <a href="arenai/index.html" class="hub-card hub-card-arenai" id="hub-arenai">
-                    <div class="hub-card-glow"></div>
-                    <div class="hub-card-top">
-                        <div class="hub-icon hub-icon-arenai">
-                            <ion-icon name="game-controller-outline"></ion-icon>
+                <!-- BENTO 1: DISTINCIONES GLOBALES & EDUCACIÓN (2 Columnas en Desktop) -->
+                <div class="bento-card bento-awards glass-panel" id="bento-awards">
+                    <div class="bento-header">
+                        <div class="bento-icon-wrap icon-gold">
+                            <ion-icon name="trophy-outline"></ion-icon>
                         </div>
-                        <span class="hub-badge hub-badge-finalist">🏆 Semifinalista Mundial</span>
-                    </div>
-                    <div class="hub-card-body">
-                        <h3 class="hub-title">ArenAI</h3>
-                        <p class="hub-desc">Plataforma SaaS educativa con gamificación e inteligencia artificial. Conoce al asistente Aren el Capibara, el simulador interactivo y la arquitectura técnica.</p>
-                        <div class="hub-topics">
-                            <span>Node.js</span>
-                            <span>WebSockets</span>
-                            <span>IA</span>
-                            <span>Gamificación</span>
+                        <div>
+                            <span class="bento-tag" data-i18n="awards.tag">Reconocimientos &amp; Educación</span>
+                            <h3 class="bento-title" data-i18n="awards.heading">Distinciones Internacionales &amp; Formación</h3>
                         </div>
                     </div>
-                    <div class="hub-card-footer">
-                        <span class="hub-cta">Ingresar a ArenAI <ion-icon name="arrow-forward-outline"></ion-icon></span>
-                    </div>
-                </a>
 
-                <!-- CV Hub Card -->
-                <a href="cv/index.html" class="hub-card hub-card-cv" id="hub-cv">
-                    <div class="hub-card-glow"></div>
-                    <div class="hub-card-top">
-                        <div class="hub-icon hub-icon-cv">
-                            <ion-icon name="document-text-outline"></ion-icon>
+                    <div class="bento-awards-list">
+                        <!-- Award 1 -->
+                        <div class="bento-award-item">
+                            <span class="award-year-tag" data-i18n="awards.card1Badge">MUNDIAL 2024-2025</span>
+                            <h4 data-i18n="awards.card1Title">3er Lugar Mundial — Cómputo &amp; Servidores</h4>
+                            <p class="award-subhead">Global ICT Competition (Computing Track)</p>
+                            <p class="award-text" data-i18n="awards.card1Text">
+                                Galardonado con el <strong>3er Lugar a Nivel Mundial</strong> en Computing, demostrando dominio avanzado en la arquitectura de servidores <strong>Kunpeng 920</strong>, el sistema operativo <strong>openEuler</strong> y el motor relacional <strong>openGauss</strong>.
+                            </p>
                         </div>
-                        <span class="hub-badge hub-badge-cv">Huawei LATAM</span>
-                    </div>
-                    <div class="hub-card-body">
-                        <h3 class="hub-title">CV Interactivo</h3>
-                        <p class="hub-desc">Currículum completo con trayectoria profesional detallada en Huawei Technologies, certificaciones oficiales, educación y descarga directa en PDF.</p>
-                        <div class="hub-topics">
-                            <span>Experiencia</span>
-                            <span>Certificaciones</span>
-                            <span>Habilidades</span>
-                            <span>Descargar PDF</span>
-                        </div>
-                    </div>
-                    <div class="hub-card-footer">
-                        <span class="hub-cta">Ver CV Completo <ion-icon name="arrow-forward-outline"></ion-icon></span>
-                    </div>
-                </a>
 
-                <!-- Contact & Network Card -->
-                <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="hub-card hub-card-notes" id="hub-contact">
-                    <div class="hub-card-glow"></div>
-                    <div class="hub-card-top">
-                        <div class="hub-icon hub-icon-notes">
+                        <!-- Award 2 -->
+                        <div class="bento-award-item">
+                            <span class="award-year-tag" data-i18n="awards.card2Badge">MUNDIAL 2025-2026</span>
+                            <h4 data-i18n="awards.card2Title">Semifinalista Mundial — Innovación Tecnológica</h4>
+                            <p class="award-subhead">Global ICT Competition (ArenAI Platform)</p>
+                            <p class="award-text" data-i18n="awards.card2Text">
+                                <strong>Semifinalista Global</strong> con ArenAI: plataforma SaaS educativa con gamificación y modelos de baja latencia con <strong>WebSockets</strong>, <strong>Node.js</strong>, <strong>TypeScript</strong> y contenedores <strong>Docker</strong>.
+                            </p>
+                        </div>
+
+                        <!-- Award 3: Degree -->
+                        <div class="bento-award-item">
+                            <span class="award-year-tag" data-i18n="awards.card3Badge">GRADO CON HONORES</span>
+                            <h4 data-i18n="awards.card3Title">Ingeniería Informática — Cum Laude Probatus</h4>
+                            <p class="award-subhead">Universidad Latinoamericana de Ciencias y Tecnología (ULACIT)</p>
+                            <p class="award-text" data-i18n="awards.card3Text">
+                                Graduado de Bachillerato con la distinción de honor <strong>Cum Laude Probatus</strong>. Formación integral en arquitectura de software, bases de datos y dominio profesional del inglés (B2+ / C1).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BENTO 2: EXPERIENCIA EN HUAWEI TECHNOLOGIES -->
+                <div class="bento-card bento-experience glass-panel" id="bento-experience">
+                    <div class="bento-header">
+                        <div class="bento-icon-wrap icon-red">
+                            <ion-icon name="briefcase-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <span class="bento-tag" data-i18n="exp.tag">Trayectoria Profesional</span>
+                            <h3 class="bento-title" data-i18n="exp.heading">Experiencia en Huawei Technologies</h3>
+                        </div>
+                    </div>
+
+                    <div class="bento-timeline">
+                        <div class="bento-timeline-item">
+                            <div class="timeline-dot-pulse"></div>
+                            <span class="bento-time-period" data-i18n="exp.role1Period">Actualidad</span>
+                            <h4 class="bento-role-title">ICT Engineer</h4>
+                            <span class="bento-company" data-i18n="exp.role1Company">Huawei Technologies — Latinoamérica</span>
+                            <p class="bento-role-desc" data-i18n="exp.role1Text">
+                                Liderazgo de plataformas de gestión críticas, garantizando continuidad operativa extremo a extremo desde hardware físico hasta lógica backend con cumplimiento de SLAs de misión crítica.
+                            </p>
+                        </div>
+
+                        <div class="bento-timeline-item">
+                            <div class="timeline-dot-regular"></div>
+                            <span class="bento-time-period" data-i18n="exp.role2Period">Abril 2025 — Marzo 2026</span>
+                            <h4 class="bento-role-title" data-i18n="exp.role2Title">SmartCare Engineer (Data Analyst)</h4>
+                            <span class="bento-company" data-i18n="exp.role2Company">Huawei Technologies — Latinoamérica</span>
+                            <p class="bento-role-desc" data-i18n="exp.role2Text">
+                                Gobernanza y analítica sobre millones de registros de telemetría de red. Presentación de insights estratégicos directamente a directores ejecutivos CXO.
+                            </p>
+                        </div>
+
+                        <div class="bento-timeline-item">
+                            <div class="timeline-dot-regular"></div>
+                            <span class="bento-time-period" data-i18n="exp.role3Period">Abril 2024 — Mayo 2025</span>
+                            <h4 class="bento-role-title" data-i18n="exp.role3Title">Engineer Intern</h4>
+                            <span class="bento-company" data-i18n="exp.role3Company">Huawei Technologies — Latinoamérica</span>
+                            <p class="bento-role-desc" data-i18n="exp.role3Text">
+                                Coadministración de infraestructura de telecomunicaciones virtualizada en entorno activo-activo con 100% uptime continuo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="cv/index.html" class="btn-hw-secondary bento-cv-link">
+                        <ion-icon name="open-outline"></ion-icon> <span data-i18n="author.viewFullCv">Ver CV Detallado &amp; Certificaciones</span>
+                    </a>
+                </div>
+
+                <!-- BENTO 3: ARQUITECTURA 3-TIER & STACK TÉCNICO -->
+                <div class="bento-card bento-stack glass-panel" id="bento-skills">
+                    <div class="bento-header">
+                        <div class="bento-icon-wrap icon-cyan">
+                            <ion-icon name="layers-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <span class="bento-tag" data-i18n="infra.tag">Dominio Técnico</span>
+                            <h3 class="bento-title" data-i18n="infra.heading">Arquitectura 3-Tier &amp; Stack Técnico</h3>
+                        </div>
+                    </div>
+
+                    <div class="three-tier-stack">
+                        <!-- Tier 1 -->
+                        <div class="tier-block">
+                            <span class="tier-label" data-i18n="infra.tier1Tag">TIER 1: CÓMPUTO, STORAGE &amp; HARDWARE</span>
+                            <div class="tier-pills">
+                                <span class="pill-hw">Kunpeng 920 ARM</span>
+                                <span class="pill-hw">Servidores Blade</span>
+                                <span class="pill-hw">SAN / NAS Storage</span>
+                                <span class="pill-hw">IPMI / Redfish OOB</span>
+                                <span class="pill-hw">Fibra Óptica SFP+</span>
+                            </div>
+                        </div>
+
+                        <!-- Tier 2 -->
+                        <div class="tier-block">
+                            <span class="tier-label" data-i18n="infra.tier2Tag">TIER 2: SISTEMAS OPERATIVOS &amp; ALTA DISPONIBILIDAD</span>
+                            <div class="tier-pills">
+                                <span class="pill-hw">openEuler 22.03 LTS</span>
+                                <span class="pill-hw">Red Hat (RHEL)</span>
+                                <span class="pill-hw">SUSE Linux</span>
+                                <span class="pill-hw">Corosync / Pacemaker</span>
+                                <span class="pill-hw">STONITH Fencing</span>
+                                <span class="pill-hw">Kernel sysctl Tuning</span>
+                            </div>
+                        </div>
+
+                        <!-- Tier 3 -->
+                        <div class="tier-block">
+                            <span class="tier-label" data-i18n="infra.tier3Tag">TIER 3: BASES DE DATOS, REDES &amp; BACKEND</span>
+                            <div class="tier-pills">
+                                <span class="pill-hw">openGauss MOT</span>
+                                <span class="pill-hw">PostgreSQL</span>
+                                <span class="pill-hw">Docker</span>
+                                <span class="pill-hw">WebSockets</span>
+                                <span class="pill-hw">Node.js</span>
+                                <span class="pill-hw">TypeScript</span>
+                                <span class="pill-hw">Python</span>
+                                <span class="pill-hw">Data Governance BI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BENTO 4: FILOSOFÍA DE INGENIERÍA & CONTACTO DIRECTO -->
+                <div class="bento-card bento-contact glass-panel" id="bento-contact">
+                    <div class="bento-header">
+                        <div class="bento-icon-wrap icon-lime">
+                            <ion-icon name="send-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <span class="bento-tag" data-i18n="contact.tag">Conexión Directa</span>
+                            <h3 class="bento-title" data-i18n="contact.heading">Filosofía &amp; Contacto Profesional</h3>
+                        </div>
+                    </div>
+
+                    <!-- Personal Quote -->
+                    <div class="bento-quote-box">
+                        <blockquote data-i18n="about.quote">&ldquo;More efficiency, less drama.&rdquo;</blockquote>
+                        <span data-i18n="about.quoteAuthor">— Core Philosophy &bull; Leonardo Escobar</span>
+                    </div>
+
+                    <!-- Direct Channels -->
+                    <div class="bento-channels-grid">
+                        <a href="https://www.linkedin.com/in/leonardo-escobar-a4441a228" target="_blank" rel="noopener" class="channel-card channel-linkedin">
                             <ion-icon name="logo-linkedin"></ion-icon>
-                        </div>
-                        <span class="hub-badge">Conexión Profesional</span>
+                            <div class="channel-info">
+                                <span class="channel-type" data-i18n="contact.c1Label">Contacto Principal</span>
+                                <span class="channel-handle">LinkedIn Profile</span>
+                            </div>
+                            <ion-icon name="open-outline" class="channel-arrow"></ion-icon>
+                        </a>
+
+                        <a href="mailto:lescobar2004@gmail.com" class="channel-card channel-email">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <div class="channel-info">
+                                <span class="channel-type" data-i18n="contact.c2Label">Correo Directo</span>
+                                <span class="channel-handle">lescobar2004@gmail.com</span>
+                            </div>
+                            <ion-icon name="mail-unread-outline" class="channel-arrow"></ion-icon>
+                        </a>
+
+                        <a href="https://github.com/lescobarx83" target="_blank" rel="noopener" class="channel-card channel-github">
+                            <ion-icon name="logo-github"></ion-icon>
+                            <div class="channel-info">
+                                <span class="channel-type" data-i18n="contact.c3Label">Código &amp; Repositorios</span>
+                                <span class="channel-handle">github.com/lescobarx83</span>
+                            </div>
+                            <ion-icon name="open-outline" class="channel-arrow"></ion-icon>
+                        </a>
                     </div>
-                    <div class="hub-card-body">
-                        <h3 class="hub-title">Red Profesional &amp; Contacto</h3>
-                        <p class="hub-desc">Canales directos para consultas técnicas, proyectos de ingeniería de infraestructura o vacantes profesionales vía LinkedIn o email.</p>
-                        <div class="hub-topics">
-                            <span>LinkedIn</span>
-                            <span>GitHub</span>
-                            <span>lescobar2004@gmail.com</span>
-                        </div>
-                    </div>
-                    <div class="hub-card-footer">
-                        <span class="hub-cta">Conectar en LinkedIn <ion-icon name="open-outline"></ion-icon></span>
-                    </div>
-                </a>
+                </div>
 
             </div>
         </section>
 
     </main>
 
-    <!-- ABOUT ME SIDEBAR (Off-canvas) -->
-    <div class="about-sidebar-overlay" id="about-overlay"></div>
-    <aside class="about-sidebar" id="about-sidebar">
-        <div class="sidebar-header">
-            <h2 data-i18n="about.heading">Perfil Personal</h2>
-            <button class="sidebar-close" id="sidebar-close" aria-label="Cerrar Panel">
-                <ion-icon name="close-outline"></ion-icon>
-            </button>
-        </div>
-
-        <div class="sidebar-content">
-            <!-- Quote Block -->
-            <div class="about-quote-block glass-panel">
-                <div class="about-quote-icon">
-                    <ion-icon name="code-slash-outline"></ion-icon>
-                </div>
-                <blockquote class="about-quote" data-i18n="about.quote">
-                    &ldquo;More efficiency, less drama.&rdquo;
-                </blockquote>
-                <span class="about-quote-author" data-i18n="about.quoteAuthor">— Core Philosophy</span>
-            </div>
-
-            <!-- Details Block -->
-            <div class="about-details-block">
-                <div class="about-detail-card glass-panel">
-                    <div class="about-detail-icon"><ion-icon name="git-network-outline"></ion-icon></div>
-                    <div>
-                        <h3 data-i18n="about.originTitle">Background</h3>
-                        <p data-i18n="about.originText">Mi trayectoria en la ingeniería comenzó con una curiosidad
-                            innata por la arquitectura de sistemas. Esta vocación analítica evolucionó hacia la
-                            infraestructura tecnológica, donde abordo cada desafío como un rompecabezas lógico y
-                            estructurado.</p>
-                    </div>
-                </div>
-                <div class="about-detail-card glass-panel">
-                    <div class="about-detail-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
-                    <div>
-                        <h3 data-i18n="about.philosophyTitle">Work Ethos</h3>
-                        <p data-i18n="about.philosophyText">Eficiencia y rigor técnico. Mi enfoque se centra en la
-                            excelencia operativa. Concibo la optimización continua como un estándar, asegurando
-                            soluciones robustas y definitivas sin comprometer la calidad del despliegue.</p>
-                    </div>
-                </div>
-                <div class="about-detail-card glass-panel">
-                    <div class="about-detail-icon"><ion-icon name="analytics-outline"></ion-icon></div>
-                    <div>
-                        <h3 data-i18n="about.visionTitle">Future Vision</h3>
-                        <p data-i18n="about.visionText">Mi objetivo a mediano plazo es liderar la gestión estratégica de
-                            proyectos, donde mis decisiones de arquitectura e infraestructura generen un impacto
-                            cuantificable en la eficiencia organizacional.</p>
-                    </div>
-                </div>
-                <div class="about-detail-card glass-panel">
-                    <div class="about-detail-icon"><ion-icon name="game-controller-outline"></ion-icon></div>
-                    <div>
-                        <h3 data-i18n="about.hobbiesTitle">Off-Duty</h3>
-                        <p data-i18n="about.hobbiesText">Más allá del ámbito tecnológico, cultivo el pensamiento
-                            estratégico mediante el gaming competitivo y la música, actividades que complementan la
-                            agilidad mental requerida en entornos críticos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </aside>
-
     <!-- ============================================================ -->
-    <!-- MODAL LECTOR INTERACTIVO DE PAPERS & GUÍAS                   -->
+    <!-- MODAL LECTOR EDITORIAL IN-APP (CON BARRA DE PROGRESO Y TOC)  -->
     <!-- ============================================================ -->
     <div class="paper-modal-overlay" id="paper-modal-overlay">
+        <!-- Top Reading Progress Track -->
+        <div class="reader-progress-track">
+            <div class="reader-progress-bar" id="reader-progress-bar"></div>
+        </div>
+
         <div class="paper-modal glass-panel" id="paper-modal">
             <div class="paper-modal-header">
                 <div class="paper-modal-titlebar">
-                    <span class="paper-modal-badge" id="modal-paper-type">RESEARCH PAPER</span>
+                    <span class="paper-modal-badge" id="modal-paper-type">RESEARCH ARTICLE</span>
                     <span class="paper-modal-doi" id="modal-paper-doi">REF: NOC-2026</span>
+                    <span class="modal-drive-synced-pill" id="modal-drive-indicator">
+                        <ion-icon name="logo-google"></ion-icon> Google Drive Verified
+                    </span>
                 </div>
                 <div class="paper-modal-actions">
+                    <button class="modal-tool-btn" id="modal-share-btn" title="Copiar Enlace Directo al Artículo">
+                        <ion-icon name="share-social-outline"></ion-icon> <span data-i18n="reader.share">Compartir</span>
+                    </button>
                     <button class="modal-tool-btn" id="modal-cite-btn" title="Copiar Cita BibTeX">
                         <ion-icon name="copy-outline"></ion-icon> <span>BibTeX</span>
                     </button>
-                    <button class="modal-tool-btn" id="modal-print-btn" title="Imprimir / Exportar Documento">
-                        <ion-icon name="print-outline"></ion-icon> <span>PDF / Imprimir</span>
-                    </button>
-                    <a href="#" target="_blank" rel="noopener" class="modal-tool-btn" id="modal-external-link" style="display:none;" title="Ver Documento Externo / PDF">
-                        <ion-icon name="open-outline"></ion-icon> <span>Fuente</span>
+                    <a href="#" target="_blank" rel="noopener" class="modal-tool-btn" id="modal-external-link" title="Ver Documento Original en Google Drive / PDF">
+                        <ion-icon name="open-outline"></ion-icon> <span data-i18n="reader.viewDrive">Ver en Drive / PDF</span>
                     </a>
+                    <button class="modal-tool-btn" id="modal-print-btn" title="Imprimir / Exportar Documento">
+                        <ion-icon name="print-outline"></ion-icon> <span>Imprimir</span>
+                    </button>
                     <button class="paper-modal-close" id="modal-close-btn" aria-label="Cerrar Documento">
                         <ion-icon name="close-outline"></ion-icon>
                     </button>
                 </div>
             </div>
-            <div class="paper-modal-body" id="modal-paper-body">
-                <!-- Populated dynamically via papers-data.js and script.js -->
+
+            <!-- Two-Column Editorial Reading Layout -->
+            <div class="reader-layout-wrapper">
+                <!-- Lateral Table of Contents (ToC) -->
+                <aside class="reader-toc-sidebar" id="reader-toc-sidebar">
+                    <div class="toc-header">
+                        <ion-icon name="list-outline"></ion-icon>
+                        <span data-i18n="reader.tocTitle">Contenido del Paper</span>
+                    </div>
+                    <nav class="toc-nav" id="reader-toc-nav">
+                        <!-- Populated dynamically via script.js -->
+                    </nav>
+                    <div class="toc-footer-info">
+                        <div class="toc-author-meta">
+                            <strong>Leonardo Escobar</strong>
+                            <span>ICT Engineer &bull; Huawei Technologies</span>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing" target="_blank" rel="noopener" class="toc-drive-link" id="reader-toc-drive-link">
+                            <ion-icon name="folder-open-outline"></ion-icon> <span>Carpeta de Investigaciones</span>
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- Main Article Editorial Body -->
+                <div class="paper-modal-body" id="modal-paper-body">
+                    <!-- Populated dynamically via drive-sync.js / papers-data.js / script.js -->
+                </div>
             </div>
+
             <div class="paper-modal-footer">
                 <div class="modal-footer-meta">
-                    <span>Autor: Leonardo Escobar &bull; NOC Knowledge Hub</span>
+                    <span>Autor: Leonardo Escobar &bull; NOC ICT Research &amp; Engineering Hub</span>
                 </div>
                 <div class="modal-footer-actions">
                     <button class="modal-btn-close-bottom" id="modal-close-bottom-btn">
-                        <span>Cerrar Lectura</span>
+                        <span data-i18n="reader.close">Cerrar Lectura</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MINI TERMINAL TESTBED MODAL -->
+    <!-- MINI TERMINAL TESTBED MODAL (LEONARDO@NOC-CR01) -->
     <div class="terminal-modal" id="terminal-modal">
         <div class="terminal-window">
             <div class="terminal-titlebar">
@@ -1042,7 +1100,7 @@
                     <span class="dot-green"></span>
                 </div>
                 <span class="terminal-title">leonardo@noc-cr01: ~</span>
-                <button class="terminal-close" id="terminal-close" aria-label="Close Terminal">
+                <button class="terminal-close" id="terminal-close" aria-label="Cerrar Terminal">
                     <ion-icon name="close-outline"></ion-icon>
                 </button>
             </div>
@@ -1060,24 +1118,24 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>Leonardo Escobar</h3>
-                <p data-i18n="footer.bio">ICT Engineer en Huawei Technologies Latinoamérica &bull; 3rd Place Global ICT
-                    Competition &bull; Cum Laude Probatus (ULACIT)</p>
+                <p data-i18n="footer.bio">
+                    ICT Engineer en Huawei Technologies Latinoamérica &bull; 3er Lugar Mundial Global ICT Competition (Computing) &bull; Semifinalista Mundial (ArenAI) &bull; Cum Laude Probatus (ULACIT)
+                </p>
             </div>
             <nav class="footer-nav">
                 <a href="#hero" data-i18n="nav.home">Inicio</a>
-                <a href="#featured-paper">Paper Destacado</a>
-                <a href="#publications" data-i18n="nav.publications">Publicaciones &amp; Papers</a>
+                <a href="#articles-feed" data-i18n="nav.feed">Investigaciones &amp; Artículos</a>
                 <a href="#blueprints" data-i18n="nav.blueprints">Arquitecturas &amp; Labs</a>
-                <a href="#lobby" data-i18n="nav.lobby">Lobby Portafolio</a>
+                <a href="#profile" data-i18n="nav.profile">Perfil &amp; Rack E9000H</a>
                 <a href="cv/index.html" data-i18n="nav.cv">CV Interactivo</a>
                 <a href="arenai/index.html">ArenAI Platform</a>
             </nav>
         </div>
         <div class="footer-bottom">
             <div class="footer-build-info">
-                <span class="footer-build-tag"><ion-icon name="git-branch-outline"></ion-icon> v2.1.0</span>
+                <span class="footer-build-tag"><ion-icon name="git-branch-outline"></ion-icon> v3.0.0</span>
                 <span class="footer-separator">&bull;</span>
-                <span>BUILD 2026.08 — ACTIVE DEVELOPMENT</span>
+                <span>BUILD 2026.10 — PRODUCTION RESEARCH HUB</span>
                 <span class="footer-separator">&bull;</span>
                 <span class="footer-status-dot"></span>
                 <span>All Systems Nominal</span>
@@ -1086,7 +1144,9 @@
         </div>
     </footer>
 
+    <!-- Scripts in proper dependency order -->
     <script src="papers-data.js"></script>
+    <script src="drive-sync.js"></script>
     <script src="script.js"></script>
 </body>
 
