@@ -2,717 +2,1172 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArenAI - Plataforma Educativa SaaS & Asistencia Cognitiva</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArenAI | Arquitectura Técnica, Vectores MindSpore & Arena Socrática</title>
     <meta name="description"
-        content="ArenAI es una plataforma SaaS educativa de impacto social. Conexión P2P directa mediante WebSockets, matrices cognitivas de retención, asistente capibara 'Aren' y análisis de rutas de aprendizaje.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        content="Ingeniería interna de ArenAI: sincronización por Sockets en tiempo real, análisis vectorial con Huawei Cloud y MindSpore, clústeres openGauss, LLMs socráticos y gamificación psicológica." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap"
-        rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            /* FASE 1: PALETA NOC / DATACENTER (CONEXIÓN CON EL PORTAFOLIO PRINCIPAL) */
+            --noc-bg: #050811;
+            --noc-surface: #0b1120;
+            --noc-panel: #111a2e;
+            --noc-cyan: #00f0ff;
+            --noc-red: #ff003c;
+            --noc-emerald: #10b981;
+            --noc-border: rgba(0, 240, 255, 0.22);
+
+            /* FASE 2: PALETA ORIGINAL ARENAI (CAPYBARA PIXEL-ART / RETRO ARENA) */
+            --arena-bg-deep: #14241b;
+            --arena-bg-forest: #1e3a2b;
+            --arena-turf: #2d6a4f;
+            --arena-turf-light: #52b788;
+            --capy-warm: #d98a4e;
+            --capy-gold: #f4a261;
+            --capy-cream: #f8f1e5;
+            --capy-brown: #4a2c18;
+            --pixel-border: #e9c46a;
+
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-pixel: 'Press Start 2P', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--noc-bg);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.65;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: var(--noc-bg);
+        }
+
+        /* =====================================================================
+       ZONA 1: CABECERA & HERO EN ESTILO NOC / ENTERPRISE DATACENTER
+       ===================================================================== */
+        .noc-telemetry-bar {
+            background: #020409;
+            border-bottom: 1px solid var(--noc-border);
+            padding: 0.5rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .noc-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--noc-cyan);
+            font-weight: 600;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--noc-emerald);
+            box-shadow: 0 0 10px var(--noc-emerald);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 8, 17, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+            padding: 0.85rem 1.5rem;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 800;
+            font-size: 1.05rem;
+        }
+
+        .brand img {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            border: 2px solid var(--capy-gold);
+            image-rendering: pixelated;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.35rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--noc-cyan);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.15rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-noc {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--noc-cyan);
+            border-color: var(--noc-cyan);
+            font-family: var(--font-mono);
+        }
+
+        .btn-noc:hover {
+            background: var(--noc-cyan);
+            color: #020409;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .btn-arena {
+            background: linear-gradient(135deg, var(--capy-warm), var(--capy-gold));
+            color: #1f1209;
+            font-weight: 700;
+            border: 2px solid #fff3d6;
+        }
+
+        .btn-arena:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 162, 97, 0.35);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* NOC HERO SECTION */
+        .noc-hero {
+            padding: 4.5rem 0 4rem;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.08), transparent 35%),
+                radial-gradient(circle at 85% 15%, rgba(255, 0, 60, 0.07), transparent 35%),
+                linear-gradient(to right, rgba(17, 26, 46, 0.35) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(17, 26, 46, 0.35) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            border-bottom: 1px solid var(--noc-border);
+        }
+
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .noc-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--noc-cyan);
+            border: 1px solid var(--noc-border);
+            background: rgba(0, 240, 255, 0.07);
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .noc-hero h1 {
+            font-size: clamp(2rem, 3.8vw, 3.1rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.1rem;
+        }
+
+        .noc-hero p.lead {
+            color: var(--text-dim);
+            font-size: 1.02rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .noc-rack-card {
+            background: var(--noc-surface);
+            border: 1px solid var(--noc-border);
+            border-left: 4px solid var(--noc-cyan);
+            border-radius: 8px;
+            padding: 1.35rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.08);
+        }
+
+        .rack-header {
+            display: flex;
+            justify-content: space-between;
+            color: var(--noc-cyan);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.85rem;
+            font-weight: 700;
+        }
+
+        .rack-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.42rem 0;
+            border-bottom: 1px dashed rgba(148, 163, 184, 0.1);
+        }
+
+        .rack-line span:first-child {
+            color: var(--text-dim);
+        }
+
+        .rack-line span:last-child {
+            color: var(--text-main);
+            text-align: right;
+        }
+
+        /* =====================================================================
+       PUENTE DE TRANSICIÓN VISUAL (DEL DATACENTER NOC AL ARTE ORIGINAL ARENAI)
+       ===================================================================== */
+        .visual-transition-bridge {
+            background: linear-gradient(180deg,
+                    var(--noc-bg) 0%,
+                    #0c1922 30%,
+                    #132a23 65%,
+                    var(--arena-bg-deep) 100%);
+            padding: 3.5rem 0 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--capy-gold);
+        }
+
+        .bridge-banner {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 1.25rem 1.5rem;
+            background: rgba(20, 36, 27, 0.75);
+            border: 2px dashed var(--capy-gold);
+            border-radius: 12px;
+        }
+
+        .bridge-banner span {
+            font-family: var(--font-pixel);
+            font-size: 0.72rem;
+            color: var(--capy-gold);
+            display: block;
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+        }
+
+        /* =====================================================================
+       ZONA 2: ENTORNO CON EL ARTE Y COLORES ORIGINALES DE ARENAI
+       ===================================================================== */
+        .arenai-original-zone {
+            background: linear-gradient(180deg, var(--arena-bg-deep) 0%, var(--arena-bg-forest) 50%, #102118 100%);
+            padding: 4.5rem 0;
+            position: relative;
+        }
+
+        .arena-Identity-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            background: rgba(15, 29, 21, 0.85);
+            border: 3px solid var(--capy-gold);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        .capy-avatar-showcase {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .capy-avatar-showcase img {
+            width: 84px;
+            height: 84px;
+            border-radius: 12px;
+            border: 3px solid var(--capy-gold);
+            background: var(--capy-cream);
+            object-fit: cover;
+            image-rendering: pixelated;
+        }
+
+        .pixel-title {
+            font-family: var(--font-pixel);
+            font-size: clamp(0.95rem, 2vw, 1.3rem);
+            color: var(--capy-gold);
+            margin-bottom: 0.45rem;
+            line-height: 1.4;
+        }
+
+        /* BATTLE ARENA INTERACTIVA CON LOS SPRITES ORIGINALES */
+        .retro-battle-frame {
+            background: var(--capy-cream);
+            color: var(--capy-brown);
+            border: 5px solid var(--capy-brown);
+            outline: 3px solid var(--capy-gold);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            margin-bottom: 3rem;
+        }
+
+        .retro-topbar {
+            background: var(--capy-brown);
+            color: var(--capy-cream);
+            padding: 0.75rem 1.25rem;
+            font-family: var(--font-pixel);
+            font-size: 0.68rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .retro-audio-btn {
+            background: var(--capy-gold);
+            color: var(--capy-brown);
+            border: 2px solid var(--capy-cream);
+            padding: 0.45rem 0.85rem;
+            font-family: var(--font-pixel);
+            font-size: 0.62rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .retro-audio-btn:hover {
+            background: #ffbe76;
+        }
+
+        .retro-meadow {
+            background:
+                radial-gradient(ellipse at 75% 32%, rgba(82, 183, 136, 0.45) 0%, transparent 50%),
+                radial-gradient(ellipse at 25% 78%, rgba(82, 183, 136, 0.55) 0%, transparent 55%),
+                linear-gradient(180deg, #a3d9c9 0%, #74c69d 48%, #40916c 100%);
+            padding: 2rem 2.5rem;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            border-bottom: 4px solid var(--capy-brown);
+        }
+
+        .battle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .battle-row.bottom {
+            flex-direction: row-reverse;
+        }
+
+        .retro-stat-box {
+            background: var(--capy-cream);
+            border: 4px solid var(--capy-brown);
+            border-radius: 8px;
+            padding: 0.85rem 1.1rem;
+            min-width: 260px;
+            box-shadow: 6px 6px 0 rgba(74, 44, 24, 0.28);
+        }
+
+        .retro-stat-header {
+            font-family: var(--font-pixel);
+            font-size: 0.68rem;
+            color: var(--capy-brown);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.45rem;
+        }
+
+        .retro-hp-container {
+            background: #3d2314;
+            padding: 3px;
+            border-radius: 4px;
+            margin-bottom: 0.35rem;
+        }
+
+        .retro-hp-fill {
+            height: 10px;
+            background: #2ec4b6;
+            width: 100%;
+            transition: width 0.35s ease, background-color 0.3s ease;
+        }
+
+        .retro-telemetry-meta {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: #5c3a21;
+            font-weight: 600;
+        }
+
+        .pixel-sprite-platform {
+            width: 160px;
+            height: 145px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center bottom, rgba(27, 67, 50, 0.55) 0%, transparent 70%);
+        }
+
+        .pixel-sprite-platform img {
+            max-height: 135px;
+            max-width: 135px;
+            object-fit: contain;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+        }
+
+        .retro-dialog-box {
+            background: #23150c;
+            color: var(--capy-cream);
+            padding: 1.35rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .dialog-text {
+            font-family: var(--font-mono);
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: var(--capy-cream);
+            border-left: 3px solid var(--capy-gold);
+            padding-left: 1rem;
+        }
+
+        .dialog-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .retro-choice-btn {
+            background: var(--capy-cream);
+            color: var(--capy-brown);
+            border: 3px solid var(--capy-gold);
+            padding: 0.6rem 0.85rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        .retro-choice-btn:hover {
+            background: var(--capy-gold);
+            color: #1a0f07;
+            transform: translateX(4px);
+        }
+
+        /* =====================================================================
+       ZONA 3: ESPECIFICACIONES DE INGENIERÍA PROFUNDA (DEEP-DIVE MODULES)
+       ===================================================================== */
+        .deep-dive-section {
+            padding: 4.5rem 0;
+            background: #080d1a;
+            border-top: 3px solid var(--capy-gold);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        }
+
+        .section-head {
+            margin-bottom: 2.75rem;
+        }
+
+        .section-head .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--capy-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.65rem, 2.8vw, 2.25rem);
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-head p {
+            color: var(--text-dim);
+            max-width: 760px;
+            font-size: 0.96rem;
+        }
+
+        .confidentiality-notice {
+            margin-top: 1.4rem;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-left: 4px solid var(--capy-gold);
+            border-radius: 8px;
+            padding: 1rem 1.35rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.95rem;
+            font-size: 0.88rem;
+            color: #fef3c7;
+            line-height: 1.6;
+            max-width: 960px;
+        }
+
+        .confidentiality-notice ion-icon {
+            font-size: 1.55rem;
+            color: var(--capy-gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .confidentiality-notice strong {
+            color: var(--capy-gold);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+        }
+
+        .spec-module {
+            background: var(--noc-surface);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-top: 3px solid var(--noc-cyan);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .spec-module.warm {
+            border-top-color: var(--capy-gold);
+        }
+
+        .spec-module.emerald {
+            border-top-color: var(--noc-emerald);
+        }
+
+        .spec-module h3 {
+            font-size: 1.18rem;
+            margin-bottom: 0.65rem;
+            color: var(--text-main);
+        }
+
+        .spec-module p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .tech-bullet-list {
+            padding-left: 1.15rem;
+            margin-bottom: 1.25rem;
+            color: #cbd5e1;
+            font-size: 0.86rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .code-block {
+            background: #03060c;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 8px;
+            padding: 0.95rem 1.1rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #38bdf8;
+            overflow-x: auto;
+            line-height: 1.5;
+            white-space: pre;
+        }
+
+        /* GALERÍA DE ACTIVOS ORIGINALES DEL REPOSITORIO */
+        .assets-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .asset-box {
+            background: rgba(15, 29, 21, 0.9);
+            border: 2px solid var(--capy-gold);
+            border-radius: 10px;
+            padding: 1.15rem;
+            text-align: center;
+        }
+
+        .asset-box img {
+            height: 85px;
+            object-fit: contain;
+            image-rendering: pixelated;
+            margin-bottom: 0.6rem;
+        }
+
+        .asset-box code {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--capy-gold);
+            margin-bottom: 0.2rem;
+        }
+
+        .asset-box span {
+            font-size: 0.78rem;
+            color: var(--capy-cream);
+        }
+
+        footer {
+            background: #03050a;
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.86rem;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 960px) {
+
+            .hero-split,
+            .specs-grid,
+            .retro-dialog-box,
+            .assets-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
-<body class="aren-app-body arenai-locked">
-    <!-- WARM WELCOME TRANSITION OVERLAY -->
-    <div id="arenai-teleport-overlay" class="arenai-teleport-overlay active">
-        <div class="teleport-pulse-ring"></div>
-        <div class="teleport-text-code" id="arenai-teleport-text">Abriendo el aula interactiva de ArenAI...</div>
-    </div>
+<body>
 
-    <!-- WARM & WELCOMING CLASSROOM ACCESS SCREEN -->
-    <div id="arenai-lock-overlay" class="arenai-lock-overlay">
-        <div class="lock-card glass-panel" id="lock-card">
-            <div class="lock-status-badge">
-                <ion-icon name="sparkles"></ion-icon>
-                <span>AULA EN PREPARACIÓN</span>
-            </div>
-
-            <div class="lock-avatar-preview">
-                <img src="img/profile_picture_capybara_eyes_open.png" alt="Aren el Capibara" class="lock-capy-avatar">
-            </div>
-
-            <h2 class="lock-title">Plataforma en Mantenimiento</h2>
-            <p class="lock-desc">
-                Esta sección se encuentra actualmente en desarrollo y mantenimiento privado.
-                Si eres el administrador, ingresa tu clave de acceso autorizada para continuar.
-            </p>
-
-            <form class="lock-form" id="arenai-unlock-form">
-                <div class="lock-input-group">
-                    <ion-icon name="key-outline" class="lock-input-icon"></ion-icon>
-                    <input 
-                        type="password" 
-                        id="lock-password-input" 
-                        class="lock-input" 
-                        placeholder="Ingresa la clave de acceso..." 
-                        autocomplete="off" 
-                        maxlength="30"
-                    />
-                    <button type="button" class="lock-toggle-visibility" id="btn-toggle-visibility" title="Mostrar/Ocultar clave">
-                        <ion-icon name="eye-outline" id="visibility-icon"></ion-icon>
-                    </button>
-                </div>
-
-                <div class="lock-actions">
-                    <button type="submit" class="lock-btn-submit" id="btn-unlock-submit">
-                        <span>Ingresar al Aula</span>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </button>
-                </div>
-
-                <div class="lock-msg-container">
-                    <span id="lock-feedback-msg" class="lock-feedback-msg"></span>
-                </div>
-            </form>
-
-            <div class="lock-footer-links">
-                <a href="../index.html#rack" class="lock-back-link aren-back-portfolio-link">
-                    <ion-icon name="arrow-back-outline"></ion-icon> Volver al Portafolio Principal
-                </a>
-            </div>
+    <!-- BARRA SUPERIOR NOC (CONEXIÓN DIRECTA CON EL PORTAFOLIO PRINCIPAL) -->
+    <div class="noc-telemetry-bar">
+        <div>
+            <span class="noc-status-pill"><span class="pulse-dot"></span>ARENAI ENGINE // ESTADO: PRODUCCIÓN (SIN
+                BLOQUEO DE MANTENIMIENTO)</span>
+        </div>
+        <div>
+            <span>ARQUITECTURA: SOCKETS FULL-DUPLEX • HUAWEI CLOUD + MINDSPORE • OPENGAUSS CLUSTER</span>
         </div>
     </div>
 
-    <!-- WRAPPER FOR PAGE CONTENT (BLURRED / CENSORED WHEN LOCKED) -->
-    <div id="arenai-page-wrapper" class="aren-page-wrapper">
-    <!-- Navigation Bar -->
-    <header class="aren-navbar-wrapper">
-        <div class="aren-nav-container">
-            <a href="#hero" class="aren-brand">
-                <div class="aren-brand-icon"><ion-icon name="school-outline"></ion-icon></div>
-                <span class="aren-brand-name">ArenAI</span>
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <img src="./img/Capy_pfp.png" alt="ArenAI Capybara"
+                    onerror="this.src='./img/Capybara profile picture.png'" />
+                <span>ArenAI <span style="font-weight: 400; font-size: 0.8rem; color: var(--text-dim);">| Ingeniería &
+                        Gamificación Socrática</span></span>
             </a>
+            <ul class="nav-links">
+                <li><a href="#noc-overview">1. Resumen de Arquitectura</a></li>
+                <li><a href="#original-arena">2. Arena & Arte Original</a></li>
+                <li><a href="#deep-engineering">3. Sockets, MindSpore & openGauss</a></li>
+                <li><a href="#psychology-model">4. Modelo Psicológico LATAM</a></li>
+            </ul>
+            <a href="../index.html" class="btn btn-noc">← Volver al Portafolio Principal</a>
+        </div>
+    </nav>
 
-            <nav class="aren-nav-links" id="aren-nav-menu">
-                <a href="#hero" class="aren-link active">Inicio</a>
-                <a href="#mascota" class="aren-link">Mascota</a>
-                <a href="#impacto" class="aren-link">Aulas</a>
-                <a href="#galeria" class="aren-link">Demo</a>
-                <a href="#ingenieria" class="aren-link">Ingeniería</a>
-                <a href="#equipo" class="aren-link">Equipo</a>
-                <a href="../index.html#rack" class="aren-link aren-back-portfolio-link"
-                    id="back-portfolio-trigger">Portafolio</a>
-            </nav>
+    <!-- =====================================================================
+       PARTE 1: ESTÉTICA NOC / EJECUTIVA (TRANSICIÓN DESDE EL PORTAFOLIO)
+       ===================================================================== -->
+    <header class="noc-hero" id="noc-overview">
+        <div class="container hero-split">
+            <div>
+                <span class="noc-tag">HUAWEI ICT INNOVATION SEMIFINALIST (10TH ED.) • DEMOSTRADO ANTE EL MEP</span>
+                <h1>
+                    De la Infraestructura Distribuida a la <span style="color: var(--capy-gold);">Gamificación Socrática
+                        en Tiempo Real</span>
+                </h1>
+                <p class="lead">
+                    <strong>ArenAI</strong> es una arquitectura educativa End-to-End (E2E) diseñada y liderada por
+                    <strong>Leonardo Josué Escobar Solís</strong>. Combina sincronización directa entre dispositivos vía
+                    <strong>Sockets</strong>, modelado vectorial de estudiantes y materias impulsado por <strong>Huawei
+                        Cloud</strong> y <strong>MindSpore</strong>, bases de datos distribuidas
+                    <strong>openGauss</strong> y agentes conversacionales socráticos fundamentados en la psicología
+                    competitiva del adolescente latinoamericano.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.85rem;">
+                    <a href="#original-arena" class="btn btn-arena">🎮 Ir a la Arena Original (Sprites & Audio)</a>
+                    <a href="#deep-engineering" class="btn btn-noc">⚙️ Ver Especificaciones de Bajo Nivel</a>
+                </div>
+            </div>
 
-            <div class="aren-nav-actions">
-                <a href="https://drive.google.com/drive/folders/1p9C2H4uV_22cQh3f24_Ld6Vj1lXb7Z3u?usp=sharing"
-                    target="_blank" rel="noopener" class="aren-btn-cta">
-                    <ion-icon name="document-text-outline"></ion-icon> <span>Pitch Deck</span>
-                </a>
+            <!-- FICHA TÉCNICA DE INFRAESTRUCTURA -->
+            <div class="noc-rack-card">
+                <div class="rack-header">
+                    <span>SYSTEM_SPEC // ARENAI_ARCHITECTURE.CONF</span>
+                    <span>[ACTIVE]</span>
+                </div>
+                <div class="rack-line">
+                    <span>Fase I (Desktop & Core API)</span>
+                    <span>Electron + Node.js + TypeScript + Flask</span>
+                </div>
+                <div class="rack-line">
+                    <span>Capa de Tiempo Real</span>
+                    <span>WebSockets Full-Duplex (Salas & QR Sync)</span>
+                </div>
+                <div class="rack-line">
+                    <span>Motor Vectorial & IA</span>
+                    <span>Huawei Cloud + MindSpore Tensor Engine</span>
+                </div>
+                <div class="rack-line">
+                    <span>Orquestación LLM</span>
+                    <span>Ollama Local (Qwen / Gemma) + Cloud APIs</span>
+                </div>
+                <div class="rack-line">
+                    <span>Nube Híbrida & Contenedores</span>
+                    <span>Docker en Huawei ECS/VPC + Google Cloud Run</span>
+                </div>
+                <div class="rack-line">
+                    <span>Persistencia Relacional/Dist.</span>
+                    <span>PostgreSQL / Cloud SQL ➔ openGauss Cluster</span>
+                </div>
+                <div class="rack-line">
+                    <span>Almacenamiento de Objetos</span>
+                    <span>Huawei Cloud OBS + Google Cloud Storage</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section with Authentic Capybara Mascot Asset -->
-        <section id="hero" class="aren-hero-section">
-            <div class="aren-hero-content">
-                <div class="aren-pill-badge">
-                    <ion-icon name="leaf-outline"></ion-icon> EDTECH PARA ADOLESCENTES & APRENDIZAJE EMPÁTICO
-                </div>
-                <h1 class="aren-hero-title">
-                    Educación Personalizada que <br>
-                    <span class="aren-gradient-text">Transforma Vidas.</span>
-                </h1>
-                <p class="aren-hero-subhead">
-                    Plataforma SaaS para conectar docentes y estudiantes en tiempo real, optimizando el aprendizaje
-                    personalizado con inteligencia cognitiva y acompañamiento empático liderado por nuestra mascota
-                    <strong>Aren el Capibara</strong>.
+    <!-- PUENTE DE TRANSICIÓN VISUAL ENTRE EL NOC Y EL ARTE ORIGINAL DE ARENAI -->
+    <div class="visual-transition-bridge">
+        <div class="container">
+            <div class="bridge-banner">
+                <span>▼ TRANSICIÓN DE INTERFAZ: CAPA DE INFRAESTRUCTURA ➔ ENTORNO VISUAL NATIVO ARENAI ▼</span>
+                <p style="font-size: 0.88rem; color: var(--capy-cream);">
+                    A continuación se presenta la interfaz original de combate cognitivo de ArenAI utilizando los
+                    recursos gráficos nativos del repositorio (<code>/arenai/img/</code>) y el motor de turnos
+                    socráticos sincronizado por Sockets.
                 </p>
+            </div>
+        </div>
+    </div>
 
-                <div class="aren-cta-group">
-                    <a href="https://drive.google.com/drive/folders/1p9C2H4uV_22cQh3f24_Ld6Vj1lXb7Z3u?usp=sharing"
-                        target="_blank" rel="noopener" class="aren-btn-hero-primary">
-                        <ion-icon name="folder-open-outline"></ion-icon> Ver Documentación & Pitch Deck
-                    </a>
-                    <a href="#mascota" class="aren-btn-hero-secondary">
-                        <ion-icon name="sparkles-outline"></ion-icon> Conocer a Aren
-                    </a>
-                </div>
+    <!-- =====================================================================
+       PARTE 2: COLORES Y ARTE ORIGINALES DE ARENAI (CAPYBARA PIXEL ARENA)
+       ===================================================================== -->
+    <section class="arenai-original-zone" id="original-arena">
+        <div class="container">
 
-                <div class="aren-drive-footnote">
-                    <ion-icon name="information-circle-outline"></ion-icon>
-                    <span>El enlace oficial dirige a la carpeta pública de Google Drive con la guía de usuario,
-                        propuesta pedagógica y el pitch deck ejecutivo de la plataforma. Actualmente en Mantenimiento</span>
+            <!-- ENCABEZADO CON IDENTIDAD ORIGINAL DE CAPIBARA -->
+            <div class="arena-Identity-header">
+                <div class="capy-avatar-showcase">
+                    <img src="./img/Capy_pfp.png" alt="Avatar Original ArenAI" />
+                    <div>
+                        <div class="pixel-title">ARENAI // CAPYBARA SOCRATIC BATTLE SYSTEM</div>
+                        <p style="color: var(--capy-cream); font-size: 0.9rem;">
+                            Interfaz original donde el progreso en combate depende de la deducción crítica del
+                            estudiante evaluada en tiempo real.
+                        </p>
+                    </div>
                 </div>
+                <img src="./img/Capybara profile picture.png" alt="Capybara Profile Picture"
+                    style="width: 68px; height: 68px; border-radius: 50%; border: 2px solid var(--capy-gold); object-fit: cover;" />
             </div>
 
-            <!-- Authentic Capybara Mascot Card using PNG Assets from img/ -->
-            <div class="aren-hero-mascot-card">
-                <div class="aren-mascot-box glass-panel">
-                    <div class="mascot-badge-tag">
-                        <span class="status-led-green"></span>
-                        <span>AREN &bull; ASISTENTE COGNITIVO ACTIVO</span>
+            <!-- ESCENARIO DE COMBATE CON SPRITES Y MÚSICA REAL DEL REPOSITORIO -->
+            <div class="retro-battle-frame">
+                <div class="retro-topbar">
+                    <span>SOCKET ROOM: #LATAM-SEC-04 (SYNC: 18ms)</span>
+                    <button class="retro-audio-btn" id="audioBtn" onclick="toggleOriginalAudio()">
+                        ▶ ESCUCHAR TEMA ORIGINAL (battlesong.mp3)
+                    </button>
+                    <audio id="arenaAudio" src="./img/battlesong.mp3" loop preload="none"></audio>
+                </div>
+
+                <div class="retro-meadow">
+                    <!-- Oponente / Reto de la Materia -->
+                    <div class="battle-row top">
+                        <div class="retro-stat-box">
+                            <div class="retro-stat-header">
+                                <span>GUARDIÁN SOCRÁTICO</span>
+                                <span>NV. VECTORIAL</span>
+                            </div>
+                            <div class="retro-hp-container">
+                                <div class="retro-hp-fill" id="bossHpBar" style="width: 85%;"></div>
+                            </div>
+                            <div class="retro-telemetry-meta" id="bossMeta">
+                                Materia: Sistemas Distribuidos | Resistencia Cognitiva: 85/100
+                            </div>
+                        </div>
+
+                        <div class="pixel-sprite-platform">
+                            <img src="./img/battle_sprite_front_capybara.png" alt="Sprite Frontal Original Capybara" />
+                        </div>
                     </div>
 
-                    <!-- Authentic Capybara Image Asset Container -->
-                    <div class="capybara-avatar-wrapper">
-                        <div class="capybara-glow-ring"></div>
-                        <img src="img/profile_picture_capybara_eyes_open.png" alt="Aren el Capibara"
-                            class="capybara-real-img" id="capy-real-img">
-                    </div>
+                    <!-- Estudiante / Dispositivo Conectado por Socket -->
+                    <div class="battle-row bottom">
+                        <div class="retro-stat-box">
+                            <div class="retro-stat-header">
+                                <span>ESTUDIANTE (CAPY-AVATAR)</span>
+                                <span>SOCKET: ACTIVO</span>
+                            </div>
+                            <div class="retro-hp-container">
+                                <div class="retro-hp-fill" style="width: 100%; background: #52b788;"></div>
+                            </div>
+                            <div class="retro-telemetry-meta" id="studentVectorMeta">
+                                Vector MindSpore: [Dominio: 0.78 | Punto Mejora: Particionamiento]
+                            </div>
+                        </div>
 
-                    <!-- Interactive Dialogue Bubble -->
-                    <div class="mascot-dialogue-bubble">
-                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-                        <p id="mascot-text-speech">"¡Hola! Soy Aren el Capibara. Estoy aquí para acompañarte en tu ruta
-                            de aprendizaje personalizada."</p>
+                        <div class="pixel-sprite-platform">
+                            <img src="./img/battle_sprite_back_capybara.png" alt="Sprite Espalda Original Capybara" />
+                        </div>
                     </div>
+                </div>
 
-                    <div class="mascot-actions-row">
-                        <button class="mascot-btn-interact" id="btn-interact-capy">
-                            <ion-icon name="sparkles"></ion-icon> Saludalo a Aren
+                <!-- CONSOLA DE DIÁLOGO SOCRÁTICO -->
+                <div class="retro-dialog-box">
+                    <div class="dialog-text" id="dialogConsole">
+                        <strong>[NODO SOCRÁTICO — HUAWEI CLOUD / OLLAMA]:</strong><br />
+                        "No te daré la definición directa. Observa tu clúster: cuando dos dispositivos envían respuestas
+                        simultáneas por el Socket y actualizan el mismo registro, ¿qué mecanismo evita que una escritura
+                        sobrescriba y corrompa a la otra?"
+                    </div>
+                    <div class="dialog-actions">
+                        <button class="retro-choice-btn" onclick="simulateArenaTurn(true)">
+                            ► 1. Control de concurrencia multiversión (MVCC) y aislamiento transaccional en openGauss.
+                        </button>
+                        <button class="retro-choice-btn" onclick="simulateArenaTurn(false)">
+                            ► 2. Aumentar únicamente el tamaño de las imágenes en el almacenamiento de objetos OBS.
                         </button>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Section 2: Mascota Educativa Aren -->
-        <section id="mascota" class="aren-section aren-bg-alt">
-            <div class="aren-section-header">
-                <span class="aren-tag">Acompañamiento Empático</span>
-                <h2>Aren: El Capibara Asistente Cognitivo</h2>
-                <p>Aren acompaña a estudiantes y profesores durante cada clase, celebrando logros académicos, recordando
-                    repasos clave y reduciendo la ansiedad escolar.</p>
-            </div>
-
-            <div class="mascot-dual-showcase">
-                <div class="mascot-showcase-item glass-panel">
-                    <img src="img/Capybara profile picture.png" alt="Aren Capibara Normal" class="mascot-showcase-img">
-                    <div class="mascot-showcase-info">
-                        <h3>Aren el Capibara</h3>
-                        <p>Asistente principal en la interfaz del estudiante. Guía los módulos de repaso y sugiere
-                            descansos cognitivos.</p>
-                    </div>
+            <!-- TIRA DE ACTIVOS ORIGINALES EN /arenai/img/ -->
+            <div class="assets-strip">
+                <div class="asset-box">
+                    <img src="./img/Capy_pfp.png" alt="Capy_pfp.png" />
+                    <code>/arenai/img/Capy_pfp.png</code>
+                    <span>Avatar competitivo principal</span>
                 </div>
-
-                <div class="mascot-showcase-item glass-panel">
-                    <img src="img/profile_picture_sloth_eyes_open.png" alt="Compañero Perezoso"
-                        class="mascot-showcase-img">
-                    <div class="mascot-showcase-info">
-                        <h3>Compañero Perezoso</h3>
-                        <p>Avatar alternativo para modos de ritmo pausado y sesiones de concentración profunda.</p>
-                    </div>
+                <div class="asset-box">
+                    <img src="./img/battle_sprite_front_capybara.png" alt="battle_sprite_front_capybara.png" />
+                    <code>battle_sprite_front_capybara.png</code>
+                    <span>Sprite frontal pixel-art nativo</span>
+                </div>
+                <div class="asset-box">
+                    <img src="./img/battle_sprite_back_capybara.png" alt="battle_sprite_back_capybara.png" />
+                    <code>battle_sprite_back_capybara.png</code>
+                    <span>Sprite de jugador en perspectiva</span>
+                </div>
+                <div class="asset-box">
+                    <img src="./img/Capybara profile picture.png" alt="Capybara profile picture.png" />
+                    <code>Capybara profile picture.png</code>
+                    <span>Arte de perfil + battlesong.mp3</span>
                 </div>
             </div>
 
-            <!-- Showcase de las 5 Dinámicas Pedagógicas de Aren en el Aula -->
-            <div class="pedagogy-dynamics-wrapper" id="dinamicas-aula">
-                <div class="pedagogy-header">
-                    <span class="aren-tag" style="background: rgba(98, 139, 112, 0.14); color: var(--aren-green-leaf);"><ion-icon name="sparkles"></ion-icon> Dinámicas en el Aula</span>
-                    <h3>5 Formas en que Aren y sus Amigos Acompañan el Aprendizaje</h3>
-                    <p>Cada rol de nuestros personajes responde a un objetivo pedagógico concreto: desde reducir la ansiedad escolar hasta afianzar la memoria a largo plazo.</p>
-                </div>
+        </div>
+    </section>
 
-                <!-- 5 Interactive Navigation Cards / Mode Switcher -->
-                <div class="pedagogy-cards-grid" id="pedagogy-cards-grid">
-                    <!-- Card 1: Guía de Misiones -->
-                    <div class="pedagogy-mode-card active" data-mode="misiones">
-                        <div class="pedagogy-card-avatar-box avatar-amber">
-                            <img src="img/capybara_sprite_normal_full.png" alt="Aren Guía de Misiones" class="pedagogy-avatar-img">
-                        </div>
-                        <div class="pedagogy-card-meta">
-                            <span class="pedagogy-chip chip-amber">Ruta Curricular</span>
-                            <h4>Guía de Misiones</h4>
-                            <p>Desglosa el temario en objetivos diarios alcanzables a tu propio ritmo.</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Retos de Aula -->
-                    <div class="pedagogy-mode-card" data-mode="retos">
-                        <div class="pedagogy-card-avatar-box avatar-coral">
-                            <img src="img/battle_sprite_front_capybara.png" alt="Aren Retos de Aula" class="pedagogy-avatar-img">
-                        </div>
-                        <div class="pedagogy-card-meta">
-                            <span class="pedagogy-chip chip-coral">Participación Activa</span>
-                            <h4>Retos de Aula</h4>
-                            <p>Preguntas en vivo lanzadas por el docente para dinámicas grupales.</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Celebración de Logros -->
-                    <div class="pedagogy-mode-card" data-mode="logros">
-                        <div class="pedagogy-card-avatar-box avatar-gold">
-                            <img src="img/profile_picture_capybara_wink.png" alt="Aren Celebración" class="pedagogy-avatar-img">
-                        </div>
-                        <div class="pedagogy-card-meta">
-                            <span class="pedagogy-chip chip-gold">Refuerzo Positivo</span>
-                            <h4>Celebración de Logros</h4>
-                            <p>Reconocimiento sincero del esfuerzo personal sin presiones competitivas.</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Pausas Cognitivas -->
-                    <div class="pedagogy-mode-card" data-mode="pausas">
-                        <div class="pedagogy-card-avatar-box avatar-sage">
-                            <img src="img/profile_picture_sloth_winking.png" alt="Perezoso Pausas" class="pedagogy-avatar-img">
-                        </div>
-                        <div class="pedagogy-card-meta">
-                            <span class="pedagogy-chip chip-sage">Bienestar & Calma</span>
-                            <h4>Pausas Cognitivas</h4>
-                            <p>El perezoso guía respiraciones y descansos activos para resetear la mente.</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 5: Modo Arena RPG -->
-                    <div class="pedagogy-mode-card" data-mode="rpg">
-                        <div class="pedagogy-card-avatar-box avatar-teal">
-                            <img src="img/battle_sprite_back_capybara.png" alt="Aren Modo RPG" class="pedagogy-avatar-img">
-                        </div>
-                        <div class="pedagogy-card-meta">
-                            <span class="pedagogy-chip chip-teal">Gamificación RPG</span>
-                            <h4>Modo Arena RPG</h4>
-                            <p>Duelos de conocimiento estilo Kahoot con multiplicador de velocidad.</p>
-                        </div>
+    <!-- =====================================================================
+       PARTE 3: INGENIERÍA DE BAJO NIVEL (DEMOSTRACIÓN DE DOMINIO TÉCNICO)
+       ===================================================================== -->
+    <section class="deep-dive-section" id="deep-engineering">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">03 // ESPECIFICACIONES DE COMPORTAMIENTO & FUNCIONAMIENTO INTERNO</span>
+                <h2>Ingeniería Interna: Cómo Funciona Realmente Cada Subsistema</h2>
+                <p>
+                    Desglose técnico de los protocolos de red, cálculo tensorial en MindSpore, inferencia cuantizada y
+                    persistencia distribuida que operan detrás de la interfaz de ArenAI.
+                </p>
+                <div class="confidentiality-notice">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <div>
+                        <strong>Aviso de Confidencialidad & Cumplimiento Regulatorio:</strong>
+                        Se hace constar expresamente que en estas especificaciones de comportamiento interno <strong>no se agrega la totalidad del código fuente ni la totalidad de las reglas operativas</strong> por motivos de estricta confidencialidad y reserva de los reglamentos proporcionados por los entes regulatorios consultados (incluyendo directrices y normativas institucionales del Ministerio de Educación Pública - MEP). Se presentan únicamente extractos esquemáticos y parámetros representativos para validar el diseño técnico y arquitectónico.
                     </div>
                 </div>
+            </div>
 
-                <!-- Interactive Live Stage Spotlight -->
-                <div class="pedagogy-stage-spotlight" id="pedagogy-spotlight">
-                    <!-- Dynamic content filled and switched smoothly by JavaScript -->
-                    <div class="pedagogy-stage-left">
-                        <div class="spotlight-mascot-orb" id="spotlight-orb">
-                            <div class="spotlight-ring"></div>
-                            <img src="img/capybara_sprite_normal_full.png" alt="Mascota en Acción" id="spotlight-mascot-img" class="spotlight-mascot-img">
-                        </div>
-                        <div class="spotlight-dialogue-bubble">
-                            <ion-icon name="chatbubble-ellipses"></ion-icon>
-                            <span id="spotlight-dialogue-quote">"¡Vamos paso a paso! Hoy desglosamos 3 conceptos clave de Álgebra. Sin prisa, asegurando que cada idea quede clara."</span>
-                        </div>
-                    </div>
+            <div class="specs-grid">
 
-                    <div class="pedagogy-stage-right">
-                        <div class="spotlight-badge-row">
-                            <span class="pedagogy-chip chip-amber" id="spotlight-category-chip">Ruta Curricular &bull; Acompañamiento Diario</span>
-                            <span class="spotlight-indicator-live"><span class="status-led-green"></span> Rol Pedagógico Activo</span>
-                        </div>
-
-                        <h3 id="spotlight-title">Guía de Misiones Curriculares</h3>
-                        <p id="spotlight-desc" class="spotlight-lead">
-                            Aren descompone tareas complejas y temarios densos en micro-misiones diarias digeribles. Esta metodología reduce la procrastinación en adolescentes al ofrecer un camino predecible y libre de agobio.
+                <!-- 1. ARQUITECTURA DE SOCKETS -->
+                <div class="spec-module">
+                    <div>
+                        <h3>1. Sincronización Directa entre Dispositivos vía Sockets</h3>
+                        <p>
+                            Para soportar combates cognitivos síncronos en aulas sin latencia perceptible ni bloqueos
+                            por HTTP Polling, el servidor en <strong>Node.js y TypeScript</strong> mantiene conexiones
+                            persistentes bidireccionales mediante WebSockets.
                         </p>
-
-                        <div class="spotlight-benefits-list" id="spotlight-benefits">
-                            <div class="spotlight-benefit-item">
-                                <div class="benefit-icon"><ion-icon name="checkmark-circle"></ion-icon></div>
-                                <div>
-                                    <strong>Menor sobrecarga mental:</strong>
-                                    <span>El temario se presenta en dosis de 15 a 20 minutos con descansos integrados.</span>
-                                </div>
-                            </div>
-                            <div class="spotlight-benefit-item">
-                                <div class="benefit-icon"><ion-icon name="trending-up-outline"></ion-icon></div>
-                                <div>
-                                    <strong>Hábitos de estudio autónomos:</strong>
-                                    <span>Ayuda a los estudiantes a organizarse sin depender exclusivamente de recordatorios externos.</span>
-                                </div>
-                            </div>
-                            <div class="spotlight-benefit-item">
-                                <div class="benefit-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
-                                <div>
-                                    <strong>Espacio libre de juicios:</strong>
-                                    <span>Si no logras completar una misión hoy, Aren reajusta la ruta con calma y comprensión.</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spotlight-action-footer">
-                            <button class="btn-spotlight-action" id="btn-spotlight-action">
-                                <ion-icon name="play-circle-outline" id="spotlight-btn-icon"></ion-icon>
-                                <span id="spotlight-action-text">Probar micro-misión de hoy</span>
-                            </button>
-                            <span class="spotlight-subtext" id="spotlight-subtext">Haz clic en cualquier tarjeta de arriba para explorar cada dinámica</span>
-                        </div>
-
-                        <!-- Micro-interaction feedback container (breathing circle, mission toast, confetti, etc.) -->
-                        <div class="spotlight-interactive-feedback" id="spotlight-feedback" style="display: none;">
-                            <!-- Injected dynamically via JS -->
-                        </div>
+                        <ul class="tech-bullet-list">
+                            <li><strong>Emparejamiento por Salas y QR:</strong> Cada sesión de clase instancia un
+                                namespace aislado en memoria donde los dispositivos móviles o de escritorio (Electron)
+                                se suscriben mediante tokens de sesión firmados.</li>
+                            <li><strong>Control de Estado Determinista:</strong> Cada respuesta socrática viaja en una
+                                trama ligera con número de secuencia (<code>turn_seq</code>) y marca de tiempo para
+                                evitar condiciones de carrera (<em>race conditions</em>) cuando dos alumnos responden al
+                                mismo milisegundo.</li>
+                            <li><strong>Tolerancia a Redes Escolares Inestables:</strong> Implementa tramas de
+                                <code>PING/PONG</code> periódicas y un buffer de reconciliación de estado que restaura
+                                la partida automáticamente si el Wi-Fi del colegio sufre microcortes.</li>
+                        </ul>
                     </div>
+                    <div class="code-block">// Estructura real del Payload en el Canal de Sockets
+                        {
+                        "event": "SOCRATIC_TURN_SUBMIT",
+                        "room_id": "MEP-SEC-10-B",
+                        "device_socket_id": "ws_99481a_cr",
+                        "turn_seq": 14,
+                        "student_payload": {
+                        "selected_branch": "MVCC_ISOLATION",
+                        "response_latency_ms": 4820,
+                        "socratic_depth_level": 2
+                        }
+                        }</div>
                 </div>
+
+                <!-- 2. VECTORES CON HUAWEI CLOUD & MINDSPORE -->
+                <div class="spec-module warm">
+                    <div>
+                        <h3>2. Sistema de Vectores con Huawei Cloud & MindSpore</h3>
+                        <p>
+                            En lugar de evaluar al estudiante con un promedio plano, ArenAI modela a cada alumno,
+                            materia y competencia como vectores multidimensionales procesados con
+                            <strong>MindSpore</strong> sobre infraestructura <strong>Huawei Cloud</strong>.
+                        </p>
+                        <ul class="tech-bullet-list">
+                            <li><strong>Construcción del Embedding Estudiantil:</strong> Cada interacción alimenta un
+                                tensor que codifica precisión conceptual, tiempo de deducción, número de pistas
+                                socráticas requeridas y retención histórica por eje temático.</li>
+                            <li><strong>Detección Geométrica de Puntos de Mejora:</strong> Calculando la similitud del
+                                coseno y la distancia euclidiana entre el vector actual del alumno y el vector objetivo
+                                de la materia, el sistema identifica exactamente qué subtema presenta rezago.</li>
+                            <li><strong>Enrutamiento Adaptativo:</strong> Los puntos débiles detectados con menor
+                                puntaje direccional se inyectan automáticamente como prioridad en la siguiente ronda de
+                                preguntas del árbol socrático.</li>
+                        </ul>
+                    </div>
+                    <div class="code-block"># Cálculo de brecha cognitiva con MindSpore en Huawei Cloud
+                        import mindspore as ms
+                        from mindspore import Tensor, ops
+
+                        # Vector de dominio del alumno vs. Vector objetivo de la materia
+                        v_student = Tensor([[0.82, 0.41, 0.76, 0.35]], ms.float32)
+                        v_subject = Tensor([[0.90, 0.85, 0.80, 0.85]], ms.float32)
+
+                        cos_sim = ops.CosineSimilarity(dim=1)(v_student, v_subject)
+                        deficit_vector = v_subject - v_student # Aísla los puntos exactos de mejora</div>
+                </div>
+
+                <!-- 3. ORQUESTACIÓN HÍBRIDA DE LLMs (OLLAMA -> CLOUD) -->
+                <div class="spec-module emerald">
+                    <div>
+                        <h3>3. Orquestación de LLMs: De Inferencia Local (Ollama) a Nube Híbrida</h3>
+                        <p>
+                            El motor conversacional utiliza árboles de diálogo socrático gobernados por instrucciones de
+                            sistema estrictas que prohíben revelar la solución directa, obligando al modelo a formular
+                            contrapreguntas inductivas.
+                        </p>
+                        <ul class="tech-bullet-list">
+                            <li><strong>Fase de Inferencia Local Cuantizada:</strong> Despliegue nativo mediante
+                                <strong>Ollama</strong> utilizando modelos abiertos como <strong>Qwen</strong> y
+                                <strong>Gemma</strong>, ajustando la asignación de memoria (KV-Cache), cuantización e
+                                hilos de cómputo en hardware local.</li>
+                            <li><strong>Escalado en Microservicios Cloud:</strong> Para soportar múltiples aulas
+                                concurrentes, el backend en <strong>Python (Flask)</strong> y <strong>Node.js</strong>
+                                se contenerizó en <strong>Docker</strong> sobre <strong>Huawei Cloud ECS (VPC)</strong>
+                                y <strong>Google Cloud Run</strong>, conectando con APIs generativas en la nube.</li>
+                            <li><strong>Reserva Normativa en Comportamiento Socrático:</strong> Por motivos de confidencialidad en torno a los reglamentos y directrices suministrados por los entes regulatorios consultados, no se agrega la totalidad del código fuente ni del prompt sistémico completo del agente.</li>
+                        </ul>
+                    </div>
+                    <div class="code-block"># Parámetros de inferencia socrática controlada (Ollama / Cloud API)
+                        {
+                        "model": "qwen2.5-socratic-arena",
+                        "options": {
+                        "temperature": 0.45,
+                        "top_p": 0.90,
+                        "num_ctx": 4096,
+                        "num_thread": 8
+                        },
+                        "system_constraint": "NEVER output the final answer. Guide via Socratic hints based on MindSpore
+                        weak_topic_id."
+                        }</div>
+                </div>
+
+                <!-- 4. PERSISTENCIA DISTRIBUIDA (OPENGAUSS + OBS + GCS) -->
+                <div class="spec-module" id="psychology-model">
+                    <div>
+                        <h3>4. Clústeres openGauss, Almacenamiento OBS/GCS y Psicología Competitiva</h3>
+                        <p>
+                            La capa de datos evolucionó desde instancias independientes en <strong>PostgreSQL</strong> y
+                            <strong>Google Cloud SQL</strong> hacia una arquitectura empresarial distribuida capaz de
+                            almacenar telemetría pedagógica y vectores a escala regional.
+                        </p>
+                        <ul class="tech-bullet-list">
+                            <li><strong>Persistencia Multi-Tenant en openGauss:</strong> Migración hacia clústeres
+                                distribuidos <strong>openGauss</strong> para garantizar alta disponibilidad,
+                                lecturas/escrituras paralelas de perfiles vectoriales y trazabilidad por institución
+                                educativa.</li>
+                            <li><strong>Objetos en Huawei OBS & Google Cloud Storage:</strong> Almacenamiento
+                                persistente y desacoplado de recursos estáticos, avatares en la nube, audio y respaldos
+                                históricos.</li>
+                            <li><strong>Psicología del Adolescente Latinoamericano:</strong> Basado en la <em>Teoría de
+                                    la Autodeterminación (SDT)</em> y el estado de <em>Flow</em> (equilibrio dinámico
+                                entre reto y habilidad calibrado por los vectores de MindSpore), transforma la
+                                competitividad social juvenil en estudio activo.</li>
+                        </ul>
+                    </div>
+                    <div class="code-block">-- Esquema distribuido de telemetría vectorial en openGauss
+                        CREATE TABLE student_vector_telemetry (
+                        student_id UUID NOT NULL,
+                        subject_code VARCHAR(32) NOT NULL,
+                        mindspore_embedding FLOAT4[],
+                        weakness_centroid VARCHAR(64),
+                        socratic_mastery_score NUMERIC(5,2),
+                        updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+                        ) PARTITION BY RANGE (updated_at);</div>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Section 3: Impacto Social & Galería de Aulas -->
-        <section id="impacto" class="aren-section">
-            <div class="aren-section-header">
-                <span class="aren-tag">Compromiso Educativo</span>
-                <h2>Transformando la Experiencia en el Aula</h2>
-                <p>ArenAI fue concebido para responder a las dinámicas pedagógicas modernas y apoyar activamente tanto a docentes como a estudiantes.</p>
-            </div>
-
-            <div class="aren-impact-showcase-grid">
-                <div class="showcase-card glass-panel">
-                    <div class="showcase-badge">PRIVACIDAD &bull; ESTÁNDARES</div>
-                    <div class="showcase-icon-box">
-                        <ion-icon name="school-outline"></ion-icon>
-                    </div>
-                    <h3>Alineación con Estándares Educativos</h3>
-                    <p>Adhesión a normativas de protección de datos personales de menores y compatibilidad con programas
-                        formativos de aprendizaje continuo.</p>
-                </div>
-
-                <div class="showcase-card glass-panel">
-                    <div class="showcase-badge">DOCENCIA &bull; EFICIENCIA</div>
-                    <div class="showcase-icon-box">
-                        <ion-icon name="easel-outline"></ion-icon>
-                    </div>
-                    <h3>Reducción de Carga Administrativa</h3>
-                    <p>Permite a los profesores diagnosticar el nivel de grupo en tiempo real sin dedicar horas extras a
-                        la calificación manual de pruebas.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Demostración Interactiva de la Plataforma (Galería Visual) -->
-        <section id="galeria" class="aren-section aren-bg-alt">
-            <div class="aren-section-header">
-                <span class="aren-tag">Vistas de la Aplicación</span>
-                <h2>Galería & Demostración de Interfaz</h2>
-                <p>Explora la experiencia de usuario diseñada tanto para el panel del profesor como para la vista
-                    interactiva del estudiante.</p>
-            </div>
-
-            <div class="interactive-demo-tabs">
-                <div class="demo-tab-buttons">
-                    <button class="demo-tab-btn" data-tab="tab-docente"><ion-icon
-                            name="stats-chart-outline"></ion-icon> Panel Docente <span class="badge-proximamente">Próximamente</span></button>
-                    <button class="demo-tab-btn" data-tab="tab-estudiante"><ion-icon
-                            name="game-controller-outline"></ion-icon> Vista Estudiante <span class="badge-proximamente">Próximamente</span></button>
-                    <button class="demo-tab-btn active" data-tab="tab-dag"><ion-icon name="globe-outline"></ion-icon>
-                        Globo 3D & Grafo Inter-Materias</button>
-                    <button class="demo-tab-btn" data-tab="tab-gamificacion"><ion-icon name="trophy-outline"></ion-icon>
-                        Arena Gamificada RPG</button>
-                </div>
-
-                <div class="demo-tab-content">
-                    <!-- Tab 1: Panel Docente (Próximamente) -->
-                    <div class="tab-pane" id="tab-docente">
-                        <div class="mockup-frame">
-                            <div class="mockup-top-bar">
-                                <span class="dot red"></span><span class="dot yellow"></span><span
-                                    class="dot green"></span>
-                                <span class="mockup-title">ArenAI &bull; Panel Docente en Tiempo Real</span>
-                            </div>
-                            <div class="mockup-placeholder-body">
-                                <div class="placeholder-card-inner">
-                                    <div class="placeholder-avatar-box">
-                                        <img src="img/profile_picture_sloth_eyes_open.png" alt="Perezoso Docente" class="placeholder-avatar-img">
-                                    </div>
-                                    <span class="badge-tag-upcoming">EN PREPARACIÓN PEDAGÓGICA</span>
-                                    <h4>Próximamente: Panel de Monitoreo Docente</h4>
-                                    <p>Estamos reimaginando el tablero del profesor con métricas de empatía y calor grupal. Próximamente podrás visualizar diagnósticos en tiempo real de comprensión estudiantil sin estrés evaluativo.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tab 2: Vista Estudiante (Próximamente) -->
-                    <div class="tab-pane" id="tab-estudiante">
-                        <div class="mockup-frame">
-                            <div class="mockup-top-bar">
-                                <span class="dot red"></span><span class="dot yellow"></span><span
-                                    class="dot green"></span>
-                                <span class="mockup-title">ArenAI &bull; Experiencia y Entorno del Estudiante</span>
-                            </div>
-                            <div class="mockup-placeholder-body">
-                                <div class="placeholder-card-inner">
-                                    <div class="placeholder-avatar-box">
-                                        <img src="img/Capybara profile picture.png" alt="Aren Mini" class="placeholder-avatar-img">
-                                    </div>
-                                    <span class="badge-tag-upcoming">NUEVO DISEÑO EN CURSO</span>
-                                    <h4>Próximamente: Interfaz Asistida por Aren</h4>
-                                    <p>El portal personal del alumno donde Aren acompaña cada descubrimiento con micro-desafíos lúdicos adaptativos y pausas conscientes para evitar la sobrecarga cognitiva.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tab 3: Globo Terráqueo 3D & Grafo Inter-Materias (Active) -->
-                    <div class="tab-pane active" id="tab-dag">
-                        <div class="mockup-frame">
-                            <div class="mockup-top-bar">
-                                <span class="dot red"></span><span class="dot yellow"></span><span
-                                    class="dot green"></span>
-                                <span class="mockup-title">ArenAI &bull; Globo 3D del Conocimiento: Grafo de Dependencias Inter-Materias</span>
-                            </div>
-                            <div class="globe-mockup-body">
-                                <div class="globe-container-wrapper">
-                                    <div class="globe-canvas-card">
-                                        <canvas id="globe-3d-canvas" width="560" height="420"></canvas>
-                                        <div class="globe-drag-hint">
-                                            <ion-icon name="hand-left-outline"></ion-icon>
-                                            <span>Arrastra para rotar en 3D &bull; Clic en nodos para ver dependencias</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="globe-sidebar-info">
-                                        <span class="globe-stats-pill">
-                                            <ion-icon name="git-network-outline"></ion-icon> Red Neuronal Curricular
-                                        </span>
-                                        <h3 class="globe-sidebar-title">Dependencias Curriculares Integradas</h3>
-                                        <p class="globe-sidebar-desc">
-                                            Cada punto sobre el globo representa un tema o nota de aprendizaje organizado por color temático. Los arcos curvos procesan las dependencias cognitivas necesarias, demostrando cómo una materia alimenta a la otra sin silos aislados.
-                                        </p>
-
-                                        <div class="globe-subjects-legend">
-                                            <div class="legend-chip">
-                                                <span class="legend-dot" style="background:#e76f51;"></span>
-                                                <span>Matemáticas</span>
-                                            </div>
-                                            <div class="legend-chip">
-                                                <span class="legend-dot" style="background:#2a9d8f;"></span>
-                                                <span>Física</span>
-                                            </div>
-                                            <div class="legend-chip">
-                                                <span class="legend-dot" style="background:#52b788;"></span>
-                                                <span>Biología</span>
-                                            </div>
-                                            <div class="legend-chip">
-                                                <span class="legend-dot" style="background:#e9c46a;"></span>
-                                                <span>Informática</span>
-                                            </div>
-                                            <div class="legend-chip">
-                                                <span class="legend-dot" style="background:#9c6644;"></span>
-                                                <span>Humanidades</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="inter-subject-card" id="inter-connection-display">
-                                            <span class="inter-badge">
-                                                <ion-icon name="flash-outline"></ion-icon> CONEXIÓN INTER-MATERIA ACTIVA
-                                            </span>
-                                            <div class="inter-formula">
-                                                <span class="subj-tag" style="background:rgba(231,111,81,0.18); color:#b23b1e;">Álgebra Lineal</span>
-                                                <ion-icon name="arrow-forward-outline" style="color:var(--aren-caramel); font-size:1.1rem;"></ion-icon>
-                                                <span class="subj-tag" style="background:rgba(233,196,106,0.25); color:#8d6800;">Redes Neuronales</span>
-                                            </div>
-                                            <p class="inter-note">"El dominio de matrices y transformaciones vectoriales permite comprender la retropropagación en IA sin frustración conceptual."</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tab 4: Arena Gamificada RPG (Estilo Batalla Pokémon + Kahoot por Velocidad) -->
-                    <div class="tab-pane" id="tab-gamificacion">
-                        <div class="mockup-frame">
-                            <div class="mockup-top-bar">
-                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                                <span class="mockup-title">ArenAI &bull; Arena Pedagógica: Duelo de Retención (Batalla Pokémon + Kahoot)</span>
-                                <div class="pkmn-top-controls">
-                                    <button class="btn-sound-toggle" id="btn-pkmn-sound" title="Activar/Desactivar efectos de sonido">
-                                        <ion-icon name="volume-mute-outline" id="sound-icon"></ion-icon>
-                                        <span id="sound-label">Silencio</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="pkmn-battle-container">
-                                <!-- Pokémon Battle Stage Scene (Authentic 4-Corner Diagonal Perspective) -->
-                                <div class="pkmn-screen">
-                                    <!-- 1. Opponent HUD Card (Top-Left) -->
-                                    <div class="pkmn-hud-card pkmn-hud-enemy">
-                                        <div class="pkmn-hud-header">
-                                            <span class="pkmn-name" id="enemy-name">Bug de Matrices</span>
-                                            <span class="pkmn-level">Nv. 25</span>
-                                        </div>
-                                        <div class="pkmn-hp-wrapper">
-                                            <span class="hp-tag">PS</span>
-                                            <div class="pkmn-hp-bar-track">
-                                                <div class="pkmn-hp-bar-fill" id="enemy-hp-fill" style="width: 100%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="pkmn-hp-numeric">
-                                            <span id="enemy-hp-current">1000</span> / 1000 PS
-                                        </div>
-                                    </div>
-
-                                    <!-- 2. Opponent Platform & Sprite (Top-Right) -->
-                                    <div class="pkmn-battle-unit enemy-unit">
-                                        <div class="floating-damage-box" id="floating-damage"></div>
-                                        <img src="img/battle_sprite_front_capybara.png" alt="Oponente Reto" class="pkmn-sprite pkmn-sprite-enemy" id="enemy-sprite">
-                                        <div class="pkmn-platform-ellipse enemy-ellipse"></div>
-                                    </div>
-
-                                    <!-- 3. Player Platform & Sprite (Bottom-Left) -->
-                                    <div class="pkmn-battle-unit player-unit">
-                                        <img src="img/battle_sprite_back_capybara.png" alt="Aren Estudiante" class="pkmn-sprite pkmn-sprite-player" id="player-sprite">
-                                        <div class="pkmn-platform-ellipse player-ellipse"></div>
-                                    </div>
-
-                                    <!-- 4. Player HUD Card (Bottom-Right) -->
-                                    <div class="pkmn-hud-card pkmn-hud-player">
-                                        <div class="pkmn-hud-header">
-                                            <span class="pkmn-name">Aren (Tú)</span>
-                                            <span class="pkmn-level">Nv. 28</span>
-                                        </div>
-                                        <div class="pkmn-hp-wrapper">
-                                            <span class="hp-tag">PS</span>
-                                            <div class="pkmn-hp-bar-track">
-                                                <div class="pkmn-hp-bar-fill player-hp" style="width: 100%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="pkmn-exp-wrapper">
-                                            <span class="exp-tag">EXP</span>
-                                            <div class="pkmn-exp-bar-track">
-                                                <div class="pkmn-exp-bar-fill" id="player-exp-fill" style="width: 78%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Kahoot-Style Quiz Section (Timer & 4 Answer Buttons) -->
-                                <div class="kahoot-panel">
-                                    <div class="kahoot-question-box">
-                                        <div class="kahoot-meta-pills">
-                                            <span class="badge-materia" id="quiz-materia">Matemáticas Aplicadas</span>
-                                            <span class="badge-round" id="quiz-round">Pregunta 1 de 3</span>
-                                        </div>
-                                        <h4 class="kahoot-question-text" id="quiz-question">¿Cuál es la derivada de la función f(x) = 3x² + 5?</h4>
-                                    </div>
-
-                                    <!-- Kahoot Speed Meter & Multiplier Bar -->
-                                    <div class="kahoot-timer-container">
-                                        <div class="kahoot-timer-info">
-                                            <span class="timer-label"><ion-icon name="stopwatch-outline"></ion-icon> Tiempo: <strong id="timer-display">10.0s</strong></span>
-                                            <span class="multiplier-label"><ion-icon name="flash-outline"></ion-icon> Daño por Velocidad: <strong id="multiplier-display" class="highlight-gold">x3.0 (Máx Daño)</strong></span>
-                                        </div>
-                                        <div class="kahoot-timer-track">
-                                            <div class="kahoot-timer-bar" id="kahoot-timer-bar" style="width: 100%;"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 4 Kahoot-Style Answer Choices (Red, Blue, Yellow, Green) -->
-                                    <div class="kahoot-answers-grid" id="kahoot-answers-grid">
-                                        <button class="kahoot-btn btn-red" data-index="0">
-                                            <span class="kahoot-shape">▲</span>
-                                            <span class="kahoot-ans-text" id="ans-text-0">f'(x) = 6x</span>
-                                        </button>
-                                        <button class="kahoot-btn btn-blue" data-index="1">
-                                            <span class="kahoot-shape">◆</span>
-                                            <span class="kahoot-ans-text" id="ans-text-1">f'(x) = 3x + 5</span>
-                                        </button>
-                                        <button class="kahoot-btn btn-yellow" data-index="2">
-                                            <span class="kahoot-shape">●</span>
-                                            <span class="kahoot-ans-text" id="ans-text-2">f'(x) = 6x²</span>
-                                        </button>
-                                        <button class="kahoot-btn btn-green" data-index="3">
-                                            <span class="kahoot-shape">■</span>
-                                            <span class="kahoot-ans-text" id="ans-text-3">f'(x) = 15x</span>
-                                        </button>
-                                    </div>
-
-                                    <!-- Retro Pokémon Dialogue Box -->
-                                    <div class="pkmn-dialogue-card">
-                                        <p id="pkmn-dialogue-text">¡Un Bug de Matrices salvaje ha aparecido! Responde rápido al estilo Kahoot: ¡entre más veloz aciertes, mayor daño crítico le harás!</p>
-                                        <button class="btn-restart-battle" id="btn-restart-battle" style="display: none;">
-                                            <ion-icon name="refresh-outline"></ion-icon> Volver a Jugar
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Deep Core Technical Architecture -->
-        <section id="ingenieria" class="aren-section">
-            <div class="aren-section-header">
-                <span class="aren-tag">Ingeniería & Pedagogía</span>
-                <h2>Tecnología al Servicio de la Educación</h2>
-                <p>Diseñada con rigor científico y sensibilidad humana. Una arquitectura modular que protege la privacidad del estudiante y habilita dinámicas gamificadas de baja latencia.</p>
-            </div>
-
-            <div class="aren-arch-cards-grid">
-                <div class="aren-arch-card">
-                    <div class="arch-badge">WEBSOCKETS P2P</div>
-                    <h3>Conexión Directa en el Aula</h3>
-                    <p>Comunicación bidireccional de ultrabaja latencia que permite sincronizar ejercicios entre el profesor y sus estudiantes al instante, incluso en redes de aula local sin depender de internet continuo.</p>
-                </div>
-
-                <div class="aren-arch-card">
-                    <div class="arch-badge">PSICOLOGÍA & MATRICES</div>
-                    <h3>Curva del Olvido y Retención</h3>
-                    <p>Modelos matriciales basados en investigaciones sobre la psicología del adolescente para reforzar conceptos en el momento óptimo sin generar frustración ni sobrecarga.</p>
-                </div>
-
-                <div class="aren-arch-card">
-                    <div class="arch-badge">GRAFOS DIRIGIDOS (DAGs)</div>
-                    <h3>Rutas de Aprendizaje a tu Ritmo</h3>
-                    <p>Estructuración del plan de estudios en mapas conceptuales interactivos que se ramifican y adaptan según el ritmo propio y los logros de cada alumno.</p>
-                </div>
-
-                <div class="aren-arch-card">
-                    <div class="arch-badge">STACK INTEGRAL</div>
-                    <h3>Node &bull; Electron &bull; TS/JS &bull; Python &bull; Docker</h3>
-                    <p>Desarrollo multiplataforma (escritorio y web) desplegable en contenedores Docker aislados, garantizando máxima seguridad de datos de menores y portabilidad en colegios.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Equipo Creador & Créditos de Investigación -->
-        <section id="equipo" class="aren-section aren-bg-alt">
-            <div class="aren-section-header">
-                <span class="aren-tag">Equipo Creador & Créditos</span>
-                <h2>Autores e Investigadores del Proyecto</h2>
-                <p>ArenAI fue concebido y desarrollado de forma colaborativa: unificando diseño gráfico y viabilidad económica, lógica del sistema con sockets en tiempo real, y procesamiento en la nube con base creativa de IA.</p>
-            </div>
-
-            <div class="aren-team-grid">
-                <!-- Miembro 1: Leonardo Escobar -->
-                <div class="aren-team-card">
-                    <div class="team-avatar-box">
-                        <span class="team-avatar-initials">LE</span>
-                    </div>
-                    <h3>Leonardo Escobar</h3>
-                    <span class="team-role-tag">Diseño Gráfico, UI/UX & Viabilidad Económica</span>
-                    <p>Desarrollo de la interfaz gráfica y experiencia de usuario (UI/UX), análisis y manejo de precios reales del mercado, proyecciones financieras y estimaciones de costos para asegurar la viabilidad económica de la solución.</p>
-                </div>
-
-                <!-- Miembro 2: Yereth Soto Zúñiga -->
-                <div class="aren-team-card">
-                    <div class="team-avatar-box">
-                        <span class="team-avatar-initials">YS</span>
-                    </div>
-                    <h3>Yereth Soto Zúñiga</h3>
-                    <span class="team-role-tag">Lógica del Sistema & Sockets en Tiempo Real</span>
-                    <p>Desarrollo de la lógica central del motor educativo, estructuración algorítmica y canal de comunicación bidireccional mediante Sockets / WebSockets para sincronización de baja latencia en el aula.</p>
-                </div>
-
-                <!-- Miembro 3: Reishell Fernández -->
-                <div class="aren-team-card">
-                    <div class="team-avatar-box">
-                        <span class="team-avatar-initials">RF</span>
-                    </div>
-                    <h3>Reishell Fernández</h3>
-                    <span class="team-role-tag">Procesamiento Cloud de IA & Base Creativa</span>
-                    <p>Liderazgo de la base creativa del proyecto, conceptualización estética y arquitectura de procesamiento en la nube para los modelos de inteligencia artificial y analítica pedagógica.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="aren-footer">
-        <div class="aren-footer-content">
-            <p>&copy; 2026 ArenAI Platform. Desarrollado en equipo por <strong>Leonardo Escobar</strong>, <strong>Yereth Soto Zúñiga</strong> y <strong>Reishell Fernández</strong>.</p>
-            <a href="../index.html#rack" class="aren-footer-back-link">
-                <ion-icon name="arrow-back-outline"></ion-icon> Volver al Portafolio Principal
-            </a>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p style="color: var(--text-main); font-weight: 700; margin-bottom: 0.4rem;">
+                ArenAI — Arquitecto Líder y Desarrollador: Leonardo Josué Escobar Solís
+            </p>
+            <p style="margin-bottom: 0.8rem;">
+                Semifinalista Global en Huawei ICT Innovation Competition (10.ª Edición) • Presentado ante el Ministerio
+                de Educación Pública (MEP) de Costa Rica
+            </p>
+            <p style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--capy-gold);">
+                SOCKETS REAL-TIME • HUAWEI CLOUD (ECS/VPC/OBS) • MINDSPORE VECTORS • OPENGAUSS • GOOGLE CLOUD (CLOUD
+                RUN/SQL/GCS) • OLLAMA (QWEN/GEMMA)
+            </p>
         </div>
     </footer>
-    </div> <!-- END arenai-page-wrapper -->
 
-    <script src="script.js"></script>
+    <script>
+        // Control del audio original del repositorio (/arenai/img/battlesong.mp3)
+        let playingAudio = false;
+        function toggleOriginalAudio() {
+            const audio = document.getElementById('arenaAudio');
+            const btn = document.getElementById('audioBtn');
+            if (!playingAudio) {
+                audio.play().then(() => {
+                    playingAudio = true;
+                    btn.textContent = '⏸ PAUSAR TEMA ORIGINAL (battlesong.mp3)';
+                }).catch(() => {
+                    btn.textContent = '⚠ AUDIO NO DISPONIBLE EN ESTE NAVEGADOR';
+                });
+            } else {
+                audio.pause();
+                playingAudio = false;
+                btn.textContent = '▶ ESCUCHAR TEMA ORIGINAL (battlesong.mp3)';
+            }
+        }
+
+        // Simulación técnica de turno Socrático + Actualización de Tensor MindSpore y openGauss
+        function simulateArenaTurn(isCorrectDeduction) {
+            const bossHpBar = document.getElementById('bossHpBar');
+            const bossMeta = document.getElementById('bossMeta');
+            const studentMeta = document.getElementById('studentVectorMeta');
+            const dialogConsole = document.getElementById('dialogConsole');
+
+            if (isCorrectDeduction) {
+                bossHpBar.style.width = '30%';
+                bossHpBar.style.backgroundColor = '#f4a261';
+                bossMeta.textContent = 'Materia: Sistemas Distribuidos | Resistencia Cognitiva: 30/100 (IMPACTO CRÍTICO)';
+                studentMeta.textContent = 'Vector MindSpore: [Dominio: 0.91 | openGauss MVCC: VALIDADO]';
+                dialogConsole.innerHTML = '<strong>[TRAMA SOCKET RECIBIDA — DEDUCCIÓN VALIDADA]:</strong><br />"¡Exacto! El aislamiento MVCC en openGauss permite que cada transacción opere sobre una instantánea consistente sin bloquear lecturas concurrentes. El tensor en MindSpore ha actualizado tu vector en la materia y reducido el centroide de mejora."';
+            } else {
+                bossHpBar.style.width = '85%';
+                bossHpBar.style.backgroundColor = '#e63946';
+                studentMeta.textContent = 'Vector MindSpore: [Alerta de Brecha: Almacenamiento de Objetos vs. Motor Transaccional]';
+                dialogConsole.innerHTML = '<strong>[INTERVENCIÓN SOCRÁTICA — PISTA NIVEL 2]:</strong><br />"Observa la diferencia de capas: Huawei Cloud OBS almacena objetos estáticos (como sprites o respaldos), pero no gestiona bloqueos de filas en una tabla relacional. Si dos consultas SQL intentan modificar la misma fila al mismo tiempo, ¿qué componente de la base de datos debe arbitrar el orden?"';
+            }
+        }
+    </script>
 </body>
 
 </html>
