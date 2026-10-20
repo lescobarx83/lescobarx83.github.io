@@ -1664,6 +1664,688 @@ Swap:        2097148           0     2097148`);
     let currentActiveDoc = null;
     let bodyScrollHandler = null;
 
+    
+    function applyKaTeX(element) {
+        if (typeof window !== 'undefined' && window.renderMathInElement && element) {
+            try {
+                window.renderMathInElement(element, {
+                    delimiters: [
+                        { left: '$', right: '$', display: true },
+                        { left: '
+        if (!paperModalOverlay || !modalPaperBody) return;
+
+        let doc = null;
+        if (window.DriveSync && typeof window.DriveSync.getArticleById === 'function') {
+            doc = await window.DriveSync.getArticleById(paperId);
+        }
+        if (!doc && papersDatabase) {
+            doc = papersDatabase[paperId];
+        }
+
+        // Intelligent DOM Fallback: extract info directly from card if not in database
+        if (!doc) {
+            const cardEl = document.querySelector(`[data-paper="${paperId}"]`)?.closest('.feed-article-card, .pub-card, .note-card') 
+                        || document.getElementById(`card-${paperId.replace('paper-', '')}`)
+                        || document.getElementById(`note-${paperId.replace('paper-', '')}`);
+            if (cardEl) {
+                const title = cardEl.querySelector('.feed-card-title, .pub-title, .note-title')?.textContent || 'Documento Técnico';
+                const type = cardEl.querySelector('.feed-cat-badge, .pub-type-badge, .note-category')?.textContent || 'RESEARCH ARTICLE';
+                const doi = cardEl.querySelector('.feed-card-doi, .pub-doi-tag')?.textContent || 'REF: NOC-2026';
+                const excerpt = cardEl.querySelector('.feed-card-excerpt, .pub-excerpt, .note-excerpt')?.textContent || '';
+                const category = cardEl.querySelector('.feed-cat-badge, .pub-category, .note-category')?.textContent || 'Infraestructura';
+                const hlItems = Array.from(cardEl.querySelectorAll('.feed-tag-pill, .pub-hl-item, .note-toc li')).map(el => el.textContent.trim());
+
+                doc = {
+                    id: paperId,
+                    type: type,
+                    doi: doi,
+                    title: title,
+                    meta: `Autor: Leonardo Escobar &bull; Categoría: ${category} &bull; NOC Knowledge Hub`,
+                    abstract: excerpt,
+                    sections: [
+                        {
+                            heading: 'Puntos Clave y Especificaciones',
+                            content: hlItems.length > 0 ? hlItems.map(item => `&bull; ${item}`).join('<br>') : 'Especificación técnica de ingeniería.'
+                        }
+                    ]
+                };
+            }
+        }
+
+        if (!doc) return;
+        currentActiveDoc = doc;
+
+        // Populate header indicators
+        if (modalPaperType) modalPaperType.textContent = doc.type || (doc.categoryLabel ? doc.categoryLabel.toUpperCase() : 'RESEARCH ARTICLE');
+        if (modalPaperDoi) modalPaperDoi.textContent = doc.doi || 'REF: NOC-2026';
+
+        // Deep linking hash update
+        if (window.location.hash !== `#article/${doc.id || paperId}`) {
+            history.pushState(null, '', `#article/${doc.id || paperId}`);
+        }
+
+        // External Link button toggle
+        if (modalExternalLink) {
+            const external = doc.driveLink || doc.externalUrl || doc.pdfUrl || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
+            if (external) {
+                modalExternalLink.href = external;
+                modalExternalLink.style.display = 'inline-flex';
+            } else {
+                modalExternalLink.style.display = 'none';
+            }
+        }
+
+        // ToC Drive Link update
+        if (readerTocDriveLink) {
+            readerTocDriveLink.href = doc.driveLink || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
+        }
+
+        // Build Title, Meta & Abstract
+        const isGuide = initialMode === 'guide' && doc.guide;
+        const activeData = isGuide ? doc.guide : doc;
+        const title = currentLang === 'en' && activeData.title_en ? activeData.title_en : activeData.title;
+        const abstract = currentLang === 'en' && activeData.abstract_en ? activeData.abstract_en : activeData.abstract;
+        const meta = doc.meta || `Autor: Leonardo Escobar &bull; Categoría: ${doc.categoryLabel || 'Infraestructura'} &bull; NOC Knowledge Hub`;
+
+        let bodyHtml = `
+            <h1 class="modal-doc-title">${title}</h1>
+            <div class="modal-doc-meta">${meta}</div>
+            <div class="modal-doc-abstract">
+                <strong>ABSTRACT:</strong>
+                ${abstract}
+            </div>
+        `;
+
+        // Build Sections & Code Blocks
+        if (activeData.sections && Array.isArray(activeData.sections)) {
+            activeData.sections.forEach((sec, idx) => {
+                const secId = `sec-heading-${idx}`;
+                bodyHtml += `<h2 class="modal-doc-h2" id="${secId}">${sec.heading}</h2>`;
+                if (sec.content) {
+                    bodyHtml += `<p class="modal-doc-p">${sec.content}</p>`;
+                }
+                if (sec.code) {
+                    bodyHtml += `
+                        <div class="code-block-wrapper">
+                            <div class="code-block-topbar">
+                                <span><ion-icon name="terminal-outline"></ion-icon> BASH / CONFIG</span>
+                                <button class="code-copy-btn">
+                                    <ion-icon name="copy-outline"></ion-icon> <span>Copiar</span>
+                                </button>
+                            </div>
+                            <pre class="modal-doc-code">${sec.code}</pre>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // Build References
+        if (activeData.references && Array.isArray(activeData.references)) {
+            bodyHtml += `
+                <div class="modal-doc-references" id="sec-references">
+                    <h2 class="modal-doc-h2"><ion-icon name="library-outline"></ion-icon> Fuentes &amp; Referencias Técnicas</h2>
+                    <ul class="modal-doc-ref-list">
+            `;
+            activeData.references.forEach(ref => {
+                bodyHtml += `<li class="modal-ref-item">&bull; ${ref}</li>`;
+            });
+            bodyHtml += `</ul></div>`;
+        }
+
+        modalPaperBody.innerHTML = bodyHtml;
+        applyKaTeX(modalPaperBody);
+        modalPaperBody.scrollTop = 0;
+
+        // Build Lateral Table of Contents (ToC)
+        if (readerTocNav) {
+            let tocHtml = '';
+            if (doc.sections && Array.isArray(doc.sections)) {
+                doc.sections.forEach((sec, idx) => {
+                    tocHtml += `<a href="#sec-heading-${idx}" class="toc-link ${idx === 0 ? 'active' : ''}" data-target="sec-heading-${idx}">${sec.heading}</a>`;
+                });
+            }
+            if (doc.references && Array.isArray(doc.references)) {
+                tocHtml += `<a href="#sec-references" class="toc-link" data-target="sec-references">Referencias Técnicas</a>`;
+            }
+            readerTocNav.innerHTML = tocHtml;
+
+            // ToC smooth scroll click listeners
+            readerTocNav.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    const targetHeading = document.getElementById(targetId);
+                    if (targetHeading) {
+                        targetHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        readerTocNav.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Wire Code Block Copy Buttons
+        modalPaperBody.querySelectorAll('.code-copy-btn').forEach(copyBtn => {
+            copyBtn.addEventListener('click', () => {
+                const codeEl = copyBtn.closest('.code-block-wrapper')?.querySelector('.modal-doc-code');
+                if (codeEl) {
+                    navigator.clipboard.writeText(codeEl.textContent).then(() => {
+                        const origHtml = copyBtn.innerHTML;
+                        copyBtn.classList.add('copied');
+                        copyBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Copiado!</span>';
+                        setTimeout(() => {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.innerHTML = origHtml;
+                        }, 2000);
+                    });
+                }
+            });
+        });
+
+        // Reading Progress Bar & Scroll Spy
+        if (bodyScrollHandler) {
+            modalPaperBody.removeEventListener('scroll', bodyScrollHandler);
+        }
+
+        if (readerProgressBar) readerProgressBar.style.width = '0%';
+
+        bodyScrollHandler = () => {
+            const scrollTotal = modalPaperBody.scrollHeight - modalPaperBody.clientHeight;
+            if (scrollTotal > 0 && readerProgressBar) {
+                const pct = (modalPaperBody.scrollTop / scrollTotal) * 100;
+                readerProgressBar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+            }
+
+            // Scroll-Spy for ToC
+            const headings = modalPaperBody.querySelectorAll('.modal-doc-h2');
+            let currentSecId = '';
+            headings.forEach(h => {
+                const top = h.offsetTop - modalPaperBody.offsetTop;
+                if (modalPaperBody.scrollTop >= top - 60) {
+                    currentSecId = h.getAttribute('id');
+                }
+            });
+
+            if (currentSecId && readerTocNav) {
+                readerTocNav.querySelectorAll('.toc-link').forEach(l => {
+                    if (l.getAttribute('data-target') === currentSecId) {
+                        l.classList.add('active');
+                    } else {
+                        l.classList.remove('active');
+                    }
+                });
+            }
+        };
+
+        modalPaperBody.addEventListener('scroll', bodyScrollHandler, { passive: true });
+
+        // Show Modal
+        paperModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePaperModal() {
+        if (paperModalOverlay) {
+            paperModalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        if (readerProgressBar) {
+            readerProgressBar.style.width = '0%';
+        }
+        if (window.location.hash.startsWith('#article/')) {
+            history.pushState('', document.title, window.location.pathname + window.location.search);
+        }
+    }
+
+    // Share Button Handler (Deep Link)
+    if (modalShareBtn) {
+        modalShareBtn.addEventListener('click', () => {
+            if (!currentActiveDoc) return;
+            const shareUrl = window.location.origin + window.location.pathname + `#article/${currentActiveDoc.id || ''}`;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const origHtml = modalShareBtn.innerHTML;
+                modalShareBtn.classList.add('copied');
+                modalShareBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Enlace copiado!</span>';
+                setTimeout(() => {
+                    modalShareBtn.classList.remove('copied');
+                    modalShareBtn.innerHTML = origHtml;
+                }, 2200);
+            }).catch(() => {
+                prompt('Enlace directo al artículo:', shareUrl);
+            });
+        });
+    }
+
+    // Initial check for #article/ deep link on load
+    function checkInitialArticleHash() {
+        if (window.location.hash && window.location.hash.startsWith('#article/')) {
+            const articleId = window.location.hash.replace('#article/', '').trim();
+            if (articleId) {
+                setTimeout(() => {
+                    openPaperModal(articleId);
+                }, 600);
+            }
+        }
+    }
+
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash && window.location.hash.startsWith('#article/')) {
+            const articleId = window.location.hash.replace('#article/', '').trim();
+            if (articleId && (!currentActiveDoc || currentActiveDoc.id !== articleId)) {
+                openPaperModal(articleId);
+            }
+        } else if (!window.location.hash || !window.location.hash.startsWith('#article/')) {
+            if (paperModalOverlay && paperModalOverlay.classList.contains('active')) {
+                closePaperModal();
+            }
+        }
+    });
+
+    checkInitialArticleHash();
+
+    // Event delegation for all read paper buttons (existing & dynamic)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-read-paper, .pub-btn-read, .btn-read-guide');
+        if (btn) {
+            e.preventDefault();
+            const paperId = btn.getAttribute('data-paper');
+            const mode = btn.getAttribute("data-mode") || (btn.classList.contains("btn-read-guide") ? "guide" : "paper");
+            if (paperId) openPaperModal(paperId, mode);
+        }
+    });
+
+    // BibTeX Citation Copy Handler
+    const modalCiteBtn = document.getElementById('modal-cite-btn');
+    if (modalCiteBtn) {
+        modalCiteBtn.addEventListener('click', () => {
+            if (!currentActiveDoc) return;
+            const cleanDoi = (currentActiveDoc.doi || 'NOC2026').replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            const bibtex = `@article{escobar2026_${cleanDoi},
+  author    = {Escobar, Leonardo},
+  title     = {${currentActiveDoc.title}},
+  journal   = {NOC Datacenter Systems & Engineering Research Hub},
+  year      = {2026},
+  note      = {${currentActiveDoc.doi}}
+}`;
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const originalHtml = modalCiteBtn.innerHTML;
+                modalCiteBtn.classList.add('copied');
+                modalCiteBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Copiado!</span>';
+                setTimeout(() => {
+                    modalCiteBtn.classList.remove('copied');
+                    modalCiteBtn.innerHTML = originalHtml;
+                }, 2200);
+            }).catch(() => {
+                alert('Cita BibTeX:\n\n' + bibtex);
+            });
+        });
+    }
+
+    // Print / PDF Export Handler
+    const modalPrintBtn = document.getElementById('modal-print-btn');
+    if (modalPrintBtn) {
+        modalPrintBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closePaperModal);
+    if (modalCloseBottomBtn) modalCloseBottomBtn.addEventListener('click', closePaperModal);
+    if (paperModalOverlay) {
+        paperModalOverlay.addEventListener('click', (e) => {
+            if (e.target === paperModalOverlay) closePaperModal();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePaperModal();
+    });
+});
+
+, right: '
+        if (!paperModalOverlay || !modalPaperBody) return;
+
+        let doc = null;
+        if (window.DriveSync && typeof window.DriveSync.getArticleById === 'function') {
+            doc = await window.DriveSync.getArticleById(paperId);
+        }
+        if (!doc && papersDatabase) {
+            doc = papersDatabase[paperId];
+        }
+
+        // Intelligent DOM Fallback: extract info directly from card if not in database
+        if (!doc) {
+            const cardEl = document.querySelector(`[data-paper="${paperId}"]`)?.closest('.feed-article-card, .pub-card, .note-card') 
+                        || document.getElementById(`card-${paperId.replace('paper-', '')}`)
+                        || document.getElementById(`note-${paperId.replace('paper-', '')}`);
+            if (cardEl) {
+                const title = cardEl.querySelector('.feed-card-title, .pub-title, .note-title')?.textContent || 'Documento Técnico';
+                const type = cardEl.querySelector('.feed-cat-badge, .pub-type-badge, .note-category')?.textContent || 'RESEARCH ARTICLE';
+                const doi = cardEl.querySelector('.feed-card-doi, .pub-doi-tag')?.textContent || 'REF: NOC-2026';
+                const excerpt = cardEl.querySelector('.feed-card-excerpt, .pub-excerpt, .note-excerpt')?.textContent || '';
+                const category = cardEl.querySelector('.feed-cat-badge, .pub-category, .note-category')?.textContent || 'Infraestructura';
+                const hlItems = Array.from(cardEl.querySelectorAll('.feed-tag-pill, .pub-hl-item, .note-toc li')).map(el => el.textContent.trim());
+
+                doc = {
+                    id: paperId,
+                    type: type,
+                    doi: doi,
+                    title: title,
+                    meta: `Autor: Leonardo Escobar &bull; Categoría: ${category} &bull; NOC Knowledge Hub`,
+                    abstract: excerpt,
+                    sections: [
+                        {
+                            heading: 'Puntos Clave y Especificaciones',
+                            content: hlItems.length > 0 ? hlItems.map(item => `&bull; ${item}`).join('<br>') : 'Especificación técnica de ingeniería.'
+                        }
+                    ]
+                };
+            }
+        }
+
+        if (!doc) return;
+        currentActiveDoc = doc;
+
+        // Populate header indicators
+        if (modalPaperType) modalPaperType.textContent = doc.type || (doc.categoryLabel ? doc.categoryLabel.toUpperCase() : 'RESEARCH ARTICLE');
+        if (modalPaperDoi) modalPaperDoi.textContent = doc.doi || 'REF: NOC-2026';
+
+        // Deep linking hash update
+        if (window.location.hash !== `#article/${doc.id || paperId}`) {
+            history.pushState(null, '', `#article/${doc.id || paperId}`);
+        }
+
+        // External Link button toggle
+        if (modalExternalLink) {
+            const external = doc.driveLink || doc.externalUrl || doc.pdfUrl || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
+            if (external) {
+                modalExternalLink.href = external;
+                modalExternalLink.style.display = 'inline-flex';
+            } else {
+                modalExternalLink.style.display = 'none';
+            }
+        }
+
+        // ToC Drive Link update
+        if (readerTocDriveLink) {
+            readerTocDriveLink.href = doc.driveLink || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
+        }
+
+        // Build Title, Meta & Abstract
+        const isGuide = initialMode === 'guide' && doc.guide;
+        const activeData = isGuide ? doc.guide : doc;
+        const title = currentLang === 'en' && activeData.title_en ? activeData.title_en : activeData.title;
+        const abstract = currentLang === 'en' && activeData.abstract_en ? activeData.abstract_en : activeData.abstract;
+        const meta = doc.meta || `Autor: Leonardo Escobar &bull; Categoría: ${doc.categoryLabel || 'Infraestructura'} &bull; NOC Knowledge Hub`;
+
+        let bodyHtml = `
+            <h1 class="modal-doc-title">${title}</h1>
+            <div class="modal-doc-meta">${meta}</div>
+            <div class="modal-doc-abstract">
+                <strong>ABSTRACT:</strong>
+                ${abstract}
+            </div>
+        `;
+
+        // Build Sections & Code Blocks
+        if (activeData.sections && Array.isArray(activeData.sections)) {
+            activeData.sections.forEach((sec, idx) => {
+                const secId = `sec-heading-${idx}`;
+                bodyHtml += `<h2 class="modal-doc-h2" id="${secId}">${sec.heading}</h2>`;
+                if (sec.content) {
+                    bodyHtml += `<p class="modal-doc-p">${sec.content}</p>`;
+                }
+                if (sec.code) {
+                    bodyHtml += `
+                        <div class="code-block-wrapper">
+                            <div class="code-block-topbar">
+                                <span><ion-icon name="terminal-outline"></ion-icon> BASH / CONFIG</span>
+                                <button class="code-copy-btn">
+                                    <ion-icon name="copy-outline"></ion-icon> <span>Copiar</span>
+                                </button>
+                            </div>
+                            <pre class="modal-doc-code">${sec.code}</pre>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // Build References
+        if (activeData.references && Array.isArray(activeData.references)) {
+            bodyHtml += `
+                <div class="modal-doc-references" id="sec-references">
+                    <h2 class="modal-doc-h2"><ion-icon name="library-outline"></ion-icon> Fuentes &amp; Referencias Técnicas</h2>
+                    <ul class="modal-doc-ref-list">
+            `;
+            activeData.references.forEach(ref => {
+                bodyHtml += `<li class="modal-ref-item">&bull; ${ref}</li>`;
+            });
+            bodyHtml += `</ul></div>`;
+        }
+
+        modalPaperBody.innerHTML = bodyHtml;
+        modalPaperBody.scrollTop = 0;
+
+        // Build Lateral Table of Contents (ToC)
+        if (readerTocNav) {
+            let tocHtml = '';
+            if (doc.sections && Array.isArray(doc.sections)) {
+                doc.sections.forEach((sec, idx) => {
+                    tocHtml += `<a href="#sec-heading-${idx}" class="toc-link ${idx === 0 ? 'active' : ''}" data-target="sec-heading-${idx}">${sec.heading}</a>`;
+                });
+            }
+            if (doc.references && Array.isArray(doc.references)) {
+                tocHtml += `<a href="#sec-references" class="toc-link" data-target="sec-references">Referencias Técnicas</a>`;
+            }
+            readerTocNav.innerHTML = tocHtml;
+
+            // ToC smooth scroll click listeners
+            readerTocNav.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    const targetHeading = document.getElementById(targetId);
+                    if (targetHeading) {
+                        targetHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        readerTocNav.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Wire Code Block Copy Buttons
+        modalPaperBody.querySelectorAll('.code-copy-btn').forEach(copyBtn => {
+            copyBtn.addEventListener('click', () => {
+                const codeEl = copyBtn.closest('.code-block-wrapper')?.querySelector('.modal-doc-code');
+                if (codeEl) {
+                    navigator.clipboard.writeText(codeEl.textContent).then(() => {
+                        const origHtml = copyBtn.innerHTML;
+                        copyBtn.classList.add('copied');
+                        copyBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Copiado!</span>';
+                        setTimeout(() => {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.innerHTML = origHtml;
+                        }, 2000);
+                    });
+                }
+            });
+        });
+
+        // Reading Progress Bar & Scroll Spy
+        if (bodyScrollHandler) {
+            modalPaperBody.removeEventListener('scroll', bodyScrollHandler);
+        }
+
+        if (readerProgressBar) readerProgressBar.style.width = '0%';
+
+        bodyScrollHandler = () => {
+            const scrollTotal = modalPaperBody.scrollHeight - modalPaperBody.clientHeight;
+            if (scrollTotal > 0 && readerProgressBar) {
+                const pct = (modalPaperBody.scrollTop / scrollTotal) * 100;
+                readerProgressBar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+            }
+
+            // Scroll-Spy for ToC
+            const headings = modalPaperBody.querySelectorAll('.modal-doc-h2');
+            let currentSecId = '';
+            headings.forEach(h => {
+                const top = h.offsetTop - modalPaperBody.offsetTop;
+                if (modalPaperBody.scrollTop >= top - 60) {
+                    currentSecId = h.getAttribute('id');
+                }
+            });
+
+            if (currentSecId && readerTocNav) {
+                readerTocNav.querySelectorAll('.toc-link').forEach(l => {
+                    if (l.getAttribute('data-target') === currentSecId) {
+                        l.classList.add('active');
+                    } else {
+                        l.classList.remove('active');
+                    }
+                });
+            }
+        };
+
+        modalPaperBody.addEventListener('scroll', bodyScrollHandler, { passive: true });
+
+        // Show Modal
+        paperModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePaperModal() {
+        if (paperModalOverlay) {
+            paperModalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        if (readerProgressBar) {
+            readerProgressBar.style.width = '0%';
+        }
+        if (window.location.hash.startsWith('#article/')) {
+            history.pushState('', document.title, window.location.pathname + window.location.search);
+        }
+    }
+
+    // Share Button Handler (Deep Link)
+    if (modalShareBtn) {
+        modalShareBtn.addEventListener('click', () => {
+            if (!currentActiveDoc) return;
+            const shareUrl = window.location.origin + window.location.pathname + `#article/${currentActiveDoc.id || ''}`;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const origHtml = modalShareBtn.innerHTML;
+                modalShareBtn.classList.add('copied');
+                modalShareBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Enlace copiado!</span>';
+                setTimeout(() => {
+                    modalShareBtn.classList.remove('copied');
+                    modalShareBtn.innerHTML = origHtml;
+                }, 2200);
+            }).catch(() => {
+                prompt('Enlace directo al artículo:', shareUrl);
+            });
+        });
+    }
+
+    // Initial check for #article/ deep link on load
+    function checkInitialArticleHash() {
+        if (window.location.hash && window.location.hash.startsWith('#article/')) {
+            const articleId = window.location.hash.replace('#article/', '').trim();
+            if (articleId) {
+                setTimeout(() => {
+                    openPaperModal(articleId);
+                }, 600);
+            }
+        }
+    }
+
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash && window.location.hash.startsWith('#article/')) {
+            const articleId = window.location.hash.replace('#article/', '').trim();
+            if (articleId && (!currentActiveDoc || currentActiveDoc.id !== articleId)) {
+                openPaperModal(articleId);
+            }
+        } else if (!window.location.hash || !window.location.hash.startsWith('#article/')) {
+            if (paperModalOverlay && paperModalOverlay.classList.contains('active')) {
+                closePaperModal();
+            }
+        }
+    });
+
+    checkInitialArticleHash();
+
+    // Event delegation for all read paper buttons (existing & dynamic)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-read-paper, .pub-btn-read, .btn-read-guide');
+        if (btn) {
+            e.preventDefault();
+            const paperId = btn.getAttribute('data-paper');
+            const mode = btn.getAttribute("data-mode") || (btn.classList.contains("btn-read-guide") ? "guide" : "paper");
+            if (paperId) openPaperModal(paperId, mode);
+        }
+    });
+
+    // BibTeX Citation Copy Handler
+    const modalCiteBtn = document.getElementById('modal-cite-btn');
+    if (modalCiteBtn) {
+        modalCiteBtn.addEventListener('click', () => {
+            if (!currentActiveDoc) return;
+            const cleanDoi = (currentActiveDoc.doi || 'NOC2026').replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            const bibtex = `@article{escobar2026_${cleanDoi},
+  author    = {Escobar, Leonardo},
+  title     = {${currentActiveDoc.title}},
+  journal   = {NOC Datacenter Systems & Engineering Research Hub},
+  year      = {2026},
+  note      = {${currentActiveDoc.doi}}
+}`;
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const originalHtml = modalCiteBtn.innerHTML;
+                modalCiteBtn.classList.add('copied');
+                modalCiteBtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> <span>¡Copiado!</span>';
+                setTimeout(() => {
+                    modalCiteBtn.classList.remove('copied');
+                    modalCiteBtn.innerHTML = originalHtml;
+                }, 2200);
+            }).catch(() => {
+                alert('Cita BibTeX:\n\n' + bibtex);
+            });
+        });
+    }
+
+    // Print / PDF Export Handler
+    const modalPrintBtn = document.getElementById('modal-print-btn');
+    if (modalPrintBtn) {
+        modalPrintBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closePaperModal);
+    if (modalCloseBottomBtn) modalCloseBottomBtn.addEventListener('click', closePaperModal);
+    if (paperModalOverlay) {
+        paperModalOverlay.addEventListener('click', (e) => {
+            if (e.target === paperModalOverlay) closePaperModal();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePaperModal();
+    });
+});
+
+, display: false },
+                        { left: '\\(', right: '\\)', display: false },
+                        { left: '\\[', right: '\\]', display: true }
+                    ],
+                    throwOnError: false
+                });
+            } catch (err) {
+                console.warn('[KaTeX] Error:', err);
+            }
+        }
+    }
+
     async function openPaperModal(paperId, initialMode = "paper") {
         if (!paperModalOverlay || !modalPaperBody) return;
 
