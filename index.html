@@ -1863,6 +1863,216 @@
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
+        /* ========================================================
+           PAIR BADGE, GUIDE BUTTON & DOCUMENT MODE SWITCHER
+           ======================================================== */
+        .feed-card-pair-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .btn-read-guide {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(245, 158, 11, 0.12);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            padding: 0.55rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-read-guide:hover {
+            background: rgba(245, 158, 11, 0.22);
+            border-color: #f59e0b;
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+        }
+
+        .reader-doc-switcher-bar {
+            flex: 0 0 auto;
+            background: #060912;
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            z-index: 5;
+        }
+
+        .reader-switcher-group {
+            display: inline-flex;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 3px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            gap: 4px;
+        }
+
+        .reader-switcher-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-sans);
+        }
+
+        .reader-switcher-tab:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .reader-switcher-tab.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.22));
+            color: #fff;
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+        }
+
+        .reader-switcher-tab#tab-mode-guide.active {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(217, 119, 6, 0.22));
+            border-color: rgba(245, 158, 11, 0.55);
+            color: #fbbf24;
+        }
+
+        .switcher-tag {
+            font-size: 0.66rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .reader-switcher-meta {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .switcher-mode-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--accent-cyan);
+        }
+
+        .reader-guide-callout-banner {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(99, 102, 241, 0.08));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: var(--radius-md);
+            padding: 1.15rem 1.35rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .reader-guide-callout-banner.guide-active-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(234, 88, 12, 0.08));
+            border-color: rgba(245, 158, 11, 0.35);
+        }
+
+        .reader-guide-callout-banner .callout-icon {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .reader-guide-callout-banner.guide-active-banner .callout-icon {
+            color: var(--accent-amber);
+        }
+
+        .reader-guide-callout-banner .callout-content {
+            flex: 1 1 300px;
+        }
+
+        .reader-guide-callout-banner .callout-content strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 0.96rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .reader-guide-callout-banner .callout-content p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .btn-switch-to-guide {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #fff;
+            border: none;
+            padding: 0.55rem 0.95rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-switch-to-guide:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-switch-to-paper {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+            color: #fff;
+            border: none;
+            padding: 0.55rem 0.95rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-switch-to-paper:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
 
         /* LIST VIEW CARD SPECIFIC */
         .feed-row-view {
@@ -3609,6 +3819,28 @@
                 </div>
             </div>
 
+            <!-- DOCUMENT MODE SWITCHER (PAPER vs GUÍA Y DICCIONARIO) -->
+            <div class="reader-doc-switcher-bar" id="reader-doc-switcher-bar">
+                <div class="reader-switcher-group">
+                    <button type="button" class="reader-switcher-tab active" id="tab-mode-paper">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span id="tab-label-paper">Investigación Técnica (Paper)</span>
+                    </button>
+                    <button type="button" class="reader-switcher-tab" id="tab-mode-guide">
+                        <ion-icon name="book-outline"></ion-icon>
+                        <span id="tab-label-guide">Guía Conceptual &amp; Diccionario</span>
+                        <span class="switcher-tag">Para no técnicos</span>
+                    </button>
+                </div>
+                <div class="reader-switcher-meta">
+                    <span class="switcher-mode-badge">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span id="switcher-mode-desc">Modo: Investigación Científica Formal</span>
+                    </span>
+                </div>
+            </div>
+
+
             <div class="reader-layout-wrapper">
                 <aside class="reader-toc-sidebar" id="reader-toc-sidebar">
                     <div class="toc-header">
@@ -3814,6 +4046,7 @@
         let currentSearchTerm = '';
         let currentViewMode = 'grid';
         let currentActiveDoc = null;
+        let currentReaderMode = 'paper'; // 'paper' or 'guide'
 
         async function loadDriveArticles(forceRefresh = false) {
             try {
@@ -3821,27 +4054,6 @@
                     allDriveArticles = await window.DriveSync.getArticles(forceRefresh);
                 } else if (typeof window.convertLegacyPapersToArticles === 'function') {
                     allDriveArticles = window.convertLegacyPapersToArticles();
-                } else if (window.papersDatabase) {
-                    allDriveArticles = Object.entries(window.papersDatabase).map(([id, p]) => ({
-                        id: id,
-                        title: p.title,
-                        title_en: p.title,
-                        category: 'infra',
-                        categoryLabel: 'Infraestructura & Telecom',
-                        categoryLabel_en: 'Infrastructure & Telecom',
-                        date: '2026-08-20',
-                        readTime: '~12 min',
-                        doi: p.doi || 'REF: NOC-2026',
-                        featured: false,
-                        driveLink: 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing',
-                        author: 'Leonardo Escobar',
-                        authorRole: 'ICT Engineer @ Huawei Technologies',
-                        tags: ['Infraestructura', 'Huawei'],
-                        abstract: p.abstract,
-                        abstract_en: p.abstract,
-                        sections: p.sections || [],
-                        references: p.references || []
-                    }));
                 }
             } catch (err) {
                 console.error('[Drive Hub] Error al cargar artículos:', err);
@@ -3861,7 +4073,7 @@
                 if (!matchesCat) return false;
 
                 if (!term) return true;
-                const titleStr = (art.title + ' ' + (art.title_en || '')).toLowerCase();
+                const titleStr = (art.title + ' ' + (art.title_en || '') + ' ' + (art.folderName || '') + (art.guide ? art.guide.title : '')).toLowerCase();
                 const abstractStr = (art.abstract + ' ' + (art.abstract_en || '')).toLowerCase();
                 const tagsStr = (art.tags || []).join(' ').toLowerCase();
                 const doiStr = (art.doi || '').toLowerCase();
@@ -3895,9 +4107,14 @@
                                 <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted);">
                                     <ion-icon name="calendar-outline" style="vertical-align: middle;"></ion-icon> ${art.date}
                                 </span>
-                                <button class="btn-read-paper" data-paper="${art.id}">
-                                    <ion-icon name="book-outline"></ion-icon> <span>${currentLang === 'en' ? 'Read' : 'Leer'}</span>
+                                <button class="btn-read-paper" data-paper="${art.id}" data-mode="paper">
+                                    <ion-icon name="document-text-outline"></ion-icon> <span>${currentLang === 'en' ? 'Paper' : 'Paper'}</span>
                                 </button>
+                                ${art.guide ? `
+                                <button class="btn-read-guide" data-paper="${art.id}" data-mode="guide" style="padding:0.4rem 0.65rem; font-size:0.75rem;">
+                                    <ion-icon name="book-outline"></ion-icon> <span>${currentLang === 'en' ? 'Guide' : 'Guía'}</span>
+                                </button>
+                                ` : ''}
                             </div>
                         </div>
                     `;
@@ -3918,15 +4135,16 @@
                                     <div class="feed-card-badges">
                                         <span class="feed-cat-badge ${catClass}">${catLabel}</span>
                                         <span class="feed-card-doi">${art.doi || 'REF: NOC-2026'}</span>
+                                        ${art.guide ? `<span class="feed-card-pair-badge"><ion-icon name="documents-outline"></ion-icon> Paper + Diccionario</span>` : ''}
                                     </div>
-                                    <a href="${driveUrl}" target="_blank" rel="noopener" class="feed-card-drive-pill" title="Ver subcarpeta en Google Drive">
-                                        <ion-icon name="logo-google"></ion-icon> Drive Verified
+                                    <a href="${driveUrl}" target="_blank" rel="noopener" class="feed-card-drive-pill" title="Abrir subcarpeta oficial en Google Drive">
+                                        <ion-icon name="folder-open-outline"></ion-icon> Subcarpeta Drive
                                     </a>
                                 </div>
                                 <h3 class="feed-card-title">${title}</h3>
                                 <div class="feed-card-date-row">
                                     <span><ion-icon name="calendar-outline"></ion-icon> ${art.date}</span>
-                                    <span><ion-icon name="time-outline"></ion-icon> ${art.readTime || '~15 min'}</span>
+                                    <span><ion-icon name="time-outline"></ion-icon> ${art.readTime || '~18 min'}</span>
                                 </div>
                                 <p class="feed-card-abstract">${abstract}</p>
                                 <div class="feed-card-tags">
@@ -3934,12 +4152,18 @@
                                 </div>
                             </div>
                             <div class="feed-card-footer">
-                                <button class="btn-read-paper" data-paper="${art.id}">
-                                    <ion-icon name="book-outline"></ion-icon>
-                                    <span>${currentLang === 'en' ? 'Read Paper' : 'Leer Paper Completo'}</span>
+                                <button class="btn-read-paper" data-paper="${art.id}" data-mode="paper" title="Leer Investigación Científica Formal">
+                                    <ion-icon name="document-text-outline"></ion-icon>
+                                    <span>${currentLang === 'en' ? 'Technical Paper' : 'Paper Científico'}</span>
                                 </button>
-                                <a href="${driveUrl}" target="_blank" rel="noopener" class="btn-open-drive" title="Abrir en Google Drive">
-                                    <ion-icon name="open-outline"></ion-icon>
+                                ${art.guide ? `
+                                <button class="btn-read-guide" data-paper="${art.id}" data-mode="guide" title="Leer Guía Conceptual y Diccionario para no técnicos">
+                                    <ion-icon name="book-outline"></ion-icon>
+                                    <span>${currentLang === 'en' ? 'Guide & Dictionary' : 'Guía & Diccionario'}</span>
+                                </button>
+                                ` : ''}
+                                <a href="${driveUrl}" target="_blank" rel="noopener" class="btn-open-drive" title="Abrir subcarpeta en Google Drive">
+                                    <ion-icon name="folder-outline"></ion-icon>
                                     <span>${currentLang === 'en' ? 'Drive' : 'En Drive'}</span>
                                 </a>
                                 <button class="btn-cite-paper" data-cite="${art.id}" title="Copiar Cita BibTeX">
@@ -3955,7 +4179,15 @@
             container.querySelectorAll('.btn-read-paper').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const paperId = btn.getAttribute('data-paper');
-                    if (paperId) openPaperModal(paperId);
+                    const mode = btn.getAttribute('data-mode') || 'paper';
+                    if (paperId) openPaperModal(paperId, mode);
+                });
+            });
+
+            container.querySelectorAll('.btn-read-guide').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const paperId = btn.getAttribute('data-paper');
+                    if (paperId) openPaperModal(paperId, 'guide');
                 });
             });
 
@@ -3967,32 +4199,15 @@
             });
         }
 
-        async function openPaperModal(paperId) {
-            let doc = allDriveArticles.find(a => a.id === paperId);
+        async function openPaperModal(paperId, initialMode = 'paper') {
+            let doc = allDriveArticles.find(a => a.id === paperId || a.paperId === paperId);
             if (!doc && window.DriveSync && typeof window.DriveSync.getArticleById === 'function') {
                 doc = await window.DriveSync.getArticleById(paperId);
-            }
-            if (!doc && window.papersDatabase && window.papersDatabase[paperId]) {
-                const p = window.papersDatabase[paperId];
-                doc = {
-                    id: paperId,
-                    title: p.title,
-                    title_en: p.title,
-                    category: 'infra',
-                    categoryLabel: 'Infraestructura',
-                    doi: p.doi || 'REF: NOC-2026',
-                    driveLink: window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing',
-                    author: 'Leonardo Escobar',
-                    authorRole: 'ICT Engineer @ Huawei Technologies',
-                    abstract: p.abstract,
-                    abstract_en: p.abstract,
-                    sections: p.sections || [],
-                    references: p.references || []
-                };
             }
             if (!doc) return;
 
             currentActiveDoc = doc;
+            currentReaderMode = (initialMode === 'guide' && doc.guide) ? 'guide' : 'paper';
 
             const overlay = document.getElementById('paper-modal-overlay');
             const modalBody = document.getElementById('modal-paper-body');
@@ -4002,121 +4217,222 @@
             const tocDriveLink = document.getElementById('reader-toc-drive-link');
             const tocNav = document.getElementById('reader-toc-nav');
             const progressBar = document.getElementById('reader-progress-bar');
+            const tabPaper = document.getElementById('tab-mode-paper');
+            const tabGuide = document.getElementById('tab-mode-guide');
+            const switcherDesc = document.getElementById('switcher-mode-desc');
 
-            if (typeEl) typeEl.textContent = (doc.categoryLabel ? doc.categoryLabel.toUpperCase() : 'RESEARCH ARTICLE');
-            if (doiEl) doiEl.textContent = doc.doi || 'REF: NOC-2026';
-
-            const driveUrl = doc.driveLink || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing');
-            if (externalLink) externalLink.href = driveUrl;
-            if (tocDriveLink) tocDriveLink.href = driveUrl;
-
-            const title = (currentLang === 'en' && doc.title_en) ? doc.title_en : doc.title;
-            const abstract = (currentLang === 'en' && doc.abstract_en) ? doc.abstract_en : doc.abstract;
-            const author = doc.author || 'Leonardo Escobar';
-            const role = doc.authorRole || 'ICT Engineer & Datacenter Specialist';
-            const date = doc.date || '2026-10-13';
-
-            // Populate Table of Contents
-            if (tocNav) {
-                let tocHtml = `<li><a href="#reader-sec-abstract" class="toc-link active">${currentLang === 'en' ? 'Abstract' : 'Resumen'}</a></li>`;
-                if (doc.sections && doc.sections.length > 0) {
-                    doc.sections.forEach((sec, idx) => {
-                        tocHtml += `<li><a href="#reader-sec-${idx}" class="toc-link">${sec.heading}</a></li>`;
-                    });
-                }
-                if (doc.references && doc.references.length > 0) {
-                    tocHtml += `<li><a href="#reader-sec-refs" class="toc-link">${currentLang === 'en' ? 'References' : 'Referencias'}</a></li>`;
-                }
-                tocNav.innerHTML = tocHtml;
-
-                tocNav.querySelectorAll('.toc-link').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const targetId = link.getAttribute('href').substring(1);
-                        const targetEl = document.getElementById(targetId);
-                        if (targetEl && modalBody) {
-                            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                    });
-                });
+            // Wire Tab Switchers
+            if (tabPaper) {
+                tabPaper.onclick = () => {
+                    currentReaderMode = 'paper';
+                    renderActiveModalMode();
+                };
             }
 
-            // Populate Main Body
-            let bodyHtml = `
-                <h1 class="modal-doc-title">${title}</h1>
-                <div class="modal-doc-meta">
-                    <strong>${author}</strong> &bull; ${role} &bull; <span>${date}</span> &bull; <span>${doc.doi || 'REF: NOC-2026'}</span>
-                </div>
-                <div class="modal-doc-abstract" id="reader-sec-abstract">
-                    <strong>ABSTRACT / RESUMEN EJECUTIVO:</strong>
-                    <p>${abstract}</p>
-                </div>
-            `;
+            if (tabGuide) {
+                if (doc.guide) {
+                    tabGuide.style.display = 'inline-flex';
+                    tabGuide.onclick = () => {
+                        currentReaderMode = 'guide';
+                        renderActiveModalMode();
+                    };
+                } else {
+                    tabGuide.style.display = 'none';
+                }
+            }
 
-            if (doc.sections && doc.sections.length > 0) {
-                doc.sections.forEach((sec, idx) => {
-                    let contentHtml = sec.content || '';
-                    if (sec.code) {
-                        contentHtml += `<code>${sec.code}</code>`;
+            function renderActiveModalMode() {
+                const isGuide = currentReaderMode === 'guide' && doc.guide;
+                const activeData = isGuide ? doc.guide : doc;
+
+                if (tabPaper) tabPaper.classList.toggle('active', !isGuide);
+                if (tabGuide) tabGuide.classList.toggle('active', isGuide);
+
+                if (switcherDesc) {
+                    switcherDesc.textContent = isGuide
+                        ? (currentLang === 'en' ? 'Mode: Plain-Language Guide & Conceptual Dictionary' : 'Modo: Guía Conceptual y Diccionario Divulgativo')
+                        : (currentLang === 'en' ? 'Mode: Formal Scientific Research (Technical Paper)' : 'Modo: Investigación Científica Formal (Paper)');
+                }
+
+                if (typeEl) {
+                    typeEl.textContent = isGuide
+                        ? (currentLang === 'en' ? 'PLAIN-LANGUAGE GUIDE & DICTIONARY' : 'GUÍA CONCEPTUAL & DICCIONARIO')
+                        : (doc.categoryLabel ? doc.categoryLabel.toUpperCase() : 'RESEARCH ARTICLE');
+                }
+
+                if (doiEl) doiEl.textContent = doc.doi || 'REF: NOC-2026';
+
+                const targetDocUrl = isGuide 
+                    ? (doc.guide.guideUrl || doc.driveLink)
+                    : (doc.paperUrl || doc.driveLink || (window.DriveSync ? window.DriveSync.getPublicFolderUrl() : 'https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing'));
+
+                if (externalLink) externalLink.href = targetDocUrl;
+                if (tocDriveLink) tocDriveLink.href = doc.driveLink || targetDocUrl;
+
+                const title = (currentLang === 'en' && activeData.title_en) ? activeData.title_en : activeData.title;
+                const abstract = (currentLang === 'en' && activeData.abstract_en) ? activeData.abstract_en : activeData.abstract;
+                const author = doc.author || 'Leonardo Escobar';
+                const role = isGuide 
+                    ? (currentLang === 'en' ? 'Iniciativa Synesis Humano-IA • Plain-Language Guide' : 'Iniciativa Synesis Humano-IA • Guía Divulgativa')
+                    : (doc.authorRole || 'ICT Engineer & Datacenter Specialist');
+                const date = doc.date || '2026-10-18';
+
+                // Populate Table of Contents
+                if (tocNav) {
+                    let tocHtml = `<li><a href="#reader-sec-abstract" class="toc-link active">${currentLang === 'en' ? 'Abstract' : 'Resumen'}</a></li>`;
+                    if (activeData.sections && activeData.sections.length > 0) {
+                        activeData.sections.forEach((sec, idx) => {
+                            tocHtml += `<li><a href="#reader-sec-${idx}" class="toc-link">${sec.heading}</a></li>`;
+                        });
                     }
-                    bodyHtml += `
-                        <div class="modal-section" id="reader-sec-${idx}">
-                            <h3 class="modal-section-heading">${sec.heading}</h3>
-                            <div class="modal-section-content">${contentHtml}</div>
-                        </div>
-                    `;
-                });
-            }
+                    if (activeData.references && activeData.references.length > 0) {
+                        tocHtml += `<li><a href="#reader-sec-refs" class="toc-link">${currentLang === 'en' ? 'References' : 'Referencias'}</a></li>`;
+                    }
+                    tocNav.innerHTML = tocHtml;
 
-            if (doc.references && doc.references.length > 0) {
-                bodyHtml += `
-                    <div class="modal-section" id="reader-sec-refs">
-                        <h3 class="modal-section-heading">${currentLang === 'en' ? 'References & Citations' : 'Referencias y Bibliografía'}</h3>
-                        <ol class="modal-references-list">
-                            ${doc.references.map(r => `<li>${r}</li>`).join('')}
-                        </ol>
-                    </div>
-                `;
-            }
+                    tocNav.querySelectorAll('.toc-link').forEach(link => {
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const targetId = link.getAttribute('href').substring(1);
+                            const targetEl = document.getElementById(targetId);
+                            if (targetEl && modalBody) {
+                                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                    });
+                }
 
-            // End-of-document action card
-            bodyHtml += `
-                <div class="modal-doc-end-banner">
-                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem;">
-                        <div>
-                            <div style="font-family: var(--font-mono); font-size:0.75rem; color:var(--accent-cyan); margin-bottom:0.35rem; display:flex; align-items:center; gap:0.4rem;">
-                                <ion-icon name="checkmark-done-circle" style="font-size:1.1rem; color:var(--accent-emerald);"></ion-icon>
-                                <span>FIN DEL DOCUMENTO &bull; REPOSITORIO OFICIAL GOOGLE DRIVE</span>
+                // Callout Banner
+                let bannerHtml = '';
+                if (!isGuide && doc.guide) {
+                    bannerHtml = `
+                        <div class="reader-guide-callout-banner">
+                            <div class="callout-icon"><ion-icon name="bulb-outline"></ion-icon></div>
+                            <div class="callout-content">
+                                <strong>${currentLang === 'en' ? 'Is this paper too technical or math-dense?' : '¿Esta investigación resulta muy técnica o matemática?'}</strong>
+                                <p>${currentLang === 'en' ? 'This research folder includes a companion Conceptual Guide & Plain-Language Dictionary with intuitive real-world analogies, formula translations, and accessible glossary.' : 'Esta investigación incluye en su carpeta una Guía Conceptual y Diccionario divulgativo con analogías sencillas, tabla traductora de fórmulas y glosario de términos para comprenderla fácilmente.'}</p>
                             </div>
-                            <div style="font-size:0.86rem; color:var(--text-secondary); line-height:1.5;">
-                                Documento técnico indexado en este portal y disponible en formato original PDF en Google Drive.
-                            </div>
-                        </div>
-                        <div style="display:flex; gap:0.65rem; flex-wrap:wrap; align-items:center;">
-                            <a href="${driveUrl}" target="_blank" rel="noopener" class="modal-tool-btn" style="border-color:var(--accent-cyan); color:var(--accent-cyan);">
-                                <ion-icon name="logo-google"></ion-icon> Ver en Google Drive
-                            </a>
-                            <button type="button" class="modal-tool-btn btn-modal-scroll-top" id="btn-modal-scroll-top">
-                                <ion-icon name="arrow-up-outline"></ion-icon> Volver al Inicio
+                            <button type="button" class="btn-switch-to-guide" id="btn-callout-guide">
+                                <ion-icon name="book-outline"></ion-icon>
+                                <span>${currentLang === 'en' ? 'Open Guide & Dictionary' : 'Abrir Guía & Diccionario'}</span>
                             </button>
                         </div>
+                    `;
+                } else if (isGuide) {
+                    bannerHtml = `
+                        <div class="reader-guide-callout-banner guide-active-banner">
+                            <div class="callout-icon"><ion-icon name="school-outline"></ion-icon></div>
+                            <div class="callout-content">
+                                <strong>${currentLang === 'en' ? 'Plain-Language Companion Guide & Conceptual Dictionary' : 'Guía Conceptual y Divulgativa de Comprensión'}</strong>
+                                <p>${currentLang === 'en' ? 'Translating cutting-edge 6G, neuromorphic, photonic, and bio-molecular concepts into accessible everyday intuition.' : 'Diseñada para traducir conceptos científicos de frontera a un lenguaje accesible con analogías de la vida cotidiana.'}</p>
+                            </div>
+                            <button type="button" class="btn-switch-to-paper" id="btn-callout-paper">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                                <span>${currentLang === 'en' ? 'View Formal Scientific Paper' : 'Ver Paper Científico Formal'}</span>
+                            </button>
+                        </div>
+                    `;
+                }
+
+                // Populate Main Body
+                let bodyHtml = `
+                    <h1 class="modal-doc-title">${title}</h1>
+                    <div class="modal-doc-meta">
+                        <strong>${author}</strong> &bull; ${role} &bull; <span>${date}</span> &bull; <span>${doc.doi || 'REF: NOC-2026'}</span>
                     </div>
-                </div>
-            `;
+                    ${bannerHtml}
+                    <div class="modal-doc-abstract" id="reader-sec-abstract">
+                        <strong>${isGuide ? (currentLang === 'en' ? 'GUIDE OVERVIEW & PURPOSE:' : 'OBJETIVO Y ENFOQUE DIVULGATIVO:') : 'ABSTRACT / RESUMEN EJECUTIVO:'}</strong>
+                        <p>${abstract}</p>
+                    </div>
+                `;
 
-            if (modalBody) {
-                modalBody.innerHTML = bodyHtml;
-                modalBody.scrollTop = 0;
-
-                const scrollTopBtn = modalBody.querySelector('#btn-modal-scroll-top');
-                if (scrollTopBtn) {
-                    scrollTopBtn.addEventListener('click', () => {
-                        modalBody.scrollTo({ top: 0, behavior: 'smooth' });
+                if (activeData.sections && activeData.sections.length > 0) {
+                    activeData.sections.forEach((sec, idx) => {
+                        let contentHtml = sec.content || '';
+                        if (sec.code) {
+                            contentHtml += `<code>${sec.code}</code>`;
+                        }
+                        bodyHtml += `
+                            <div class="modal-section" id="reader-sec-${idx}">
+                                <h3 class="modal-section-heading">${sec.heading}</h3>
+                                <div class="modal-section-content">${contentHtml}</div>
+                            </div>
+                        `;
                     });
                 }
+
+                if (activeData.references && activeData.references.length > 0) {
+                    bodyHtml += `
+                        <div class="modal-section" id="reader-sec-refs">
+                            <h3 class="modal-section-heading">${currentLang === 'en' ? 'References & Citations' : 'Referencias y Bibliografía'}</h3>
+                            <ol class="modal-references-list">
+                                ${activeData.references.map(r => `<li>${r}</li>`).join('')}
+                            </ol>
+                        </div>
+                    `;
+                }
+
+                // End-of-document action card
+                bodyHtml += `
+                    <div class="modal-doc-end-banner">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem;">
+                            <div>
+                                <div style="font-family: var(--font-mono); font-size:0.75rem; color:var(--accent-cyan); margin-bottom:0.35rem; display:flex; align-items:center; gap:0.4rem;">
+                                    <ion-icon name="checkmark-done-circle" style="font-size:1.1rem; color:var(--accent-emerald);"></ion-icon>
+                                    <span>FIN DEL DOCUMENTO &bull; REPOSITORIO OFICIAL GOOGLE DRIVE</span>
+                                </div>
+                                <div style="font-size:0.86rem; color:var(--text-secondary); line-height:1.5;">
+                                    Investigación técnica indexada en este portal y disponible en formato original en Google Drive.
+                                </div>
+                            </div>
+                            <div style="display:flex; gap:0.65rem; flex-wrap:wrap; align-items:center;">
+                                <a href="${targetDocUrl}" target="_blank" rel="noopener" class="modal-tool-btn" style="border-color:var(--accent-cyan); color:var(--accent-cyan);">
+                                    <ion-icon name="open-outline"></ion-icon> Ver Documento en Drive
+                                </a>
+                                <a href="${doc.driveLink}" target="_blank" rel="noopener" class="modal-tool-btn">
+                                    <ion-icon name="folder-open-outline"></ion-icon> Subcarpeta Completa
+                                </a>
+                                <button type="button" class="modal-tool-btn btn-modal-scroll-top" id="btn-modal-scroll-top">
+                                    <ion-icon name="arrow-up-outline"></ion-icon> Volver al Inicio
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                if (modalBody) {
+                    modalBody.innerHTML = bodyHtml;
+                    modalBody.scrollTop = 0;
+
+                    const scrollTopBtn = modalBody.querySelector('#btn-modal-scroll-top');
+                    if (scrollTopBtn) {
+                        scrollTopBtn.addEventListener('click', () => {
+                            modalBody.scrollTo({ top: 0, behavior: 'smooth' });
+                        });
+                    }
+
+                    const calloutGuideBtn = modalBody.querySelector('#btn-callout-guide');
+                    if (calloutGuideBtn) {
+                        calloutGuideBtn.addEventListener('click', () => {
+                            currentReaderMode = 'guide';
+                            renderActiveModalMode();
+                        });
+                    }
+
+                    const calloutPaperBtn = modalBody.querySelector('#btn-callout-paper');
+                    if (calloutPaperBtn) {
+                        calloutPaperBtn.addEventListener('click', () => {
+                            currentReaderMode = 'paper';
+                            renderActiveModalMode();
+                        });
+                    }
+                }
+
+                if (progressBar) progressBar.style.width = '0%';
             }
 
-            if (progressBar) progressBar.style.width = '0%';
+            renderActiveModalMode();
 
             if (overlay) {
                 overlay.classList.add('open');

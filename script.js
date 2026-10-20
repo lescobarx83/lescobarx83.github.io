@@ -1664,7 +1664,7 @@ Swap:        2097148           0     2097148`);
     let currentActiveDoc = null;
     let bodyScrollHandler = null;
 
-    async function openPaperModal(paperId) {
+    async function openPaperModal(paperId, initialMode = "paper") {
         if (!paperModalOverlay || !modalPaperBody) return;
 
         let doc = null;
@@ -1734,8 +1734,10 @@ Swap:        2097148           0     2097148`);
         }
 
         // Build Title, Meta & Abstract
-        const title = currentLang === 'en' && doc.title_en ? doc.title_en : doc.title;
-        const abstract = currentLang === 'en' && doc.abstract_en ? doc.abstract_en : doc.abstract;
+        const isGuide = initialMode === 'guide' && doc.guide;
+        const activeData = isGuide ? doc.guide : doc;
+        const title = currentLang === 'en' && activeData.title_en ? activeData.title_en : activeData.title;
+        const abstract = currentLang === 'en' && activeData.abstract_en ? activeData.abstract_en : activeData.abstract;
         const meta = doc.meta || `Autor: Leonardo Escobar &bull; Categoría: ${doc.categoryLabel || 'Infraestructura'} &bull; NOC Knowledge Hub`;
 
         let bodyHtml = `
@@ -1748,8 +1750,8 @@ Swap:        2097148           0     2097148`);
         `;
 
         // Build Sections & Code Blocks
-        if (doc.sections && Array.isArray(doc.sections)) {
-            doc.sections.forEach((sec, idx) => {
+        if (activeData.sections && Array.isArray(activeData.sections)) {
+            activeData.sections.forEach((sec, idx) => {
                 const secId = `sec-heading-${idx}`;
                 bodyHtml += `<h2 class="modal-doc-h2" id="${secId}">${sec.heading}</h2>`;
                 if (sec.content) {
@@ -1772,13 +1774,13 @@ Swap:        2097148           0     2097148`);
         }
 
         // Build References
-        if (doc.references && Array.isArray(doc.references)) {
+        if (activeData.references && Array.isArray(activeData.references)) {
             bodyHtml += `
                 <div class="modal-doc-references" id="sec-references">
                     <h2 class="modal-doc-h2"><ion-icon name="library-outline"></ion-icon> Fuentes &amp; Referencias Técnicas</h2>
                     <ul class="modal-doc-ref-list">
             `;
-            doc.references.forEach(ref => {
+            activeData.references.forEach(ref => {
                 bodyHtml += `<li class="modal-ref-item">&bull; ${ref}</li>`;
             });
             bodyHtml += `</ul></div>`;
@@ -1936,11 +1938,12 @@ Swap:        2097148           0     2097148`);
 
     // Event delegation for all read paper buttons (existing & dynamic)
     document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn-read-paper, .pub-btn-read');
+        const btn = e.target.closest('.btn-read-paper, .pub-btn-read, .btn-read-guide');
         if (btn) {
             e.preventDefault();
             const paperId = btn.getAttribute('data-paper');
-            if (paperId) openPaperModal(paperId);
+            const mode = btn.getAttribute("data-mode") || (btn.classList.contains("btn-read-guide") ? "guide" : "paper");
+            if (paperId) openPaperModal(paperId, mode);
         }
     });
 
