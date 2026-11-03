@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    <script>document.documentElement.classList.add('js');</script>
     <style>
         :root {
             --bg-base: #060911;
@@ -42,6 +43,17 @@
             --radius-lg: 16px;
             --radius-md: 12px;
             --radius-sm: 8px;
+            /* Emil Kowalski & Taste Skill v2 Motion Tokens */
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+            --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+            --ease-exit: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            --t-press: 140ms;
+            --t-hover: 180ms;
+            --t-ui: 220ms;
+            --t-reveal: 700ms;
+            --stagger-item: 60ms;
         }
 
         * {
@@ -191,7 +203,7 @@
             font-size: 0.78rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease;
         }
 
         .lang-btn:hover {
@@ -275,7 +287,7 @@
             font-weight: 600;
             font-size: 0.92rem;
             text-decoration: none;
-            transition: all 0.22s ease;
+            transition: transform var(--t-press) var(--ease-out), box-shadow var(--t-hover) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease;
             cursor: pointer;
             border: 1px solid transparent;
         }
@@ -491,7 +503,7 @@
             padding: 0.2rem;
             border-radius: 4px;
             opacity: 0.8;
-            transition: all 0.2s;
+            transition: opacity var(--t-hover) ease, background-color var(--t-hover) ease, color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
             flex-shrink: 0;
         }
 
@@ -600,7 +612,7 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform var(--t-ui) var(--ease-out), border-color var(--t-hover) ease, box-shadow var(--t-ui) var(--ease-out);
             position: relative;
             overflow: hidden;
         }
@@ -745,7 +757,7 @@
             border-radius: 999px;
             text-decoration: none;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-            transition: all 0.25s ease;
+            transition: transform var(--t-ui) var(--ease-out), opacity var(--t-ui) var(--ease-out), border-color var(--t-hover) ease, box-shadow var(--t-ui) var(--ease-out);
         }
 
         .bridge-btn:hover {
@@ -949,7 +961,7 @@
             border: 1px solid rgba(148, 163, 184, 0.12);
             border-radius: var(--radius-sm);
             padding: 1.25rem 1.15rem;
-            transition: all 0.2s ease;
+            transition: transform var(--t-ui) var(--ease-out), border-color var(--t-hover) ease, background-color var(--t-hover) ease;
         }
 
         .hardware-spec-box:hover {
@@ -1011,7 +1023,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.25s ease;
+            transition: transform var(--t-ui) var(--ease-out), border-color var(--t-hover) ease, box-shadow var(--t-ui) var(--ease-out);
         }
 
         .workload-card:hover {
@@ -1472,7 +1484,7 @@
             font-size: 0.78rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .btn-drive-folder:hover {
@@ -1495,7 +1507,7 @@
             font-size: 0.78rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .drive-sync-trigger-btn:hover {
@@ -1555,7 +1567,7 @@
             color: var(--text-primary);
             font-family: var(--font-sans);
             font-size: 0.9rem;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .search-input-wrap input:focus {
@@ -1599,7 +1611,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.05rem;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .view-btn.active,
@@ -1634,7 +1646,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .feed-filter-pill:hover {
@@ -1682,7 +1694,7 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            transition: all 0.25s ease;
+            transition: transform var(--t-ui) var(--ease-out), opacity var(--t-ui) var(--ease-out), border-color var(--t-hover) ease, box-shadow var(--t-ui) var(--ease-out);
         }
 
         .feed-article-card:hover {
@@ -1763,7 +1775,7 @@
             padding: 0.15rem 0.45rem;
             border-radius: 4px;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .feed-card-drive-pill:hover {
@@ -1829,7 +1841,7 @@
             font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .btn-read-paper:hover {
@@ -1849,7 +1861,7 @@
             font-size: 0.82rem;
             font-weight: 500;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .btn-open-drive:hover {
@@ -1869,7 +1881,7 @@
             font-family: var(--font-mono);
             font-size: 0.76rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .btn-cite-paper:hover {
@@ -1904,7 +1916,7 @@
             font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .btn-read-guide:hover {
@@ -1949,7 +1961,7 @@
             font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
             font-family: var(--font-sans);
         }
 
@@ -2056,7 +2068,7 @@
             font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
             white-space: nowrap;
         }
 
@@ -2077,7 +2089,7 @@
             font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
             white-space: nowrap;
         }
 
@@ -2114,7 +2126,7 @@
             font-family: var(--font-mono);
             font-size: 0.73rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
             user-select: none;
         }
 
@@ -2298,7 +2310,7 @@
             padding: 0.75rem 1rem;
             margin: 0.85rem 0;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .search-match-preview:hover {
@@ -2351,7 +2363,7 @@
             font-size: 0.78rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .btn-split-shortcut:hover {
@@ -2395,7 +2407,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 1.5rem;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .feed-row-view:hover {
@@ -2500,9 +2512,11 @@
 
         .reader-progress-bar {
             height: 100%;
-            width: 0%;
+            width: 100%;
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
-            transition: width 0.08s ease-out;
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            transition: transform 80ms var(--ease-out);
         }
 
         .paper-modal {
@@ -2590,7 +2604,7 @@
             align-items: center;
             gap: 0.35rem;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .modal-tool-btn:hover {
@@ -2610,7 +2624,7 @@
             justify-content: center;
             cursor: pointer;
             font-size: 1.2rem;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .paper-modal-close:hover {
@@ -2665,7 +2679,7 @@
             display: block;
             padding: 0.35rem 0.55rem;
             border-radius: var(--radius-sm);
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .toc-nav a:hover,
@@ -2824,7 +2838,7 @@
             border-radius: 4px;
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid rgba(16, 185, 129, 0.25);
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .telemetry-arenai-link:hover {
@@ -2867,7 +2881,7 @@
             align-items: center;
             gap: 0.4rem;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .btn-arenai-nav:hover {
@@ -2924,7 +2938,7 @@
             font-weight: 700;
             padding: 0.2rem 0.55rem;
             border-radius: 999px;
-            transition: all 0.2s ease;
+            transition: transform var(--t-press) var(--ease-out), border-color var(--t-hover) ease, color var(--t-hover) ease, background-color var(--t-hover) ease, box-shadow var(--t-hover) var(--ease-out);
         }
 
         .arenai-visual-link:hover .arenai-visual {
@@ -2954,7 +2968,7 @@
             z-index: 2000;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.25s ease;
+            transition: transform var(--t-ui) var(--ease-out), opacity var(--t-ui) var(--ease-out), border-color var(--t-hover) ease, box-shadow var(--t-ui) var(--ease-out);
             pointer-events: none;
         }
 
@@ -2986,10 +3000,413 @@
                 padding: 1.5rem 1.25rem 6rem 1.25rem;
             }
         }
+
+        /* =========================================================================
+           EMIL KOWALSKI DESIGN ENGINEERING, TASTE SKILL V2 & MODERN WEB GUIDANCE
+           ========================================================================= */
+
+        /* 1. Top Scroll-Driven Progress Indicator (Compositor-Only transform: scaleX) */
+        .viewport-scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @supports (animation-timeline: scroll()) {
+            @media (prefers-reduced-motion: no-preference) {
+                .viewport-scroll-progress {
+                    animation: scrollProgressScale linear both;
+                    animation-timeline: scroll(root);
+                }
+
+                @keyframes scrollProgressScale {
+                    from {
+                        transform: scaleX(0);
+                    }
+
+                    to {
+                        transform: scaleX(1);
+                    }
+                }
+            }
+        }
+
+        /* 2. Tabular Numerals for Telemetry, KPIs & Storage Capacities */
+        .kpi-value,
+        .spec-box-val,
+        .telemetry-bar,
+        .feed-meta-count,
+        .nas-sim-metric-val,
+        .nas-sim-bar-pct {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* 3. Tactile Press Feedback (Emil Kowalski: scale(0.97) on :active, 140ms --ease-out) */
+        .btn:active,
+        .lang-btn:active,
+        .bridge-btn:active,
+        .btn-drive-folder:active,
+        .drive-sync-trigger-btn:active,
+        .view-btn:active,
+        .feed-filter-pill:active,
+        .btn-read-paper:active,
+        .btn-open-drive:active,
+        .btn-cite-paper:active,
+        .btn-read-guide:active,
+        .btn-split-shortcut:active,
+        .btn-switch-to-guide:active,
+        .btn-switch-to-paper:active,
+        .reader-switcher-tab:active,
+        .reader-sync-scroll-btn:active,
+        .modal-tool-btn:active,
+        .paper-modal-close:active,
+        .btn-arenai-nav:active,
+        .sandbox-banner-close:active,
+        .nas-sim-preset-btn:active {
+            transform: scale(0.97) !important;
+            transition-duration: var(--t-press) !important;
+        }
+
+        /* 4. Touch-Safe Pointer Hover Gating (@media (hover: hover) and (pointer: fine)) */
+        @media (hover: none), (pointer: coarse) {
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .btn-arenai:hover,
+            .btn-arenai-nav:hover,
+            .bridge-btn:hover,
+            .gemini-pillar-card:hover,
+            .hardware-spec-box:hover,
+            .workload-card:hover,
+            .feed-article-card:hover,
+            .arenai-visual-link:hover .arenai-visual {
+                transform: none;
+            }
+        }
+
+        /* 5. Blur-Masked Language Crossfade (Emil Kowalski: filter: blur(2px) masks state swap) */
+        [data-i18n] {
+            transition: filter 180ms ease, opacity 180ms ease;
+        }
+
+        [data-i18n].i18n-transitioning {
+            filter: blur(2px);
+            opacity: 0.72;
+        }
+
+        /* 6. Modal Entrance/Exit from scale(0.96) + @starting-style & Compositor Reader Bar */
+        .reader-progress-bar {
+            width: 100%;
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            transition: transform 80ms var(--ease-out);
+        }
+
+        .paper-modal {
+            transform-origin: center;
+            opacity: 0;
+            transform: scale(0.96) translateY(8px);
+            transition:
+                opacity 240ms var(--ease-out),
+                transform 240ms var(--ease-out);
+        }
+
+        .paper-modal-overlay.open .paper-modal {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+
+            @starting-style {
+                opacity: 0;
+                transform: scale(0.96) translateY(8px);
+            }
+        }
+
+        /* 7. Sonner-Style Interruptible Toast Notification */
+        .toast-notification {
+            transform: translateY(100%) scale(0.96);
+            transition:
+                opacity 360ms var(--ease-out),
+                transform 360ms var(--ease-out);
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* 8. Choreographed 1.1s Hero Load & Staggered Section Reveals */
+        @media (prefers-reduced-motion: no-preference) {
+            .js .hero .eyebrow {
+                opacity: 0;
+                transform: translateY(12px);
+                animation: heroLoadRise 550ms var(--ease-expo) 60ms forwards;
+            }
+
+            .js .hero h1 {
+                opacity: 0;
+                transform: translateY(16px);
+                animation: heroLoadRise 700ms var(--ease-expo) 130ms forwards;
+            }
+
+            .js .hero .hero-subtitle {
+                opacity: 0;
+                transform: translateY(14px);
+                animation: heroLoadRise 650ms var(--ease-expo) 220ms forwards;
+            }
+
+            .js .hero .cta-group {
+                opacity: 0;
+                transform: translateY(12px);
+                animation: heroLoadRise 600ms var(--ease-expo) 300ms forwards;
+            }
+
+            .js .hero .kpi-card {
+                opacity: 0;
+                transform: translateY(12px);
+                animation: heroLoadRise 550ms var(--ease-expo) forwards;
+            }
+
+            .js .hero .kpi-card:nth-child(1) {
+                animation-delay: 360ms;
+            }
+
+            .js .hero .kpi-card:nth-child(2) {
+                animation-delay: 420ms;
+            }
+
+            .js .hero .kpi-card:nth-child(3) {
+                animation-delay: 480ms;
+            }
+
+            .js .hero .console-card {
+                opacity: 0;
+                transform: translateY(16px) scale(0.985);
+                animation: heroLoadRise 750ms var(--ease-expo) 200ms forwards;
+            }
+
+            @keyframes heroLoadRise {
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            .js [data-reveal] {
+                opacity: 0;
+                transform: translateY(18px);
+                transition:
+                    opacity 650ms var(--ease-expo) var(--reveal-delay, 0ms),
+                    transform 650ms var(--ease-expo) var(--reveal-delay, 0ms);
+            }
+
+            .js [data-reveal].is-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 9. Interactive Jonsbo N4 NAS & Distributed AI Telemetry Simulator ("One Live Thing") */
+        .nas-live-simulator {
+            background: rgba(8, 12, 23, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: var(--radius-md);
+            padding: 1.4rem 1.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .nas-sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.15rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        }
+
+        .nas-sim-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .nas-sim-title {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .nas-sim-sub {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .nas-sim-presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .nas-sim-preset-btn {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: var(--text-secondary);
+            padding: 0.42rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition:
+                transform var(--t-press) var(--ease-out),
+                background-color var(--t-hover) ease,
+                border-color var(--t-hover) ease,
+                color var(--t-hover) ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .nas-sim-preset-btn:hover {
+                border-color: var(--accent-cyan);
+                color: var(--text-primary);
+            }
+        }
+
+        .nas-sim-preset-btn.active {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--accent-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .nas-sim-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .nas-sim-metric-card {
+            background: rgba(13, 19, 34, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: var(--radius-sm);
+            padding: 0.9rem 1rem;
+        }
+
+        .nas-sim-metric-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.4rem;
+            gap: 0.5rem;
+        }
+
+        .nas-sim-metric-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .nas-sim-bar-pct {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .nas-sim-metric-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.55rem;
+            transition: filter 160ms ease, opacity 160ms ease;
+        }
+
+        .nas-sim-bar-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(148, 163, 184, 0.14);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .nas-sim-bar-fill {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+            transform-origin: 0 50%;
+            transform: scaleX(0.18);
+            transition: transform 260ms var(--ease-out);
+        }
+
+        .nas-sim-status-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            background: rgba(6, 9, 17, 0.75);
+            padding: 0.6rem 0.9rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .nas-sim-status-line strong {
+            color: var(--accent-emerald);
+        }
+
+        @media (max-width: 992px) {
+            .nas-sim-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nas-sim-metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 10. Reduced Motion Compliance (Modern Web Guidance & Emil Kowalski) */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .status-dot,
+            .rig-status-pill .pulse-dot,
+            .btn-arenai-pulse,
+            .bridge-btn ion-icon,
+            .roadmap-item.in-progress ion-icon {
+                animation: none !important;
+            }
+
+            .paper-modal,
+            .toast-notification,
+            .nas-sim-bar-fill {
+                transition: opacity 150ms ease !important;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div class="viewport-scroll-progress" aria-hidden="true"></div>
 
     <!-- LIVE EXPERIMENTAL SANDBOX NOTIFICATION BANNER -->
     <div class="live-sandbox-banner" id="liveSandboxBanner">
@@ -3811,6 +4228,88 @@
                     </div>
                 </div>
 
+                <!-- INTERACTIVE JONSBO N4 NAS & DISTRIBUTED AI TELEMETRY SIMULATOR (TASTE SKILL V2 "ONE LIVE THING") -->
+                <div class="nas-live-simulator" id="nas-live-simulator" data-ui>
+                    <div class="nas-sim-header">
+                        <div class="nas-sim-title-group">
+                            <ion-icon name="pulse-outline" style="color: var(--accent-emerald); font-size: 1.25rem;"></ion-icon>
+                            <div>
+                                <div class="nas-sim-title" id="nas-sim-title">INTERACTIVE PROXMOX VE &amp; WORKLOAD ALLOCATION SIMULATOR</div>
+                                <div class="nas-sim-sub" id="nas-sim-sub">Selecciona un perfil de carga para inspeccionar la asignación de recursos en el Jonsbo N4 NAS:</div>
+                            </div>
+                        </div>
+                        <div class="nas-sim-presets" role="tablist" aria-label="Perfiles de carga Jonsbo N4 NAS">
+                            <button type="button" class="nas-sim-preset-btn active" data-preset="ollama" onclick="setNasWorkloadPreset('ollama')">
+                                <ion-icon name="bulb-outline"></ion-icon>
+                                <span>Ollama LXC</span>
+                            </button>
+                            <button type="button" class="nas-sim-preset-btn" data-preset="distributed" onclick="setNasWorkloadPreset('distributed')">
+                                <ion-icon name="git-branch-outline"></ion-icon>
+                                <span>NAS + RX 7800 XT</span>
+                            </button>
+                            <button type="button" class="nas-sim-preset-btn" data-preset="pelican" onclick="setNasWorkloadPreset('pelican')">
+                                <ion-icon name="game-controller-outline"></ion-icon>
+                                <span>Pelican Game Host</span>
+                            </button>
+                            <button type="button" class="nas-sim-preset-btn" data-preset="idle" onclick="setNasWorkloadPreset('idle')">
+                                <ion-icon name="server-outline"></ion-icon>
+                                <span>NAS / SMB Idle</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="nas-sim-metrics-grid">
+                        <div class="nas-sim-metric-card">
+                            <div class="nas-sim-metric-top">
+                                <span class="nas-sim-metric-label">APU RYZEN 7 5700G + VEGA 8</span>
+                                <span class="nas-sim-bar-pct" id="nas-pct-cpu">78%</span>
+                            </div>
+                            <div class="nas-sim-metric-val" id="nas-val-cpu">12 / 16 Threads Active (AVX2 + iGPU)</div>
+                            <div class="nas-sim-bar-track">
+                                <div class="nas-sim-bar-fill" id="nas-bar-cpu" style="transform: scaleX(0.78);"></div>
+                            </div>
+                        </div>
+
+                        <div class="nas-sim-metric-card">
+                            <div class="nas-sim-metric-top">
+                                <span class="nas-sim-metric-label">DDR4 MEMORY (32 GB)</span>
+                                <span class="nas-sim-bar-pct" id="nas-pct-ram">62%</span>
+                            </div>
+                            <div class="nas-sim-metric-val" id="nas-val-ram">19.8 / 32.0 GB (GGUF Q4_K_M + ZFS)</div>
+                            <div class="nas-sim-bar-track">
+                                <div class="nas-sim-bar-fill" id="nas-bar-ram" style="transform: scaleX(0.62);"></div>
+                            </div>
+                        </div>
+
+                        <div class="nas-sim-metric-card">
+                            <div class="nas-sim-metric-top">
+                                <span class="nas-sim-metric-label">STORAGE (500G SSD + 8T/4T HDD)</span>
+                                <span class="nas-sim-bar-pct" id="nas-pct-io">68%</span>
+                            </div>
+                            <div class="nas-sim-metric-val" id="nas-val-io">520 MB/s SATA SSD • Weights Cache</div>
+                            <div class="nas-sim-bar-track">
+                                <div class="nas-sim-bar-fill" id="nas-bar-io" style="transform: scaleX(0.68);"></div>
+                            </div>
+                        </div>
+
+                        <div class="nas-sim-metric-card">
+                            <div class="nas-sim-metric-top">
+                                <span class="nas-sim-metric-label">AGILER 600W SFX &amp; THROUGHPUT</span>
+                                <span class="nas-sim-bar-pct" id="nas-pct-pwr">~84W</span>
+                            </div>
+                            <div class="nas-sim-metric-val" id="nas-val-pwr">~24.6 tok/s Local LLM API • 58°C</div>
+                            <div class="nas-sim-bar-track">
+                                <div class="nas-sim-bar-fill" id="nas-bar-pwr" style="transform: scaleX(0.42);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nas-sim-status-line">
+                        <span id="nas-sim-status-text"><strong>[PROXMOX LXC #104 — OLLAMA CORE]</strong> Sirviendo modelos cuantizados en LAN con aceleración compartida Radeon Vega 8 y baja huella energética.</span>
+                        <span>BACKPLANE: JONSBO N4 HOT-SWAP 3.5" &bull; HYPERVISOR: PROXMOX VE 8.x</span>
+                    </div>
+                </div>
+
                 <!-- ROADMAP PROGRESS BAR -->
                 <div class="roadmap-bar">
                     <div class="roadmap-item done">
@@ -4406,20 +4905,149 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (I18N[currentLang][key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = I18N[currentLang][key];
-                    } else if (I18N[currentLang][key].includes('<')) {
-                        el.innerHTML = I18N[currentLang][key];
-                    } else {
-                        el.textContent = I18N[currentLang][key];
+            const i18nElements = document.querySelectorAll('[data-i18n]');
+            i18nElements.forEach(el => el.classList.add('i18n-transitioning'));
+
+            setTimeout(() => {
+                i18nElements.forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (I18N[currentLang][key]) {
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                            el.placeholder = I18N[currentLang][key];
+                        } else if (I18N[currentLang][key].includes('<')) {
+                            el.innerHTML = I18N[currentLang][key];
+                        } else {
+                            el.textContent = I18N[currentLang][key];
+                        }
                     }
+                    el.classList.remove('i18n-transitioning');
+                });
+                if (typeof window.setNasWorkloadPreset === 'function') {
+                    window.setNasWorkloadPreset(window.currentNasPreset || 'ollama');
                 }
-            });
-            renderArticlesFeed();
+                renderArticlesFeed();
+            }, 140);
         }
+
+        // Interactive Jonsbo N4 NAS & Distributed AI Workload Telemetry Simulator
+        window.currentNasPreset = 'ollama';
+        const NAS_PRESETS = {
+            ollama: {
+                cpuPct: '78%', cpuScale: 0.78,
+                ramPct: '62%', ramScale: 0.62,
+                ioPct: '68%', ioScale: 0.68,
+                pwrPct: '~84W', pwrScale: 0.42,
+                es: {
+                    cpuVal: '12 / 16 Hilos Activos (AVX2 + Vega 8)',
+                    ramVal: '19.8 / 32.0 GB (GGUF Q4_K_M + LXC)',
+                    ioVal: '520 MB/s SATA SSD • Caché de Pesos',
+                    pwrVal: '~24.6 tok/s Local LLM API • 58°C',
+                    status: '<strong>[PROXMOX LXC #104 — OLLAMA CORE]</strong> Sirviendo modelos cuantizados en LAN con aceleración compartida Radeon Vega 8 y baja huella energética.'
+                },
+                en: {
+                    cpuVal: '12 / 16 Threads Active (AVX2 + Vega 8)',
+                    ramVal: '19.8 / 32.0 GB (GGUF Q4_K_M + LXC)',
+                    ioVal: '520 MB/s SATA SSD • Weights Cache',
+                    pwrVal: '~24.6 tok/s Local LLM API • 58°C',
+                    status: '<strong>[PROXMOX LXC #104 — OLLAMA CORE]</strong> Serving quantized LLMs over LAN with shared Radeon Vega 8 iGPU acceleration and low power draw.'
+                }
+            },
+            distributed: {
+                cpuPct: '46%', cpuScale: 0.46,
+                ramPct: '76%', ramScale: 0.76,
+                ioPct: '85%', ioScale: 0.85,
+                pwrPct: '~72W', pwrScale: 0.36,
+                es: {
+                    cpuVal: '8 / 16 Hilos (Data Loader & Embeddings)',
+                    ramVal: '24.2 / 32.0 GB (RAG Vector Index Cache)',
+                    ioVal: '8TB + 4TB HDD Array • Stream 215 MB/s',
+                    pwrVal: 'Sync → Workstation RX 7800 XT (16GB VRAM)',
+                    status: '<strong>[DISTRIBUTED PIPELINE + RAG MOUNT]</strong> El Jonsbo N4 NAS alimenta datasets y embeddings desde los discos de 8TB/4TB hacia el nodo de escritorio con AMD Radeon RX 7800 XT.'
+                },
+                en: {
+                    cpuVal: '8 / 16 Threads (Data Loader & Embeddings)',
+                    ramVal: '24.2 / 32.0 GB (RAG Vector Index Cache)',
+                    ioVal: '8TB + 4TB HDD Array • 215 MB/s Stream',
+                    pwrVal: 'Sync → RX 7800 XT Workstation (16GB VRAM)',
+                    status: '<strong>[DISTRIBUTED PIPELINE + RAG MOUNT]</strong> Jonsbo N4 NAS streams RAG datasets and embeddings from the 8TB/4TB HDD arrays to the AMD Radeon RX 7800 XT execution node.'
+                }
+            },
+            pelican: {
+                cpuPct: '64%', cpuScale: 0.64,
+                ramPct: '70%', ramScale: 0.70,
+                ioPct: '54%', ioScale: 0.54,
+                pwrPct: '~76W', pwrScale: 0.38,
+                es: {
+                    cpuVal: '10 / 16 Hilos (Pinning de Baja Latencia)',
+                    ramVal: '22.4 / 32.0 GB (Contenedores Pelican Wings)',
+                    ioVal: '500 GB SATA SSD • IOPS de Mundo Activo',
+                    pwrVal: '1.2 ms UDP Jitter • Hosting Recreativo',
+                    status: '<strong>[PELICAN PANEL & WINGS — GAME SERVERS]</strong> Pruebas recreativas de capacidad hosteando servidores multijugador en contenedores aislados sobre Proxmox VE.'
+                },
+                en: {
+                    cpuVal: '10 / 16 Threads (Low-Latency Pinning)',
+                    ramVal: '22.4 / 32.0 GB (Pelican Wings Containers)',
+                    ioVal: '500 GB SATA SSD • Active World IOPS',
+                    pwrVal: '1.2 ms UDP Jitter • Recreational Hosting',
+                    status: '<strong>[PELICAN PANEL & WINGS — GAME SERVERS]</strong> Recreational capacity testing hosting dedicated multiplayer game servers in isolated containers on Proxmox VE.'
+                }
+            },
+            idle: {
+                cpuPct: '8%', cpuScale: 0.08,
+                ramPct: '20%', ramScale: 0.20,
+                ioPct: '14%', ioScale: 0.14,
+                pwrPct: '~28W', pwrScale: 0.14,
+                es: {
+                    cpuVal: '2 / 16 Hilos (Proxmox VE & Daemons)',
+                    ramVal: '6.4 / 32.0 GB (ARC / Caché Base)',
+                    ioVal: '8TB + 4TB HDD Standby • 500G SSD Activo',
+                    pwrVal: 'Eficiencia C-States Zen 3 • 37°C',
+                    status: '<strong>[PROXMOX VE BASELINE — NAS STANDBY]</strong> Operación silenciosa 24/7 con bajo consumo en fuente Agiler 600W SFX y bahías Hot-Swap listas bajo demanda.'
+                },
+                en: {
+                    cpuVal: '2 / 16 Threads (Proxmox VE & Daemons)',
+                    ramVal: '6.4 / 32.0 GB (ARC / Base Cache)',
+                    ioVal: '8TB + 4TB HDD Standby • 500G SSD Active',
+                    pwrVal: 'Zen 3 C-States Efficiency • 37°C',
+                    status: '<strong>[PROXMOX VE BASELINE — NAS STANDBY]</strong> Quiet 24/7 operation with minimal power draw on the Agiler 600W SFX PSU and Hot-Swap bays ready on demand.'
+                }
+            }
+        };
+
+        window.setNasWorkloadPreset = function (presetKey) {
+            const preset = NAS_PRESETS[presetKey] || NAS_PRESETS.ollama;
+            window.currentNasPreset = presetKey;
+            const langData = preset[currentLang] || preset.es;
+
+            document.querySelectorAll('.nas-sim-preset-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-preset') === presetKey);
+            });
+
+            const setBar = (idPct, idVal, idBar, pctText, valText, scaleVal) => {
+                const elPct = document.getElementById(idPct);
+                const elVal = document.getElementById(idVal);
+                const elBar = document.getElementById(idBar);
+                if (elPct) elPct.textContent = pctText;
+                if (elVal) {
+                    elVal.style.filter = 'blur(2px)';
+                    elVal.style.opacity = '0.7';
+                    setTimeout(() => {
+                        elVal.textContent = valText;
+                        elVal.style.filter = 'none';
+                        elVal.style.opacity = '1';
+                    }, 90);
+                }
+                if (elBar) elBar.style.transform = `scaleX(${scaleVal})`;
+            };
+
+            setBar('nas-pct-cpu', 'nas-val-cpu', 'nas-bar-cpu', preset.cpuPct, langData.cpuVal, preset.cpuScale);
+            setBar('nas-pct-ram', 'nas-val-ram', 'nas-bar-ram', preset.ramPct, langData.ramVal, preset.ramScale);
+            setBar('nas-pct-io', 'nas-val-io', 'nas-bar-io', preset.ioPct, langData.ioVal, preset.ioScale);
+            setBar('nas-pct-pwr', 'nas-val-pwr', 'nas-bar-pwr', preset.pwrPct, langData.pwrVal, preset.pwrScale);
+
+            const statusEl = document.getElementById('nas-sim-status-text');
+            if (statusEl) statusEl.innerHTML = langData.status;
+        };
 
         // ========================================================
         // GOOGLE DRIVE RESEARCH HUB PIPELINE & READER MODAL
@@ -5168,7 +5796,7 @@
                     }
                 }
 
-                if (progressBar) progressBar.style.width = '0%';
+                if (progressBar) progressBar.style.transform = 'scaleX(0)';
             }
 
             renderActiveModalMode();
@@ -5356,9 +5984,39 @@
             if (modalBody && progressBar) {
                 modalBody.addEventListener('scroll', () => {
                     const scrollH = modalBody.scrollHeight - modalBody.clientHeight;
-                    const pct = scrollH > 0 ? (modalBody.scrollTop / scrollH) * 100 : 0;
-                    progressBar.style.width = Math.min(100, pct) + '%';
+                    const ratio = scrollH > 0 ? Math.min(1, Math.max(0, modalBody.scrollTop / scrollH)) : 0;
+                    progressBar.style.transform = `scaleX(${ratio})`;
                 }, { passive: true });
+            }
+
+            // Once-only IntersectionObserver for Staggered Section & Card Reveals
+            if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const revealGroups = [
+                    '.gemini-pillars-grid .gemini-pillar-card',
+                    '.hardware-specs-grid .hardware-spec-box',
+                    '.storage-layout-grid .hardware-spec-box',
+                    '.workloads-grid .workload-card',
+                    '.competencies-grid .competency-card',
+                    '.timeline .timeline-item',
+                    '.honors-grid .award-card'
+                ];
+                revealGroups.forEach(selector => {
+                    document.querySelectorAll(selector).forEach((el, idx) => {
+                        el.setAttribute('data-reveal', '');
+                        el.style.setProperty('--reveal-delay', `${Math.min(idx * 60, 240)}ms`);
+                    });
+                });
+
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-in');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+                document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
             }
 
             if (shareBtn) {
