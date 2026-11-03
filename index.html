@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap"
         rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -3402,6 +3402,871 @@
                 transition: opacity 150ms ease !important;
             }
         }
+
+        /* =========================================================================
+           ARCHITECTURAL OVERHAUL V3: MONUMENTAL SCROLLYTELLING, PINNED JONSBO N4
+           STAGE, LIVE GEMINI BENCHMARK ARENA, 6G CANVAS & INSTANT ⌘K PALETTE
+           ========================================================================= */
+        :root {
+            --font-display: 'Space Grotesk', 'Inter', sans-serif;
+            --font-monument: 'Syne', 'Space Grotesk', sans-serif;
+            --font-editorial: 'Instrument Serif', Georgia, serif;
+            --hero-scroll: 0;
+            --scene-p: 0;
+        }
+
+        /* Architectural Section Typography & Editorial Accent */
+        .section-title,
+        .rig-name,
+        .pillar-title {
+            font-family: var(--font-display);
+            letter-spacing: -0.03em;
+        }
+
+        .editorial-serif {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            color: #e2e8f0;
+        }
+
+        .section-index-watermark {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 5.2rem);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(56, 189, 248, 0.24);
+            user-select: none;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* 11. Shrinking Floating HUD Navbar (modern-web-guidance: shrinking-header-on-scroll) */
+        .navbar {
+            transition:
+                padding 260ms var(--ease-out),
+                background-color 260ms ease,
+                border-color 260ms ease,
+                box-shadow 260ms var(--ease-out);
+        }
+
+        .navbar.is-scrolled {
+            padding: 0.5rem 1.25rem;
+            background: rgba(6, 9, 17, 0.88);
+            border-bottom-color: rgba(56, 189, 248, 0.32);
+            box-shadow: 0 18px 45px -12px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.08);
+        }
+
+        @supports (animation-timeline: scroll()) {
+            @media (prefers-reduced-motion: no-preference) {
+                .navbar {
+                    animation: shrinkHeaderOnScroll linear both;
+                    animation-timeline: scroll(root);
+                    animation-range: 0px 140px;
+                }
+
+                @keyframes shrinkHeaderOnScroll {
+                    from {
+                        padding-block: 0.9rem;
+                        background-color: rgba(13, 19, 34, 0.78);
+                    }
+                    to {
+                        padding-block: 0.48rem;
+                        background-color: rgba(5, 8, 16, 0.92);
+                        box-shadow: 0 18px 45px -12px rgba(0, 0, 0, 0.85);
+                    }
+                }
+            }
+        }
+
+        .cmdk-trigger-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.32);
+            color: var(--text-primary);
+            padding: 0.38rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition:
+                transform var(--t-press) var(--ease-out),
+                border-color var(--t-hover) ease,
+                background-color var(--t-hover) ease,
+                color var(--t-hover) ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .cmdk-trigger-btn:hover {
+                border-color: var(--accent-cyan);
+                background: rgba(56, 189, 248, 0.14);
+                color: var(--accent-cyan);
+            }
+        }
+
+        .cmdk-trigger-btn:active {
+            transform: scale(0.97) !important;
+        }
+
+        .cmdk-kbd {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            background: rgba(56, 189, 248, 0.14);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.08rem 0.38rem;
+            border-radius: 4px;
+        }
+
+        /* 12. Right-Edge Architectural Chapter Scrubber Rail */
+        .chapter-rail {
+            position: fixed;
+            right: 1.1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 95;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            background: rgba(6, 9, 17, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 999px;
+            padding: 0.65rem 0.4rem;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+        }
+
+        .chapter-rail-item {
+            position: relative;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition:
+                transform var(--t-press) var(--ease-out),
+                color var(--t-hover) ease,
+                background-color var(--t-hover) ease,
+                border-color var(--t-hover) ease;
+        }
+
+        .chapter-rail-item.active {
+            background: rgba(56, 189, 248, 0.16);
+            border-color: rgba(56, 189, 248, 0.55);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+        }
+
+        .chapter-rail-tooltip {
+            position: absolute;
+            right: calc(100% + 10px);
+            top: 50%;
+            transform: translateY(-50%) translateX(6px);
+            background: #070b15;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            white-space: nowrap;
+            padding: 0.28rem 0.6rem;
+            border-radius: 6px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 160ms ease, transform 160ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .chapter-rail-item:hover {
+                color: var(--text-primary);
+                background: rgba(148, 163, 184, 0.12);
+            }
+
+            .chapter-rail-item:hover .chapter-rail-tooltip {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .chapter-rail {
+                display: none;
+            }
+        }
+
+        /* 13. Monumental Hero Overhaul + Interactive 6G/SNN Signal Canvas */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 3.5rem 0 4.5rem;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .hero-signal-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.72;
+        }
+
+        .hero > .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .monument-marquee-band {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2.25rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+            transform: translateY(calc(var(--hero-scroll, 0) * -18px)) scale(calc(1 - var(--hero-scroll, 0) * 0.03));
+            transform-origin: left center;
+            will-change: transform;
+        }
+
+        .monument-name-display {
+            font-family: var(--font-monument);
+            font-size: clamp(2.35rem, 6.2vw, 5.4rem);
+            font-weight: 800;
+            line-height: 0.94;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            background: linear-gradient(95deg, #ffffff 0%, #bae6fd 52%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .monument-coordinates {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .monument-coordinates strong {
+            color: var(--accent-cyan);
+        }
+
+        /* Interactive 3-Tab Hero Architecture Console */
+        .console-tabs-bar {
+            display: flex;
+            gap: 0.35rem;
+            background: #050811;
+            padding: 0.45rem 0.85rem;
+            border-bottom: 1px solid var(--border-subtle);
+            overflow-x: auto;
+        }
+
+        .console-tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.3rem 0.65rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            white-space: nowrap;
+            transition:
+                transform var(--t-press) var(--ease-out),
+                background-color var(--t-hover) ease,
+                color var(--t-hover) ease,
+                border-color var(--t-hover) ease;
+        }
+
+        .console-tab-btn.active {
+            background: rgba(56, 189, 248, 0.14);
+            border-color: rgba(56, 189, 248, 0.4);
+            color: var(--accent-cyan);
+        }
+
+        .console-pane {
+            display: none;
+        }
+
+        .console-pane.active {
+            display: block;
+        }
+
+        /* Console Interactive CLI Shell */
+        .hero-cli-shell {
+            background: #050811;
+            border-radius: var(--radius-sm);
+            padding: 0.9rem;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+        }
+
+        .hero-cli-output {
+            min-height: 210px;
+            max-height: 230px;
+            overflow-y: auto;
+            color: #cbd5e1;
+            line-height: 1.55;
+            margin-bottom: 0.75rem;
+            padding-right: 0.35rem;
+        }
+
+        .hero-cli-line {
+            margin-bottom: 0.45rem;
+        }
+
+        .hero-cli-prompt {
+            color: var(--accent-emerald);
+            font-weight: 700;
+        }
+
+        .hero-cli-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed rgba(148, 163, 184, 0.15);
+        }
+
+        .hero-cli-chip {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.69rem;
+            padding: 0.22rem 0.55rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
+        }
+
+        .hero-cli-chip:hover {
+            background: rgba(56, 189, 248, 0.18);
+            color: #fff;
+        }
+
+        .hero-cli-chip:active {
+            transform: scale(0.96);
+        }
+
+        /* 14. Interactive Gemini Frontier Benchmark Arena (#gemini-arena) */
+        .gemini-arena-box {
+            background: linear-gradient(180deg, rgba(10, 15, 29, 0.95) 0%, rgba(6, 9, 18, 0.98) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.32);
+            border-radius: var(--radius-lg);
+            padding: 1.65rem 1.75rem;
+            margin-bottom: 2.25rem;
+            box-shadow: 0 22px 50px -12px rgba(0, 0, 0, 0.75);
+        }
+
+        .gemini-arena-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.1rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .gemini-arena-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .arena-scenario-btn {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            color: var(--text-secondary);
+            padding: 0.42rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition:
+                transform var(--t-press) var(--ease-out),
+                border-color var(--t-hover) ease,
+                color var(--t-hover) ease,
+                background-color var(--t-hover) ease;
+        }
+
+        .arena-scenario-btn.active {
+            background: rgba(56, 189, 248, 0.16);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .arena-run-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+            color: #04060c;
+            border: none;
+            padding: 0.45rem 0.95rem;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: transform var(--t-press) var(--ease-out), box-shadow var(--t-hover) ease;
+        }
+
+        .arena-run-btn:active,
+        .arena-scenario-btn:active {
+            transform: scale(0.97) !important;
+        }
+
+        .gemini-arena-lanes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+        }
+
+        .arena-lane {
+            background: rgba(6, 9, 17, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .arena-lane-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+        }
+
+        .arena-ttft-badge {
+            font-variant-numeric: tabular-nums;
+            color: var(--accent-emerald);
+            font-weight: 700;
+        }
+
+        .arena-stream-box {
+            background: #04060c;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 6px;
+            padding: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.73rem;
+            color: #cbd5e1;
+            min-height: 108px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 960px) {
+            .gemini-arena-lanes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 15. Pinned 4-Beat Scrollytelling Stage: Jonsbo N4 NAS Architecture (#jonsbo-scroll-stage) */
+        .jonsbo-scrolly-stage {
+            position: relative;
+            min-height: 290svh;
+            margin-bottom: 3rem;
+        }
+
+        .jonsbo-sticky-viewport {
+            position: sticky;
+            top: 4.4rem;
+            min-height: calc(100svh - 5.2rem);
+            background: linear-gradient(165deg, rgba(12, 18, 34, 0.96) 0%, rgba(5, 8, 16, 0.99) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.32);
+            border-radius: var(--radius-lg);
+            padding: 1.6rem 1.85rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+        }
+
+        .jonsbo-stage-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .jonsbo-beat-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .jonsbo-beat-tab {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: var(--text-secondary);
+            padding: 0.38rem 0.78rem;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition:
+                transform var(--t-press) var(--ease-out),
+                background-color var(--t-hover) ease,
+                border-color var(--t-hover) ease,
+                color var(--t-hover) ease;
+        }
+
+        .jonsbo-beat-tab.active {
+            background: rgba(16, 185, 129, 0.16);
+            border-color: var(--accent-emerald);
+            color: var(--accent-emerald);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.22);
+        }
+
+        .jonsbo-stage-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 1.25fr;
+            gap: 2rem;
+            align-items: center;
+            margin: auto 0;
+            padding: 1.1rem 0;
+        }
+
+        .jonsbo-beat-deck {
+            position: relative;
+            min-height: 290px;
+            display: flex;
+            align-items: center;
+        }
+
+        .jonsbo-beat-card {
+            display: none;
+            flex-direction: column;
+            gap: 0.9rem;
+            animation: beatCardFade 280ms var(--ease-out) forwards;
+        }
+
+        .jonsbo-beat-card.active {
+            display: flex;
+        }
+
+        @keyframes beatCardFade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .jonsbo-beat-kicker {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .jonsbo-beat-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 2.4vw, 2rem);
+            font-weight: 800;
+            line-height: 1.18;
+            color: var(--text-primary);
+        }
+
+        .jonsbo-beat-body {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .jonsbo-beat-Telemetry-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.25rem;
+        }
+
+        .jonsbo-blueprint-wrap {
+            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.1), rgba(4, 6, 12, 0.95) 75%);
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .jonsbo-blueprint-svg {
+            width: 100%;
+            height: auto;
+            max-height: 390px;
+            display: block;
+        }
+
+        /* SVG Beat Highlight States */
+        .jonsbo-blueprint-svg .bp-group {
+            opacity: 0.28;
+            transition: opacity 320ms var(--ease-out), transform 380ms var(--ease-out), filter 320ms ease;
+        }
+
+        .jonsbo-scrolly-stage[data-beat="1"] .jonsbo-blueprint-svg .bp-beat-1,
+        .jonsbo-scrolly-stage[data-beat="2"] .jonsbo-blueprint-svg .bp-beat-2,
+        .jonsbo-scrolly-stage[data-beat="3"] .jonsbo-blueprint-svg .bp-beat-3,
+        .jonsbo-scrolly-stage[data-beat="4"] .jonsbo-blueprint-svg .bp-beat-4 {
+            opacity: 1;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35));
+        }
+
+        .bp-data-stream {
+            stroke-dasharray: 6 6;
+            animation: bpStreamFlow 1.4s linear infinite;
+        }
+
+        @keyframes bpStreamFlow {
+            to {
+                stroke-dashoffset: -24;
+            }
+        }
+
+        .jonsbo-stage-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.12);
+            font-family: var(--font-mono);
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        .jonsbo-scrub-track {
+            flex: 1;
+            min-width: 160px;
+            max-width: 320px;
+            height: 5px;
+            background: rgba(148, 163, 184, 0.16);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .jonsbo-scrub-fill {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald), var(--accent-amber));
+            transform-origin: 0 50%;
+            transform: scaleX(calc(var(--scene-p, 0.25)));
+            transition: transform 90ms linear;
+        }
+
+        @media (max-width: 960px), (prefers-reduced-motion: reduce) {
+            .jonsbo-scrolly-stage {
+                min-height: auto;
+            }
+
+            .jonsbo-sticky-viewport {
+                position: relative;
+                top: 0;
+                min-height: auto;
+            }
+
+            .jonsbo-stage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 16. Instant ⌘K Command Palette (Emil Kowalski Rule: 0ms open/close animation) */
+        .cmdk-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 6, 12, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10050;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 11vh 1rem 2rem;
+            /* Zero transition: Raycast-style instant keyboard response */
+        }
+
+        .cmdk-overlay.open {
+            display: flex;
+        }
+
+        .cmdk-modal {
+            width: 100%;
+            max-width: 640px;
+            background: #0a101f;
+            border: 1px solid rgba(56, 189, 248, 0.42);
+            border-radius: var(--radius-md);
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+        }
+
+        .cmdk-search-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1.15rem;
+            border-bottom: 1px solid var(--border-subtle);
+            background: #060a14;
+        }
+
+        .cmdk-search-bar ion-icon {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+        }
+
+        .cmdk-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .cmdk-results {
+            max-height: 360px;
+            overflow-y: auto;
+            padding: 0.5rem;
+        }
+
+        .cmdk-item {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0.65rem 0.85rem;
+            border-radius: var(--radius-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 0.86rem;
+        }
+
+        .cmdk-item.selected,
+        .cmdk-item:hover {
+            background: rgba(56, 189, 248, 0.14);
+            color: var(--text-primary);
+        }
+
+        .cmdk-item-left {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            min-width: 0;
+        }
+
+        .cmdk-item-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
+        }
+
+        .cmdk-item-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.12rem 0.45rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .cmdk-footer {
+            padding: 0.55rem 1rem;
+            background: #050811;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* 17. Pointer Spotlight Glow & Native CSS Scroll-Driven Entry Effects */
+        @media (hover: hover) and (pointer: fine) {
+            .gemini-pillar-card,
+            .comp-card,
+            .workload-card,
+            .feed-article-card {
+                background-image: radial-gradient(
+                    420px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                    rgba(56, 189, 248, 0.09),
+                    transparent 45%
+                );
+            }
+        }
+
+        @supports (animation-timeline: view()) {
+            @media (prefers-reduced-motion: no-preference) {
+                .timeline-item,
+                .award-card {
+                    animation: scrollViewEntry linear both;
+                    animation-timeline: view();
+                    animation-range: entry 0% entry 28%;
+                }
+
+                @keyframes scrollViewEntry {
+                    from {
+                        opacity: 0.15;
+                        transform: translateY(22px) scale(0.985);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                }
+            }
+        }
     </style>
 </head>
 
@@ -3447,10 +4312,42 @@
         </div>
     </div>
 
+    <!-- RIGHT-EDGE ARCHITECTURAL CHAPTER SCRUBBER RAIL -->
+    <nav class="chapter-rail" aria-label="Navegación de capítulos por scroll">
+        <a href="#top-monument" class="chapter-rail-item active" data-chapter="top-monument">
+            <span>00</span>
+            <span class="chapter-rail-tooltip">00 // MONUMENT &amp; CLI</span>
+        </a>
+        <a href="#gemini-lab" class="chapter-rail-item" data-chapter="gemini-lab">
+            <span>01</span>
+            <span class="chapter-rail-tooltip">01 // GEMINI ARENA</span>
+        </a>
+        <a href="#articles-feed" class="chapter-rail-item" data-chapter="articles-feed">
+            <span>02</span>
+            <span class="chapter-rail-tooltip">02 // DRIVE RESEARCH HUB</span>
+        </a>
+        <a href="#competencies" class="chapter-rail-item" data-chapter="competencies">
+            <span>03</span>
+            <span class="chapter-rail-tooltip">03 // STACK &amp; CAPABILITIES</span>
+        </a>
+        <a href="#hardware-lab" class="chapter-rail-item" data-chapter="hardware-lab">
+            <span>04</span>
+            <span class="chapter-rail-tooltip">04 // JONSBO N4 SCROLL STAGE</span>
+        </a>
+        <a href="#projects" class="chapter-rail-item" data-chapter="projects">
+            <span>05</span>
+            <span class="chapter-rail-tooltip">05 // ARENAI PLATFORM</span>
+        </a>
+        <a href="#experience" class="chapter-rail-item" data-chapter="experience">
+            <span>06</span>
+            <span class="chapter-rail-tooltip">06 // HUAWEI &amp; TRACK RECORD</span>
+        </a>
+    </nav>
+
     <!-- NAVIGATION -->
-    <nav class="navbar">
+    <nav class="navbar" id="mainNavbar">
         <div class="nav-container">
-            <a href="#" class="brand">
+            <a href="#top-monument" class="brand">
                 <span class="brand-badge">LE</span>
                 <span>Leonardo Escobar Solís</span>
             </a>
@@ -3464,6 +4361,11 @@
                 <li><a href="#honors" data-i18n="nav_honors">Premios & Educación</a></li>
             </ul>
             <div class="nav-actions">
+                <button type="button" class="cmdk-trigger-btn" onclick="openCmdkPalette()" title="Abrir paleta instantánea de comandos e investigaciones (Ctrl+K / ⌘K)">
+                    <ion-icon name="terminal-outline"></ion-icon>
+                    <span data-i18n="nav_cmdk">Comandos</span>
+                    <kbd class="cmdk-kbd">⌘K</kbd>
+                </button>
                 <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">EN / ES</button>
                 <a href="mailto:lescobar2004@gmail.com" class="btn btn-primary"
                     style="padding: 0.45rem 0.95rem; font-size: 0.82rem;" data-i18n="nav_contact">Contactar</a>
@@ -3471,121 +4373,210 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="container hero-grid">
-            <div>
-                <div class="eyebrow">
-                    <span>⚡ ICT INFRASTRUCTURE, SYSTEMS ARCHITECTURE & DATA ENGINEER</span>
+    <!-- HERO SECTION (MONUMENTAL ARCHITECTURE + INTERACTIVE 6G/SNN TOPOLOGY CANVAS) -->
+    <header class="hero" id="top-monument">
+        <canvas id="hero-signal-canvas" class="hero-signal-canvas" aria-hidden="true"></canvas>
+        <div class="container">
+            <!-- MONUMENTAL ARCHITECTURAL BANNER (Taste Skill v2: name-as-monument) -->
+            <div class="monument-marquee-band">
+                <div>
+                    <div class="monument-name-display">LEONARDO ESCOBAR // SYS.ARCH</div>
                 </div>
-                <h1>
-                    <span data-i18n="hero_greeting">Arquitectura de Misión Crítica,</span><br />
-                    <span class="gradient-text" data-i18n="hero_highlight">Nube Híbrida & Orquestación IA</span>
-                </h1>
-                <p class="hero-subtitle" data-i18n="hero_desc">
-                    Ingeniero en Informática graduado con honores y candidato a Maestría en Administración de Proyectos
-                    de TI. Experiencia comprobada en Huawei liderando implementaciones End-to-End (E2E), plataformas
-                    OSS/BSS en alta disponibilidad (HA), motores de bases de datos distribuidas (Oracle SQL, PostgreSQL,
-                    Apache Spark, GaussDB/openGauss) y despliegue de arquitecturas LLM locales y en la nube.
-                </p>
-                <div class="cta-group">
-                    <a href="#gemini-lab" class="btn btn-primary" data-i18n="cta_lab">⚡ Explorar Pipeline de
-                        Generación</a>
-                    <a href="./arenai/index.html" class="btn btn-arenai" data-i18n="cta_arenai">
-                        <ion-icon name="rocket-outline"></ion-icon> 🎮 Lanzar ArenAI Platform
-                    </a>
-                    <a href="#articles-feed" class="btn btn-secondary" data-i18n="cta_feed">
-                        <ion-icon name="folder-outline"></ion-icon> 📂 Investigaciones en Drive
-                    </a>
-                    <a href="#experience" class="btn btn-secondary" data-i18n="cta_cv">📄 Ver Trayectoria Ejecutiva</a>
-                </div>
-                <div class="hero-kpis">
-                    <div class="kpi-card">
-                        <span class="kpi-value">3rd World</span>
-                        <span class="kpi-label" data-i18n="kpi_1">Huawei ICT Competition Global Final (Computing
-                            Track)</span>
-                    </div>
-                    <div class="kpi-card">
-                        <span class="kpi-value">~100% SLA</span>
-                        <span class="kpi-label" data-i18n="kpi_2">Continuidad Operativa en Plataformas OSS/BSS &
-                            HA</span>
-                    </div>
-                    <div class="kpi-card">
-                        <span class="kpi-value">E2E Hybrid</span>
-                        <span class="kpi-label" data-i18n="kpi_3">Huawei Cloud + Google Cloud + Inferencia LLM</span>
-                    </div>
+                <div class="monument-coordinates">
+                    <span><strong>NODE:</strong> LESCOBAR-ARCH-CR01 &bull; 10.0162° N, 84.2116° W</span>
+                    <span><strong>BARE-METAL:</strong> JONSBO N4 NAS (RYZEN 7 5700G + PROXMOX VE)</span>
+                    <span><strong>RESEARCH:</strong> 6G ISAC &bull; NEUROMORPHIC SNN &bull; GEMINI DEV PRO</span>
                 </div>
             </div>
 
-            <!-- SYSTEM ARCHITECTURE CARD -->
-            <div class="console-card">
-                <div class="console-header">
-                    <div class="window-dots">
-                        <span class="dot-red"></span>
-                        <span class="dot-amber"></span>
-                        <span class="dot-green"></span>
+            <div class="hero-grid">
+                <div>
+                    <div class="eyebrow">
+                        <span>⚡ ICT INFRASTRUCTURE, SYSTEMS ARCHITECTURE & DATA ENGINEER</span>
                     </div>
-                    <span>system_profile://leonardo-escobar.yaml</span>
+                    <h1>
+                        <span data-i18n="hero_greeting">Arquitectura de Misión Crítica,</span><br />
+                        <span class="gradient-text" data-i18n="hero_highlight">Nube Híbrida & Orquestación IA</span>
+                    </h1>
+                    <p class="hero-subtitle" data-i18n="hero_desc">
+                        Ingeniero en Informática graduado con honores y candidato a Maestría en Administración de Proyectos
+                        de TI. Experiencia comprobada en Huawei liderando implementaciones End-to-End (E2E), plataformas
+                        OSS/BSS en alta disponibilidad (HA), motores de bases de datos distribuidas (Oracle SQL, PostgreSQL,
+                        Apache Spark, GaussDB/openGauss) y despliegue de arquitecturas LLM locales y en la nube.
+                    </p>
+                    <div class="cta-group">
+                        <a href="#hardware-lab" class="btn btn-primary">
+                            <ion-icon name="cube-outline"></ion-icon>
+                            <span data-i18n="cta_nas_scene">Explorar Escena 3D/SVG Jonsbo N4 NAS</span>
+                        </a>
+                        <a href="#gemini-lab" class="btn btn-secondary" data-i18n="cta_lab">⚡ Explorar Pipeline de
+                            Generación</a>
+                        <a href="./arenai/index.html" class="btn btn-arenai" data-i18n="cta_arenai">
+                            <ion-icon name="rocket-outline"></ion-icon> 🎮 Lanzar ArenAI Platform
+                        </a>
+                        <a href="#articles-feed" class="btn btn-secondary" data-i18n="cta_feed">
+                            <ion-icon name="folder-outline"></ion-icon> 📂 Investigaciones en Drive
+                        </a>
+                    </div>
+                    <div class="hero-kpis">
+                        <div class="kpi-card">
+                            <span class="kpi-value">3rd World</span>
+                            <span class="kpi-label" data-i18n="kpi_1">Huawei ICT Competition Global Final (Computing
+                                Track)</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-value">~100% SLA</span>
+                            <span class="kpi-label" data-i18n="kpi_2">Continuidad Operativa en Plataformas OSS/BSS &
+                                HA</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-value">12.5 TB NAS</span>
+                            <span class="kpi-label" data-i18n="kpi_3">Jonsbo N4 Proxmox VE + Huawei/GCP + LLMs</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="console-body">
-                    <div class="spec-row">
-                        <span class="spec-key">Rol Actual</span>
-                        <span class="spec-val">ICT A&S / OSS Systems Engineer @ Huawei</span>
+
+                <!-- INTERACTIVE 3-MODE SYSTEM ARCHITECTURE CONSOLE -->
+                <div class="console-card">
+                    <div class="console-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-amber"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <span>system_profile://leonardo-escobar.yaml</span>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-key">ArenAI Platform</span>
-                        <span class="spec-val highlight">
-                            <a href="./arenai/index.html"
-                                style="color: var(--accent-emerald); text-decoration: none; font-weight: 700;">
-                                ● Online (/arenai) ↗
-                            </a>
-                        </span>
+                    <div class="console-tabs-bar" role="tablist" aria-label="Modos de consola de arquitectura">
+                        <button type="button" class="console-tab-btn active" data-console-tab="yaml" onclick="switchHeroConsoleTab('yaml')">
+                            <ion-icon name="code-slash-outline"></ion-icon>
+                            <span>YAML Spec</span>
+                        </button>
+                        <button type="button" class="console-tab-btn" data-console-tab="cli" onclick="switchHeroConsoleTab('cli')">
+                            <ion-icon name="terminal-outline"></ion-icon>
+                            <span>Interactive Shell</span>
+                        </button>
+                        <button type="button" class="console-tab-btn" data-console-tab="topology" onclick="switchHeroConsoleTab('topology')">
+                            <ion-icon name="git-network-outline"></ion-icon>
+                            <span>Live Topology</span>
+                        </button>
                     </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Google Drive Repo</span>
-                        <span class="spec-val">
-                            <a href="https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing"
-                                target="_blank" rel="noopener"
-                                style="color: var(--accent-cyan); text-decoration: none;">
-                                1AFnB0awOPpeSgig... ↗
-                            </a>
-                        </span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Educación</span>
-                        <span class="spec-val">M.Sc. IT Project Mgmt (Cand.) & B.Sc. Comp. Eng.</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Motores DB & Datos</span>
-                        <span class="spec-val">Oracle SQL, PostgreSQL, Spark, openGauss</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Infraestructura Cloud</span>
-                        <span class="spec-val">Huawei Cloud (ECS/VPC/OBS) & GCP (Cloud Run/SQL)</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Sistemas & Hardware</span>
-                        <span class="spec-val">openEuler, EulerOS, RHEL, Kunpeng ARM, Docker</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Banco Físico NAS (Online)</span>
-                        <span class="spec-val highlight" style="color: var(--accent-emerald);">
-                            <a href="#hardware-lab" style="color: var(--accent-emerald); text-decoration: none; font-weight: 700;">
-                                ● Jonsbo N4 • Ryzen 7 5700G • Proxmox VE • 12.5TB ↗
-                            </a>
-                        </span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Orquestación IA</span>
-                        <span class="spec-val">Gemini API, Ollama, Qwen, Gemma (Quantized)</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Idiomas</span>
-                        <span class="spec-val">Español (Nativo) | Inglés (Avanzado C1)</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Disponibilidad</span>
-                        <span class="spec-val highlight">● Abierto a Proyectos de Alto Impacto & Liderazgo</span>
+                    <div class="console-body">
+                        <!-- PANE 1: YAML SPEC -->
+                        <div class="console-pane active" id="console-pane-yaml">
+                            <div class="spec-row">
+                                <span class="spec-key">Rol Actual</span>
+                                <span class="spec-val">ICT A&S / OSS Systems Engineer @ Huawei</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">ArenAI Platform</span>
+                                <span class="spec-val highlight">
+                                    <a href="./arenai/index.html"
+                                        style="color: var(--accent-emerald); text-decoration: none; font-weight: 700;">
+                                        ● Online (/arenai) ↗
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Google Drive Repo</span>
+                                <span class="spec-val">
+                                    <a href="https://drive.google.com/drive/folders/1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK?usp=sharing"
+                                        target="_blank" rel="noopener"
+                                        style="color: var(--accent-cyan); text-decoration: none;">
+                                        1AFnB0awOPpeSgig... ↗
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Educación</span>
+                                <span class="spec-val">M.Sc. IT Project Mgmt (Cand.) & B.Sc. Comp. Eng.</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Motores DB & Datos</span>
+                                <span class="spec-val">Oracle SQL, PostgreSQL, Spark, openGauss</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Infraestructura Cloud</span>
+                                <span class="spec-val">Huawei Cloud (ECS/VPC/OBS) & GCP (Cloud Run/SQL)</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Sistemas & Hardware</span>
+                                <span class="spec-val">openEuler, EulerOS, RHEL, Kunpeng ARM, Docker</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Banco Físico NAS (Online)</span>
+                                <span class="spec-val highlight" style="color: var(--accent-emerald);">
+                                    <a href="#hardware-lab" style="color: var(--accent-emerald); text-decoration: none; font-weight: 700;">
+                                        ● Jonsbo N4 • Ryzen 7 5700G • Proxmox VE • 12.5TB ↗
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Orquestación IA</span>
+                                <span class="spec-val">Gemini API, Ollama, Qwen, Gemma (Quantized)</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Idiomas</span>
+                                <span class="spec-val">Español (Nativo) | Inglés (Avanzado C1)</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-key">Disponibilidad</span>
+                                <span class="spec-val highlight">● Abierto a Proyectos de Alto Impacto & Liderazgo</span>
+                            </div>
+                        </div>
+
+                        <!-- PANE 2: INTERACTIVE CLI SHELL -->
+                        <div class="console-pane" id="console-pane-cli">
+                            <div class="hero-cli-shell">
+                                <div class="hero-cli-output" id="hero-cli-output">
+                                    <div class="hero-cli-line"><span class="hero-cli-prompt">root@jonsbo-n4-proxmox:~#</span> neofetch --architecture</div>
+                                    <div class="hero-cli-line" style="color:#94a3b8;">OS: Proxmox VE 8.x (Debian Bookworm KVM/LXC)<br>Host: Jonsbo N4 Micro-ATX (Hot-Swap Backplane)<br>APU: AMD Ryzen 7 5700G (8C/16T + Radeon Vega 8)<br>RAM: 32 GB DDR4 | PSU: Agiler 600W SFX<br>Storage: 500GB SSD + 4TB HDD + 8TB HDD (12.5 TB)<br>Compute Node Link: AMD Radeon RX 7800 XT (16GB VRAM)</div>
+                                </div>
+                                <div class="hero-cli-chips">
+                                    <button type="button" class="hero-cli-chip" onclick="runHeroCliCmd('nas')">$ pve-nas --storage</button>
+                                    <button type="button" class="hero-cli-chip" onclick="runHeroCliCmd('roadmap')">$ ai-roadmap --status</button>
+                                    <button type="button" class="hero-cli-chip" onclick="runHeroCliCmd('pelican')">$ pelican-wings --games</button>
+                                    <button type="button" class="hero-cli-chip" onclick="runHeroCliCmd('gemini')">$ gemini-pro --quota</button>
+                                    <button type="button" class="hero-cli-chip" onclick="runHeroCliCmd('papers')">$ drive-sync --ls</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANE 3: LIVE NODE TOPOLOGY -->
+                        <div class="console-pane" id="console-pane-topology">
+                            <svg viewBox="0 0 420 250" style="width:100%; height:auto; background:#050811; border-radius:8px; padding:6px;">
+                                <defs>
+                                    <linearGradient id="topoGrad" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#38bdf8" />
+                                        <stop offset="100%" stop-color="#10b981" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Animated Links -->
+                                <line x1="95" y1="65" x2="215" y2="125" stroke="url(#topoGrad)" stroke-width="2" class="bp-data-stream" />
+                                <line x1="330" y1="65" x2="215" y2="125" stroke="url(#topoGrad)" stroke-width="2" class="bp-data-stream" />
+                                <line x1="215" y1="125" x2="105" y2="195" stroke="#f59e0b" stroke-width="2" class="bp-data-stream" />
+                                <line x1="215" y1="125" x2="325" y2="195" stroke="#818cf8" stroke-width="2" class="bp-data-stream" />
+                                <!-- Central Hub: Jonsbo N4 -->
+                                <rect x="145" y="96" width="140" height="56" rx="8" fill="#0d1527" stroke="#10b981" stroke-width="1.8" />
+                                <text x="215" y="119" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono" font-size="10" font-weight="700">JONSBO N4 NAS</text>
+                                <text x="215" y="135" text-anchor="middle" fill="#e2e8f0" font-family="JetBrains Mono" font-size="8.5">Ryzen 7 5700G • Proxmox</text>
+                                <!-- Top Left: Gemini API -->
+                                <rect x="20" y="36" width="140" height="48" rx="7" fill="#0d1527" stroke="#38bdf8" stroke-width="1.4" />
+                                <text x="90" y="57" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono" font-size="9.5" font-weight="700">GEMINI DEV PRO</text>
+                                <text x="90" y="71" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="8">3.1 Pro • 3.8 Flash • Argon</text>
+                                <!-- Top Right: RX 7800 XT Node -->
+                                <rect x="260" y="36" width="145" height="48" rx="7" fill="#0d1527" stroke="#38bdf8" stroke-width="1.4" />
+                                <text x="332" y="57" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono" font-size="9.5" font-weight="700">RX 7800 XT NODE</text>
+                                <text x="332" y="71" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="8">High-VRAM Fine-Tuning</text>
+                                <!-- Bottom Left: 12.5TB Storage & RAG -->
+                                <rect x="20" y="172" width="150" height="48" rx="7" fill="#0d1527" stroke="#f59e0b" stroke-width="1.4" />
+                                <text x="95" y="193" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono" font-size="9.5" font-weight="700">12.5TB RAG ARRAY</text>
+                                <text x="95" y="207" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="8">500G SSD + 4T/8T HDD</text>
+                                <!-- Bottom Right: Pelican Wings -->
+                                <rect x="255" y="172" width="150" height="48" rx="7" fill="#0d1527" stroke="#818cf8" stroke-width="1.4" />
+                                <text x="330" y="193" text-anchor="middle" fill="#a5b4fc" font-family="JetBrains Mono" font-size="9.5" font-weight="700">PELICAN &amp; WINGS</text>
+                                <text x="330" y="207" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="8">Game Server Containers</text>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3611,6 +4602,7 @@
                         orquestación multimodal y síntesis estructurada.
                     </p>
                 </div>
+                <div class="section-index-watermark" aria-hidden="true">01</div>
             </div>
 
             <!-- GOOGLE DEVELOPERS PRO & API TIER BAR -->
@@ -3624,6 +4616,68 @@
                     <span class="model-quota-tag pro">gemini-3.1-pro</span>
                     <span class="model-quota-tag flash">gemini-3.8-flash</span>
                     <span class="model-quota-tag argon">gemini-4-argon (Frontier)</span>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE GEMINI FRONTIER MODEL BENCHMARK ARENA -->
+            <div class="gemini-arena-box" id="gemini-arena">
+                <div class="gemini-arena-header">
+                    <div>
+                        <div style="font-family:var(--font-mono); font-size:0.78rem; font-weight:700; color:var(--accent-cyan); display:flex; align-items:center; gap:0.45rem;">
+                            <ion-icon name="flash-outline"></ion-icon>
+                            <span>LIVE GEMINI MULTI-MODEL TELEMETRY &amp; TOKEN STREAM SANDBOX</span>
+                        </div>
+                        <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
+                            Ejecuta una simulación comparativa en tiempo real entre los tres motores de frontera bajo diferentes cargas de ingeniería:
+                        </div>
+                    </div>
+                    <div class="gemini-arena-controls">
+                        <button type="button" class="arena-scenario-btn active" data-scenario="sql" onclick="runGeminiArena('sql')">
+                            openGauss SQL (45M rows)
+                        </button>
+                        <button type="button" class="arena-scenario-btn" data-scenario="socratic" onclick="runGeminiArena('socratic')">
+                            ArenAI Socratic Agent
+                        </button>
+                        <button type="button" class="arena-scenario-btn" data-scenario="snn" onclick="runGeminiArena('snn')">
+                            6G SNN-ISAC PDF ETL
+                        </button>
+                        <button type="button" class="arena-run-btn" onclick="runGeminiArena(window.currentArenaScenario || 'sql')">
+                            <ion-icon name="play-outline"></ion-icon>
+                            <span>Re-Ejecutar Stream</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="gemini-arena-lanes">
+                    <div class="arena-lane">
+                        <div class="arena-lane-top">
+                            <span style="color:var(--accent-cyan); font-weight:700;">gemini-3.1-pro</span>
+                            <span class="arena-ttft-badge" id="arena-meta-pro">TTFT: 410 ms • 88 tok/s</span>
+                        </div>
+                        <div class="arena-stream-box" id="arena-stream-pro">/* EXPLAIN ANALYZE Cost Tree Optimized */
+CREATE INDEX CONCURRENTLY idx_cdr_part_ts
+ON telecom_cdr USING btree (cell_id, event_ts)
+LOCAL; -- Latency: 4820ms → 18.4ms (261x)</div>
+                    </div>
+                    <div class="arena-lane">
+                        <div class="arena-lane-top">
+                            <span style="color:var(--accent-emerald); font-weight:700;">gemini-3.8-flash</span>
+                            <span class="arena-ttft-badge" id="arena-meta-flash">TTFT: 142 ms • 245 tok/s</span>
+                        </div>
+                        <div class="arena-stream-box" id="arena-stream-flash">[SOCRATIC GUARDRAIL: ACTIVE]
+"Antes de aplicar un índice B-Tree global en 45M de filas, ¿qué ocurre con el bloqueo de escritura si no particionas por rango semanal?"</div>
+                    </div>
+                    <div class="arena-lane">
+                        <div class="arena-lane-top">
+                            <span style="color:#d8b4fe; font-weight:700;">gemini-4-argon</span>
+                            <span class="arena-ttft-badge" id="arena-meta-argon">TTFT: 290 ms • temp=0.05</span>
+                        </div>
+                        <div class="arena-stream-box" id="arena-stream-argon">{
+  "engine": "openGauss-5.0-Kunpeng",
+  "speedup_factor": 261.9,
+  "lock_free_ddl": true,
+  "partition_strategy": "RANGE_WEEKLY"
+}</div>
+                    </div>
                 </div>
             </div>
 
@@ -3766,6 +4820,7 @@
                         y computación analógica Over-the-Air para redes 6G-IoT.
                     </p>
                 </div>
+                <div class="section-index-watermark" aria-hidden="true">02</div>
             </div>
 
             <!-- DRIVE LIVE PIPELINE STATUS BANNER -->
@@ -3885,6 +4940,7 @@
                         empresariales, plataformas analíticas e integración de inteligencia artificial.
                     </p>
                 </div>
+                <div class="section-index-watermark" aria-hidden="true">03</div>
             </div>
 
             <div class="competencies-grid">
@@ -3987,6 +5043,211 @@
                     <p class="section-desc" data-i18n="testbed_desc">
                         Infraestructura física bare-metal desplegada y operativa sobre chasis Jonsbo N4 Micro-ATX (bahías 3.5" Hot-Swap + backplane SATA pasivo), impulsada por APU AMD Ryzen 7 5700G (8C/16T, Zen 3, Radeon Vega 8 iGPU), placa ASUS B550M, 32 GB DDR4, fuente Agiler 600W SFX y 12.5 TB de almacenamiento (500 GB SATA SSD + 4 TB HDD + 8 TB HDD) bajo hipervisor Proxmox VE y orquestación con Pelican Panel &amp; Wings. Opera como nodo central para pruebas de infraestructura de IA (Ollama, pipelines distribuidos con AMD Radeon RX 7800 XT y repositorios RAG) y pruebas recreativas de hosting de videojuegos.
                     </p>
+                </div>
+                <div class="section-index-watermark" aria-hidden="true">04</div>
+            </div>
+
+            <!-- PINNED 4-BEAT SCROLLYTELLING STAGE: EXPLODED JONSBO N4 NAS BLUEPRINT (scrollytelling) -->
+            <div class="jonsbo-scrolly-stage" id="jonsbo-scroll-stage" data-beat="1" style="--scene-p: 0.25;">
+                <div class="jonsbo-sticky-viewport">
+                    <div class="jonsbo-stage-topbar">
+                        <div style="display:flex; align-items:center; gap:0.65rem;">
+                            <span class="status-dot"></span>
+                            <span style="font-family:var(--font-mono); font-size:0.78rem; font-weight:700; color:var(--text-primary); letter-spacing:0.04em;">
+                                SCROLL-DRIVEN ARCHITECTURE STAGE // JONSBO N4 MICRO-ATX CAD BLUEPRINT
+                            </span>
+                        </div>
+                        <div class="jonsbo-beat-tabs" role="tablist" aria-label="Capas de arquitectura Jonsbo N4">
+                            <button type="button" class="jonsbo-beat-tab active" data-beat-btn="1" onclick="setJonsboBeat(1, true)">
+                                01 // Silicon &amp; Chassis
+                            </button>
+                            <button type="button" class="jonsbo-beat-tab" data-beat-btn="2" onclick="setJonsboBeat(2, true)">
+                                02 // 12.5TB Backplane
+                            </button>
+                            <button type="button" class="jonsbo-beat-tab" data-beat-btn="3" onclick="setJonsboBeat(3, true)">
+                                03 // Ollama + RX 7800 XT
+                            </button>
+                            <button type="button" class="jonsbo-beat-tab" data-beat-btn="4" onclick="setJonsboBeat(4, true)">
+                                04 // Pelican Game Host
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="jonsbo-stage-grid">
+                        <!-- LEFT: NARRATIVE BEAT DECK -->
+                        <div class="jonsbo-beat-deck">
+                            <!-- BEAT 1 -->
+                            <div class="jonsbo-beat-card active" data-beat-card="1">
+                                <span class="jonsbo-beat-kicker">BEAT 01 / 04 &bull; UPPER COMPUTE CHAMBER</span>
+                                <h3 class="jonsbo-beat-heading">Chasis Jonsbo N4 Micro-ATX &amp; Cómputo Zen 3</h3>
+                                <p class="jonsbo-beat-body">
+                                    Al desplazar la página, inspeccionamos la cámara superior del chasis <strong>Jonsbo N4 Micro-ATX</strong>. Equipa el APU <strong>AMD Ryzen 7 5700G (8 Cores / 16 Threads, Zen 3 + Radeon Vega 8 iGPU)</strong> sobre placa <strong>ASUS B550M</strong>, <strong>32 GB DDR4</strong> y fuente compacta <strong>Agiler 600W SFX</strong> bajo hipervisor bare-metal <strong>Proxmox VE</strong>.
+                                </p>
+                                <div class="jonsbo-beat-Telemetry-chips">
+                                    <span class="tag" style="border-color:rgba(56,189,248,0.4); color:var(--accent-cyan);">AMD Ryzen 7 5700G (8C/16T)</span>
+                                    <span class="tag">ASUS B550M Micro-ATX</span>
+                                    <span class="tag">32 GB DDR4 RAM</span>
+                                    <span class="tag">Agiler 600W SFX</span>
+                                </div>
+                            </div>
+
+                            <!-- BEAT 2 -->
+                            <div class="jonsbo-beat-card" data-beat-card="2">
+                                <span class="jonsbo-beat-kicker" style="color:var(--accent-amber);">BEAT 02 / 04 &bull; HOT-SWAP 3.5" SATA BACKPLANE</span>
+                                <h3 class="jonsbo-beat-heading">Arquitectura de Almacenamiento de 12.5 TB en 3 Niveles</h3>
+                                <p class="jonsbo-beat-body">
+                                    La cámara inferior del Jonsbo N4 integra un <strong>backplane SATA pasivo con bahías Hot-Swap de 3.5"</strong>. Separa el tráfico de sistema operativo y contenedores (<strong>500 GB SATA SSD</strong>), el volumen secundario de respaldos y snapshots (<strong>4 TB Mechanical HDD</strong>) y el almacenamiento masivo para modelos e índices (<strong>8 TB Mechanical HDD</strong>).
+                                </p>
+                                <div class="jonsbo-beat-Telemetry-chips">
+                                    <span class="tag" style="border-color:rgba(56,189,248,0.4); color:var(--accent-cyan);">Boot/OS: 500 GB SATA SSD</span>
+                                    <span class="tag" style="border-color:rgba(245,158,11,0.4); color:var(--accent-amber);">Secondary: 4 TB HDD</span>
+                                    <span class="tag" style="border-color:rgba(16,185,129,0.4); color:var(--accent-emerald);">Mass RAG: 8 TB HDD</span>
+                                </div>
+                            </div>
+
+                            <!-- BEAT 3 -->
+                            <div class="jonsbo-beat-card" data-beat-card="3">
+                                <span class="jonsbo-beat-kicker" style="color:#a5b4fc;">BEAT 03 / 04 &bull; AI INFRASTRUCTURE TESTING ROADMAP</span>
+                                <h3 class="jonsbo-beat-heading">Ollama Core LXC, Montaje RAG &amp; Nodo RX 7800 XT</h3>
+                                <p class="jonsbo-beat-body">
+                                    Hoja de ruta de IA distribuida: <strong>[ ] Ollama Core Integration</strong> en contenedores LXC sobre Proxmox VE aprovechando aceleración de hardware; <strong>[ ] Model Repository &amp; RAG Data Mount</strong> sobre los arreglos de 8TB/4TB HDD; y <strong>[ ] Pipeline de Inferencia/Fine-Tuning Distribuido</strong> enlazado por LAN al workstation con <strong>AMD Radeon RX 7800 XT (16GB VRAM)</strong>.
+                                </p>
+                                <div class="jonsbo-beat-Telemetry-chips">
+                                    <span class="tag" style="border-color:rgba(168,85,247,0.4); color:#d8b4fe;">[ ] Ollama LXC Container</span>
+                                    <span class="tag" style="border-color:rgba(56,189,248,0.4); color:var(--accent-cyan);">[ ] RX 7800 XT Distributed Node</span>
+                                    <span class="tag">[ ] 8TB/4TB RAG Embeddings</span>
+                                </div>
+                            </div>
+
+                            <!-- BEAT 4 -->
+                            <div class="jonsbo-beat-card" data-beat-card="4">
+                                <span class="jonsbo-beat-kicker" style="color:var(--accent-emerald);">BEAT 04 / 04 &bull; PELICAN PANEL &amp; WINGS ORCHESTRATION</span>
+                                <h3 class="jonsbo-beat-heading">[x] Orquestación &amp; Hosting Recreativo de Videojuegos</h3>
+                                <p class="jonsbo-beat-body">
+                                    Sobre Proxmox VE opera <strong>Pelican Panel &amp; Wings</strong>, donde se prueban de forma recreativa las capacidades del Jonsbo N4 para <strong>hostear servidores dedicados de videojuegos multijugador</strong> con aislamiento de contenedores Docker/LXC, baja latencia UDP y asignación dinámica de los 32 GB DDR4.
+                                </p>
+                                <div class="jonsbo-beat-Telemetry-chips">
+                                    <span class="tag" style="border-color:rgba(16,185,129,0.4); color:var(--accent-emerald);">[x] Pelican Panel &amp; Wings</span>
+                                    <span class="tag">Proxmox VE Hypervisor</span>
+                                    <span class="tag">Low-Jitter Game Containers</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT: INTERACTIVE EXPLODED CAD SVG BLUEPRINT -->
+                        <div class="jonsbo-blueprint-wrap">
+                            <svg class="jonsbo-blueprint-svg" id="jonsbo-blueprint-svg" viewBox="0 0 620 390" aria-label="Diagrama arquitectónico interactivo del Jonsbo N4 NAS">
+                                <defs>
+                                    <linearGradient id="chassisStroke" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.7" />
+                                        <stop offset="100%" stop-color="#10b981" stop-opacity="0.7" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Outer Jonsbo N4 Dual-Chamber Frame -->
+                                <rect x="20" y="18" width="370" height="352" rx="14" fill="#070c18" stroke="url(#chassisStroke)" stroke-width="2" />
+                                <line x1="20" y1="185" x2="390" y2="185" stroke="#334155" stroke-width="2" stroke-dasharray="5 4" />
+                                <text x="34" y="36" fill="#64748b" font-family="JetBrains Mono" font-size="9.5" font-weight="700">CHAMBER A // UPPER MICRO-ATX &amp; SFX</text>
+                                <text x="34" y="204" fill="#64748b" font-family="JetBrains Mono" font-size="9.5" font-weight="700">CHAMBER B // 3.5" HOT-SWAP SATA BACKPLANE (12.5 TB)</text>
+
+                                <!-- BEAT 1 GROUP: ASUS B550M, RYZEN 7 5700G, 32GB DDR4, AGILER 600W SFX -->
+                                <g class="bp-group bp-beat-1">
+                                    <!-- Motherboard ASUS B550M -->
+                                    <rect x="34" y="48" width="225" height="122" rx="8" fill="#0d172a" stroke="#38bdf8" stroke-width="1.8" />
+                                    <text x="46" y="66" fill="#38bdf8" font-family="JetBrains Mono" font-size="10" font-weight="700">ASUS B550M (Micro-ATX)</text>
+                                    <!-- APU Socket -->
+                                    <rect x="48" y="76" width="110" height="58" rx="6" fill="#112240" stroke="#f59e0b" stroke-width="1.6" />
+                                    <text x="103" y="98" text-anchor="middle" fill="#fbbf24" font-family="JetBrains Mono" font-size="9.5" font-weight="700">RYZEN 7 5700G</text>
+                                    <text x="103" y="112" text-anchor="middle" fill="#e2e8f0" font-family="JetBrains Mono" font-size="8">8C/16T • Zen 3</text>
+                                    <text x="103" y="125" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono" font-size="8">Radeon Vega 8 iGPU</text>
+                                    <!-- 32GB DDR4 Slots -->
+                                    <rect x="170" y="76" width="76" height="58" rx="5" fill="#0f292a" stroke="#10b981" stroke-width="1.5" />
+                                    <text x="208" y="100" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono" font-size="9.5" font-weight="700">32GB DDR4</text>
+                                    <text x="208" y="115" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="8">Dual-Channel</text>
+                                    <text x="48" y="154" fill="#94a3b8" font-family="JetBrains Mono" font-size="8.5">HYPERVISOR: PROXMOX VE BARE-METAL</text>
+
+                                    <!-- Agiler 600W SFX PSU -->
+                                    <rect x="272" y="48" width="104" height="122" rx="8" fill="#13192b" stroke="#f59e0b" stroke-width="1.6" />
+                                    <text x="324" y="84" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono" font-size="9.5" font-weight="700">AGILER 600W</text>
+                                    <text x="324" y="100" text-anchor="middle" fill="#e2e8f0" font-family="JetBrains Mono" font-size="8.5">SFX Power Supply</text>
+                                    <text x="324" y="122" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono" font-size="8">Rail: Stable 12V</text>
+                                </g>
+
+                                <!-- BEAT 2 GROUP: STORAGE LAYOUT (500GB SSD + 4TB HDD + 8TB HDD) -->
+                                <g class="bp-group bp-beat-2">
+                                    <!-- Passive SATA Backplane Bar -->
+                                    <rect x="34" y="216" width="342" height="22" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.4" />
+                                    <text x="205" y="231" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono" font-size="8.5" font-weight="700">PASSIVE SATA BACKPLANE // 6Gbps HOT-SWAP BUS</text>
+
+                                    <!-- Drive 1: 500GB SATA SSD -->
+                                    <rect x="34" y="248" width="106" height="106" rx="7" fill="#0b192e" stroke="#38bdf8" stroke-width="1.8" />
+                                    <text x="87" y="272" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono" font-size="10" font-weight="700">500 GB SSD</text>
+                                    <text x="87" y="288" text-anchor="middle" fill="#e2e8f0" font-family="JetBrains Mono" font-size="8">SATA III Boot/OS</text>
+                                    <text x="87" y="304" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="7.5">Proxmox VE Root</text>
+                                    <text x="87" y="318" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono" font-size="7.5">Active LXC/Wings</text>
+
+                                    <!-- Drive 2: 4TB Mechanical HDD -->
+                                    <rect x="152" y="248" width="106" height="106" rx="7" fill="#1c160d" stroke="#f59e0b" stroke-width="1.8" />
+                                    <text x="205" y="272" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono" font-size="10" font-weight="700">4 TB HDD</text>
+                                    <text x="205" y="288" text-anchor="middle" fill="#e2e8f0" font-family="JetBrains Mono" font-size="8">3.5" Hot-Swap</text>
+                                    <text x="205" y="304" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="7.5">Secondary Pool</text>
+                                    <text x="205" y="318" text-anchor="middle" fill="#fbbf24" font-family="JetBrains Mono" font-size="7.5">Snapshots &amp; Data</text>
+
+                                    <!-- Drive 3: 8TB Mechanical HDD -->
+                                    <rect x="270" y="248" width="106" height="106" rx="7" fill="#091e1a" stroke="#10b981" stroke-width="1.8" />
+                                    <text x="323" y="272" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono" font-size="10" font-weight="700">8 TB HDD</text>
+                                    <text x="323" y="288" text-anchor="middle" fill="#e2e8f0" font-family="JetBrains Mono" font-size="8">3.5" Hot-Swap</text>
+                                    <text x="323" y="304" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="7.5">Mass Storage</text>
+                                    <text x="323" y="318" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono" font-size="7.5">LLM &amp; RAG Repo</text>
+
+                                    <!-- Bus Lines from Backplane to Motherboard -->
+                                    <path d="M 205 216 L 205 170" stroke="#38bdf8" stroke-width="2.2" class="bp-data-stream" />
+                                </g>
+
+                                <!-- BEAT 3 GROUP: AI INFRASTRUCTURE ROADMAP (OLLAMA LXC + RX 7800 XT NODE) -->
+                                <g class="bp-group bp-beat-3">
+                                    <!-- Ollama LXC Node & Distributed Link -->
+                                    <rect x="424" y="28" width="176" height="150" rx="10" fill="#10142d" stroke="#818cf8" stroke-width="2" />
+                                    <text x="512" y="52" text-anchor="middle" fill="#a5b4fc" font-family="JetBrains Mono" font-size="9.5" font-weight="700">AI ROADMAP PIPELINE</text>
+                                    <rect x="438" y="64" width="148" height="44" rx="6" fill="#090d1f" stroke="#38bdf8" stroke-width="1.3" />
+                                    <text x="512" y="83" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono" font-size="8.5" font-weight="700">[ ] OLLAMA CORE LXC</text>
+                                    <text x="512" y="98" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="7.5">Local LLM Serving</text>
+
+                                    <rect x="438" y="118" width="148" height="48" rx="6" fill="#1a1025" stroke="#f43f5e" stroke-width="1.5" />
+                                    <text x="512" y="137" text-anchor="middle" fill="#fb7185" font-family="JetBrains Mono" font-size="8.5" font-weight="700">AMD RADEON RX 7800 XT</text>
+                                    <text x="512" y="152" text-anchor="middle" fill="#e2e8f0" font-family="JetBrains Mono" font-size="7.5">High-VRAM Desktop Node</text>
+
+                                    <!-- Data Stream from 8TB/4TB RAG & APU to AI Pipeline -->
+                                    <path d="M 376 105 L 424 105" stroke="#818cf8" stroke-width="2.5" class="bp-data-stream" />
+                                    <path d="M 376 295 C 405 295, 405 142, 438 142" fill="none" stroke="#38bdf8" stroke-width="2.2" class="bp-data-stream" />
+                                </g>
+
+                                <!-- BEAT 4 GROUP: PELICAN PANEL & WINGS GAME SERVER HOSTING -->
+                                <g class="bp-group bp-beat-4">
+                                    <rect x="424" y="208" width="176" height="156" rx="10" fill="#071f1a" stroke="#10b981" stroke-width="2" />
+                                    <text x="512" y="232" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono" font-size="9.5" font-weight="700">[x] PELICAN &amp; WINGS</text>
+                                    <text x="512" y="247" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="8">Game Server Orchestration</text>
+
+                                    <rect x="438" y="258" width="148" height="40" rx="6" fill="#051411" stroke="#34d399" stroke-width="1.3" />
+                                    <text x="512" y="276" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono" font-size="8.5" font-weight="700">Wings Daemon Containers</text>
+                                    <text x="512" y="290" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="7.5">Isolated CPU/RAM Quotas</text>
+
+                                    <rect x="438" y="308" width="148" height="42" rx="6" fill="#051411" stroke="#38bdf8" stroke-width="1.3" />
+                                    <text x="512" y="326" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono" font-size="8.5" font-weight="700">Recreational Multiplayer</text>
+                                    <text x="512" y="340" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="7.5">1.2ms Local UDP Jitter</text>
+
+                                    <path d="M 376 268 L 424 268" stroke="#10b981" stroke-width="2.5" class="bp-data-stream" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="jonsbo-stage-footer">
+                        <span>SCROLL PARA INSPECCIONAR LAS 4 CAPAS FÍSICAS Y LÓGICAS DEL JONSBO N4 NAS (O HAZ CLIC EN LAS PESTAÑAS)</span>
+                        <div class="jonsbo-scrub-track" aria-hidden="true">
+                            <div class="jonsbo-scrub-fill" id="jonsbo-scrub-fill"></div>
+                        </div>
+                        <span id="jonsbo-beat-readout" style="color:var(--accent-cyan); font-weight:700;">BEAT 01 / 04 (25%)</span>
+                    </div>
                 </div>
             </div>
 
@@ -4343,6 +5604,7 @@
                         Competition (10.ª Edición).
                     </p>
                 </div>
+                <div class="section-index-watermark" aria-hidden="true">05</div>
             </div>
 
             <div class="project-showcase">
@@ -4433,6 +5695,7 @@
                         plataformas analíticas y sistemas OSS/BSS en entornos empresariales.
                     </p>
                 </div>
+                <div class="section-index-watermark" aria-hidden="true">06</div>
             </div>
 
             <div class="timeline">
@@ -4752,6 +6015,24 @@
         </div>
     </div>
 
+    <!-- INSTANT RAYCAST-STYLE COMMAND PALETTE (⌘K / Ctrl+K — 0ms Open/Close Animation per Emil Kowalski) -->
+    <div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Paleta de Comandos e Investigaciones">
+        <div class="cmdk-modal">
+            <div class="cmdk-search-bar">
+                <ion-icon name="terminal-outline"></ion-icon>
+                <input type="text" class="cmdk-input" id="cmdk-input"
+                    placeholder="Ejecutar comando, saltar a capa del Jonsbo N4 NAS o abrir Paper en Drive..."
+                    autocomplete="off" spellcheck="false" />
+                <kbd class="cmdk-kbd">ESC</kbd>
+            </div>
+            <div class="cmdk-results" id="cmdk-results"></div>
+            <div class="cmdk-footer">
+                <span>↑↓ Navegar &bull; ↵ Ejecutar &bull; ESC Cerrar (0ms Raycast Latency)</span>
+                <span>SYS.ARCH // LESCOBAR-CR01</span>
+            </div>
+        </div>
+    </div>
+
     <!-- TOAST NOTIFICATION -->
     <div id="toast-notification" class="toast-notification"></div>
 
@@ -4773,7 +6054,9 @@
                 nav_exp: "Experiencia",
                 nav_honors: "Premios & Educación",
                 nav_contact: "Contactar",
+                nav_cmdk: "Comandos",
                 nav_testbed: "Banco Físico NAS (Jonsbo N4)",
+                cta_nas_scene: "Explorar Escena 3D/SVG Jonsbo N4 NAS",
                 lab_eyebrow: "🤖 GEMINI & ADVANCED AI ENGINE // GOOGLE DEVELOPERS PRO",
                 lab_title: "Orquestación de IA Generativa & Modelos Gemini de Frontera",
                 lab_desc: "Banco de pruebas y experimentación continua con modelos de frontera de Google DeepMind mediante la API de Google AI Studio, integrado bajo cuota oficial del programa Google Developers Pro. Evaluamos activamente Gemini 3.1 Pro para razonamiento analítico pesado, Gemini 3.8 Flash para inferencia ultrarrápida en agentes socráticos, y el motor experimental Gemini 4 Argon para orquestación multimodal y síntesis estructurada.",
@@ -4833,7 +6116,9 @@
                 nav_exp: "Experience",
                 nav_honors: "Honors & Education",
                 nav_contact: "Contact Me",
+                nav_cmdk: "Commands",
                 nav_testbed: "Jonsbo N4 NAS Testbed",
+                cta_nas_scene: "Explore 3D/SVG Jonsbo N4 NAS Scene",
                 lab_eyebrow: "🤖 GEMINI & ADVANCED AI ENGINE // GOOGLE DEVELOPERS PRO",
                 lab_title: "Generative AI Orchestration & Frontier Gemini Models",
                 lab_desc: "Continuous testbed and experimentation with Google DeepMind frontier models via Google AI Studio API, operating under official quota from the Google Developers Pro program. We actively benchmark Gemini 3.1 Pro for deep analytical reasoning, Gemini 3.8 Flash for sub-second TTFT Socratic tutoring, and the experimental Gemini 4 Argon engine for multimodal ETL synthesis.",
@@ -6049,7 +7334,539 @@
                     openPaperModal(requestedId);
                 }, 350);
             }
+
+            // Initialize Overhaul V3 Engines
+            initOverhaulV3();
         });
+
+        // =========================================================================
+        // ARCHITECTURAL OVERHAUL V3 INTERACTIVE ENGINES
+        // =========================================================================
+
+        // 1. Hero 3-Mode Architecture Console Switcher & Interactive CLI
+        window.switchHeroConsoleTab = function (tabKey) {
+            document.querySelectorAll('.console-tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-console-tab') === tabKey);
+            });
+            document.querySelectorAll('.console-pane').forEach(pane => {
+                pane.classList.toggle('active', pane.id === `console-pane-${tabKey}`);
+            });
+        };
+
+        const HERO_CLI_RESPONSES = {
+            nas: {
+                cmd: 'pve-nas --storage --chassis jonsbo-n4',
+                out: `[JONSBO N4 MICRO-ATX // PASSIVE SATA BACKPLANE]
+• tier-0 (boot/os)  : 500 GB SATA SSD  -> Proxmox VE 8.x + Active LXC / Wings
+• tier-1 (secondary): 4 TB Mech. HDD   -> Snapshots, Backups & Datasets
+• tier-2 (mass-rag) : 8 TB Mech. HDD   -> LLM Weights Repo & RAG Embeddings
+• total-capacity    : 12.5 TB Online   -> Agiler 600W SFX Rail OK`
+            },
+            roadmap: {
+                cmd: 'ai-roadmap --status --nodes',
+                out: `[AI INFRASTRUCTURE TESTING ROADMAP]
+[ ] 1. Ollama Core Integration (Proxmox LXC + Ryzen 7 5700G Vega 8 iGPU)
+[ ] 2. Distributed Training/Inference Pipeline (NAS <-> AMD Radeon RX 7800 XT)
+[ ] 3. Model Repository & RAG Data Mount (8TB / 4TB HDD Knowledge Base)
+[x] 4. Recreational Multiplayer Game Server Hosting (Pelican Panel & Wings)`
+            },
+            pelican: {
+                cmd: 'pelican-wings --games --status',
+                out: `[PELICAN PANEL & WINGS // PROXMOX VE ORCHESTRATION]
+• Daemon Status : ACTIVE (Low-Jitter Container Runtime)
+• APU Allocation: AMD Ryzen 7 5700G (8C/16T Zen 3) + 32 GB DDR4
+• Workload      : Recreational Dedicated Game Server Hosting Verified`
+            },
+            gemini: {
+                cmd: 'gemini-pro --quota --models',
+                out: `[GOOGLE DEVELOPERS PRO TIER // GOOGLE AI STUDIO API]
+• gemini-3.1-pro   : Deep Analytical SQL & Cost-Tree Reasoning (261x speedup)
+• gemini-3.8-flash : Sub-second TTFT Socratic Tutoring Agent (/arenai)
+• gemini-4-argon   : Frontier Multimodal PDF ETL & BibTeX Synthesis`
+            },
+            papers: {
+                cmd: 'drive-sync --ls 1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK',
+                out: `[GOOGLE DRIVE SCIENTIFIC REPOSITORY // SYNCED]
+• NOC-2026: Neuromorphic SNN-ISAC & Over-the-Air Analog Computation (6G)
+• Bimodal Reader: Formal Paper + Plain-Language Guide & Dictionary Ready`
+            }
+        };
+
+        window.runHeroCliCmd = function (key) {
+            const outEl = document.getElementById('hero-cli-output');
+            const item = HERO_CLI_RESPONSES[key];
+            if (!outEl || !item) return;
+            const entry = document.createElement('div');
+            entry.innerHTML = `<div class="hero-cli-line"><span class="hero-cli-prompt">root@jonsbo-n4-proxmox:~#</span> ${item.cmd}</div><div class="hero-cli-line" style="color:#94a3b8; white-space:pre-wrap;">${item.out}</div>`;
+            outEl.appendChild(entry);
+            outEl.scrollTop = outEl.scrollHeight;
+        };
+
+        // 2. Live Gemini Frontier Model Benchmark Arena
+        window.currentArenaScenario = 'sql';
+        let arenaStreamTimers = [];
+
+        const GEMINI_ARENA_DATA = {
+            sql: {
+                proMeta: 'TTFT: 410 ms • 88 tok/s',
+                proText: `/* EXPLAIN ANALYZE Cost Tree Optimized */
+CREATE INDEX CONCURRENTLY idx_cdr_part_ts
+ON telecom_cdr USING btree (cell_id, event_ts)
+LOCAL; -- Latency: 4820ms → 18.4ms (261x)`,
+                flashMeta: 'TTFT: 142 ms • 245 tok/s',
+                flashText: `[SOCRATIC GUARDRAIL: ACTIVE]
+"Antes de aplicar un índice B-Tree global en 45M de filas, ¿qué ocurre con el bloqueo de escritura si no particionas por rango semanal?"`,
+                argonMeta: 'TTFT: 290 ms • temp=0.05',
+                argonText: `{
+  "engine": "openGauss-5.0-Kunpeng",
+  "speedup_factor": 261.9,
+  "lock_free_ddl": true,
+  "partition_strategy": "RANGE_WEEKLY"
+}`
+            },
+            socratic: {
+                proMeta: 'TTFT: 385 ms • Pedagogical Tree',
+                proText: `[DIALOGUE GRAPH DEPTH: 3]
+Evaluando estado cognitivo del estudiante: detectada confusión entre complejidad temporal O(n log n) y particionamiento hash en Spark.`,
+                flashMeta: 'TTFT: 118 ms • 268 tok/s',
+                flashText: `[ARENAI TUTOR // ZERO-CHEAT MODE]
+"¡Buen intento! Si cada nodo ejecutor recibe claves desbalanceadas (data skew), ¿cómo afectaría una clave compuesta al shuffle?"`,
+                argonMeta: 'TTFT: 265 ms • Schema Validated',
+                argonText: `{
+  "student_mastery": 0.78,
+  "hint_level": "SOCRATIC_GUIDED",
+  "direct_answer_blocked": true,
+  "next_concept": "Spark Partition Pruning"
+}`
+            },
+            snn: {
+                proMeta: 'TTFT: 440 ms • Cramér-Rao Proof',
+                proText: `/* Fisher Information Matrix (FIM) */
+J(θ) = ∑ (1 / σ²) [∂s_k(θ)/∂θ] [∂s_k(θ)/∂θ]^T
+Spiking LIF neurons preserve phase timing across 6G multipath channels.`,
+                flashMeta: 'TTFT: 134 ms • Plain-Language Sync',
+                flashText: `[TRADUCTOR CONCEPTUAL BIMODAL]
+"Imagina que cada neurona LIF actúa como un diapasón que solo dispara un pulso cuando la onda de radio rebota en el ángulo exacto."`,
+                argonMeta: 'TTFT: 305 ms • Drive ETL JSON',
+                argonText: `{
+  "folder_id": "1AFnB0awOPpeSgigx5uD_qPeJJF53mXXK",
+  "domain": "6G Neuromorphic ISAC",
+  "katex_equations_verified": 14,
+  "bibtex_ready": true
+}`
+            }
+        };
+
+        window.runGeminiArena = function (scenarioKey) {
+            const data = GEMINI_ARENA_DATA[scenarioKey] || GEMINI_ARENA_DATA.sql;
+            window.currentArenaScenario = scenarioKey;
+
+            document.querySelectorAll('.arena-scenario-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-scenario') === scenarioKey);
+            });
+
+            arenaStreamTimers.forEach(t => clearInterval(t));
+            arenaStreamTimers = [];
+
+            const metaPro = document.getElementById('arena-meta-pro');
+            const metaFlash = document.getElementById('arena-meta-flash');
+            const metaArgon = document.getElementById('arena-meta-argon');
+            if (metaPro) metaPro.textContent = data.proMeta;
+            if (metaFlash) metaFlash.textContent = data.flashMeta;
+            if (metaArgon) metaArgon.textContent = data.argonMeta;
+
+            const streamText = (elId, fullText, charsPerTick) => {
+                const el = document.getElementById(elId);
+                if (!el) return;
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    el.textContent = fullText;
+                    return;
+                }
+                el.textContent = '▋';
+                let i = 0;
+                const timer = setInterval(() => {
+                    i += charsPerTick;
+                    if (i >= fullText.length) {
+                        el.textContent = fullText;
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = fullText.slice(0, i) + '▋';
+                    }
+                }, 18);
+                arenaStreamTimers.push(timer);
+            };
+
+            streamText('arena-stream-flash', data.flashText, 6);
+            streamText('arena-stream-argon', data.argonText, 5);
+            streamText('arena-stream-pro', data.proText, 4);
+        };
+
+        // 3. Pinned 4-Beat Jonsbo N4 Scrollytelling Stage Engine
+        window.setJonsboBeat = function (beatNum, scrollToBeat = false) {
+            const stage = document.getElementById('jonsbo-scroll-stage');
+            if (!stage) return;
+            const clamped = Math.max(1, Math.min(4, Number(beatNum) || 1));
+            stage.setAttribute('data-beat', String(clamped));
+
+            document.querySelectorAll('.jonsbo-beat-tab').forEach(btn => {
+                btn.classList.toggle('active', Number(btn.getAttribute('data-beat-btn')) === clamped);
+            });
+
+            document.querySelectorAll('.jonsbo-beat-card').forEach(card => {
+                card.classList.toggle('active', Number(card.getAttribute('data-beat-card')) === clamped);
+            });
+
+            const pct = clamped * 25;
+            const readout = document.getElementById('jonsbo-beat-readout');
+            if (readout) {
+                readout.textContent = `BEAT 0${clamped} / 04 (${pct}%)`;
+            }
+
+            // Sync Proxmox workload simulator preset with active beat
+            const presetMap = { 1: 'idle', 2: 'ollama', 3: 'distributed', 4: 'pelican' };
+            if (typeof window.setNasWorkloadPreset === 'function' && presetMap[clamped]) {
+                window.setNasWorkloadPreset(presetMap[clamped]);
+            }
+
+            if (scrollToBeat) {
+                stage.style.setProperty('--scene-p', (clamped / 4).toFixed(3));
+                if (window.innerWidth > 960 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    const rect = stage.getBoundingClientRect();
+                    const stageTopDoc = window.scrollY + rect.top;
+                    const scrollable = Math.max(1, stage.offsetHeight - window.innerHeight);
+                    const targetY = stageTopDoc + ((clamped - 0.85) / 3.2) * scrollable;
+                    window.scrollTo({ top: Math.max(stageTopDoc, targetY), behavior: 'smooth' });
+                }
+            }
+        };
+
+        // 4. Instant Raycast-Style Command Palette (⌘K / Ctrl+K — 0ms Open/Close)
+        let cmdkSelectedIndex = 0;
+        let currentCmdkItems = [];
+
+        function getCmdkCatalog() {
+            const baseItems = [
+                {
+                    title: 'Jonsbo N4 NAS — Beat 01: Chasis Micro-ATX & Ryzen 7 5700G',
+                    tag: 'SCROLL SCENE',
+                    icon: 'hardware-chip-outline',
+                    action: () => {
+                        document.getElementById('hardware-lab')?.scrollIntoView({ behavior: 'smooth' });
+                        setTimeout(() => window.setJonsboBeat(1, false), 250);
+                    }
+                },
+                {
+                    title: 'Jonsbo N4 NAS — Beat 02: Storage Layout 12.5 TB (500G SSD + 4T/8T HDD)',
+                    tag: 'STORAGE 12.5TB',
+                    icon: 'server-outline',
+                    action: () => {
+                        document.getElementById('hardware-lab')?.scrollIntoView({ behavior: 'smooth' });
+                        setTimeout(() => window.setJonsboBeat(2, false), 250);
+                    }
+                },
+                {
+                    title: 'Jonsbo N4 NAS — Beat 03: Roadmap IA (Ollama LXC + RX 7800 XT + RAG)',
+                    tag: 'AI ROADMAP',
+                    icon: 'git-branch-outline',
+                    action: () => {
+                        document.getElementById('hardware-lab')?.scrollIntoView({ behavior: 'smooth' });
+                        setTimeout(() => window.setJonsboBeat(3, false), 250);
+                    }
+                },
+                {
+                    title: 'Jonsbo N4 NAS — Beat 04: Pelican Panel & Wings Game Server Hosting',
+                    tag: 'GAME SERVERS',
+                    icon: 'game-controller-outline',
+                    action: () => {
+                        document.getElementById('hardware-lab')?.scrollIntoView({ behavior: 'smooth' });
+                        setTimeout(() => window.setJonsboBeat(4, false), 250);
+                    }
+                },
+                {
+                    title: 'Gemini Benchmark Arena — Ejecutar Simulación Multi-Modelo (3.1 Pro / 3.8 Flash / Argon)',
+                    tag: 'GEMINI PRO',
+                    icon: 'flash-outline',
+                    action: () => {
+                        document.getElementById('gemini-arena')?.scrollIntoView({ behavior: 'smooth' });
+                        setTimeout(() => window.runGeminiArena('sql'), 300);
+                    }
+                },
+                {
+                    title: 'Cambiar Idioma de la Interfaz (Español ↔ English)',
+                    tag: 'I18N',
+                    icon: 'language-outline',
+                    action: () => toggleLanguage()
+                },
+                {
+                    title: 'Lanzar Plataforma Interactiva ArenAI (/arenai)',
+                    tag: 'APP',
+                    icon: 'rocket-outline',
+                    action: () => { window.location.href = './arenai/index.html'; }
+                }
+            ];
+
+            const paperItems = (allDriveArticles || []).map(art => ({
+                title: `Paper: ${currentLang === 'en' && art.title_en ? art.title_en : art.title}`,
+                tag: art.guide ? 'PAPER + SPLIT' : (art.doi || 'DRIVE PAPER'),
+                icon: 'document-text-outline',
+                action: () => openPaperModal(art.id, art.guide ? 'split' : 'paper')
+            }));
+
+            return [...baseItems, ...paperItems];
+        }
+
+        function renderCmdkList(filterText = '') {
+            const listEl = document.getElementById('cmdk-results');
+            if (!listEl) return;
+            const q = filterText.trim().toLowerCase();
+            const catalog = getCmdkCatalog();
+            currentCmdkItems = q
+                ? catalog.filter(item => item.title.toLowerCase().includes(q) || item.tag.toLowerCase().includes(q))
+                : catalog;
+
+            cmdkSelectedIndex = 0;
+
+            if (currentCmdkItems.length === 0) {
+                listEl.innerHTML = `<div style="padding:1.25rem; text-align:center; color:var(--text-muted); font-family:var(--font-mono); font-size:0.8rem;">Sin comandos ni papers coincidentes para "${filterText}"</div>`;
+                return;
+            }
+
+            listEl.innerHTML = currentCmdkItems.map((item, idx) => `
+                <button type="button" class="cmdk-item ${idx === cmdkSelectedIndex ? 'selected' : ''}" data-cmdk-idx="${idx}">
+                    <div class="cmdk-item-left">
+                        <ion-icon name="${item.icon}" style="color:var(--accent-cyan); font-size:1.05rem; flex-shrink:0;"></ion-icon>
+                        <span class="cmdk-item-title">${item.title}</span>
+                    </div>
+                    <span class="cmdk-item-tag">${item.tag}</span>
+                </button>
+            `).join('');
+
+            listEl.querySelectorAll('.cmdk-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const i = Number(btn.getAttribute('data-cmdk-idx'));
+                    if (currentCmdkItems[i]) {
+                        closeCmdkPalette();
+                        currentCmdkItems[i].action();
+                    }
+                });
+            });
+        }
+
+        window.openCmdkPalette = function () {
+            const overlay = document.getElementById('cmdk-overlay');
+            const input = document.getElementById('cmdk-input');
+            if (!overlay) return;
+            overlay.classList.add('open');
+            if (input) {
+                input.value = '';
+                renderCmdkList('');
+                input.focus();
+            }
+        };
+
+        window.closeCmdkPalette = function () {
+            const overlay = document.getElementById('cmdk-overlay');
+            if (overlay) overlay.classList.remove('open');
+        };
+
+        // 5. Initialize Scroll Listeners, 6G Canvas, Pointer Spotlight & Keyboard Shortcuts
+        function initOverhaulV3() {
+            const navbar = document.getElementById('mainNavbar');
+            const jonsboStage = document.getElementById('jonsbo-scroll-stage');
+            const chapterLinks = document.querySelectorAll('.chapter-rail-item');
+            const chapterIds = ['top-monument', 'gemini-lab', 'articles-feed', 'competencies', 'hardware-lab', 'projects', 'experience'];
+
+            const onScrollTick = () => {
+                const sy = window.scrollY || window.pageYOffset;
+
+                // Navbar shrink state
+                if (navbar) {
+                    navbar.classList.toggle('is-scrolled', sy > 48);
+                }
+
+                // Hero wordmark scroll recession (--hero-scroll: 0..1)
+                const heroRatio = Math.min(1, Math.max(0, sy / 520));
+                document.documentElement.style.setProperty('--hero-scroll', heroRatio.toFixed(3));
+
+                // Jonsbo N4 Scrollytelling Stage scrub (--scene-p & data-beat)
+                if (jonsboStage && window.innerWidth > 960) {
+                    const rect = jonsboStage.getBoundingClientRect();
+                    const scrollable = Math.max(1, rect.height - window.innerHeight);
+                    const rawP = -rect.top / scrollable;
+                    if (rawP >= -0.05 && rawP <= 1.05) {
+                        const clampedP = Math.min(1, Math.max(0.08, rawP));
+                        jonsboStage.style.setProperty('--scene-p', clampedP.toFixed(3));
+                        const beat = Math.min(4, Math.max(1, Math.ceil(clampedP * 4)));
+                        if (Number(jonsboStage.getAttribute('data-beat')) !== beat) {
+                            window.setJonsboBeat(beat, false);
+                        }
+                    }
+                }
+
+                // Update active chapter in right rail
+                let activeId = chapterIds[0];
+                for (const id of chapterIds) {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const top = el.getBoundingClientRect().top;
+                        if (top <= window.innerHeight * 0.38) {
+                            activeId = id;
+                        }
+                    }
+                }
+                chapterLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('data-chapter') === activeId);
+                });
+            };
+
+            window.addEventListener('scroll', onScrollTick, { passive: true });
+            onScrollTick();
+
+            // Pointer Spotlight Glow on Cards
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                document.addEventListener('pointermove', (e) => {
+                    const card = e.target.closest('.gemini-pillar-card, .comp-card, .workload-card, .feed-article-card');
+                    if (card) {
+                        const r = card.getBoundingClientRect();
+                        card.style.setProperty('--mouse-x', `${e.clientX - r.left}px`);
+                        card.style.setProperty('--mouse-y', `${e.clientY - r.top}px`);
+                    }
+                }, { passive: true });
+            }
+
+            // Cmd+K / Ctrl+K Instant Palette Bindings
+            const cmdkOverlay = document.getElementById('cmdk-overlay');
+            const cmdkInput = document.getElementById('cmdk-input');
+
+            if (cmdkOverlay) {
+                cmdkOverlay.addEventListener('click', (e) => {
+                    if (e.target === cmdkOverlay) closeCmdkPalette();
+                });
+            }
+
+            if (cmdkInput) {
+                cmdkInput.addEventListener('input', (e) => {
+                    renderCmdkList(e.target.value);
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                    e.preventDefault();
+                    if (cmdkOverlay && cmdkOverlay.classList.contains('open')) {
+                        closeCmdkPalette();
+                    } else {
+                        openCmdkPalette();
+                    }
+                    return;
+                }
+
+                if (cmdkOverlay && cmdkOverlay.classList.contains('open')) {
+                    if (e.key === 'Escape') {
+                        e.preventDefault();
+                        closeCmdkPalette();
+                    } else if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        if (currentCmdkItems.length > 0) {
+                            cmdkSelectedIndex = (cmdkSelectedIndex + 1) % currentCmdkItems.length;
+                            document.querySelectorAll('#cmdk-results .cmdk-item').forEach((el, i) => {
+                                el.classList.toggle('selected', i === cmdkSelectedIndex);
+                            });
+                        }
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        if (currentCmdkItems.length > 0) {
+                            cmdkSelectedIndex = (cmdkSelectedIndex - 1 + currentCmdkItems.length) % currentCmdkItems.length;
+                            document.querySelectorAll('#cmdk-results .cmdk-item').forEach((el, i) => {
+                                el.classList.toggle('selected', i === cmdkSelectedIndex);
+                            });
+                        }
+                    } else if (e.key === 'Enter' && currentCmdkItems[cmdkSelectedIndex]) {
+                        e.preventDefault();
+                        const target = currentCmdkItems[cmdkSelectedIndex];
+                        closeCmdkPalette();
+                        target.action();
+                    }
+                }
+            });
+
+            // Interactive 6G ISAC & Neuromorphic Spiking Network Canvas (#hero-signal-canvas)
+            const canvas = document.getElementById('hero-signal-canvas');
+            if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const ctx = canvas.getContext('2d');
+                let w = 0, h = 0;
+                const pointer = { x: -999, y: -999 };
+                const labels = ['JONSBO-N4', 'PROXMOX-VE', 'RYZEN-5700G', 'RX-7800XT', 'GEMINI-3.1', '6G-ISAC', 'SNN-LIF', 'OPENGAUSS', 'PELICAN-WINGS', 'RAG-8TB'];
+                const nodes = Array.from({ length: 22 }, (_, i) => ({
+                    x: Math.random() * 1200,
+                    y: Math.random() * 620,
+                    vx: (Math.random() - 0.5) * 0.45,
+                    vy: (Math.random() - 0.5) * 0.45,
+                    label: i < labels.length ? labels[i] : null
+                }));
+
+                const resize = () => {
+                    const rect = canvas.parentElement.getBoundingClientRect();
+                    w = canvas.width = rect.width;
+                    h = canvas.height = rect.height;
+                };
+                resize();
+                window.addEventListener('resize', resize, { passive: true });
+
+                canvas.parentElement.addEventListener('pointermove', (e) => {
+                    const r = canvas.getBoundingClientRect();
+                    pointer.x = e.clientX - r.left;
+                    pointer.y = e.clientY - r.top;
+                }, { passive: true });
+
+                const drawFrame = () => {
+                    ctx.clearRect(0, 0, w, h);
+                    for (let i = 0; i < nodes.length; i++) {
+                        const n = nodes[i];
+                        n.x += n.vx;
+                        n.y += n.vy;
+                        if (n.x < 20 || n.x > w - 20) n.vx *= -1;
+                        if (n.y < 20 || n.y > h - 20) n.vy *= -1;
+
+                        // Gentle pointer attraction/repulsion
+                        const dxP = pointer.x - n.x;
+                        const dyP = pointer.y - n.y;
+                        const distP = Math.hypot(dxP, dyP);
+                        if (distP < 180 && distP > 1) {
+                            n.x -= (dxP / distP) * 0.55;
+                            n.y -= (dyP / distP) * 0.55;
+                        }
+
+                        for (let j = i + 1; j < nodes.length; j++) {
+                            const m = nodes[j];
+                            const dist = Math.hypot(n.x - m.x, n.y - m.y);
+                            if (dist < 195) {
+                                const alpha = (1 - dist / 195) * 0.22;
+                                ctx.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
+                                ctx.lineWidth = 1;
+                                ctx.beginPath();
+                                ctx.moveTo(n.x, n.y);
+                                ctx.lineTo(m.x, m.y);
+                                ctx.stroke();
+                            }
+                        }
+
+                        ctx.fillStyle = n.label ? 'rgba(16, 185, 129, 0.75)' : 'rgba(56, 189, 248, 0.45)';
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, n.label ? 3 : 2, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        if (n.label) {
+                            ctx.font = '600 9px "JetBrains Mono", monospace';
+                            ctx.fillStyle = 'rgba(148, 163, 184, 0.52)';
+                            ctx.fillText(n.label, n.x + 6, n.y + 3);
+                        }
+                    }
+                    requestAnimationFrame(drawFrame);
+                };
+                requestAnimationFrame(drawFrame);
+            }
+        }
     </script>
 </body>
 
