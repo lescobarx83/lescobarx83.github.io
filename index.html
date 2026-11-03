@@ -830,9 +830,9 @@
             width: 48px;
             height: 48px;
             border-radius: var(--radius-sm);
-            background: rgba(245, 158, 11, 0.12);
-            color: var(--accent-amber);
-            border: 1px solid rgba(245, 158, 11, 0.35);
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -861,9 +861,9 @@
             font-weight: 700;
             padding: 0.35rem 0.85rem;
             border-radius: 999px;
-            background: rgba(245, 158, 11, 0.12);
-            color: var(--accent-amber);
-            border: 1px solid rgba(245, 158, 11, 0.35);
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.35);
             letter-spacing: 0.03em;
         }
 
@@ -871,8 +871,8 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--accent-amber);
-            box-shadow: 0 0 10px var(--accent-amber);
+            background: var(--accent-emerald);
+            box-shadow: 0 0 10px var(--accent-emerald);
             animation: pulseGlow 1.8s infinite ease-in-out;
         }
 
@@ -891,8 +891,8 @@
         }
 
         .testbed-upcoming-callout {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%);
-            border: 1px dashed rgba(245, 158, 11, 0.45);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(56, 189, 248, 0.06) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.38);
             border-radius: var(--radius-md);
             padding: 1.25rem 1.4rem;
             margin-bottom: 2rem;
@@ -903,7 +903,7 @@
 
         .testbed-upcoming-callout ion-icon {
             font-size: 1.75rem;
-            color: var(--accent-amber);
+            color: var(--accent-emerald);
             flex-shrink: 0;
             margin-top: 2px;
         }
@@ -911,7 +911,7 @@
         .testbed-callout-title {
             font-size: 0.95rem;
             font-weight: 700;
-            color: var(--accent-amber);
+            color: var(--accent-emerald);
             margin-bottom: 0.35rem;
             letter-spacing: 0.02em;
             display: flex;
@@ -933,6 +933,13 @@
         .hardware-specs-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .storage-layout-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
             margin-bottom: 2rem;
         }
@@ -1128,7 +1135,8 @@
         }
 
         @media (max-width: 992px) {
-            .hardware-specs-grid {
+            .hardware-specs-grid,
+            .storage-layout-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -1143,7 +1151,8 @@
         }
 
         @media (max-width: 560px) {
-            .hardware-specs-grid {
+            .hardware-specs-grid,
+            .storage-layout-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -3007,9 +3016,9 @@
             <span><span class="status-dot"></span>NODE: LESCOBAR-ARCH-CR01</span>
             <span>STACK: KUNPENG ARM64 / OPENEULER / OPENGAUSS / CLOUD</span>
             <a href="#hardware-lab" class="telemetry-lab-link"
-                style="color: var(--accent-amber); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;"
-                title="Ver estado del banco de pruebas físico: Próximamente (Esperando componentes)">
-                <span class="status-dot dot-amber"></span>TESTBED: PRÓXIMAMENTE (ESPERANDO COMPONENTES) ↗
+                style="color: var(--accent-emerald); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;"
+                title="Ver estado del banco de pruebas físico: Jonsbo N4 NAS Operativo (Proxmox VE)">
+                <span class="status-dot"></span>NAS TESTBED: ONLINE (JONSBO N4 • PROXMOX VE) ↗
             </a>
         </div>
         <div class="telemetry-group">
@@ -3031,7 +3040,7 @@
             <ul class="nav-links">
                 <li><a href="#gemini-lab" data-i18n="nav_lab">Gemini Pipeline</a></li>
                 <li><a href="#articles-feed" data-i18n="nav_feed">Drive Research Hub</a></li>
-                <li><a href="#hardware-lab" data-i18n="nav_testbed">Banco Físico NAS (Próximamente)</a></li>
+                <li><a href="#hardware-lab" data-i18n="nav_testbed">Banco Físico NAS (Jonsbo N4)</a></li>
                 <li><a href="#competencies" data-i18n="nav_stack">Arquitectura & Stack</a></li>
                 <li><a href="#projects" data-i18n="nav_projects">Proyectos</a></li>
                 <li><a href="#experience" data-i18n="nav_exp">Experiencia</a></li>
@@ -3142,10 +3151,10 @@
                         <span class="spec-val">openEuler, EulerOS, RHEL, Kunpeng ARM, Docker</span>
                     </div>
                     <div class="spec-row">
-                        <span class="spec-key">Banco Físico NAS (WIP)</span>
-                        <span class="spec-val highlight" style="color: var(--accent-amber);">
-                            <a href="#hardware-lab" style="color: var(--accent-amber); text-decoration: none;">
-                                Ryzen 7 5700G • 32GB • 12TB HDD + 1TB SSD NAS ↗
+                        <span class="spec-key">Banco Físico NAS (Online)</span>
+                        <span class="spec-val highlight" style="color: var(--accent-emerald);">
+                            <a href="#hardware-lab" style="color: var(--accent-emerald); text-decoration: none; font-weight: 700;">
+                                ● Jonsbo N4 • Ryzen 7 5700G • Proxmox VE • 12.5TB ↗
                             </a>
                         </span>
                     </div>
@@ -3554,17 +3563,12 @@
         <div class="container">
             <div class="section-header">
                 <div>
-                    <div class="eyebrow" data-i18n="testbed_eyebrow">🛠️ PRÓXIMAMENTE // BARE-METAL TESTBED & ON-PREMISE
-                        HOMELAB
+                    <div class="eyebrow" data-i18n="testbed_eyebrow">🟢 OPERATIONAL // BARE-METAL JONSBO N4 NAS &amp; PROXMOX VE HOMELAB
                     </div>
-                    <h2 class="section-title" data-i18n="testbed_title">Banco de Pruebas Físico & Servidor NAS Dedicado
+                    <h2 class="section-title" data-i18n="testbed_title">Specs &amp; Roadmap: Jonsbo N4 NAS &amp; Banco de Pruebas IA
                     </h2>
                     <p class="section-desc" data-i18n="testbed_desc">
-                        Infraestructura física bare-metal actualmente en fase de preparación, a la espera de la entrega
-                        y llegada de las partes solicitadas (AMD Ryzen 7 5700G, 32GB RAM, 12TB HDD + 1TB SSD). Esta
-                        misma página web operará como el repositorio central y banco de análisis de pruebas, donde se
-                        documentarán y publicarán los benchmarks de inferencia en LLMs locales, microservicios en
-                        Docker, servidores dedicados y métricas del servidor NAS.
+                        Infraestructura física bare-metal desplegada y operativa sobre chasis Jonsbo N4 Micro-ATX (bahías 3.5" Hot-Swap + backplane SATA pasivo), impulsada por APU AMD Ryzen 7 5700G (8C/16T, Zen 3, Radeon Vega 8 iGPU), placa ASUS B550M, 32 GB DDR4, fuente Agiler 600W SFX y 12.5 TB de almacenamiento (500 GB SATA SSD + 4 TB HDD + 8 TB HDD) bajo hipervisor Proxmox VE y orquestación con Pelican Panel &amp; Wings. Opera como nodo central para pruebas de infraestructura de IA (Ollama, pipelines distribuidos con AMD Radeon RX 7800 XT y repositorios RAG) y pruebas recreativas de hosting de videojuegos.
                     </p>
                 </div>
             </div>
@@ -3577,46 +3581,58 @@
                             <ion-icon name="hardware-chip-outline"></ion-icon>
                         </div>
                         <div>
-                            <div class="rig-name">Bare-Metal Node: LESCOBAR-LAB-R7</div>
-                            <div class="rig-subtitle">Dedicated Research Homelab & High-Capacity NAS Server</div>
+                            <div class="rig-name">Bare-Metal Node: JONSBO-N4-NAS (Proxmox VE)</div>
+                            <div class="rig-subtitle">Jonsbo N4 Micro-ATX &bull; Ryzen 7 5700G &bull; ASUS B550M &bull; 32GB DDR4 &bull; Pelican Panel &amp; Wings</div>
                         </div>
                     </div>
                     <div class="rig-status-pill">
                         <span class="pulse-dot"></span>
-                        <span data-i18n="testbed_status">PRÓXIMAMENTE • ESPERANDO LLEGADA DE COMPONENTES
-                            SOLICITADOS</span>
+                        <span data-i18n="testbed_status">ONLINE &amp; OPERATIONAL • PROXMOX VE + PELICAN WINGS</span>
                     </div>
                 </div>
 
-                <!-- UPCOMING TESTBED CALLOUT & REPO NOTICE -->
+                <!-- OPERATIONAL TESTBED CALLOUT & REPO NOTICE -->
                 <div class="testbed-upcoming-callout">
-                    <ion-icon name="hourglass-outline"></ion-icon>
+                    <ion-icon name="checkmark-done-circle-outline"></ion-icon>
                     <div>
                         <div class="testbed-callout-title" data-i18n="testbed_callout_title">
-                            ⏳ ESTADO: PRÓXIMAMENTE — ESPERANDO LLEGADA DE COMPONENTES SOLICITADOS
+                            ✅ ESTADO: EN LÍNEA — JONSBO N4 NAS OPERATIVO BAJO PROXMOX VE &amp; PELICAN PANEL
                         </div>
                         <p class="testbed-callout-text" data-i18n="testbed_callout_desc">
-                            El hardware dedicado (AMD Ryzen 7 5700G, 32GB RAM, 12TB HDD + 1TB SSD) se encuentra
-                            actualmente solicitado y en tránsito de entrega. <strong>Esta misma página web funcionará
-                                como el repositorio central y banco de análisis de pruebas</strong>, donde se publicarán
-                            los registros de rendimiento, métricas térmicas, benchmarking de inferencia en LLMs locales
-                            y telemetría de servicios en tiempo real una vez finalizado el ensamblaje.
+                            El servidor físico <strong>Jonsbo N4 Micro-ATX</strong> ya se encuentra completamente ensamblado y operando en red local con <strong>Proxmox VE</strong> y <strong>Pelican Panel &amp; Wings</strong>. Actualmente ejecuta nuestra hoja de ruta de pruebas de infraestructura de IA (integración de contenedores <strong>Ollama</strong>, pipelines de inferencia/entrenamiento distribuido conectando el backend del NAS con el workstation de escritorio equipado con <strong>AMD Radeon RX 7800 XT</strong>, y montaje de directorios <strong>RAG</strong> en los arreglos de 8 TB y 4 TB), al tiempo que se prueban de forma recreativa sus capacidades para <strong>hostear servidores dedicados de videojuegos</strong>.
                         </p>
                     </div>
                 </div>
 
+                <!-- SYSTEM SPECIFICATIONS TITLE -->
+                <div class="workloads-container-title">
+                    <ion-icon name="construct-outline"></ion-icon>
+                    <span data-i18n="testbed_specs_title">ESPECIFICACIONES DEL SISTEMA (SYSTEM SPECIFICATIONS):</span>
+                </div>
+
                 <!-- 4 HARDWARE SPEC BOXES -->
                 <div class="hardware-specs-grid">
-                    <!-- CPU -->
+                    <!-- CHASSIS & PSU -->
+                    <div class="hardware-spec-box">
+                        <div class="spec-box-label">
+                            <ion-icon name="cube-outline" style="color: var(--accent-emerald);"></ion-icon>
+                            <span>Chassis &amp; Power Supply</span>
+                        </div>
+                        <div class="spec-box-val">Jonsbo N4 Micro-ATX</div>
+                        <div class="spec-box-detail">
+                            Diseño de bahías 3.5" Hot-Swap + backplane SATA pasivo integrado &bull; Fuente de poder <strong>Agiler 600W SFX</strong>.
+                        </div>
+                    </div>
+
+                    <!-- APU & MOTHERBOARD -->
                     <div class="hardware-spec-box">
                         <div class="spec-box-label">
                             <ion-icon name="speedometer-outline" style="color: var(--accent-amber);"></ion-icon>
-                            <span>Procesador (CPU)</span>
+                            <span>APU &amp; Motherboard</span>
                         </div>
                         <div class="spec-box-val">AMD Ryzen 7 5700G</div>
                         <div class="spec-box-detail">
-                            8 Núcleos / 16 Hilos &bull; 4.6 GHz Max Boost &bull; Radeon Vega 8 iGPU para
-                            transcodificación y cómputo híbrido.
+                            8 Cores / 16 Threads (Zen 3) &bull; Radeon Vega 8 iGPU &bull; Placa base <strong>ASUS B550M (Micro-ATX)</strong>.
                         </div>
                     </div>
 
@@ -3628,47 +3644,77 @@
                         </div>
                         <div class="spec-box-val">32 GB DDR4</div>
                         <div class="spec-box-detail">
-                            Configuración inicial de alta frecuencia en Dual-Channel, con arquitectura escalable para
-                            virtualización y modelos LLM.
+                            Memoria de alta capacidad dedicada a máquinas virtuales KVM, contenedores LXC, caché de almacenamiento y servidores activos.
                         </div>
                     </div>
 
-                    <!-- STORAGE MASIVO -->
+                    <!-- HYPERVISOR & ORCHESTRATION -->
+                    <div class="hardware-spec-box">
+                        <div class="spec-box-label">
+                            <ion-icon name="layers-outline" style="color: #a5b4fc;"></ion-icon>
+                            <span>Hypervisor &amp; Orchestration</span>
+                        </div>
+                        <div class="spec-box-val">Proxmox VE + Pelican</div>
+                        <div class="spec-box-detail">
+                            Hipervisor bare-metal <strong>Proxmox VE</strong> &bull; Orquestación con <strong>Pelican Panel &amp; Wings</strong> para despliegue de game servers y contenedores.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STORAGE LAYOUT TITLE -->
+                <div class="workloads-container-title">
+                    <ion-icon name="server-outline"></ion-icon>
+                    <span data-i18n="testbed_storage_title">DISTRIBUCIÓN DE ALMACENAMIENTO (STORAGE LAYOUT — 12.5 TB TOTAL):</span>
+                </div>
+
+                <!-- 3 STORAGE LAYOUT BOXES -->
+                <div class="storage-layout-grid">
+                    <!-- BOOT / OS & ACTIVE SERVICES -->
+                    <div class="hardware-spec-box">
+                        <div class="spec-box-label">
+                            <ion-icon name="flash-outline" style="color: var(--accent-cyan);"></ion-icon>
+                            <span>Boot / OS &amp; Active Services</span>
+                        </div>
+                        <div class="spec-box-val">500 GB SATA SSD</div>
+                        <div class="spec-box-detail">
+                            Unidad de estado sólido principal para el sistema operativo Proxmox VE, contenedores LXC activos, Pelican Wings y servicios de baja latencia.
+                        </div>
+                    </div>
+
+                    <!-- SECONDARY STORAGE -->
+                    <div class="hardware-spec-box">
+                        <div class="spec-box-label">
+                            <ion-icon name="disc-outline" style="color: var(--accent-amber);"></ion-icon>
+                            <span>Secondary Storage</span>
+                        </div>
+                        <div class="spec-box-val">4 TB Mechanical HDD</div>
+                        <div class="spec-box-detail">
+                            Disco mecánico secundario en bahía Hot-Swap 3.5" para volúmenes de datos, respaldos programados, snapshots y datasets intermedios.
+                        </div>
+                    </div>
+
+                    <!-- MASS STORAGE -->
                     <div class="hardware-spec-box">
                         <div class="spec-box-label">
                             <ion-icon name="server-outline" style="color: var(--accent-emerald);"></ion-icon>
-                            <span>Almacenamiento Masivo</span>
+                            <span>Mass Storage</span>
                         </div>
-                        <div class="spec-box-val">12 TB HDD (NAS)</div>
+                        <div class="spec-box-val">8 TB Mechanical HDD</div>
                         <div class="spec-box-detail">
-                            Arreglo masivo de alta capacidad para datasets científicos, repositorio en red, backups
-                            redundantes y persistencia de laboratorio.
-                        </div>
-                    </div>
-
-                    <!-- STORAGE SSD CACHE -->
-                    <div class="hardware-spec-box">
-                        <div class="spec-box-label">
-                            <ion-icon name="flash-outline" style="color: #a5b4fc;"></ion-icon>
-                            <span>Caché & IOPS Rápidos</span>
-                        </div>
-                        <div class="spec-box-val">1 TB NVMe SSD</div>
-                        <div class="spec-box-detail">
-                            Unidad de estado sólido para SO Linux, volúmenes de contenedores Docker de alta velocidad y
-                            caché de pesos de inferencia.
+                            Almacenamiento mecánico masivo en bahía Hot-Swap 3.5" dedicado a repositorios de modelos LLM, bases de conocimiento RAG y embeddings locales.
                         </div>
                     </div>
                 </div>
 
                 <!-- WORKLOADS TITLE -->
                 <div class="workloads-container-title">
-                    <ion-icon name="layers-outline"></ion-icon>
-                    <span data-i18n="testbed_workloads_title">CAMPOS DE PRUEBAS & CARGAS DE TRABAJO PLANIFICADAS:</span>
+                    <ion-icon name="git-network-outline"></ion-icon>
+                    <span data-i18n="testbed_workloads_title">AI INFRASTRUCTURE TESTING ROADMAP (OLLAMA &amp; DISTRIBUTED SETUP) &amp; GAME SERVER HOSTING:</span>
                 </div>
 
                 <!-- 4 WORKLOAD CARDS -->
                 <div class="workloads-grid">
-                    <!-- WORKLOAD 1: LLMs -->
+                    <!-- WORKLOAD 1: OLLAMA CORE INTEGRATION -->
                     <div class="workload-card">
                         <div>
                             <div class="workload-head">
@@ -3676,52 +3722,71 @@
                                     <ion-icon name="bulb-outline"></ion-icon>
                                 </div>
                                 <div>
-                                    <h4 class="workload-title">Inferencia Bare-Metal & Benchmarking de LLMs</h4>
-                                    <span class="workload-tagline">Ollama, llama.cpp, vLLM & Modelos Cuantizados</span>
+                                    <h4 class="workload-title">[ ] Ollama Core Integration (Proxmox / Container)</h4>
+                                    <span class="workload-tagline">Proxmox VE LXC / Container &amp; Hardware Acceleration</span>
                                 </div>
                             </div>
                             <p class="workload-desc">
-                                Laboratorio físico para pruebas de estrés térmico, cuantización (GGUF 4-bit / 8-bit) y
-                                evaluación de throughput (tokens/segundo) sobre modelos open-source (Qwen 2.5, Gemma 2,
-                                Llama 3) sin depender de costos de tokens en la nube ni exponer datos confidenciales.
+                                Despliegue de contenedor/LXC con <strong>Ollama</strong> sobre Proxmox VE para servir modelos de lenguaje (LLMs) locales en red interna, aprovechando la aceleración por hardware del APU AMD Ryzen 7 5700G (Radeon Vega 8 iGPU) donde resulte aplicable.
                             </p>
                         </div>
                         <div class="workload-tags">
-                            <span class="workload-mini-tag">Zero Cloud Cost</span>
-                            <span class="workload-mini-tag">CPU Affinity Pinning</span>
-                            <span class="workload-mini-tag">Ollama Engine</span>
-                            <span class="workload-mini-tag">GGUF Quantization</span>
+                            <span class="workload-mini-tag">Proxmox VE / LXC</span>
+                            <span class="workload-mini-tag">Ollama Core</span>
+                            <span class="workload-mini-tag">Ryzen 7 5700G + Vega 8</span>
+                            <span class="workload-mini-tag">Local LLM Serving</span>
                         </div>
                     </div>
 
-                    <!-- WORKLOAD 2: DOCKER & SERVICES -->
+                    <!-- WORKLOAD 2: DISTRIBUTED TRAINING / INFERENCE PIPELINE -->
                     <div class="workload-card">
                         <div>
                             <div class="workload-head">
                                 <div class="workload-icon-box cyan">
-                                    <ion-icon name="cube-outline"></ion-icon>
+                                    <ion-icon name="git-branch-outline"></ion-icon>
                                 </div>
                                 <div>
-                                    <h4 class="workload-title">Microservicios & Orquestación bajo Docker</h4>
-                                    <span class="workload-tagline">Pilas Multi-Contenedor, DBs & Reverse Proxy</span>
+                                    <h4 class="workload-title">[ ] Distributed Training / Inference Pipeline</h4>
+                                    <span class="workload-tagline">Jonsbo N4 NAS Backend + AMD Radeon RX 7800 XT Node</span>
                                 </div>
                             </div>
                             <p class="workload-desc">
-                                Aislamiento y despliegue continuo de servicios empresariales: bases de datos
-                                relacionales y distribuidas (openGauss, PostgreSQL), caché en memoria con Redis,
-                                enrutamiento con Traefik / Nginx Proxy Manager con SSL y métricas en vivo con Prometheus
-                                + Grafana.
+                                Establecimiento de un pipeline distribuido para conectar el backend de almacenamiento del NAS con nodos de ejecución de alta VRAM (utilizando el workstation de escritorio con GPU <strong>AMD Radeon RX 7800 XT</strong> y hardware local) para fine-tuning de modelos y cargas pesadas de IA local.
                             </p>
                         </div>
                         <div class="workload-tags">
-                            <span class="workload-mini-tag">Docker Compose</span>
-                            <span class="workload-mini-tag">openGauss Bare-Metal</span>
-                            <span class="workload-mini-tag">Prometheus & Grafana</span>
-                            <span class="workload-mini-tag">Automated Backups</span>
+                            <span class="workload-mini-tag">AMD Radeon RX 7800 XT</span>
+                            <span class="workload-mini-tag">Distributed AI Pipeline</span>
+                            <span class="workload-mini-tag">High-VRAM Workstation</span>
+                            <span class="workload-mini-tag">Model Fine-Tuning</span>
                         </div>
                     </div>
 
-                    <!-- WORKLOAD 3: DEDICATED SERVERS & GAMING HOST -->
+                    <!-- WORKLOAD 3: MODEL REPOSITORY & RAG DATA MOUNT -->
+                    <div class="workload-card">
+                        <div>
+                            <div class="workload-head">
+                                <div class="workload-icon-box indigo">
+                                    <ion-icon name="library-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <h4 class="workload-title">[ ] Model Repository &amp; RAG Data Mount</h4>
+                                    <span class="workload-tagline">8 TB + 4 TB Mechanical HDD Arrays &amp; Local Embeddings</span>
+                                </div>
+                            </div>
+                            <p class="workload-desc">
+                                Configuración de directorios de datasets sobre los arreglos mecánicos de <strong>8 TB y 4 TB HDD</strong> para operar como bases de conocimiento centralizadas en flujos de generación aumentada por recuperación (<strong>RAG</strong>), repositorio de pesos y almacenamiento de embeddings locales.
+                            </p>
+                        </div>
+                        <div class="workload-tags">
+                            <span class="workload-mini-tag">8TB + 4TB HDD Arrays</span>
+                            <span class="workload-mini-tag">RAG Knowledge Base</span>
+                            <span class="workload-mini-tag">Local Embeddings</span>
+                            <span class="workload-mini-tag">Passive SATA Backplane</span>
+                        </div>
+                    </div>
+
+                    <!-- WORKLOAD 4: RECREATIONAL GAME SERVER HOSTING -->
                     <div class="workload-card">
                         <div>
                             <div class="workload-head">
@@ -3729,49 +3794,19 @@
                                     <ion-icon name="game-controller-outline"></ion-icon>
                                 </div>
                                 <div>
-                                    <h4 class="workload-title">Hosting de Servidores Dedicados & Gaming</h4>
-                                    <span class="workload-tagline">Servicios en Tiempo Real & Benchmarks de Red</span>
+                                    <h4 class="workload-title">[x] Hosting Recreativo de Videojuegos (Pelican Panel)</h4>
+                                    <span class="workload-tagline">Pelican Panel &amp; Wings sobre Proxmox VE</span>
                                 </div>
                             </div>
                             <p class="workload-desc">
-                                Banco de pruebas de infraestructura para hosting de servidores de videojuegos y
-                                servicios multijugador en tiempo real (SteamCMD, Minecraft Paper/Folia, Valheim, etc.).
-                                Pruebas de asignación dedicada de hilos, jitter en protocolos UDP/TCP y estabilidad bajo
-                                carga concurrente.
+                                Pruebas recreativas de las capacidades del servidor para hostear diversos videojuegos multijugador mediante <strong>Pelican Panel &amp; Wings</strong>, evaluando el despliegue ágil de contenedores, aislamiento de recursos, rendimiento monohilo/multihilo del Ryzen 7 5700G y estabilidad de red.
                             </p>
                         </div>
                         <div class="workload-tags">
-                            <span class="workload-mini-tag">Game Server Hosting</span>
-                            <span class="workload-mini-tag">UDP Real-Time</span>
-                            <span class="workload-mini-tag">Low Jitter</span>
-                            <span class="workload-mini-tag">SteamCMD</span>
-                        </div>
-                    </div>
-
-                    <!-- WORKLOAD 4: NAS & HYBRID STORAGE -->
-                    <div class="workload-card">
-                        <div>
-                            <div class="workload-head">
-                                <div class="workload-icon-box indigo">
-                                    <ion-icon name="cloud-offline-outline"></ion-icon>
-                                </div>
-                                <div>
-                                    <h4 class="workload-title">Servidor NAS Centralizado & Conectividad Segura</h4>
-                                    <span class="workload-tagline">12 TB HDD + 1 TB SSD Caché & Túneles VPN</span>
-                                </div>
-                            </div>
-                            <p class="workload-desc">
-                                Almacenamiento en red local de alta fidelidad (SMB/NFS/iSCSI) con instantáneas
-                                programadas, sincronización continua hacia la carpeta compartida de Google Drive y
-                                túneles seguros punto a punto (WireGuard / Tailscale) para acceso remoto cifrado sin
-                                exponer puertos públicos.
-                            </p>
-                        </div>
-                        <div class="workload-tags">
-                            <span class="workload-mini-tag">13 TB Total Storage</span>
-                            <span class="workload-mini-tag">Google Drive Sync</span>
-                            <span class="workload-mini-tag">WireGuard / Tailscale</span>
-                            <span class="workload-mini-tag">RAID / ZFS Parity</span>
+                            <span class="workload-mini-tag">Pelican Panel &amp; Wings</span>
+                            <span class="workload-mini-tag">Recreational Game Hosting</span>
+                            <span class="workload-mini-tag">32GB DDR4 Allocation</span>
+                            <span class="workload-mini-tag">Low-Latency Containers</span>
                         </div>
                     </div>
                 </div>
@@ -3780,18 +3815,15 @@
                 <div class="roadmap-bar">
                     <div class="roadmap-item done">
                         <ion-icon name="checkmark-circle"></ion-icon>
-                        <span data-i18n="testbed_step1"><strong>Fase 1 [Completada]:</strong> Dimensionamiento & Pedido
-                            de Componentes (Ryzen 7 5700G, 32GB RAM, 12TB+1TB SSD)</span>
+                        <span data-i18n="testbed_step1"><strong>Fase 1 [Completada]:</strong> Ensamblaje Jonsbo N4 NAS (Ryzen 7 5700G, ASUS B550M, 32GB DDR4, 500GB SSD + 4TB/8TB HDD, Proxmox VE)</span>
+                    </div>
+                    <div class="roadmap-item done">
+                        <ion-icon name="game-controller-outline"></ion-icon>
+                        <span data-i18n="testbed_step2"><strong>Fase 2 [Activa]:</strong> Orquestación con Pelican Panel &amp; Wings + Pruebas Recreativas de Hosting de Videojuegos</span>
                     </div>
                     <div class="roadmap-item in-progress">
                         <ion-icon name="sync-outline" style="animation: spin 3s infinite linear;"></ion-icon>
-                        <span data-i18n="testbed_step2"><strong>Fase 2 [En Espera / Actual]:</strong> Llegada de Partes
-                            Solicitadas & Ensamblaje Físico</span>
-                    </div>
-                    <div class="roadmap-item">
-                        <ion-icon name="analytics-outline"></ion-icon>
-                        <span data-i18n="testbed_step3"><strong>Fase 3 [Próximamente]:</strong> Puesta en Marcha & Esta
-                            Web como Repositorio de Análisis de Pruebas</span>
+                        <span data-i18n="testbed_step3"><strong>Fase 3 [Roadmap IA]:</strong> Integración Ollama LXC, Pipeline Distribuido (NAS + RX 7800 XT) &amp; Montaje RAG (8TB/4TB)</span>
                     </div>
                 </div>
             </div>
@@ -4242,20 +4274,22 @@
                 nav_exp: "Experiencia",
                 nav_honors: "Premios & Educación",
                 nav_contact: "Contactar",
-                nav_testbed: "Banco Físico NAS (Próximamente)",
+                nav_testbed: "Banco Físico NAS (Jonsbo N4)",
                 lab_eyebrow: "🤖 GEMINI & ADVANCED AI ENGINE // GOOGLE DEVELOPERS PRO",
                 lab_title: "Orquestación de IA Generativa & Modelos Gemini de Frontera",
                 lab_desc: "Banco de pruebas y experimentación continua con modelos de frontera de Google DeepMind mediante la API de Google AI Studio, integrado bajo cuota oficial del programa Google Developers Pro. Evaluamos activamente Gemini 3.1 Pro para razonamiento analítico pesado, Gemini 3.8 Flash para inferencia ultrarrápida en agentes socráticos, y el motor experimental Gemini 4 Argon para orquestación multimodal y síntesis estructurada.",
-                testbed_eyebrow: "🛠️ PRÓXIMAMENTE // BARE-METAL TESTBED & ON-PREMISE HOMELAB",
-                testbed_title: "Banco de Pruebas Físico & Servidor NAS Dedicado",
-                testbed_desc: "Infraestructura física bare-metal actualmente en fase de preparación, a la espera de la entrega y llegada de las partes solicitadas (AMD Ryzen 7 5700G, 32GB RAM, 12TB HDD + 1TB SSD). Esta misma página web operará como el repositorio central y banco de análisis de pruebas, donde se documentarán y publicarán los benchmarks de inferencia en LLMs locales, microservicios en Docker, servidores dedicados y métricas del servidor NAS.",
-                testbed_status: "PRÓXIMAMENTE • ESPERANDO LLEGADA DE COMPONENTES SOLICITADOS",
-                testbed_callout_title: "⏳ ESTADO: PRÓXIMAMENTE — ESPERANDO LLEGADA DE COMPONENTES SOLICITADOS",
-                testbed_callout_desc: "El hardware dedicado (AMD Ryzen 7 5700G, 32GB RAM, 12TB HDD + 1TB SSD) se encuentra actualmente solicitado y en tránsito de entrega. <strong>Esta misma página web funcionará como el repositorio central y banco de análisis de pruebas</strong>, donde se publicarán los registros de rendimiento, métricas térmicas, benchmarking de inferencia en LLMs locales y telemetría de servicios en tiempo real una vez finalizado el ensamblaje.",
-                testbed_step1: "<strong>Fase 1 [Completada]:</strong> Dimensionamiento & Pedido de Componentes (Ryzen 7 5700G, 32GB RAM, 12TB+1TB SSD)",
-                testbed_step2: "<strong>Fase 2 [En Espera / Actual]:</strong> Llegada de Partes Solicitadas & Ensamblaje Físico",
-                testbed_step3: "<strong>Fase 3 [Próximamente]:</strong> Puesta en Marcha & Esta Web como Repositorio de Análisis de Pruebas",
-                testbed_workloads_title: "CAMPOS DE PRUEBAS & CARGAS DE TRABAJO PLANIFICADAS:",
+                testbed_eyebrow: "🟢 OPERATIONAL // BARE-METAL JONSBO N4 NAS & PROXMOX VE HOMELAB",
+                testbed_title: "Specs & Roadmap: Jonsbo N4 NAS & Banco de Pruebas IA",
+                testbed_desc: "Infraestructura física bare-metal desplegada y operativa sobre chasis Jonsbo N4 Micro-ATX (bahías 3.5\" Hot-Swap + backplane SATA pasivo), impulsada por APU AMD Ryzen 7 5700G (8C/16T, Zen 3, Radeon Vega 8 iGPU), placa ASUS B550M, 32 GB DDR4, fuente Agiler 600W SFX y 12.5 TB de almacenamiento (500 GB SATA SSD + 4 TB HDD + 8 TB HDD) bajo hipervisor Proxmox VE y orquestación con Pelican Panel & Wings. Opera como nodo central para pruebas de infraestructura de IA (Ollama, pipelines distribuidos con AMD Radeon RX 7800 XT y repositorios RAG) y pruebas recreativas de hosting de videojuegos.",
+                testbed_status: "ONLINE & OPERATIONAL • PROXMOX VE + PELICAN WINGS",
+                testbed_callout_title: "✅ ESTADO: EN LÍNEA — JONSBO N4 NAS OPERATIVO BAJO PROXMOX VE & PELICAN PANEL",
+                testbed_callout_desc: "El servidor físico <strong>Jonsbo N4 Micro-ATX</strong> ya se encuentra completamente ensamblado y operando en red local con <strong>Proxmox VE</strong> y <strong>Pelican Panel &amp; Wings</strong>. Actualmente ejecuta nuestra hoja de ruta de pruebas de infraestructura de IA (integración de contenedores <strong>Ollama</strong>, pipelines de inferencia/entrenamiento distribuido conectando el backend del NAS con el workstation de escritorio equipado con <strong>AMD Radeon RX 7800 XT</strong>, y montaje de directorios <strong>RAG</strong> en los arreglos de 8 TB y 4 TB), al tiempo que se prueban de forma recreativa sus capacidades para <strong>hostear servidores dedicados de videojuegos</strong>.",
+                testbed_specs_title: "ESPECIFICACIONES DEL SISTEMA (SYSTEM SPECIFICATIONS):",
+                testbed_storage_title: "DISTRIBUCIÓN DE ALMACENAMIENTO (STORAGE LAYOUT — 12.5 TB TOTAL):",
+                testbed_step1: "<strong>Fase 1 [Completada]:</strong> Ensamblaje Jonsbo N4 NAS (Ryzen 7 5700G, ASUS B550M, 32GB DDR4, 500GB SSD + 4TB/8TB HDD, Proxmox VE)",
+                testbed_step2: "<strong>Fase 2 [Activa]:</strong> Orquestación con Pelican Panel & Wings + Pruebas Recreativas de Hosting de Videojuegos",
+                testbed_step3: "<strong>Fase 3 [Roadmap IA]:</strong> Integración Ollama LXC, Pipeline Distribuido (NAS + RX 7800 XT) & Montaje RAG (8TB/4TB)",
+                testbed_workloads_title: "AI INFRASTRUCTURE TESTING ROADMAP (OLLAMA & DISTRIBUTED SETUP) & GAME SERVER HOSTING:",
                 hero_greeting: "Arquitectura de Misión Crítica,",
                 hero_highlight: "Nube Híbrida & Orquestación IA",
                 hero_desc: "Ingeniero en Informática graduado con honores y candidato a Maestría en Administración de Proyectos de TI. Experiencia comprobada en Huawei liderando implementaciones End-to-End (E2E), plataformas OSS/BSS en alta disponibilidad (HA), motores de bases de datos distribuidas (Oracle SQL, PostgreSQL, Apache Spark, GaussDB/openGauss) y despliegue de arquitecturas LLM locales y en la nube.",
@@ -4300,20 +4334,22 @@
                 nav_exp: "Experience",
                 nav_honors: "Honors & Education",
                 nav_contact: "Contact Me",
-                nav_testbed: "Physical NAS Testbed (Coming Soon)",
+                nav_testbed: "Jonsbo N4 NAS Testbed",
                 lab_eyebrow: "🤖 GEMINI & ADVANCED AI ENGINE // GOOGLE DEVELOPERS PRO",
                 lab_title: "Generative AI Orchestration & Frontier Gemini Models",
                 lab_desc: "Continuous testbed and experimentation with Google DeepMind frontier models via Google AI Studio API, operating under official quota from the Google Developers Pro program. We actively benchmark Gemini 3.1 Pro for deep analytical reasoning, Gemini 3.8 Flash for sub-second TTFT Socratic tutoring, and the experimental Gemini 4 Argon engine for multimodal ETL synthesis.",
-                testbed_eyebrow: "🛠️ COMING SOON // BARE-METAL TESTBED & ON-PREMISE HOMELAB",
-                testbed_title: "Dedicated Physical Testbed & NAS Homelab",
-                testbed_desc: "Dedicated bare-metal infrastructure currently in preparation, awaiting arrival of ordered components (AMD Ryzen 7 5700G, 32GB RAM, 12TB HDD + 1TB SSD). This website will operate as the central test analysis repository, publishing local LLM benchmarks, Docker microservices orchestration, dedicated servers, and NAS telemetry upon assembly.",
-                testbed_status: "COMING SOON • AWAITING ARRIVAL OF ORDERED PARTS",
-                testbed_callout_title: "⏳ STATUS: COMING SOON — AWAITING ARRIVAL OF ORDERED PARTS",
-                testbed_callout_desc: "Dedicated hardware (AMD Ryzen 7 5700G, 32GB RAM, 12TB HDD + 1TB SSD) has been ordered and is currently in transit. <strong>This website will serve directly as the central test analysis repository</strong>, documenting and publishing local LLM benchmarks, thermal metrics, Docker microservices, and real-time operational telemetry once physical assembly is complete.",
-                testbed_step1: "<strong>Phase 1 [Completed]:</strong> Sizing & Parts Procurement (Ryzen 7 5700G, 32GB RAM, 12TB+1TB SSD)",
-                testbed_step2: "<strong>Phase 2 [Awaiting / Current]:</strong> Arrival of Ordered Parts & Physical Assembly",
-                testbed_step3: "<strong>Phase 3 [Coming Soon]:</strong> Commissioning & This Website as Test Analysis Repository",
-                testbed_workloads_title: "PLANNED TESTBED WORKLOADS & EXPERIMENTS:",
+                testbed_eyebrow: "🟢 OPERATIONAL // BARE-METAL JONSBO N4 NAS & PROXMOX VE HOMELAB",
+                testbed_title: "Specs & Roadmap: Jonsbo N4 NAS & AI Infrastructure Testbed",
+                testbed_desc: "Operational bare-metal infrastructure built in a Jonsbo N4 Micro-ATX chassis (Hot-swap 3.5\" bay design + passive SATA backplane), powered by an AMD Ryzen 7 5700G APU (8C/16T, Zen 3, Radeon Vega 8 iGPU), ASUS B550M motherboard, 32 GB DDR4 RAM, Agiler 600W SFX PSU, and 12.5 TB total storage (500 GB SATA SSD + 4 TB HDD + 8 TB HDD) running Proxmox VE with Pelican Panel & Wings orchestration. Serves as our testbed for local AI (Ollama, distributed pipelines with an AMD Radeon RX 7800 XT workstation, and RAG data mounts) alongside recreational game server hosting.",
+                testbed_status: "ONLINE & OPERATIONAL • PROXMOX VE + PELICAN WINGS",
+                testbed_callout_title: "✅ STATUS: ONLINE — JONSBO N4 NAS OPERATIONAL ON PROXMOX VE & PELICAN PANEL",
+                testbed_callout_desc: "The physical <strong>Jonsbo N4 Micro-ATX</strong> server is fully assembled and running in production on our local network under <strong>Proxmox VE</strong> and <strong>Pelican Panel &amp; Wings</strong>. It actively powers our AI Infrastructure Testing Roadmap (deploying <strong>Ollama</strong> containers/LXC, building a distributed training/inference pipeline connecting the NAS backend with our <strong>AMD Radeon RX 7800 XT</strong> desktop workstation, and mounting <strong>RAG</strong> dataset repositories across the 8 TB and 4 TB HDD arrays), while recreationally testing capabilities for <strong>hosting dedicated multiplayer game servers</strong>.",
+                testbed_specs_title: "SYSTEM SPECIFICATIONS:",
+                testbed_storage_title: "STORAGE LAYOUT (12.5 TB TOTAL):",
+                testbed_step1: "<strong>Phase 1 [Completed]:</strong> Jonsbo N4 NAS Build (Ryzen 7 5700G, ASUS B550M, 32GB DDR4, 500GB SSD + 4TB/8TB HDD, Proxmox VE)",
+                testbed_step2: "<strong>Phase 2 [Active]:</strong> Pelican Panel & Wings Orchestration + Recreational Game Server Hosting Tests",
+                testbed_step3: "<strong>Phase 3 [AI Roadmap]:</strong> Ollama LXC Integration, Distributed Pipeline (NAS + RX 7800 XT) & RAG Mounts (8TB/4TB)",
+                testbed_workloads_title: "AI INFRASTRUCTURE TESTING ROADMAP (OLLAMA & DISTRIBUTED SETUP) & GAME SERVER HOSTING:",
                 hero_greeting: "Mission-Critical Architecture,",
                 hero_highlight: "Hybrid Cloud & AI Orchestration",
                 hero_desc: "Computer Engineering Honors graduate and IT Project Management Master's candidate. Proven experience at Huawei leading End-to-End (E2E) implementations, High-Availability (HA) OSS/BSS platforms, distributed database engines (Oracle SQL, PostgreSQL, Apache Spark, GaussDB/openGauss), and local/cloud LLM deployments.",
