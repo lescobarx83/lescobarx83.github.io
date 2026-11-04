@@ -5596,12 +5596,10 @@ LOCAL; -- Latency: 4820ms → 18.4ms (261x)</div>
         <div class="container">
             <div class="section-header">
                 <div>
-                    <div class="eyebrow">🚀 FLAGSHIP INNOVATION ARCHITECTURE</div>
-                    <h2 class="section-title">ArenAI — Plataforma Educativa & Arquitectura Híbrida Cloud/IA</h2>
+                    <div class="eyebrow">🚀 FLAGSHIP EDTECH &amp; REAL-TIME AI ARCHITECTURE</div>
+                    <h2 class="section-title">ArenAI — Plataforma EdTech Adaptativa con Tutoría Socrática por IA y Gamificación en Tiempo Real</h2>
                     <p class="section-desc" data-i18n="arenai_sub">
-                        Proyecto personal de innovación tecnológica reconocido a nivel institucional por el Ministerio
-                        de Educación Pública (MEP) y Semifinalista Global en la competencia Huawei ICT Innovation
-                        Competition (10.ª Edición).
+                        Ecosistema educativo multiplataforma (reconocido ante el MEP y Semifinalista Global en Huawei ICT Innovation Competition 10.ª Ed.) que transforma el aprendizaje escolar pasivo mediante tutores virtuales LLM adaptados al estilo cognitivo del alumno, duelos académicos multijugador 1v1 en tiempo real y analítica predictiva por tema para docentes.
                     </p>
                 </div>
                 <div class="section-index-watermark" aria-hidden="true">05</div>
@@ -5610,72 +5608,71 @@ LOCAL; -- Latency: 4820ms → 18.4ms (261x)</div>
             <div class="project-showcase">
                 <div>
                     <h3 style="font-size: 1.35rem; margin-bottom: 0.75rem;" data-i18n="arenai_h3">
-                        Arquitectura Evolutiva con Agentes Conversacionales Socráticos
+                        Arquitectura Cliente-Servidor Híbrida, Multi-Rol y Build Standalone Auto-Contenido
                     </h3>
                     <p style="color: var(--text-secondary); font-size: 0.94rem;">
-                        Diseñado y desarrollado como Arquitecto Líder para potenciar el pensamiento crítico estudiantil
-                        mediante árboles de diálogo socrático, integrando una evolución completa desde un MVP de
-                        escritorio hasta una arquitectura distribuida multi-nube.
+                        Construida con <strong>React 19, Ionic Framework 8 y Capacitor 7</strong> en el frontend (con <code>ThemeProvider</code> de 7 paletas e interpolación cromática continua $\text{RGB}_{\text{Red}} \to \text{RGB}_{\text{Teal}}$, <code>AvatarProvider</code> estocástico y <code>SoundProvider</code> con Howler.js) junto a un backend en <strong>Node.js + Express + TypeScript + Socket.IO</strong> y una arquitectura <strong>Standalone 100% ejecutable en navegador</strong> (<code>/arenai/Demo/dist/</code>).
                     </p>
 
                     <div class="arch-pillars">
                         <div class="arch-pillar">
-                            <h4>1. Fase I (Desktop MVP) & APIs</h4>
-                            <p>Base multiplataforma construida con Electron, Node.js y TypeScript, respaldada por
-                                microservicios auxiliares en Python (Flask).</p>
+                            <h4>1. Motor de Batallas 1v1 Síncrono (Socket.IO)</h4>
+                            <p>Colas de matchmaking (<code>waitingQueue</code>), salas activas (<code>activeGames</code>), barra <strong>Sudden Death de 8s</strong> (<code>opponent_answered</code>), impactos por velocidad (5–8% HP) o críticos (25–30% HP) y heartbeat de 2s.</p>
                         </div>
                         <div class="arch-pillar">
-                            <h4>2. Nube Híbrida (Huawei + GCP)</h4>
-                            <p>Contenerización con Docker desplegada en Huawei Cloud ECS dentro de VPCs aisladas junto
-                                con servicios en Google Cloud Run.</p>
+                            <h4>2. Tutoría Socrática &amp; Psicometría ($\ge 25\%$)</h4>
+                            <p>Orquestación en <strong>Vertex AI (Gemini 2.0 Flash)</strong> y <strong>Ollama (DeepSeek-R1)</strong> inyectando estilo cognitivo diagnosticado en <code>PersonalityQuiz.tsx</code> (Visual, Lógico, Kinestésico, Significativo), rol y mascota (Capybara/Sloth).</p>
                         </div>
                         <div class="arch-pillar">
-                            <h4>3. Clústeres openGauss & Almacenamiento</h4>
-                            <p>Evolución desde PostgreSQL y Cloud SQL hacia clústeres distribuidos openGauss, con
-                                persistencia de objetos en Huawei OBS y Google Cloud Storage.</p>
+                            <h4>3. Modelo Relacional (18+ Entidades) &amp; QR</h4>
+                            <p>Esquema normalizado en <strong>MySQL 8 / openGauss TLS</strong> con prerrequisitos jerárquicos (<code>topic_father_son_relation</code>), detección de dominios (<code>@mep.go.cr</code>, <code>@ucr.ac.cr</code>) e inscripción instantánea por QR (<code>/join/:code</code>).</p>
                         </div>
                         <div class="arch-pillar">
-                            <h4>4. Ciclo de Vida IA (Local & Cloud)</h4>
-                            <p>Orquestación local en Ollama (Qwen y Gemma optimizando memoria e hilos de inferencia) y
-                                escalado hacia APIs generativas en la nube.</p>
+                            <h4>4. Demo Standalone Auto-Contenida</h4>
+                            <p>Compilación en <code>/arenai/Demo/dist/</code> con base relacional en cliente (<code>localDb.ts</code>), motor pedagógico local (<code>localAiEngine.ts</code>), interceptor HTTP y <code>StandaloneBattleSocket</code> sin dependencia de Cloud Run.</p>
                         </div>
                     </div>
 
                     <div class="cta-group" style="margin-bottom: 0;">
-                        <a href="./arenai/index.html" class="btn btn-primary btn-arenai-pulse"
-                            title="Abrir aplicación web ArenAI">
-                            <ion-icon name="rocket-outline"></ion-icon> 🎮 Abrir Plataforma ArenAI (/arenai)
+                        <a href="./arenai/index.html#live-demo" class="btn btn-primary btn-arenai-pulse"
+                            title="Abrir Simulador y Auditoría Técnica de ArenAI">
+                            <ion-icon name="rocket-outline"></ion-icon> 🎮 Simulador &amp; Auditoría ArenAI (/arenai)
+                        </a>
+                        <a href="./arenai/Demo/dist/index.html" target="_blank" rel="noopener" class="btn btn-secondary"
+                            title="Lanzar Build Standalone React 19 + Ionic 8 en Pantalla Completa">
+                            <ion-icon name="phone-portrait-outline"></ion-icon> 📱 Abrir App Standalone (/Demo/dist) ↗
                         </a>
                         <a href="#gemini-lab" class="btn btn-secondary">
                             <ion-icon name="flask-outline"></ion-icon> Pruebas Socráticas en Gemini Lab
                         </a>
-                        <a href="#articles-feed" class="btn btn-secondary">
-                            <ion-icon name="document-text-outline"></ion-icon> Ver Investigaciones en Drive
-                        </a>
                     </div>
                 </div>
 
-                <a href="./arenai/index.html" class="arenai-visual-link"
-                    title="Haz clic para ingresar a la plataforma interactiva ArenAI">
+                <a href="./arenai/index.html#live-demo" class="arenai-visual-link"
+                    title="Haz clic para abrir el simulador interactivo y la auditoría técnica de ArenAI">
                     <div class="arenai-visual">
                         <div class="arenai-badge-top">
-                            <ion-icon name="open-outline"></ion-icon> LANZAR APP ↗
+                            <ion-icon name="open-outline"></ion-icon> DEMO + AUDITORÍA ↗
                         </div>
-                        <img src="./arenai/img/Capy_pfp.png" alt="ArenAI Capybara Mascot"
+                        <img src="./arenai/img/Capy_pfp.png" alt="ArenAI Capybara Mascot" width="96" height="96"
                             onerror="this.src='./arenai/img/battle_sprite_front_capybara.png'" />
-                        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">ArenAI Platform</h4>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">ArenAI Platform (React 19 + Ionic 8)</h4>
                         <p
                             style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-emerald); margin-bottom: 1rem; font-weight: 700;">
-                            ● STATUS: ONLINE • CLIC PARA INGRESAR
+                            ● STANDALONE DEMO INTEGRADA • ZERO CLOUD RUN DEPENDENCY
                         </p>
                         <div class="tag-list" style="justify-content: center;">
-                            <span class="tag">Electron</span>
+                            <span class="tag">React 19</span>
+                            <span class="tag">Ionic 8</span>
+                            <span class="tag">Capacitor 7</span>
                             <span class="tag">TypeScript</span>
-                            <span class="tag">Python Flask</span>
-                            <span class="tag">openGauss</span>
-                            <span class="tag">Huawei ECS/OBS</span>
-                            <span class="tag">Google Cloud Run</span>
-                            <span class="tag">Ollama / LLMs</span>
+                            <span class="tag">Node.js / Express</span>
+                            <span class="tag">Socket.IO (1v1 Sudden Death)</span>
+                            <span class="tag">Vertex AI (Gemini 2.0 Flash)</span>
+                            <span class="tag">Ollama (DeepSeek-R1)</span>
+                            <span class="tag">MySQL 8 / openGauss</span>
+                            <span class="tag">Zod &amp; JWT</span>
+                            <span class="tag">Vitest &amp; Cypress</span>
                         </div>
                     </div>
                 </a>
@@ -7598,10 +7595,16 @@ Spiking LIF neurons preserve phase timing across 6G multipath channels.`,
                     action: () => toggleLanguage()
                 },
                 {
-                    title: 'Lanzar Plataforma Interactiva ArenAI (/arenai)',
-                    tag: 'APP',
+                    title: 'Lanzar Simulador & Auditoría Técnica ArenAI (/arenai)',
+                    tag: 'ARENAI',
                     icon: 'rocket-outline',
-                    action: () => { window.location.href = './arenai/index.html'; }
+                    action: () => { window.location.href = './arenai/index.html#live-demo'; }
+                },
+                {
+                    title: 'Abrir App Standalone ArenAI en Pantalla Completa (/arenai/Demo/dist)',
+                    tag: 'REACT 19 + IONIC 8',
+                    icon: 'phone-portrait-outline',
+                    action: () => { window.open('./arenai/Demo/dist/index.html', '_blank', 'noopener'); }
                 }
             ];
 

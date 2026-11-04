@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>ArenAI — Plataforma EdTech Adaptativa (React 19 + Ionic 8 Standalone Demo)</title>
+
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+
+    <!-- add to homescreen for ios -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="ArenAI" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="module" crossorigin src="./assets/index-BjI78906.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DTgt3yGM.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+    <style>
+      #arenai-top-hud {
+        display: none;
+        position: fixed;
+        bottom: 14px;
+        left: 14px;
+        z-index: 99999;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      #arenai-top-hud.is-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(10, 18, 28, 0.92);
+        border: 1px solid rgba(244, 162, 97, 0.55);
+        backdrop-filter: blur(10px);
+        padding: 6px 11px;
+        border-radius: 999px;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+        color: #f8fafc;
+        font-size: 12px;
+      }
+      #arenai-top-hud a,
+      #arenai-top-hud button {
+        background: rgba(244, 162, 97, 0.16);
+        color: #f4a261;
+        border: 1px solid rgba(244, 162, 97, 0.4);
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      #arenai-top-hud a:hover,
+      #arenai-top-hud button:hover {
+        background: #f4a261;
+        color: #140c06;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <aside id="arenai-top-hud" aria-label="Controles de demostración ArenAI">
+      <a href="../../index.html">← Auditoría &amp; Arquitectura</a>
+      <span style="opacity:0.85;">Demo: <code>student</code>/<code>test</code> · <code>professor</code>/<code>test</code> · <code>nuevo</code>/<code>ArenAI123</code></span>
+      <button type="button" id="arenai-hud-close" aria-label="Ocultar barra de ayuda">✕</button>
+    </aside>
+    <script>
+      if (window.self === window.top) {
+        var hud = document.getElementById('arenai-top-hud');
+        var closeBtn = document.getElementById('arenai-hud-close');
+        if (hud) hud.classList.add('is-top');
+        if (closeBtn && hud) {
+          closeBtn.addEventListener('click', function () {
+            hud.classList.remove('is-top');
+          });
+        }
+      }
+    </script>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="./assets/polyfills-legacy-BVQUQtkF.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="./assets/index-legacy-BYzK-oZR.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

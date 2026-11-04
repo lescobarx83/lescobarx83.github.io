@@ -4,35 +4,43 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ArenAI | Arquitectura Técnica, Vectores MindSpore & Arena Socrática</title>
-    <meta name="description"
-        content="Ingeniería interna de ArenAI: sincronización por Sockets en tiempo real, análisis vectorial con Huawei Cloud y MindSpore, clústeres openGauss, LLMs socráticos y gamificación psicológica." />
+    <title>ArenAI — Plataforma EdTech Adaptativa con Tutoría Socrática por IA y Gamificación en Tiempo Real</title>
+
+    <!-- Tipografías del Portafolio + Tipografía Retro/Pixel de la Arena Original -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Press+Start+2P&display=swap"
         rel="stylesheet" />
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <style>
         :root {
-            /* FASE 1: PALETA NOC / DATACENTER (CONEXIÓN CON EL PORTAFOLIO PRINCIPAL) */
-            --noc-bg: #050811;
-            --noc-surface: #0b1120;
-            --noc-panel: #111a2e;
-            --noc-cyan: #00f0ff;
-            --noc-red: #ff003c;
-            --noc-emerald: #10b981;
+            /* ZONA 1: Paleta NOC / Portafolio Principal */
+            --noc-bg: #050914;
+            --noc-surface: #0b1325;
+            --noc-surface-alt: #101b33;
             --noc-border: rgba(0, 240, 255, 0.22);
+            --noc-cyan: #00f0ff;
+            --noc-emerald: #10b981;
+            --noc-amber: #f59e0b;
+            --noc-rose: #f43f5e;
+            --noc-purple: #a855f7;
 
-            /* FASE 2: PALETA ORIGINAL ARENAI (CAPYBARA PIXEL-ART / RETRO ARENA) */
+            /* ZONA 2: Paleta Original ArenAI (Bosque Esmeralda, Crema Pergamino y Dorado Capibara) */
             --arena-bg-deep: #14241b;
-            --arena-bg-forest: #1e3a2b;
-            --arena-turf: #2d6a4f;
-            --arena-turf-light: #52b788;
-            --capy-warm: #d98a4e;
-            --capy-gold: #f4a261;
-            --capy-cream: #f8f1e5;
+            --arena-bg-forest: #1b4332;
+            --arena-meadow-light: #74c69d;
+            --arena-meadow-mid: #52b788;
+            --arena-meadow-dark: #2d6a4f;
             --capy-brown: #4a2c18;
-            --pixel-border: #e9c46a;
+            --capy-amber: #d48c46;
+            --capy-gold: #f4a261;
+            --capy-cream: #fdf8ee;
+            --capy-crimson: #e63946;
 
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
@@ -49,26 +57,25 @@
 
         html {
             scroll-behavior: smooth;
+        }
+
+        body {
             background-color: var(--noc-bg);
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.65;
-        }
-
-        body {
             overflow-x: hidden;
-            background-color: var(--noc-bg);
         }
 
         /* =====================================================================
-       ZONA 1: CABECERA & HERO EN ESTILO NOC / ENTERPRISE DATACENTER
-       ===================================================================== */
+           BARRA SUPERIOR NOC & NAVEGACIÓN
+           ===================================================================== */
         .noc-telemetry-bar {
-            background: #020409;
+            background: #02050b;
             border-bottom: 1px solid var(--noc-border);
-            padding: 0.5rem 1.5rem;
+            padding: 0.45rem 1.5rem;
             font-family: var(--font-mono);
-            font-size: 0.74rem;
+            font-size: 0.73rem;
             color: var(--text-dim);
             display: flex;
             justify-content: space-between;
@@ -80,9 +87,9 @@
         .noc-status-pill {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--noc-cyan);
-            font-weight: 600;
+            gap: 0.45rem;
+            color: var(--noc-emerald);
+            font-weight: 700;
         }
 
         .pulse-dot {
@@ -91,38 +98,26 @@
             border-radius: 50%;
             background: var(--noc-emerald);
             box-shadow: 0 0 10px var(--noc-emerald);
-            animation: pulse 1.8s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.35;
-            }
         }
 
         .navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(5, 8, 17, 0.88);
+            background: rgba(5, 9, 20, 0.92);
             backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-            padding: 0.85rem 1.5rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.14);
         }
 
         .nav-container {
-            max-width: 1280px;
+            max-width: 1320px;
             margin: 0 auto;
+            padding: 0.85rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .brand {
@@ -140,21 +135,22 @@
             height: 38px;
             border-radius: 8px;
             border: 2px solid var(--capy-gold);
-            image-rendering: pixelated;
+            object-fit: cover;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.35rem;
+            gap: 1.25rem;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: var(--text-dim);
             text-decoration: none;
-            font-size: 0.86rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.84rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
@@ -167,98 +163,106 @@
             gap: 0.5rem;
             padding: 0.6rem 1.15rem;
             border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-weight: 700;
+            font-size: 0.84rem;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
             border: 1px solid transparent;
+            font-family: var(--font-sans);
         }
 
         .btn-noc {
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(0, 240, 255, 0.08);
             color: var(--noc-cyan);
-            border-color: var(--noc-cyan);
-            font-family: var(--font-mono);
+            border-color: var(--noc-border);
         }
 
         .btn-noc:hover {
-            background: var(--noc-cyan);
-            color: #020409;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            background: rgba(0, 240, 255, 0.16);
+            transform: translateY(-1px);
         }
 
         .btn-arena {
-            background: linear-gradient(135deg, var(--capy-warm), var(--capy-gold));
-            color: #1f1209;
-            font-weight: 700;
+            background: linear-gradient(135deg, var(--capy-gold), var(--capy-amber));
+            color: #1a0f07;
             border: 2px solid #fff3d6;
+            box-shadow: 0 4px 18px rgba(244, 162, 97, 0.35);
         }
 
         .btn-arena:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(244, 162, 97, 0.35);
+            box-shadow: 0 8px 25px rgba(244, 162, 97, 0.55);
+        }
+
+        .btn-emerald {
+            background: rgba(16, 185, 129, 0.14);
+            color: #34d399;
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-emerald:hover {
+            background: rgba(16, 185, 129, 0.24);
+            transform: translateY(-1px);
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1320px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
-        /* NOC HERO SECTION */
+        /* =====================================================================
+           HERO EJECUTIVO & AUDITORÍA FASE 1
+           ===================================================================== */
         .noc-hero {
-            padding: 4.5rem 0 4rem;
-            background-image:
-                radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.08), transparent 35%),
-                radial-gradient(circle at 85% 15%, rgba(255, 0, 60, 0.07), transparent 35%),
-                linear-gradient(to right, rgba(17, 26, 46, 0.35) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(17, 26, 46, 0.35) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            padding: 4rem 0 3.25rem;
+            background:
+                radial-gradient(circle at 80% 15%, rgba(0, 240, 255, 0.08), transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.08), transparent 45%);
             border-bottom: 1px solid var(--noc-border);
         }
 
         .hero-split {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2.5rem;
+            grid-template-columns: 1.25fr 0.95fr;
+            gap: 2.25rem;
             align-items: center;
         }
 
         .noc-tag {
             display: inline-block;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             color: var(--noc-cyan);
+            background: rgba(0, 240, 255, 0.08);
             border: 1px solid var(--noc-border);
-            background: rgba(0, 240, 255, 0.07);
-            padding: 0.3rem 0.75rem;
+            padding: 0.32rem 0.75rem;
             border-radius: 4px;
             margin-bottom: 1rem;
         }
 
         .noc-hero h1 {
-            font-size: clamp(2rem, 3.8vw, 3.1rem);
+            font-size: clamp(1.85rem, 3.3vw, 2.75rem);
+            line-height: 1.16;
             font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.1rem;
+            margin-bottom: 1rem;
         }
 
         .noc-hero p.lead {
             color: var(--text-dim);
-            font-size: 1.02rem;
-            margin-bottom: 1.6rem;
+            font-size: 1rem;
+            margin-bottom: 1.45rem;
         }
 
         .noc-rack-card {
             background: var(--noc-surface);
             border: 1px solid var(--noc-border);
             border-left: 4px solid var(--noc-cyan);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 1.35rem;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.08);
         }
 
@@ -268,19 +272,21 @@
             color: var(--noc-cyan);
             border-bottom: 1px solid rgba(148, 163, 184, 0.15);
             padding-bottom: 0.6rem;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.75rem;
             font-weight: 700;
         }
 
         .rack-line {
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
             padding: 0.42rem 0;
             border-bottom: 1px dashed rgba(148, 163, 184, 0.1);
         }
 
         .rack-line span:first-child {
             color: var(--text-dim);
+            flex-shrink: 0;
         }
 
         .rack-line span:last-child {
@@ -289,44 +295,292 @@
         }
 
         /* =====================================================================
-       PUENTE DE TRANSICIÓN VISUAL (DEL DATACENTER NOC AL ARTE ORIGINAL ARENAI)
-       ===================================================================== */
-        .visual-transition-bridge {
-            background: linear-gradient(180deg,
-                    var(--noc-bg) 0%,
-                    #0c1922 30%,
-                    #132a23 65%,
-                    var(--arena-bg-deep) 100%);
-            padding: 3.5rem 0 2rem;
-            text-align: center;
-            border-bottom: 3px solid var(--capy-gold);
+           SECCIÓN DEMO INTERACTIVA EN VIVO (/arenai/Demo/dist/)
+           ===================================================================== */
+        .live-demo-section {
+            padding: 4rem 0;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(244, 162, 97, 0.12), transparent 55%),
+                linear-gradient(180deg, #060c1a 0%, #0a1426 100%);
+            border-bottom: 2px solid var(--capy-gold);
         }
 
-        .bridge-banner {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 1.25rem 1.5rem;
-            background: rgba(20, 36, 27, 0.75);
-            border: 2px dashed var(--capy-gold);
-            border-radius: 12px;
+        .demo-shell {
+            background: #070e1c;
+            border: 1px solid rgba(244, 162, 97, 0.4);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65);
         }
 
-        .bridge-banner span {
-            font-family: var(--font-pixel);
+        .demo-toolbar {
+            background: #0d172a;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .demo-toolbar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .demo-window-dots {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .demo-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .demo-url-bar {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: #cbd5e1;
+            background: rgba(2, 6, 23, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-viewport-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+        }
+
+        .vp-btn,
+        .preset-btn {
+            background: rgba(15, 23, 42, 0.9);
+            color: #cbd5e1;
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            padding: 0.42rem 0.75rem;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.73rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+        }
+
+        .vp-btn:hover,
+        .preset-btn:hover {
+            border-color: var(--capy-gold);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .vp-btn.active,
+        .preset-btn.active {
+            background: rgba(244, 162, 97, 0.18);
+            color: var(--capy-gold);
+            border-color: var(--capy-gold);
+        }
+
+        .demo-presets-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding-top: 0.4rem;
+            border-top: 1px dashed rgba(148, 163, 184, 0.15);
+        }
+
+        .demo-presets-label {
+            font-family: var(--font-mono);
             font-size: 0.72rem;
             color: var(--capy-gold);
+            font-weight: 700;
+            margin-right: 0.25rem;
+        }
+
+        .demo-stage-wrapper {
+            background:
+                radial-gradient(circle at center, rgba(27, 67, 50, 0.26) 0%, rgba(3, 7, 18, 0.96) 100%);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 820px;
+        }
+
+        .demo-iframe-frame {
+            width: 100%;
+            max-width: 100%;
+            height: 800px;
+            border: 3px solid rgba(244, 162, 97, 0.45);
+            border-radius: 16px;
+            background: #14241b;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            transition: max-width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow: hidden;
+        }
+
+        .demo-iframe-frame.vp-mobile {
+            max-width: 430px;
+            border-width: 6px;
+            border-radius: 28px;
+        }
+
+        .demo-iframe-frame.vp-tablet {
+            max-width: 860px;
+            border-width: 5px;
+            border-radius: 20px;
+        }
+
+        .demo-iframe-frame.vp-desktop {
+            max-width: 100%;
+        }
+
+        .demo-iframe-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
             display: block;
-            margin-bottom: 0.6rem;
-            line-height: 1.5;
+            background: #fff;
+        }
+
+        .credentials-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.9rem;
+            padding: 1.15rem 1.25rem;
+            background: #060b16;
+            border-top: 1px solid rgba(148, 163, 184, 0.16);
+        }
+
+        .cred-card {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-left: 3px solid var(--capy-gold);
+            border-radius: 8px;
+            padding: 0.75rem 0.9rem;
+            font-size: 0.8rem;
+        }
+
+        .cred-card.emerald {
+            border-left-color: var(--noc-emerald);
+        }
+
+        .cred-card.cyan {
+            border-left-color: var(--noc-cyan);
+        }
+
+        .cred-card strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.82rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .cred-card code {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--capy-gold);
+            background: rgba(244, 162, 97, 0.12);
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+        }
+
+        .cred-card p {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
+            line-height: 1.45;
         }
 
         /* =====================================================================
-       ZONA 2: ENTORNO CON EL ARTE Y COLORES ORIGINALES DE ARENAI
-       ===================================================================== */
+           BENTO GRID DE STACK TECNOLÓGICO EXACTO (FASE 1.3)
+           ===================================================================== */
+        .bento-stack-section {
+            padding: 4rem 0;
+            background: #070d1b;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .bento-card {
+            background: var(--noc-surface);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-top: 3px solid var(--noc-cyan);
+            border-radius: 12px;
+            padding: 1.35rem;
+        }
+
+        .bento-card.gold {
+            border-top-color: var(--capy-gold);
+        }
+
+        .bento-card.emerald {
+            border-top-color: var(--noc-emerald);
+        }
+
+        .bento-card.purple {
+            border-top-color: var(--noc-purple);
+        }
+
+        .bento-card.rose {
+            border-top-color: var(--noc-rose);
+        }
+
+        .bento-card h3 {
+            font-size: 0.96rem;
+            font-weight: 800;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .bento-card p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 0.9rem;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.42rem;
+        }
+
+        .tech-pill {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            padding: 0.26rem 0.6rem;
+            border-radius: 6px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            color: #e2e8f0;
+        }
+
+        /* =====================================================================
+           ZONA 2: ENTORNO CON EL ARTE Y COLORES ORIGINALES DE ARENAI
+           ===================================================================== */
         .arenai-original-zone {
             background: linear-gradient(180deg, var(--arena-bg-deep) 0%, var(--arena-bg-forest) 50%, #102118 100%);
             padding: 4.5rem 0;
             position: relative;
+            border-top: 3px solid var(--capy-gold);
         }
 
         .arena-Identity-header {
@@ -361,13 +615,12 @@
 
         .pixel-title {
             font-family: var(--font-pixel);
-            font-size: clamp(0.95rem, 2vw, 1.3rem);
+            font-size: clamp(0.9rem, 1.8vw, 1.25rem);
             color: var(--capy-gold);
             margin-bottom: 0.45rem;
             line-height: 1.4;
         }
 
-        /* BATTLE ARENA INTERACTIVA CON LOS SPRITES ORIGINALES */
         .retro-battle-frame {
             background: var(--capy-cream);
             color: var(--capy-brown);
@@ -384,7 +637,7 @@
             color: var(--capy-cream);
             padding: 0.75rem 1.25rem;
             font-family: var(--font-pixel);
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -398,7 +651,7 @@
             border: 2px solid var(--capy-cream);
             padding: 0.45rem 0.85rem;
             font-family: var(--font-pixel);
-            font-size: 0.62rem;
+            font-size: 0.6rem;
             cursor: pointer;
             border-radius: 4px;
         }
@@ -443,7 +696,7 @@
 
         .retro-stat-header {
             font-family: var(--font-pixel);
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             color: var(--capy-brown);
             display: flex;
             justify-content: space-between;
@@ -500,7 +753,7 @@
 
         .dialog-text {
             font-family: var(--font-mono);
-            font-size: 0.86rem;
+            font-size: 0.85rem;
             line-height: 1.55;
             color: var(--capy-cream);
             border-left: 3px solid var(--capy-gold);
@@ -519,12 +772,12 @@
             border: 3px solid var(--capy-gold);
             padding: 0.6rem 0.85rem;
             font-family: var(--font-mono);
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 700;
             text-align: left;
             cursor: pointer;
             border-radius: 6px;
-            transition: transform 0.15s ease, background 0.15s ease;
+            transition: transform 0.15s ease, background-color 0.15s ease;
         }
 
         .retro-choice-btn:hover {
@@ -533,130 +786,6 @@
             transform: translateX(4px);
         }
 
-        /* =====================================================================
-       ZONA 3: ESPECIFICACIONES DE INGENIERÍA PROFUNDA (DEEP-DIVE MODULES)
-       ===================================================================== */
-        .deep-dive-section {
-            padding: 4.5rem 0;
-            background: #080d1a;
-            border-top: 3px solid var(--capy-gold);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-        }
-
-        .section-head {
-            margin-bottom: 2.75rem;
-        }
-
-        .section-head .eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            color: var(--capy-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            display: block;
-            margin-bottom: 0.4rem;
-        }
-
-        .section-head h2 {
-            font-size: clamp(1.65rem, 2.8vw, 2.25rem);
-            font-weight: 800;
-            margin-bottom: 0.6rem;
-        }
-
-        .section-head p {
-            color: var(--text-dim);
-            max-width: 760px;
-            font-size: 0.96rem;
-        }
-
-        .confidentiality-notice {
-            margin-top: 1.4rem;
-            background: rgba(245, 158, 11, 0.08);
-            border: 1px solid rgba(245, 158, 11, 0.35);
-            border-left: 4px solid var(--capy-gold);
-            border-radius: 8px;
-            padding: 1rem 1.35rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.95rem;
-            font-size: 0.88rem;
-            color: #fef3c7;
-            line-height: 1.6;
-            max-width: 960px;
-        }
-
-        .confidentiality-notice ion-icon {
-            font-size: 1.55rem;
-            color: var(--capy-gold);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .confidentiality-notice strong {
-            color: var(--capy-gold);
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.75rem;
-        }
-
-        .spec-module {
-            background: var(--noc-surface);
-            border: 1px solid rgba(148, 163, 184, 0.16);
-            border-top: 3px solid var(--noc-cyan);
-            border-radius: 12px;
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .spec-module.warm {
-            border-top-color: var(--capy-gold);
-        }
-
-        .spec-module.emerald {
-            border-top-color: var(--noc-emerald);
-        }
-
-        .spec-module h3 {
-            font-size: 1.18rem;
-            margin-bottom: 0.65rem;
-            color: var(--text-main);
-        }
-
-        .spec-module p {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            margin-bottom: 1rem;
-        }
-
-        .tech-bullet-list {
-            padding-left: 1.15rem;
-            margin-bottom: 1.25rem;
-            color: #cbd5e1;
-            font-size: 0.86rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-        }
-
-        .code-block {
-            background: #03060c;
-            border: 1px solid rgba(148, 163, 184, 0.18);
-            border-radius: 8px;
-            padding: 0.95rem 1.1rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #38bdf8;
-            overflow-x: auto;
-            line-height: 1.5;
-            white-space: pre;
-        }
-
-        /* GALERÍA DE ACTIVOS ORIGINALES DEL REPOSITORIO */
         .assets-strip {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -692,6 +821,162 @@
             color: var(--capy-cream);
         }
 
+        /* =====================================================================
+           ZONA 3: ESPECIFICACIONES DE INGENIERÍA PROFUNDA (FASE 1, 2 Y 3)
+           ===================================================================== */
+        .deep-dive-section {
+            padding: 4.5rem 0;
+            background: #080d1a;
+            border-top: 3px solid var(--capy-gold);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        }
+
+        .section-head {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-head .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--capy-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.6rem, 2.7vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-head p {
+            color: var(--text-dim);
+            max-width: 840px;
+            font-size: 0.95rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+        }
+
+        .spec-module {
+            background: var(--noc-surface);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-top: 3px solid var(--noc-cyan);
+            border-radius: 12px;
+            padding: 1.65rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .spec-module.warm {
+            border-top-color: var(--capy-gold);
+        }
+
+        .spec-module.emerald {
+            border-top-color: var(--noc-emerald);
+        }
+
+        .spec-module.purple {
+            border-top-color: var(--noc-purple);
+        }
+
+        .spec-module h3 {
+            font-size: 1.12rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
+        }
+
+        .spec-module p {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            margin-bottom: 0.95rem;
+        }
+
+        .tech-bullet-list {
+            padding-left: 1.15rem;
+            margin-bottom: 1.15rem;
+            color: #cbd5e1;
+            font-size: 0.84rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .code-block {
+            background: #03060c;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 8px;
+            padding: 0.95rem 1.1rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: #38bdf8;
+            overflow-x: auto;
+            line-height: 1.5;
+            white-space: pre;
+        }
+
+        /* =====================================================================
+           TABLA DE AUDITORÍA DE DEPENDENCIAS CLOUD RUN & STANDALONE (FASE 2 & 3)
+           ===================================================================== */
+        .audit-table-wrap {
+            overflow-x: auto;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 12px;
+            background: var(--noc-surface);
+            margin-bottom: 2.25rem;
+        }
+
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            text-align: left;
+        }
+
+        .audit-table th {
+            background: #050a16;
+            color: var(--noc-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .audit-table td {
+            padding: 0.78rem 1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            color: #cbd5e1;
+            vertical-align: top;
+        }
+
+        .audit-table code {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--capy-gold);
+            background: rgba(244, 162, 97, 0.1);
+            padding: 0.12rem 0.38rem;
+            border-radius: 4px;
+        }
+
+        .status-badge-fixed {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.18rem 0.5rem;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.14);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
         footer {
             background: #03050a;
             padding: 3rem 0;
@@ -701,16 +986,11 @@
         }
 
         @media (max-width: 960px) {
-
             .hero-split,
             .specs-grid,
             .retro-dialog-box,
             .assets-strip {
                 grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
             }
         }
     </style>
@@ -718,397 +998,552 @@
 
 <body>
 
-    <!-- BARRA SUPERIOR NOC (CONEXIÓN DIRECTA CON EL PORTAFOLIO PRINCIPAL) -->
+    <!-- BARRA SUPERIOR NOC -->
     <div class="noc-telemetry-bar">
         <div>
-            <span class="noc-status-pill"><span class="pulse-dot"></span>ARENAI ENGINE // ESTADO: PRODUCCIÓN (SIN
-                BLOQUEO DE MANTENIMIENTO)</span>
+            <span class="noc-status-pill"><span class="pulse-dot"></span>ARENAI STANDALONE BUILD // ESTADO: 100% AUTO-CONTENIDO EN GITHUB PAGES (ZERO CLOUD RUN DEPENDENCY)</span>
         </div>
         <div>
-            <span>ARQUITECTURA: SOCKETS FULL-DUPLEX • HUAWEI CLOUD + MINDSPORE • OPENGAUSS CLUSTER</span>
+            <span>REACT 19 • IONIC 8 • CAPACITOR 7 • SOCKET.IO 1V1 SUDDEN DEATH • VERTEX AI GEMINI 2.0 FLASH + OLLAMA DEEPSEEK-R1</span>
         </div>
     </div>
 
     <!-- NAVEGACIÓN -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <header class="navbar">
+        <nav class="nav-container" aria-label="Navegación ArenAI">
             <a href="../index.html" class="brand">
-                <img src="./img/Capy_pfp.png" alt="ArenAI Capybara"
-                    onerror="this.src='./img/Capybara profile picture.png'" />
-                <span>ArenAI <span style="font-weight: 400; font-size: 0.8rem; color: var(--text-dim);">| Ingeniería &
-                        Gamificación Socrática</span></span>
+                <img src="./img/Capy_pfp.png" alt="ArenAI Capybara" width="38" height="38" />
+                <span>ArenAI <span style="font-weight: 400; font-size: 0.8rem; color: var(--text-dim);">| Plataforma EdTech Adaptativa &amp; Auditoría Técnica</span></span>
             </a>
             <ul class="nav-links">
-                <li><a href="#noc-overview">1. Resumen de Arquitectura</a></li>
-                <li><a href="#original-arena">2. Arena & Arte Original</a></li>
-                <li><a href="#deep-engineering">3. Sockets, MindSpore & openGauss</a></li>
-                <li><a href="#psychology-model">4. Modelo Psicológico LATAM</a></li>
+                <li><a href="#noc-overview">1. Arquitectura &amp; Stack</a></li>
+                <li><a href="#live-demo">2. App Interactiva (Demo/dist)</a></li>
+                <li><a href="#deep-engineering">3. Ingeniería &amp; Key Features</a></li>
+                <li><a href="#standalone-audit">4. Auditoría Cloud Run ➔ Standalone</a></li>
+                <li><a href="#original-arena">5. Arena Pixel-Art</a></li>
             </ul>
-            <a href="../index.html" class="btn btn-noc">← Volver al Portafolio Principal</a>
-        </div>
-    </nav>
-
-    <!-- =====================================================================
-       PARTE 1: ESTÉTICA NOC / EJECUTIVA (TRANSICIÓN DESDE EL PORTAFOLIO)
-       ===================================================================== -->
-    <header class="noc-hero" id="noc-overview">
-        <div class="container hero-split">
-            <div>
-                <span class="noc-tag">HUAWEI ICT INNOVATION SEMIFINALIST (10TH ED.) • DEMOSTRADO ANTE EL MEP</span>
-                <h1>
-                    De la Infraestructura Distribuida a la <span style="color: var(--capy-gold);">Gamificación Socrática
-                        en Tiempo Real</span>
-                </h1>
-                <p class="lead">
-                    <strong>ArenAI</strong> es una arquitectura educativa End-to-End (E2E) diseñada y liderada por
-                    <strong>Leonardo Josué Escobar Solís</strong>. Combina sincronización directa entre dispositivos vía
-                    <strong>Sockets</strong>, modelado vectorial de estudiantes y materias impulsado por <strong>Huawei
-                        Cloud</strong> y <strong>MindSpore</strong>, bases de datos distribuidas
-                    <strong>openGauss</strong> y agentes conversacionales socráticos fundamentados en la psicología
-                    competitiva del adolescente latinoamericano.
-                </p>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.85rem;">
-                    <a href="#original-arena" class="btn btn-arena">🎮 Ir a la Arena Original (Sprites & Audio)</a>
-                    <a href="#deep-engineering" class="btn btn-noc">⚙️ Ver Especificaciones de Bajo Nivel</a>
-                </div>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+                <a href="./Demo/dist/index.html" target="_blank" rel="noopener" class="btn btn-arena">🚀 Abrir App en Pantalla Completa ↗</a>
+                <a href="../index.html" class="btn btn-noc">← Portafolio Principal</a>
             </div>
-
-            <!-- FICHA TÉCNICA DE INFRAESTRUCTURA -->
-            <div class="noc-rack-card">
-                <div class="rack-header">
-                    <span>SYSTEM_SPEC // ARENAI_ARCHITECTURE.CONF</span>
-                    <span>[ACTIVE]</span>
-                </div>
-                <div class="rack-line">
-                    <span>Fase I (Desktop & Core API)</span>
-                    <span>Electron + Node.js + TypeScript + Flask</span>
-                </div>
-                <div class="rack-line">
-                    <span>Capa de Tiempo Real</span>
-                    <span>WebSockets Full-Duplex (Salas & QR Sync)</span>
-                </div>
-                <div class="rack-line">
-                    <span>Motor Vectorial & IA</span>
-                    <span>Huawei Cloud + MindSpore Tensor Engine</span>
-                </div>
-                <div class="rack-line">
-                    <span>Orquestación LLM</span>
-                    <span>Ollama Local (Qwen / Gemma) + Cloud APIs</span>
-                </div>
-                <div class="rack-line">
-                    <span>Nube Híbrida & Contenedores</span>
-                    <span>Docker en Huawei ECS/VPC + Google Cloud Run</span>
-                </div>
-                <div class="rack-line">
-                    <span>Persistencia Relacional/Dist.</span>
-                    <span>PostgreSQL / Cloud SQL ➔ openGauss Cluster</span>
-                </div>
-                <div class="rack-line">
-                    <span>Almacenamiento de Objetos</span>
-                    <span>Huawei Cloud OBS + Google Cloud Storage</span>
-                </div>
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- PUENTE DE TRANSICIÓN VISUAL ENTRE EL NOC Y EL ARTE ORIGINAL DE ARENAI -->
-    <div class="visual-transition-bridge">
-        <div class="container">
-            <div class="bridge-banner">
-                <span>▼ TRANSICIÓN DE INTERFAZ: CAPA DE INFRAESTRUCTURA ➔ ENTORNO VISUAL NATIVO ARENAI ▼</span>
-                <p style="font-size: 0.88rem; color: var(--capy-cream);">
-                    A continuación se presenta la interfaz original de combate cognitivo de ArenAI utilizando los
-                    recursos gráficos nativos del repositorio (<code>/arenai/img/</code>) y el motor de turnos
-                    socráticos sincronizado por Sockets.
-                </p>
+    <main>
+        <!-- =====================================================================
+           PARTE 1: PROPUESTA DE VALOR EJECUTIVA Y ARQUITECTURA AUDITADA (FASE 1)
+           ===================================================================== -->
+        <section class="noc-hero" id="noc-overview">
+            <div class="container hero-split">
+                <div>
+                    <span class="noc-tag">HUAWEI ICT INNOVATION SEMIFINALIST (10TH ED.) • AUDITADO END-TO-END</span>
+                    <h1>
+                        ArenAI — Plataforma EdTech Adaptativa con <span style="color: var(--capy-gold);">Tutoría Socrática por IA y Gamificación en Tiempo Real</span>
+                    </h1>
+                    <p class="lead">
+                        Ecosistema educativo multiplataforma que transforma el aprendizaje escolar pasivo en una experiencia interactiva mediante <strong>tutores virtuales basados en LLMs adaptados al estilo cognitivo del alumno</strong>, <strong>duelos académicos multijugador 1v1 en tiempo real con Sudden Death</strong> y <strong>analítica predictiva por tema para docentes</strong>.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                        <a href="#live-demo" class="btn btn-arena">🎮 Probar Demo Interactiva Integrada</a>
+                        <a href="./Demo/dist/index.html" target="_blank" rel="noopener" class="btn btn-emerald">🖥️ Lanzar Build Nativo (/Demo/dist) ↗</a>
+                        <a href="#standalone-audit" class="btn btn-noc">📋 Ver Auditoría Fase 1–3</a>
+                    </div>
+                </div>
+
+                <!-- FICHA TÉCNICA DE INFRAESTRUCTURA AUDITADA -->
+                <div class="noc-rack-card">
+                    <div class="rack-header">
+                        <span>SYSTEM_AUDIT // ARENAI_FULLSTACK_SPEC.CONF</span>
+                        <span>[VERIFIED]</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Frontend SPA &amp; Mobile (`aren-ai/`)</span>
+                        <span>React 19 + Ionic 8 + Capacitor 7 + Vite</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Contextos Reactivos Globales</span>
+                        <span>ThemeProvider (7 Paletas) • AvatarProvider • SoundProvider</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Backend Original (`backend/`)</span>
+                        <span>Node.js + Express + TypeScript (Cloud Run)</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Orquestación IA (`geminiService.ts`)</span>
+                        <span>Vertex AI (gemini-2.0-flash-lite-001) + Ollama (DeepSeek-R1)</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Motor Multijugador (`socketService.ts`)</span>
+                        <span>Socket.IO 1v1 • Sudden Death (8s) • Heartbeat (2s)</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Seguridad &amp; Esquemas (`auth.ts`)</span>
+                        <span>JWT Stateless + bcryptjs + Validación Zod</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Modelo Relacional (`database/`)</span>
+                        <span>MySQL 8 / openGauss TLS (18+ Entidades Normalizadas)</span>
+                    </div>
+                    <div class="rack-line">
+                        <span>Modo Demo Estático (`Demo/dist/`)</span>
+                        <span>localDb.ts + localAiEngine.ts + StandaloneBattleSocket</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- =====================================================================
-       PARTE 2: COLORES Y ARTE ORIGINALES DE ARENAI (CAPYBARA PIXEL ARENA)
-       ===================================================================== -->
-    <section class="arenai-original-zone" id="original-arena">
-        <div class="container">
-
-            <!-- ENCABEZADO CON IDENTIDAD ORIGINAL DE CAPIBARA -->
-            <div class="arena-Identity-header">
-                <div class="capy-avatar-showcase">
-                    <img src="./img/Capy_pfp.png" alt="Avatar Original ArenAI" />
-                    <div>
-                        <div class="pixel-title">ARENAI // CAPYBARA SOCRATIC BATTLE SYSTEM</div>
-                        <p style="color: var(--capy-cream); font-size: 0.9rem;">
-                            Interfaz original donde el progreso en combate depende de la deducción crítica del
-                            estudiante evaluada en tiempo real.
-                        </p>
-                    </div>
+        <!-- =====================================================================
+           BENTO GRID: STACK TECNOLÓGICO EXACTO (FASE 1.3)
+           ===================================================================== -->
+        <section class="bento-stack-section" aria-label="Stack Tecnológico Auditado">
+            <div class="container">
+                <div class="section-head" style="margin-bottom: 1.75rem;">
+                    <span class="eyebrow">01 // STACK TECNOLÓGICO EXACTO (FASE 1 — AUDITORÍA DE REPOSITORIO)</span>
+                    <h2>Arquitectura Cliente-Servidor Híbrida y Multi-Rol</h2>
+                    <p>Inventario verificado de librerías, motores de tiempo real, proveedores de IA y herramientas de aseguramiento de calidad que componen el ecosistema ArenAI.</p>
                 </div>
-                <img src="./img/Capybara profile picture.png" alt="Capybara Profile Picture"
-                    style="width: 68px; height: 68px; border-radius: 50%; border: 2px solid var(--capy-gold); object-fit: cover;" />
+
+                <div class="bento-grid">
+                    <article class="bento-card">
+                        <h3>📱 Frontend &amp; Mobile</h3>
+                        <p>SPA y aplicación móvil híbrida con enrutamiento protegido por rol (<code>student</code> / <code>professor</code>) en <code>App.tsx</code>.</p>
+                        <div class="tag-cloud">
+                            <span class="tech-pill">TypeScript</span>
+                            <span class="tech-pill">React 19</span>
+                            <span class="tech-pill">Ionic 8</span>
+                            <span class="tech-pill">Capacitor 7</span>
+                            <span class="tech-pill">Vite</span>
+                            <span class="tech-pill">React Router 5</span>
+                        </div>
+                    </article>
+
+                    <article class="bento-card gold">
+                        <h3>🎨 UI, Motion &amp; Data Viz</h3>
+                        <p>7 paletas dinámicas, interpolación cromática continua $\text{RGB}_{\text{Red}} \to \text{RGB}_{\text{Teal}}$, audio reactivo e inscripción QR.</p>
+                        <div class="tag-cloud">
+                            <span class="tech-pill">Framer Motion</span>
+                            <span class="tech-pill">Recharts</span>
+                            <span class="tech-pill">CSS3 Custom Properties</span>
+                            <span class="tech-pill">i18next (ES/EN/ZH)</span>
+                            <span class="tech-pill">Howler.js</span>
+                            <span class="tech-pill">QRCode</span>
+                        </div>
+                    </article>
+
+                    <article class="bento-card emerald">
+                        <h3>⚡ Backend &amp; Real-Time</h3>
+                        <p>API RESTful y servidor de duelos síncronos con colas <code>waitingQueue</code>, salas <code>activeGames</code> y validación estricta.</p>
+                        <div class="tag-cloud">
+                            <span class="tech-pill">Node.js</span>
+                            <span class="tech-pill">Express</span>
+                            <span class="tech-pill">Socket.IO (WebSockets)</span>
+                            <span class="tech-pill">JWT</span>
+                            <span class="tech-pill">Zod</span>
+                            <span class="tech-pill">bcryptjs</span>
+                        </div>
+                    </article>
+
+                    <article class="bento-card purple">
+                        <h3>🧠 AI &amp; Cloud Architecture</h3>
+                        <p>System Prompts dinámicos por perfil cognitivo y rol, con persistencia relacional normalizada de 18+ entidades con TLS.</p>
+                        <div class="tag-cloud">
+                            <span class="tech-pill">Google Cloud Run</span>
+                            <span class="tech-pill">Vertex AI (Gemini 2.0 Flash)</span>
+                            <span class="tech-pill">Ollama (DeepSeek-R1)</span>
+                            <span class="tech-pill">Docker</span>
+                            <span class="tech-pill">MySQL 8 / openGauss</span>
+                        </div>
+                    </article>
+
+                    <article class="bento-card rose">
+                        <h3>🧪 Testing &amp; QA</h3>
+                        <p>Pruebas unitarias de componentes, flujos E2E de onboarding estudiantil/docente y verificación del motor de batallas.</p>
+                        <div class="tag-cloud">
+                            <span class="tech-pill">Vitest</span>
+                            <span class="tech-pill">Cypress (E2E)</span>
+                            <span class="tech-pill">React Testing Library</span>
+                        </div>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <!-- ESCENARIO DE COMBATE CON SPRITES Y MÚSICA REAL DEL REPOSITORIO -->
-            <div class="retro-battle-frame">
-                <div class="retro-topbar">
-                    <span>SOCKET ROOM: #LATAM-SEC-04 (SYNC: 18ms)</span>
-                    <button class="retro-audio-btn" id="audioBtn" onclick="toggleOriginalAudio()">
-                        ▶ ESCUCHAR TEMA ORIGINAL (battlesong.mp3)
-                    </button>
-                    <audio id="arenaAudio" src="./img/battlesong.mp3" loop preload="none"></audio>
+        <!-- =====================================================================
+           PARTE 2: SIMULADOR INTERACTIVO EN VIVO (/arenai/Demo/dist/index.html)
+           ===================================================================== -->
+        <section class="live-demo-section" id="live-demo">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">02 // EJECUCIÓN REAL EN NAVEGADOR — BUILD STANDALONE (REACT 19 + IONIC 8)</span>
+                    <h2>Simulador Interactivo ArenAI (<code>/arenai/Demo/dist/</code>)</h2>
+                    <p>
+                        Interactúa directamente con la aplicación compilada de ArenAI sin dependencias externas. Puedes iniciar sesión manualmente en la pantalla de login o usar los <strong>Lanzadores Rápidos de Rol y Subsistema</strong> para inyectar la sesión en <code>localStorage</code> y saltar instantáneamente al módulo que desees auditar.
+                    </p>
                 </div>
 
-                <div class="retro-meadow">
-                    <!-- Oponente / Reto de la Materia -->
-                    <div class="battle-row top">
-                        <div class="retro-stat-box">
-                            <div class="retro-stat-header">
-                                <span>GUARDIÁN SOCRÁTICO</span>
-                                <span>NV. VECTORIAL</span>
+                <div class="demo-shell">
+                    <div class="demo-toolbar">
+                        <div class="demo-toolbar-top">
+                            <div style="display:flex; align-items:center; gap:0.85rem; flex-wrap:wrap;">
+                                <div class="demo-window-dots" aria-hidden="true">
+                                    <span class="demo-dot" style="background:#f43f5e;"></span>
+                                    <span class="demo-dot" style="background:#f59e0b;"></span>
+                                    <span class="demo-dot" style="background:#10b981;"></span>
+                                </div>
+                                <div class="demo-url-bar">
+                                    <span>🔒</span>
+                                    <span id="demoCurrentRouteLabel">/arenai/Demo/dist/index.html#/login</span>
+                                </div>
                             </div>
-                            <div class="retro-hp-container">
-                                <div class="retro-hp-fill" id="bossHpBar" style="width: 85%;"></div>
-                            </div>
-                            <div class="retro-telemetry-meta" id="bossMeta">
-                                Materia: Sistemas Distribuidos | Resistencia Cognitiva: 85/100
+
+                            <div class="demo-viewport-controls" role="group" aria-label="Selector de tamaño de pantalla">
+                                <button type="button" class="vp-btn" data-vp="mobile">📱 Móvil (430px)</button>
+                                <button type="button" class="vp-btn" data-vp="tablet">📟 Tablet (860px)</button>
+                                <button type="button" class="vp-btn active" data-vp="desktop">🖥️ Completo (100%)</button>
+                                <a href="./Demo/dist/index.html" target="_blank" rel="noopener" class="btn btn-arena" style="padding:0.4rem 0.85rem; font-size:0.75rem;">Abrir Pestaña ↗</a>
                             </div>
                         </div>
 
-                        <div class="pixel-sprite-platform">
-                            <img src="./img/battle_sprite_front_capybara.png" alt="Sprite Frontal Original Capybara" />
+                        <div class="demo-presets-row" role="group" aria-label="Lanzadores rápidos de rol y módulo">
+                            <span class="demo-presets-label">⚡ SALTOS DIRECTOS:</span>
+                            <button type="button" class="preset-btn active" data-preset="login">🔑 Login Manual</button>
+                            <button type="button" class="preset-btn" data-preset="student-home">🎓 Estudiante (leo)</button>
+                            <button type="button" class="preset-btn" data-preset="battle-lobby">⚔️ Duelo 1v1 Sudden Death</button>
+                            <button type="button" class="preset-btn" data-preset="socratic-chat">🧠 Tutor Socrático IA</button>
+                            <button type="button" class="preset-btn" data-preset="onboarding-quiz">🧬 Onboarding + Quiz Cognitivo (nuevo)</button>
+                            <button type="button" class="preset-btn" data-preset="professor-home">👨‍🏫 Panel Docente (professor)</button>
+                            <button type="button" class="preset-btn" data-preset="class-qr">📲 Crear Sección &amp; QR</button>
+                            <button type="button" class="preset-btn" data-preset="professor-ai">🤖 IA Curricular Docente</button>
+                            <button type="button" class="preset-btn" data-preset="reset-db" style="border-color:rgba(244,63,94,0.45); color:#fda4af;">🔄 Resetear DB Local</button>
                         </div>
                     </div>
 
-                    <!-- Estudiante / Dispositivo Conectado por Socket -->
-                    <div class="battle-row bottom">
-                        <div class="retro-stat-box">
-                            <div class="retro-stat-header">
-                                <span>ESTUDIANTE (CAPY-AVATAR)</span>
-                                <span>SOCKET: ACTIVO</span>
-                            </div>
-                            <div class="retro-hp-container">
-                                <div class="retro-hp-fill" style="width: 100%; background: #52b788;"></div>
-                            </div>
-                            <div class="retro-telemetry-meta" id="studentVectorMeta">
-                                Vector MindSpore: [Dominio: 0.78 | Punto Mejora: Particionamiento]
-                            </div>
+                    <div class="demo-stage-wrapper">
+                        <div class="demo-iframe-frame vp-desktop" id="demoViewportContainer">
+                            <iframe
+                                id="arenaiLiveIframe"
+                                src="./Demo/dist/index.html#/login"
+                                title="Aplicación Interactiva ArenAI Standalone (React 19 + Ionic 8)"
+                            ></iframe>
                         </div>
+                    </div>
 
-                        <div class="pixel-sprite-platform">
-                            <img src="./img/battle_sprite_back_capybara.png" alt="Sprite Espalda Original Capybara" />
+                    <div class="credentials-strip">
+                        <div class="cred-card">
+                            <strong>🎓 Estudiante con Progreso</strong>
+                            <code>leo</code> / <code>ArenAI123</code> (o <code>student</code> / <code>test</code>)
+                            <p>Dashboard con interpolación $\text{RGB}_{\text{Red}} \to \text{RGB}_{\text{Teal}}$, mascota reactiva, Tutor Socrático y Arena 1v1.</p>
+                        </div>
+                        <div class="cred-card emerald">
+                            <strong>🧬 Estudiante Nuevo (Onboarding)</strong>
+                            <code>nuevo</code> / <code>ArenAI123</code>
+                            <p>Dispara el modal de selección de las 7 paletas cromáticas y redirige a <code>/personality-quiz</code> (umbral $\ge 25\%$).</p>
+                        </div>
+                        <div class="cred-card cyan">
+                            <strong>👨‍🏫 Docente &amp; Analítica</strong>
+                            <code>professor</code> / <code>test</code> (o <code>admin</code> / <code>ArenAIAdmin123</code>)
+                            <p>Analítica predictiva por tema, generador de secciones con código QR (<code>/class-creation</code>) y asistente curricular IA.</p>
+                        </div>
+                        <div class="cred-card">
+                            <strong>✨ Auto-Provisión Dinámica</strong>
+                            <code>cualquier_usuario</code> / <code>cualquier_clave</code>
+                            <p>Si el usuario contiene <code>prof</code> o <code>@mep.go.cr</code> crea rol docente; si contiene <code>nuevo</code> activa <code>first_login</code>.</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- CONSOLA DE DIÁLOGO SOCRÁTICO -->
-                <div class="retro-dialog-box">
-                    <div class="dialog-text" id="dialogConsole">
-                        <strong>[NODO SOCRÁTICO — HUAWEI CLOUD / OLLAMA]:</strong><br />
-                        "No te daré la definición directa. Observa tu clúster: cuando dos dispositivos envían respuestas
-                        simultáneas por el Socket y actualizan el mismo registro, ¿qué mecanismo evita que una escritura
-                        sobrescriba y corrompa a la otra?"
+        <!-- =====================================================================
+           PARTE 3: KEY FEATURES — PUNTOS FUERTES DE INGENIERÍA (FASE 1.4)
+           ===================================================================== -->
+        <section class="deep-dive-section" id="deep-engineering">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">03 // KEY FEATURES — PUNTOS FUERTES DE INGENIERÍA (AUDITORÍA FASE 1.4)</span>
+                    <h2>Ingeniería Interna: Cómo Funciona Realmente Cada Subsistema</h2>
+                    <p>
+                        Análisis técnico de los cinco pilares de ingeniería verificados en el código fuente de ArenAI: resolución de condiciones de carrera en duelos WebSockets, ingeniería de prompts pedagógicos, psicometría algorítmica, onboarding institucional por dominio/QR e interpolación cromática reactiva.
+                    </p>
+                </div>
+
+                <div class="specs-grid">
+                    <!-- 1. MOTOR DE BATALLAS SÍNCRONO -->
+                    <article class="spec-module">
+                        <div>
+                            <h3>1. Motor de Batallas Síncrono con Resolución de Condiciones de Carrera (<code>socketService.ts</code> &amp; <code>BattleMinigame.tsx</code>)</h3>
+                            <p>
+                                Implementa una máquina de estados distribuida por WebSockets para duelos académicos 1v1 en tiempo real con colas de matchmaking (<code>waitingQueue</code>) y gestión de salas activas (<code>activeGames</code>).
+                            </p>
+                            <ul class="tech-bullet-list">
+                                <li><strong>Barra Sudden Death de 8 Segundos:</strong> Cuando el primer jugador responde una pregunta, dispara el evento <code>opponent_answered</code> que activa un temporizador implacable de 8 segundos para el rival.</li>
+                                <li><strong>Cálculo de Impactos por Delta en Milisegundos:</strong> Evalúa deltas de tiempo (<code>roundStartTime</code>) y exactitud para calcular impactos normales (<code>5–8% HP</code> por ventaja de velocidad) o golpes críticos (<code>25–30% HP</code> por fallo rival).</li>
+                                <li><strong>Heartbeat de 2s y Tolerancia a Fallos:</strong> Monitorea desconexiones abruptas otorgando victoria automática por abandono y actualizando rachas (<code>winStreak</code> y <code>utilizationIndex</code>).</li>
+                            </ul>
+                        </div>
+                        <pre class="code-block" tabindex="0"><code>// Máquina de estados 1v1 en socketService.ts / StandaloneBattleSocket
+socket.on("submit_answer", ({ questionIndex, answerIndex }) =&gt; {
+  const elapsedMs = Date.now() - room.roundStartTime;
+  socket.to(room.id).emit("opponent_answered", { suddenDeathSeconds: 8 });
+  // Impacto Normal: 5–8% HP (velocidad) | Golpe Crítico: 25–30% HP (fallo rival)
+  const damage = isRivalWrong ? calcCrit(25, 30) : calcSpeedDelta(elapsedMs, 5, 8);
+  io.to(room.id).emit("round_result", { p1Health, p2Health, roundResult });
+});</code></pre>
+                    </article>
+
+                    <!-- 2. INGENIERÍA DE PROMPTS Y TUTORÍA SOCRÁTICA -->
+                    <article class="spec-module warm">
+                        <div>
+                            <h3>2. Ingeniería de Prompts Contextual y Tutoría Socrática Adaptativa (<code>ai.ts</code>, <code>prompts.ts</code> &amp; <code>Chatbot.tsx</code>)</h3>
+                            <p>
+                                En lugar de un wrapper genérico de chat, el sistema construye dinámicamente un contexto pedagógico conectado con <strong>Google Cloud Vertex AI (<code>gemini-2.0-flash-lite-001</code>)</strong> y <strong>Ollama (<code>DeepSeek-R1</code>)</strong>.
+                            </p>
+                            <ul class="tech-bullet-list">
+                                <li><strong>Inyección Multidimensional de Contexto:</strong> Combina el rol del usuario (Método Socrático guiado para estudiantes vs. Asistente de Planificación Curricular para profesores), el estilo cognitivo diagnosticado (<code>Visual</code>, <code>Lógico</code>, <code>Kinestésico</code>, <code>Significativo</code>), los temas activos y la personalidad de la mascota (<code>Capybara</code> o <code>Sloth</code>).</li>
+                                <li><strong>Restricción Pedagógica Anti-Spoiler:</strong> Prohíbe revelar respuestas directas al alumno, guiándolo mediante preguntas inductivas.</li>
+                                <li><strong>Motor Typewriter Asíncrono:</strong> Renderiza la salida caracter por caracter con soporte Markdown libre de bloqueos de UI.</li>
+                            </ul>
+                        </div>
+                        <pre class="code-block" tabindex="0"><code>// Construcción de System Prompt adaptativo (prompts.ts / geminiService.ts)
+export function buildPedagogicalPrompt({ role, learningType, subject, mascot }) {
+  if (role === "student") {
+    return `[ROLE: SOCRATIC_TUTOR][PERSONA: ${mascot}][STYLE: ${learningType}]
+NEVER reveal the direct solution for ${subject}. Formulate guided Socratic
+questions tailored to a ${learningType} learner with step-by-step hints.`;
+  }
+  return `[ROLE: CURRICULUM_ARCHITECT] Generate lesson plans &amp; rubrics for ${subject}.`;
+}</code></pre>
+                    </article>
+
+                    <!-- 3. DIAGNÓSTICO COGNITIVO Y ONBOARDING ALGORÍTMICO -->
+                    <article class="spec-module emerald">
+                        <div>
+                            <h3>3. Diagnóstico Cognitivo y Onboarding Algorítmico (<code>PersonalityQuiz.tsx</code>) + Dominio/QR (<code>Register.tsx</code>, <code>Class_Creation.tsx</code>)</h3>
+                            <p>
+                                Personalización psicométrica desde el primer inicio de sesión combinada con aprovisionamiento institucional automatizado.
+                            </p>
+                            <ul class="tech-bullet-list">
+                                <li><strong>Vectores de Afinidad Cognitiva ($\ge 25\%$):</strong> Cuestionario psicométrico multilingüe (ES/EN/ZH) que pondera las respuestas mediante vectores de afinidad (<code>learningType</code>), determinando el perfil dominante con umbrales de significancia $\ge 25\%$ y persistiéndolo para el tutor IA.</li>
+                                <li><strong>Detección Institucional por Dominio:</strong> Parsing inteligente de correos (<code>@mep.go.cr</code>, <code>@ucr.ac.cr</code>, <code>@itcr.ac.cr</code>) con autocompletado y bloqueo de seguridad en <code>Register.tsx</code>.</li>
+                                <li><strong>Inscripción Instantánea por QR:</strong> Generación en cliente de códigos QR vectoriales/DataURL en <code>Class_Creation.tsx</code> para unir alumnos a secciones vía <code>/join/:code</code>.</li>
+                            </ul>
+                        </div>
+                        <pre class="code-block" tabindex="0"><code>// Ponderación psicométrica por umbral de significancia (PersonalityQuiz.tsx)
+const VECTORS = ["Visual", "Lógico", "Kinestésico", "Significativo"];
+const dominantStyles = VECTORS.filter(
+  (type) =&gt; (affinityScores[type] / totalWeight) * 100 &gt;= 25.0
+);
+// Detección de dominio institucional (Register.tsx)
+const DOMAIN_MAP = { "mep.go.cr": "Ministerio de Educación Pública (MEP)" };</code></pre>
+                    </article>
+
+                    <!-- 4. SISTEMA DE DISEÑO REACTIVO Y MODELO RELACIONAL -->
+                    <article class="spec-module purple">
+                        <div>
+                            <h3>4. Sistema de Diseño Reactivo, Interpolación Cromática &amp; Modelo Relacional de 18+ Entidades (<code>ThemeContext.tsx</code>, <code>database/</code>)</h3>
+                            <p>
+                                Arquitectura visual reactiva respaldada por un esquema relacional normalizado sobre <strong>MySQL 8 / openGauss con TLS</strong>.
+                            </p>
+                            <ul class="tech-bullet-list">
+                                <li><strong>7 Paletas en Caliente + Interpolación $\text{RGB}_{\text{Red}} \to \text{RGB}_{\text{Teal}}$:</strong> <code>ThemeProvider</code> alterna instantáneamente entre 7 temas completos mientras <code>Main_Student.tsx</code> interpola continuamente el color de cada tema según el porcentaje de dominio.</li>
+                                <li><strong>Motor de Sprites Estocástico (<code>AnimatedMascot.tsx</code>):</strong> Ciclos de parpadeo aleatorios cada <code>4–6s</code> y respuesta táctil/hover sincronizada con <code>Howler.js</code>.</li>
+                                <li><strong>18+ Entidades y Prerrequisitos Curriculares:</strong> Flujo <code>institution → section → user → subject → topic → class → quiz / battle_minigame / assignment</code> con tabla jerárquica <code>topic_father_son_relation</code> y coeficientes de correlación.</li>
+                            </ul>
+                        </div>
+                        <pre class="code-block" tabindex="0"><code>-- Relaciones jerárquicas de prerrequisitos curriculares (database/schema.sql)
+CREATE TABLE topic_father_son_relation (
+  id_father_topic INT NOT NULL REFERENCES topic(id_topic),
+  id_son_topic    INT NOT NULL REFERENCES topic(id_topic),
+  correlation_coefficient DECIMAL(4,3) NOT NULL DEFAULT 0.750,
+  PRIMARY KEY (id_father_topic, id_son_topic)
+);</code></pre>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+           PARTE 4: AUDITORÍA DE DEPENDENCIAS CLOUD RUN Y REFACTORIZACIÓN STANDALONE (FASE 2 & 3)
+           ===================================================================== -->
+        <section class="deep-dive-section" id="standalone-audit" style="background:#050914;">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">04 // DIAGNÓSTICO DE DEPENDENCIAS CLOUD RUN &amp; ARQUITECTURA STANDALONE (FASES 2 Y 3)</span>
+                    <h2>De Google Cloud Run a Ejecución 100% Autónoma en GitHub Pages</h2>
+                    <p>
+                        Para garantizar disponibilidad perpetua en el portafolio estático sin depender del contenedor facturable en <code>https://arenai-backend-271931294892.us-central1.run.app</code>, se auditaron todas las llamadas HTTP/WebSocket del frontend y se implementó una capa de interceptación e inferencia local transparente en el build <code>/arenai/Demo/dist/</code>.
+                    </p>
+                </div>
+
+                <div class="audit-table-wrap">
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Archivo / Capa Auditada</th>
+                                <th>Dependencia Original Detectada</th>
+                                <th>Contrato / Endpoint</th>
+                                <th>Solución Standalone en <code>/arenai/Demo/dist/</code></th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>.env.production</code> &amp; <code>src/config/api.ts</code></td>
+                                <td><code>https://arenai-backend-271931294892.us-central1.run.app</code></td>
+                                <td>Resolver central <code>getApiUrl()</code></td>
+                                <td>Interceptado en cliente por <code>mockHttpInterceptor.ts</code> antes de salir a la red; cero tráfico externo.</td>
+                                <td><span class="status-badge-fixed">✔ AUTÓNOMO</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>Login.tsx</code> &amp; <code>Register*.tsx</code></td>
+                                <td>REST Auth &amp; Onboarding contra Cloud Run + MySQL</td>
+                                <td><code>POST /api/auth/login</code><br /><code>PUT /api/students/:id/onboarding</code><br /><code>POST /api/auth/register*</code></td>
+                                <td>Resuelto por <code>localDb.ts</code> en <code>localStorage</code> (<code>arenai_standalone_db_v1</code>) con 5 cuentas semilla y creación al vuelo.</td>
+                                <td><span class="status-badge-fixed">✔ AUTÓNOMO</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>Class_Creation.tsx</code> &amp; <code>Class_Join.tsx</code></td>
+                                <td>Creación e inscripción QR de secciones (<code>/api/sections/join</code>)</td>
+                                <td><code>POST /api/sections</code><br /><code>POST /api/sections/join</code></td>
+                                <td>Generación de código alfanumérico de 6 caracteres + QR local e inscripción persistente en <code>localDb.ts</code>.</td>
+                                <td><span class="status-badge-fixed">✔ AUTÓNOMO</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>Chatbot.tsx</code> &amp; <code>ProfessorChat.tsx</code></td>
+                                <td>Vertex AI (<code>gemini-2.0-flash-lite-001</code>) y URL hardcodeada <code>localhost:3002/ai/chat</code></td>
+                                <td><code>POST /ai/chat</code></td>
+                                <td>Motor <code>localAiEngine.ts</code> que analiza el prompt, materia y rol para generar respuestas socráticas guiadas o planes docentes.</td>
+                                <td><span class="status-badge-fixed">✔ AUTÓNOMO</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>src/services/socket.ts</code> &amp; <code>BattleMinigame.tsx</code></td>
+                                <td>Cliente <code>socket.io-client</code> hacia Cloud Run</td>
+                                <td><code>join_queue</code>, <code>submit_answer</code> ↔ <code>match_found</code>, <code>round_start</code>, <code>opponent_answered</code>, <code>round_result</code>, <code>game_over</code></td>
+                                <td>Clase <code>StandaloneBattleSocket</code> que emula matchmaking en <code>1.2s</code>, bot rival en <code>3.5–6.5s</code> y barra Sudden Death de <code>8s</code>.</td>
+                                <td><span class="status-badge-fixed">✔ AUTÓNOMO</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>App.tsx</code> &amp; <code>Demo/dist/index.html</code></td>
+                                <td><code>IonReactRouter</code> (History API) + <code>&lt;base href="/" /&gt;</code></td>
+                                <td>Rutas <code>/login</code>, <code>/page/student</code>, <code>/page/professor</code>, <code>/battleminigame</code></td>
+                                <td>Migrado a <code>IonReactHashRouter</code> (<code>#/ruta</code>) y rutas relativas para evitar errores 404 al recargar en GitHub Pages.</td>
+                                <td><span class="status-badge-fixed">✔ AUTÓNOMO</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+           PARTE 5: ARENA RETRO PIXEL-ART Y ACTIVOS ORIGINALES (/arenai/img/)
+           ===================================================================== -->
+        <section class="arenai-original-zone" id="original-arena">
+            <div class="container">
+                <div class="arena-Identity-header">
+                    <div class="capy-avatar-showcase">
+                        <img src="./img/Capy_pfp.png" alt="Avatar Original ArenAI" width="84" height="84" />
+                        <div>
+                            <div class="pixel-title">ARENAI // CAPYBARA SOCRATIC BATTLE ARENA &amp; ASSETS</div>
+                            <p style="color: var(--capy-cream); font-size: 0.9rem;">
+                                Demostración interactiva de los sprites pixel-art originales (<code>/arenai/img/</code>), banda sonora (<code>battlesong.mp3</code>) y deducción socrática en combate.
+                            </p>
+                        </div>
                     </div>
-                    <div class="dialog-actions">
-                        <button class="retro-choice-btn" onclick="simulateArenaTurn(true)">
-                            ► 1. Control de concurrencia multiversión (MVCC) y aislamiento transaccional en openGauss.
+                    <img src="./img/Capybara profile picture.png" alt="Capybara Profile Picture" width="68" height="68"
+                        style="width: 68px; height: 68px; border-radius: 50%; border: 2px solid var(--capy-gold); object-fit: cover;" />
+                </div>
+
+                <div class="retro-battle-frame">
+                    <div class="retro-topbar">
+                        <span>SOCKET ROOM: #MEP-SEC-101 • SUDDEN DEATH: 8.0s • HEARTBEAT: 2000ms</span>
+                        <button type="button" class="retro-audio-btn" id="audioBtn">
+                            ▶ ESCUCHAR TEMA ORIGINAL (battlesong.mp3)
                         </button>
-                        <button class="retro-choice-btn" onclick="simulateArenaTurn(false)">
-                            ► 2. Aumentar únicamente el tamaño de las imágenes en el almacenamiento de objetos OBS.
-                        </button>
+                        <audio id="arenaAudio" src="./img/battlesong.mp3" loop preload="none"></audio>
+                    </div>
+
+                    <div class="retro-meadow">
+                        <div class="battle-row top">
+                            <div class="retro-stat-box">
+                                <div class="retro-stat-header">
+                                    <span>RIVAL 1V1 (CAPY-BOT)</span>
+                                    <span>SUDDEN DEATH</span>
+                                </div>
+                                <div class="retro-hp-container">
+                                    <div class="retro-hp-fill" id="bossHpBar" style="width: 85%;"></div>
+                                </div>
+                                <div class="retro-telemetry-meta" id="bossMeta">
+                                    HP: 85/100 | Delta Velocidad: +420ms | Estado: Esperando turno
+                                </div>
+                            </div>
+
+                            <div class="pixel-sprite-platform">
+                                <img src="./img/battle_sprite_front_capybara.png" alt="Sprite Frontal Original Capybara" width="135" height="135" />
+                            </div>
+                        </div>
+
+                        <div class="battle-row bottom">
+                            <div class="retro-stat-box">
+                                <div class="retro-stat-header">
+                                    <span>ESTUDIANTE (LEO)</span>
+                                    <span>RACHA: 🔥 4</span>
+                                </div>
+                                <div class="retro-hp-container">
+                                    <div class="retro-hp-fill" style="width: 100%; background: #52b788;"></div>
+                                </div>
+                                <div class="retro-telemetry-meta" id="studentVectorMeta">
+                                    Perfil: Visual/Lógico (≥25%) | Dominio Tema: 88% (RGB Teal)
+                                </div>
+                            </div>
+
+                            <div class="pixel-sprite-platform">
+                                <img src="./img/battle_sprite_back_capybara.png" alt="Sprite Espalda Original Capybara" width="135" height="135" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="retro-dialog-box">
+                        <div class="dialog-text" id="dialogConsole">
+                            <strong>[TUTOR SOCRÁTICO — GEMINI 2.0 FLASH / DEEPSEEK-R1]:</strong><br />
+                            "Tu oponente acaba de responder y activó la barra de Sudden Death de 8 segundos. Pista Socrática: si dos jugadores envían <code>submit_answer</code> casi al mismo instante, ¿cómo calcula <code>socketService.ts</code> quién recibe daño normal (5–8% HP) o golpe crítico (25–30% HP)?"
+                        </div>
+                        <div class="dialog-actions">
+                            <button type="button" class="retro-choice-btn" id="choiceCorrectBtn">
+                                ► 1. Evaluando el delta en milisegundos desde roundStartTime y aplicando 25–30% HP crítico si el rival falla.
+                            </button>
+                            <button type="button" class="retro-choice-btn" id="choiceWrongBtn">
+                                ► 2. Reiniciando la base de datos MySQL en cada pregunta sin usar timestamps.
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="assets-strip">
+                    <div class="asset-box">
+                        <img src="./img/Capy_pfp.png" alt="Capy_pfp.png" width="85" height="85" loading="lazy" />
+                        <code>/arenai/img/Capy_pfp.png</code>
+                        <span>Avatar competitivo principal</span>
+                    </div>
+                    <div class="asset-box">
+                        <img src="./img/battle_sprite_front_capybara.png" alt="battle_sprite_front_capybara.png" width="85" height="85" loading="lazy" />
+                        <code>battle_sprite_front_capybara.png</code>
+                        <span>Sprite frontal pixel-art nativo</span>
+                    </div>
+                    <div class="asset-box">
+                        <img src="./img/battle_sprite_back_capybara.png" alt="battle_sprite_back_capybara.png" width="85" height="85" loading="lazy" />
+                        <code>battle_sprite_back_capybara.png</code>
+                        <span>Sprite de jugador en perspectiva</span>
+                    </div>
+                    <div class="asset-box">
+                        <img src="./img/Capybara profile picture.png" alt="Capybara profile picture.png" width="85" height="85" loading="lazy" />
+                        <code>Capybara profile picture.png</code>
+                        <span>Arte de perfil + battlesong.mp3</span>
                     </div>
                 </div>
             </div>
-
-            <!-- TIRA DE ACTIVOS ORIGINALES EN /arenai/img/ -->
-            <div class="assets-strip">
-                <div class="asset-box">
-                    <img src="./img/Capy_pfp.png" alt="Capy_pfp.png" />
-                    <code>/arenai/img/Capy_pfp.png</code>
-                    <span>Avatar competitivo principal</span>
-                </div>
-                <div class="asset-box">
-                    <img src="./img/battle_sprite_front_capybara.png" alt="battle_sprite_front_capybara.png" />
-                    <code>battle_sprite_front_capybara.png</code>
-                    <span>Sprite frontal pixel-art nativo</span>
-                </div>
-                <div class="asset-box">
-                    <img src="./img/battle_sprite_back_capybara.png" alt="battle_sprite_back_capybara.png" />
-                    <code>battle_sprite_back_capybara.png</code>
-                    <span>Sprite de jugador en perspectiva</span>
-                </div>
-                <div class="asset-box">
-                    <img src="./img/Capybara profile picture.png" alt="Capybara profile picture.png" />
-                    <code>Capybara profile picture.png</code>
-                    <span>Arte de perfil + battlesong.mp3</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- =====================================================================
-       PARTE 3: INGENIERÍA DE BAJO NIVEL (DEMOSTRACIÓN DE DOMINIO TÉCNICO)
-       ===================================================================== -->
-    <section class="deep-dive-section" id="deep-engineering">
-        <div class="container">
-            <div class="section-head">
-                <span class="eyebrow">03 // ESPECIFICACIONES DE COMPORTAMIENTO & FUNCIONAMIENTO INTERNO</span>
-                <h2>Ingeniería Interna: Cómo Funciona Realmente Cada Subsistema</h2>
-                <p>
-                    Desglose técnico de los protocolos de red, cálculo tensorial en MindSpore, inferencia cuantizada y
-                    persistencia distribuida que operan detrás de la interfaz de ArenAI.
-                </p>
-                <div class="confidentiality-notice">
-                    <ion-icon name="shield-checkmark-outline"></ion-icon>
-                    <div>
-                        <strong>Aviso de Confidencialidad & Cumplimiento Regulatorio:</strong>
-                        Se hace constar expresamente que en estas especificaciones de comportamiento interno <strong>no se agrega la totalidad del código fuente ni la totalidad de las reglas operativas</strong> por motivos de estricta confidencialidad y reserva de los reglamentos proporcionados por los entes regulatorios consultados (incluyendo directrices y normativas institucionales del Ministerio de Educación Pública - MEP). Se presentan únicamente extractos esquemáticos y parámetros representativos para validar el diseño técnico y arquitectónico.
-                    </div>
-                </div>
-            </div>
-
-            <div class="specs-grid">
-
-                <!-- 1. ARQUITECTURA DE SOCKETS -->
-                <div class="spec-module">
-                    <div>
-                        <h3>1. Sincronización Directa entre Dispositivos vía Sockets</h3>
-                        <p>
-                            Para soportar combates cognitivos síncronos en aulas sin latencia perceptible ni bloqueos
-                            por HTTP Polling, el servidor en <strong>Node.js y TypeScript</strong> mantiene conexiones
-                            persistentes bidireccionales mediante WebSockets.
-                        </p>
-                        <ul class="tech-bullet-list">
-                            <li><strong>Emparejamiento por Salas y QR:</strong> Cada sesión de clase instancia un
-                                namespace aislado en memoria donde los dispositivos móviles o de escritorio (Electron)
-                                se suscriben mediante tokens de sesión firmados.</li>
-                            <li><strong>Control de Estado Determinista:</strong> Cada respuesta socrática viaja en una
-                                trama ligera con número de secuencia (<code>turn_seq</code>) y marca de tiempo para
-                                evitar condiciones de carrera (<em>race conditions</em>) cuando dos alumnos responden al
-                                mismo milisegundo.</li>
-                            <li><strong>Tolerancia a Redes Escolares Inestables:</strong> Implementa tramas de
-                                <code>PING/PONG</code> periódicas y un buffer de reconciliación de estado que restaura
-                                la partida automáticamente si el Wi-Fi del colegio sufre microcortes.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block">// Estructura real del Payload en el Canal de Sockets
-                        {
-                        "event": "SOCRATIC_TURN_SUBMIT",
-                        "room_id": "MEP-SEC-10-B",
-                        "device_socket_id": "ws_99481a_cr",
-                        "turn_seq": 14,
-                        "student_payload": {
-                        "selected_branch": "MVCC_ISOLATION",
-                        "response_latency_ms": 4820,
-                        "socratic_depth_level": 2
-                        }
-                        }</div>
-                </div>
-
-                <!-- 2. VECTORES CON HUAWEI CLOUD & MINDSPORE -->
-                <div class="spec-module warm">
-                    <div>
-                        <h3>2. Sistema de Vectores con Huawei Cloud & MindSpore</h3>
-                        <p>
-                            En lugar de evaluar al estudiante con un promedio plano, ArenAI modela a cada alumno,
-                            materia y competencia como vectores multidimensionales procesados con
-                            <strong>MindSpore</strong> sobre infraestructura <strong>Huawei Cloud</strong>.
-                        </p>
-                        <ul class="tech-bullet-list">
-                            <li><strong>Construcción del Embedding Estudiantil:</strong> Cada interacción alimenta un
-                                tensor que codifica precisión conceptual, tiempo de deducción, número de pistas
-                                socráticas requeridas y retención histórica por eje temático.</li>
-                            <li><strong>Detección Geométrica de Puntos de Mejora:</strong> Calculando la similitud del
-                                coseno y la distancia euclidiana entre el vector actual del alumno y el vector objetivo
-                                de la materia, el sistema identifica exactamente qué subtema presenta rezago.</li>
-                            <li><strong>Enrutamiento Adaptativo:</strong> Los puntos débiles detectados con menor
-                                puntaje direccional se inyectan automáticamente como prioridad en la siguiente ronda de
-                                preguntas del árbol socrático.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block"># Cálculo de brecha cognitiva con MindSpore en Huawei Cloud
-                        import mindspore as ms
-                        from mindspore import Tensor, ops
-
-                        # Vector de dominio del alumno vs. Vector objetivo de la materia
-                        v_student = Tensor([[0.82, 0.41, 0.76, 0.35]], ms.float32)
-                        v_subject = Tensor([[0.90, 0.85, 0.80, 0.85]], ms.float32)
-
-                        cos_sim = ops.CosineSimilarity(dim=1)(v_student, v_subject)
-                        deficit_vector = v_subject - v_student # Aísla los puntos exactos de mejora</div>
-                </div>
-
-                <!-- 3. ORQUESTACIÓN HÍBRIDA DE LLMs (OLLAMA -> CLOUD) -->
-                <div class="spec-module emerald">
-                    <div>
-                        <h3>3. Orquestación de LLMs: De Inferencia Local (Ollama) a Nube Híbrida</h3>
-                        <p>
-                            El motor conversacional utiliza árboles de diálogo socrático gobernados por instrucciones de
-                            sistema estrictas que prohíben revelar la solución directa, obligando al modelo a formular
-                            contrapreguntas inductivas.
-                        </p>
-                        <ul class="tech-bullet-list">
-                            <li><strong>Fase de Inferencia Local Cuantizada:</strong> Despliegue nativo mediante
-                                <strong>Ollama</strong> utilizando modelos abiertos como <strong>Qwen</strong> y
-                                <strong>Gemma</strong>, ajustando la asignación de memoria (KV-Cache), cuantización e
-                                hilos de cómputo en hardware local.</li>
-                            <li><strong>Escalado en Microservicios Cloud:</strong> Para soportar múltiples aulas
-                                concurrentes, el backend en <strong>Python (Flask)</strong> y <strong>Node.js</strong>
-                                se contenerizó en <strong>Docker</strong> sobre <strong>Huawei Cloud ECS (VPC)</strong>
-                                y <strong>Google Cloud Run</strong>, conectando con APIs generativas en la nube.</li>
-                            <li><strong>Reserva Normativa en Comportamiento Socrático:</strong> Por motivos de confidencialidad en torno a los reglamentos y directrices suministrados por los entes regulatorios consultados, no se agrega la totalidad del código fuente ni del prompt sistémico completo del agente.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block"># Parámetros de inferencia socrática controlada (Ollama / Cloud API)
-                        {
-                        "model": "qwen2.5-socratic-arena",
-                        "options": {
-                        "temperature": 0.45,
-                        "top_p": 0.90,
-                        "num_ctx": 4096,
-                        "num_thread": 8
-                        },
-                        "system_constraint": "NEVER output the final answer. Guide via Socratic hints based on MindSpore
-                        weak_topic_id."
-                        }</div>
-                </div>
-
-                <!-- 4. PERSISTENCIA DISTRIBUIDA (OPENGAUSS + OBS + GCS) -->
-                <div class="spec-module" id="psychology-model">
-                    <div>
-                        <h3>4. Clústeres openGauss, Almacenamiento OBS/GCS y Psicología Competitiva</h3>
-                        <p>
-                            La capa de datos evolucionó desde instancias independientes en <strong>PostgreSQL</strong> y
-                            <strong>Google Cloud SQL</strong> hacia una arquitectura empresarial distribuida capaz de
-                            almacenar telemetría pedagógica y vectores a escala regional.
-                        </p>
-                        <ul class="tech-bullet-list">
-                            <li><strong>Persistencia Multi-Tenant en openGauss:</strong> Migración hacia clústeres
-                                distribuidos <strong>openGauss</strong> para garantizar alta disponibilidad,
-                                lecturas/escrituras paralelas de perfiles vectoriales y trazabilidad por institución
-                                educativa.</li>
-                            <li><strong>Objetos en Huawei OBS & Google Cloud Storage:</strong> Almacenamiento
-                                persistente y desacoplado de recursos estáticos, avatares en la nube, audio y respaldos
-                                históricos.</li>
-                            <li><strong>Psicología del Adolescente Latinoamericano:</strong> Basado en la <em>Teoría de
-                                    la Autodeterminación (SDT)</em> y el estado de <em>Flow</em> (equilibrio dinámico
-                                entre reto y habilidad calibrado por los vectores de MindSpore), transforma la
-                                competitividad social juvenil en estudio activo.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block">-- Esquema distribuido de telemetría vectorial en openGauss
-                        CREATE TABLE student_vector_telemetry (
-                        student_id UUID NOT NULL,
-                        subject_code VARCHAR(32) NOT NULL,
-                        mindspore_embedding FLOAT4[],
-                        weakness_centroid VARCHAR(64),
-                        socratic_mastery_score NUMERIC(5,2),
-                        updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-                        ) PARTITION BY RANGE (updated_at);</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -1117,56 +1552,183 @@
                 ArenAI — Arquitecto Líder y Desarrollador: Leonardo Josué Escobar Solís
             </p>
             <p style="margin-bottom: 0.8rem;">
-                Semifinalista Global en Huawei ICT Innovation Competition (10.ª Edición) • Presentado ante el Ministerio
-                de Educación Pública (MEP) de Costa Rica
+                Semifinalista Global en Huawei ICT Innovation Competition (10.ª Edición) • Demostrado ante el Ministerio de Educación Pública (MEP) de Costa Rica
             </p>
             <p style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--capy-gold);">
-                SOCKETS REAL-TIME • HUAWEI CLOUD (ECS/VPC/OBS) • MINDSPORE VECTORS • OPENGAUSS • GOOGLE CLOUD (CLOUD
-                RUN/SQL/GCS) • OLLAMA (QWEN/GEMMA)
+                REACT 19 • IONIC 8 • CAPACITOR 7 • NODE.JS + EXPRESS • SOCKET.IO • VERTEX AI (GEMINI 2.0 FLASH) • OLLAMA (DEEPSEEK-R1) • MYSQL 8 / OPENGAUSS
             </p>
         </div>
     </footer>
 
     <script>
-        // Control del audio original del repositorio (/arenai/img/battlesong.mp3)
-        let playingAudio = false;
-        function toggleOriginalAudio() {
-            const audio = document.getElementById('arenaAudio');
-            const btn = document.getElementById('audioBtn');
-            if (!playingAudio) {
-                audio.play().then(() => {
-                    playingAudio = true;
-                    btn.textContent = '⏸ PAUSAR TEMA ORIGINAL (battlesong.mp3)';
-                }).catch(() => {
-                    btn.textContent = '⚠ AUDIO NO DISPONIBLE EN ESTE NAVEGADOR';
-                });
-            } else {
-                audio.pause();
-                playingAudio = false;
-                btn.textContent = '▶ ESCUCHAR TEMA ORIGINAL (battlesong.mp3)';
-            }
-        }
+        (function () {
+            // 1. Control del Simulador Interactivo (/arenai/Demo/dist/index.html)
+            const iframe = document.getElementById('arenaiLiveIframe');
+            const vpContainer = document.getElementById('demoViewportContainer');
+            const routeLabel = document.getElementById('demoCurrentRouteLabel');
+            const vpButtons = document.querySelectorAll('[data-vp]');
+            const presetButtons = document.querySelectorAll('[data-preset]');
 
-        // Simulación técnica de turno Socrático + Actualización de Tensor MindSpore y openGauss
-        function simulateArenaTurn(isCorrectDeduction) {
+            const SEED_USERS = {
+                student: {
+                    id: 2,
+                    username: 'leo',
+                    email: 'leo@students.arenai',
+                    role: 'student',
+                    name: 'Leonardo Escobar',
+                    lastName: null,
+                    first_login: false,
+                    institution: { id: 1, name: 'Liceo de Costa Rica' }
+                },
+                nuevo: {
+                    id: 3,
+                    username: 'nuevo',
+                    email: 'nuevo@students.arenai',
+                    role: 'student',
+                    name: 'Estudiante Nuevo',
+                    lastName: null,
+                    first_login: true,
+                    institution: { id: 1, name: 'Liceo de Costa Rica' }
+                },
+                professor: {
+                    id: 888,
+                    username: 'professor',
+                    email: 'prof@test.com',
+                    role: 'professor',
+                    name: 'Test Professor',
+                    lastName: 'ArenAI',
+                    first_login: false,
+                    institution: { id: 1, name: 'Liceo de Costa Rica' }
+                }
+            };
+
+            function setSessionAndNavigate(userKey, hashRoute) {
+                if (!userKey) {
+                    localStorage.removeItem('userData');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('authToken');
+                } else {
+                    const user = SEED_USERS[userKey];
+                    localStorage.setItem('userRole', user.role);
+                    localStorage.setItem('userData', JSON.stringify(user));
+                    localStorage.setItem('authToken', 'standalone-jwt-token-' + user.username);
+                }
+
+                const targetUrl = './Demo/dist/index.html?t=' + Date.now() + '#' + hashRoute;
+                if (iframe) {
+                    iframe.src = targetUrl;
+                }
+                if (routeLabel) {
+                    routeLabel.textContent = '/arenai/Demo/dist/index.html#' + hashRoute;
+                }
+            }
+
+            vpButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    vpButtons.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    const mode = btn.getAttribute('data-vp');
+                    if (vpContainer) {
+                        vpContainer.className = 'demo-iframe-frame vp-' + mode;
+                    }
+                });
+            });
+
+            presetButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const preset = btn.getAttribute('data-preset');
+                    if (preset === 'reset-db') {
+                        localStorage.removeItem('arenai_standalone_db_v1');
+                        setSessionAndNavigate(null, '/login');
+                        presetButtons.forEach(function (b) { b.classList.remove('active'); });
+                        const loginBtn = document.querySelector('[data-preset="login"]');
+                        if (loginBtn) loginBtn.classList.add('active');
+                        return;
+                    }
+
+                    presetButtons.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+
+                    switch (preset) {
+                        case 'login':
+                            setSessionAndNavigate(null, '/login');
+                            break;
+                        case 'student-home':
+                            setSessionAndNavigate('student', '/page/student');
+                            break;
+                        case 'battle-lobby':
+                            setSessionAndNavigate('student', '/battlelobby');
+                            break;
+                        case 'socratic-chat':
+                            setSessionAndNavigate('student', '/chat');
+                            break;
+                        case 'onboarding-quiz':
+                            setSessionAndNavigate('nuevo', '/personality-quiz');
+                            break;
+                        case 'professor-home':
+                            setSessionAndNavigate('professor', '/page/professor');
+                            break;
+                        case 'class-qr':
+                            setSessionAndNavigate('professor', '/class-creation');
+                            break;
+                        case 'professor-ai':
+                            setSessionAndNavigate('professor', '/professor-chat');
+                            break;
+                    }
+                });
+            });
+
+            // 2. Control del Audio Original y Simulación Retro (/arenai/img/battlesong.mp3)
+            let playingAudio = false;
+            const audioBtn = document.getElementById('audioBtn');
+            const arenaAudio = document.getElementById('arenaAudio');
+            if (audioBtn && arenaAudio) {
+                audioBtn.addEventListener('click', function () {
+                    if (!playingAudio) {
+                        arenaAudio.play().then(function () {
+                            playingAudio = true;
+                            audioBtn.textContent = '⏸ PAUSAR TEMA ORIGINAL (battlesong.mp3)';
+                        }).catch(function () {
+                            audioBtn.textContent = '⚠ AUDIO NO DISPONIBLE EN ESTE NAVEGADOR';
+                        });
+                    } else {
+                        arenaAudio.pause();
+                        playingAudio = false;
+                        audioBtn.textContent = '▶ ESCUCHAR TEMA ORIGINAL (battlesong.mp3)';
+                    }
+                });
+            }
+
+            const choiceCorrectBtn = document.getElementById('choiceCorrectBtn');
+            const choiceWrongBtn = document.getElementById('choiceWrongBtn');
             const bossHpBar = document.getElementById('bossHpBar');
             const bossMeta = document.getElementById('bossMeta');
             const studentMeta = document.getElementById('studentVectorMeta');
             const dialogConsole = document.getElementById('dialogConsole');
 
-            if (isCorrectDeduction) {
-                bossHpBar.style.width = '30%';
-                bossHpBar.style.backgroundColor = '#f4a261';
-                bossMeta.textContent = 'Materia: Sistemas Distribuidos | Resistencia Cognitiva: 30/100 (IMPACTO CRÍTICO)';
-                studentMeta.textContent = 'Vector MindSpore: [Dominio: 0.91 | openGauss MVCC: VALIDADO]';
-                dialogConsole.innerHTML = '<strong>[TRAMA SOCKET RECIBIDA — DEDUCCIÓN VALIDADA]:</strong><br />"¡Exacto! El aislamiento MVCC en openGauss permite que cada transacción opere sobre una instantánea consistente sin bloquear lecturas concurrentes. El tensor en MindSpore ha actualizado tu vector en la materia y reducido el centroide de mejora."';
-            } else {
-                bossHpBar.style.width = '85%';
-                bossHpBar.style.backgroundColor = '#e63946';
-                studentMeta.textContent = 'Vector MindSpore: [Alerta de Brecha: Almacenamiento de Objetos vs. Motor Transaccional]';
-                dialogConsole.innerHTML = '<strong>[INTERVENCIÓN SOCRÁTICA — PISTA NIVEL 2]:</strong><br />"Observa la diferencia de capas: Huawei Cloud OBS almacena objetos estáticos (como sprites o respaldos), pero no gestiona bloqueos de filas en una tabla relacional. Si dos consultas SQL intentan modificar la misma fila al mismo tiempo, ¿qué componente de la base de datos debe arbitrar el orden?"';
+            function simulateArenaTurn(isCorrect) {
+                if (!bossHpBar || !bossMeta || !studentMeta || !dialogConsole) return;
+                if (isCorrect) {
+                    bossHpBar.style.width = '55%';
+                    bossHpBar.style.backgroundColor = '#f4a261';
+                    bossMeta.textContent = 'HP: 55/100 (-30% HP GOLPE CRÍTICO) | Sudden Death Resuelto';
+                    studentMeta.textContent = 'winStreak: 🔥 5 | utilizationIndex: +12.4% | Dominio: 94%';
+                    dialogConsole.innerHTML = '<strong>[ROUND_RESULT — IMPACTO CRÍTICO 30% HP]:</strong><br />"¡Exacto! El motor evalúa el delta en milisegundos desde <code>roundStartTime</code> y castiga los fallos rivales con golpes críticos de 25–30% HP, actualizando tu racha en tiempo real."';
+                } else {
+                    bossHpBar.style.width = '85%';
+                    bossHpBar.style.backgroundColor = '#e63946';
+                    studentMeta.textContent = 'Alerta Socrática: Revisa la máquina de estados en socketService.ts';
+                    dialogConsole.innerHTML = '<strong>[PISTA SOCRÁTICA — DESCUBRIMIENTO GUIADO]:</strong><br />"Recuerda que las partidas activas viven en memoria dentro de <code>activeGames</code> en el servidor Socket.IO para lograr latencia de milisegundos. ¿Qué propiedad registra el instante exacto en que inicia cada ronda?"';
+                }
             }
-        }
+
+            if (choiceCorrectBtn) {
+                choiceCorrectBtn.addEventListener('click', function () { simulateArenaTurn(true); });
+            }
+            if (choiceWrongBtn) {
+                choiceWrongBtn.addEventListener('click', function () { simulateArenaTurn(false); });
+            }
+        })();
     </script>
 </body>
 
