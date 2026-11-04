@@ -24,64 +24,108 @@
     <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
     <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
     <style>
-      #arenai-top-hud {
-        display: none;
+      #arenai-test-accounts-bar {
         position: fixed;
-        bottom: 14px;
-        left: 14px;
+        bottom: 12px;
+        left: 12px;
         z-index: 99999;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      }
-      #arenai-top-hud.is-top {
         display: flex;
         align-items: center;
-        gap: 8px;
-        background: rgba(10, 18, 28, 0.92);
-        border: 1px solid rgba(244, 162, 97, 0.55);
+        flex-wrap: wrap;
+        gap: 6px;
+        background: rgba(10, 18, 28, 0.94);
+        border: 1px solid rgba(244, 162, 97, 0.6);
         backdrop-filter: blur(10px);
-        padding: 6px 11px;
-        border-radius: 999px;
+        padding: 6px 12px;
+        border-radius: 12px;
         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
         color: #f8fafc;
-        font-size: 12px;
+        font-size: 11.5px;
+        max-width: calc(100vw - 24px);
       }
-      #arenai-top-hud a,
-      #arenai-top-hud button {
-        background: rgba(244, 162, 97, 0.16);
+      #arenai-test-accounts-bar.is-collapsed .accounts-detail {
+        display: none;
+      }
+      #arenai-test-accounts-bar a,
+      #arenai-test-accounts-bar button {
+        background: rgba(244, 162, 97, 0.18);
         color: #f4a261;
-        border: 1px solid rgba(244, 162, 97, 0.4);
+        border: 1px solid rgba(244, 162, 97, 0.45);
         border-radius: 999px;
-        padding: 4px 10px;
+        padding: 3px 9px;
         font-size: 11px;
         font-weight: 700;
         text-decoration: none;
         cursor: pointer;
       }
-      #arenai-top-hud a:hover,
-      #arenai-top-hud button:hover {
+      #arenai-test-accounts-bar a:hover,
+      #arenai-test-accounts-bar button:hover {
         background: #f4a261;
         color: #140c06;
+      }
+      #arenai-test-accounts-bar code {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fde68a;
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 11px;
       }
     </style>
   </head>
   <body>
     <div id="root"></div>
-    <aside id="arenai-top-hud" aria-label="Controles de demostración ArenAI">
-      <a href="../../index.html">← Auditoría &amp; Arquitectura</a>
-      <span style="opacity:0.85;">Demo: <code>student</code>/<code>test</code> · <code>professor</code>/<code>test</code> · <code>nuevo</code>/<code>ArenAI123</code></span>
-      <button type="button" id="arenai-hud-close" aria-label="Ocultar barra de ayuda">✕</button>
+    <aside id="arenai-test-accounts-bar" aria-label="Cuentas de prueba de ArenAI siempre disponibles">
+      <button type="button" id="arenai-accounts-toggle" title="Mostrar u ocultar cuentas de prueba">🔑 Cuentas de Prueba</button>
+      <span class="accounts-detail">
+        🎓 Estudiante: <code>student</code>/<code>test</code> · <code>leo</code>/<code>ArenAI123</code> &nbsp;|&nbsp;
+        🧬 Onboarding: <code>nuevo</code>/<code>ArenAI123</code> &nbsp;|&nbsp;
+        👨‍🏫 Profesor: <code>professor</code>/<code>test</code> · <code>admin</code>/<code>ArenAIAdmin123</code>
+      </span>
+      <a href="../../index.html" id="arenai-back-link" style="display:none;">← Auditoría</a>
     </aside>
     <script>
-      if (window.self === window.top) {
-        var hud = document.getElementById('arenai-top-hud');
-        var closeBtn = document.getElementById('arenai-hud-close');
-        if (hud) hud.classList.add('is-top');
-        if (closeBtn && hud) {
-          closeBtn.addEventListener('click', function () {
-            hud.classList.remove('is-top');
+      (function () {
+        // Garantizar siempre la existencia de las 5 cuentas de prueba semilla en localStorage
+        var DB_KEY = 'arenai_standalone_db_v1';
+        var REQUIRED_USERS = [
+          { id_user: 1, username: 'admin', email: 'admin@arenai.edu.cr', password_hash: 'ArenAIAdmin123', name: 'Leonardo', last_name: 'Escobar', phone_number: '8888-0000', id_institution: 1, institution_name: 'Liceo de Costa Rica', role: 'professor', first_login: false },
+          { id_user: 888, username: 'professor', email: 'prof@test.com', password_hash: 'test', name: 'Test Professor', last_name: 'ArenAI', phone_number: '8888-1111', id_institution: 1, institution_name: 'Liceo de Costa Rica', role: 'professor', first_login: false },
+          { id_user: 999, username: 'student', email: 'student@test.com', password_hash: 'test', name: 'Test Student', last_name: 'ArenAI', phone_number: null, id_institution: 1, institution_name: 'Liceo de Costa Rica', role: 'student', first_login: false },
+          { id_user: 2, username: 'leo', email: 'leo@students.arenai', password_hash: 'ArenAI123', name: 'Leonardo Escobar', last_name: null, phone_number: null, id_institution: 1, institution_name: 'Liceo de Costa Rica', role: 'student', first_login: false },
+          { id_user: 3, username: 'nuevo', email: 'nuevo@students.arenai', password_hash: 'ArenAI123', name: 'Estudiante Nuevo', last_name: null, phone_number: null, id_institution: 1, institution_name: 'Liceo de Costa Rica', role: 'student', first_login: true }
+        ];
+        try {
+          var raw = localStorage.getItem(DB_KEY);
+          if (raw) {
+            var db = JSON.parse(raw);
+            if (db && Array.isArray(db.users)) {
+              REQUIRED_USERS.forEach(function (seedUser) {
+                var exists = db.users.some(function (u) {
+                  return String(u.username).toLowerCase() === seedUser.username;
+                });
+                if (!exists) {
+                  db.users.push(seedUser);
+                }
+              });
+              localStorage.setItem(DB_KEY, JSON.stringify(db));
+            }
+          }
+        } catch (e) {}
+
+        var bar = document.getElementById('arenai-test-accounts-bar');
+        var toggleBtn = document.getElementById('arenai-accounts-toggle');
+        var backLink = document.getElementById('arenai-back-link');
+        if (window.self === window.top && backLink) {
+          backLink.style.display = 'inline-block';
+        }
+        if (toggleBtn && bar) {
+          toggleBtn.addEventListener('click', function () {
+            bar.classList.toggle('is-collapsed');
           });
         }
-      }
+      })();
     </script>
     <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
     <script nomodule crossorigin id="vite-legacy-polyfill" src="./assets/polyfills-legacy-BVQUQtkF.js"></script>

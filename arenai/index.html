@@ -1214,7 +1214,29 @@
                             <button type="button" class="preset-btn" data-preset="professor-home">👨‍🏫 Panel Docente (professor)</button>
                             <button type="button" class="preset-btn" data-preset="class-qr">📲 Crear Sección &amp; QR</button>
                             <button type="button" class="preset-btn" data-preset="professor-ai">🤖 IA Curricular Docente</button>
-                            <button type="button" class="preset-btn" data-preset="reset-db" style="border-color:rgba(244,63,94,0.45); color:#fda4af;">🔄 Resetear DB Local</button>
+                        </div>
+                    </div>
+
+                    <div class="credentials-strip" style="border-top:0; border-bottom:1px solid rgba(148, 163, 184, 0.16);">
+                        <div class="cred-card">
+                            <strong>🎓 Estudiante con Progreso</strong>
+                            <code>leo</code> / <code>ArenAI123</code> · <code>student</code> / <code>test</code>
+                            <p>Dashboard con interpolación $\text{RGB}_{\text{Red}} \to \text{RGB}_{\text{Teal}}$, mascota reactiva, Tutor Socrático y Arena 1v1.</p>
+                        </div>
+                        <div class="cred-card emerald">
+                            <strong>🧬 Estudiante Nuevo (Onboarding)</strong>
+                            <code>nuevo</code> / <code>ArenAI123</code>
+                            <p>Dispara el modal de selección de las 7 paletas cromáticas y redirige a <code>/personality-quiz</code> (umbral $\ge 25\%$).</p>
+                        </div>
+                        <div class="cred-card cyan">
+                            <strong>👨‍🏫 Docente &amp; Analítica</strong>
+                            <code>professor</code> / <code>test</code> · <code>admin</code> / <code>ArenAIAdmin123</code>
+                            <p>Analítica predictiva por tema, generador de secciones con código QR (<code>/class-creation</code>) y asistente curricular IA.</p>
+                        </div>
+                        <div class="cred-card">
+                            <strong>✨ Auto-Provisión Dinámica</strong>
+                            <code>cualquier_usuario</code> / <code>cualquier_clave</code>
+                            <p>Si el usuario contiene <code>prof</code> o <code>@mep.go.cr</code> crea rol docente; si contiene <code>nuevo</code> activa <code>first_login</code>.</p>
                         </div>
                     </div>
 
@@ -1225,29 +1247,6 @@
                                 src="./Demo/dist/index.html#/login"
                                 title="Aplicación Interactiva ArenAI Standalone (React 19 + Ionic 8)"
                             ></iframe>
-                        </div>
-                    </div>
-
-                    <div class="credentials-strip">
-                        <div class="cred-card">
-                            <strong>🎓 Estudiante con Progreso</strong>
-                            <code>leo</code> / <code>ArenAI123</code> (o <code>student</code> / <code>test</code>)
-                            <p>Dashboard con interpolación $\text{RGB}_{\text{Red}} \to \text{RGB}_{\text{Teal}}$, mascota reactiva, Tutor Socrático y Arena 1v1.</p>
-                        </div>
-                        <div class="cred-card emerald">
-                            <strong>🧬 Estudiante Nuevo (Onboarding)</strong>
-                            <code>nuevo</code> / <code>ArenAI123</code>
-                            <p>Dispara el modal de selección de las 7 paletas cromáticas y redirige a <code>/personality-quiz</code> (umbral $\ge 25\%$).</p>
-                        </div>
-                        <div class="cred-card cyan">
-                            <strong>👨‍🏫 Docente &amp; Analítica</strong>
-                            <code>professor</code> / <code>test</code> (o <code>admin</code> / <code>ArenAIAdmin123</code>)
-                            <p>Analítica predictiva por tema, generador de secciones con código QR (<code>/class-creation</code>) y asistente curricular IA.</p>
-                        </div>
-                        <div class="cred-card">
-                            <strong>✨ Auto-Provisión Dinámica</strong>
-                            <code>cualquier_usuario</code> / <code>cualquier_clave</code>
-                            <p>Si el usuario contiene <code>prof</code> o <code>@mep.go.cr</code> crea rol docente; si contiene <code>nuevo</code> activa <code>first_login</code>.</p>
                         </div>
                     </div>
                 </div>
@@ -1637,15 +1636,6 @@ CREATE TABLE topic_father_son_relation (
             presetButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     const preset = btn.getAttribute('data-preset');
-                    if (preset === 'reset-db') {
-                        localStorage.removeItem('arenai_standalone_db_v1');
-                        setSessionAndNavigate(null, '/login');
-                        presetButtons.forEach(function (b) { b.classList.remove('active'); });
-                        const loginBtn = document.querySelector('[data-preset="login"]');
-                        if (loginBtn) loginBtn.classList.add('active');
-                        return;
-                    }
-
                     presetButtons.forEach(function (b) { b.classList.remove('active'); });
                     btn.classList.add('active');
 
